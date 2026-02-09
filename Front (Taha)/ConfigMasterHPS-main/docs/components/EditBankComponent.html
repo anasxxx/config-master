@@ -1,0 +1,2561 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>config-master documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+        <link rel="stylesheet" href="../styles/vagrant.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">config-master documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  EditBankComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/edit-bank/edit-bank.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+                <code>AfterViewChecked</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-edit-bank</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                                <code><a href="../components/AddBankStep1Component.html" target="_self" >AddBankStep1Component</a></code>
+                                <code><a href="../components/AddBankStep2Component.html" target="_self" >AddBankStep2Component</a></code>
+                            <code>NgIf</code>
+                            <code>TranslateModule</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./edit-bank.component.scss,<br>../add-bank-step1/add-bank-step1.component.scss,<br>../add-bank-step2/add-bank-step2.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./edit-bank.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#error" >error</a>
+                            </li>
+                            <li>
+                                <a href="#isSubmitting" >isSubmitting</a>
+                            </li>
+                            <li>
+                                <a href="#loading" >loading</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#populated" >populated</a>
+                            </li>
+                            <li>
+                                <a href="#ready" >ready</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#step1" >step1</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#step2" >step2</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#submitStart" >submitStart</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#goBack" >goBack</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#loadBankData" >loadBankData</a>
+                            </li>
+                            <li>
+                                <a href="#ngAfterViewChecked" >ngAfterViewChecked</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onSubmit" >onSubmit</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#populateChildForms" >populateChildForms</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#syncRequestFromForms" >syncRequestFromForms</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(route: ActivatedRoute, router: Router, bankApi: <a href="../injectables/BankApiService.html" target="_self">BankApiService</a>, bankService: <a href="../injectables/BankService.html" target="_self">BankService</a>, cd: ChangeDetectorRef, dialog: MatDialog, AuthService: <a href="../injectables/AuthService.html" target="_self">AuthService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/app/edit-bank/edit-bank.component.ts:46</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>route</td>
+                                                  
+                                                        <td>
+                                                                    <code>ActivatedRoute</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                    <code>Router</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>bankApi</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/BankApiService.html" target="_self" >BankApiService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>bankService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/BankService.html" target="_self" >BankService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>cd</td>
+                                                  
+                                                        <td>
+                                                                    <code>ChangeDetectorRef</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>dialog</td>
+                                                  
+                                                        <td>
+                                                                    <code>MatDialog</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>AuthService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="goBack"></a>
+                    <span class="name">
+                        <span ><b>goBack</b></span>
+                        <a href="#goBack"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>goBack()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="240"
+                                    class="link-to-prism">src/app/edit-bank/edit-bank.component.ts:240</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadBankData"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>loadBankData</b></span>
+                        <a href="#loadBankData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>loadBankData()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="64"
+                                    class="link-to-prism">src/app/edit-bank/edit-bank.component.ts:64</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngAfterViewChecked"></a>
+                    <span class="name">
+                        <span ><b>ngAfterViewChecked</b></span>
+                        <a href="#ngAfterViewChecked"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngAfterViewChecked()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="122"
+                                    class="link-to-prism">src/app/edit-bank/edit-bank.component.ts:122</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="58"
+                                    class="link-to-prism">src/app/edit-bank/edit-bank.component.ts:58</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onSubmit"></a>
+                    <span class="name">
+                        <span ><b>onSubmit</b></span>
+                        <a href="#onSubmit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onSubmit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="198"
+                                    class="link-to-prism">src/app/edit-bank/edit-bank.component.ts:198</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="populateChildForms"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>populateChildForms</b></span>
+                        <a href="#populateChildForms"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>populateChildForms()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="136"
+                                    class="link-to-prism">src/app/edit-bank/edit-bank.component.ts:136</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="syncRequestFromForms"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>syncRequestFromForms</b></span>
+                        <a href="#syncRequestFromForms"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>syncRequestFromForms()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="169"
+                                    class="link-to-prism">src/app/edit-bank/edit-bank.component.ts:169</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../classes/BankReq.html" target="_self" >BankReq | null</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="error"></a>
+                    <span class="name">
+                        <span ><b>error</b></span>
+                        <a href="#error"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/app/edit-bank/edit-bank.component.ts:41</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isSubmitting"></a>
+                    <span class="name">
+                        <span ><b>isSubmitting</b></span>
+                        <a href="#isSubmitting"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/app/edit-bank/edit-bank.component.ts:46</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loading"></a>
+                    <span class="name">
+                        <span ><b>loading</b></span>
+                        <a href="#loading"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/edit-bank/edit-bank.component.ts:40</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="populated"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>populated</b></span>
+                        <a href="#populated"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/edit-bank/edit-bank.component.ts:43</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ready"></a>
+                    <span class="name">
+                        <span ><b>ready</b></span>
+                        <a href="#ready"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/edit-bank/edit-bank.component.ts:42</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="step1"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>step1</b></span>
+                        <a href="#step1"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../components/AddBankStep1Component.html" target="_self" >AddBankStep1Component</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(AddBankStep1Component)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/edit-bank/edit-bank.component.ts:37</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="step2"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>step2</b></span>
+                        <a href="#step2"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../components/AddBankStep2Component.html" target="_self" >AddBankStep2Component</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(AddBankStep2Component)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/edit-bank/edit-bank.component.ts:38</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="submitStart"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>submitStart</b></span>
+                        <a href="#submitStart"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/edit-bank/edit-bank.component.ts:44</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  Component,
+  OnInit,
+  AfterViewChecked,
+  ViewChild,
+  ChangeDetectorRef,
+  AfterViewInit
+} from &#x27;@angular/core&#x27;;
+import { ActivatedRoute, Router } from &#x27;@angular/router&#x27;;
+import { BankService } from &#x27;../services/bank.service&#x27;;
+import { BankApiService } from &#x27;../services/Bank/bank-api.service&#x27;;
+import { BankReq } from &#x27;../models/bank-req.model&#x27;;
+import { AddBankStep1Component } from &#x27;../add-bank-step1/add-bank-step1.component&#x27;;
+import { AddBankStep2Component } from &#x27;../add-bank-step2/add-bank-step2.component&#x27;;
+import { NgIf } from &#x27;@angular/common&#x27;;
+import { CardProduct } from &#x27;../models/card-product.model&#x27;;
+import { MatDialog } from &#x27;@angular/material/dialog&#x27;;
+import { SuccessDialogComponent, SuccessDialogData } from &#x27;../success-dialog/success-dialog.component&#x27;;
+import { TranslateModule } from &#x27;@ngx-translate/core&#x27;;
+import { AuthService } from &#x27;../services/Auth/auth.service&#x27;;
+
+@Component({
+  selector: &#x27;app-edit-bank&#x27;,
+  templateUrl: &#x27;./edit-bank.component.html&#x27;,
+  standalone: true,
+  imports: [AddBankStep1Component,
+            AddBankStep2Component,
+            NgIf,
+            TranslateModule],
+  styleUrls: [
+    &#x27;./edit-bank.component.scss&#x27;,
+    &#x27;../add-bank-step1/add-bank-step1.component.scss&#x27;,
+    &#x27;../add-bank-step2/add-bank-step2.component.scss&#x27;,
+  ],
+})
+export class EditBankComponent implements OnInit, AfterViewChecked {
+  @ViewChild(AddBankStep1Component) step1!: AddBankStep1Component;
+  @ViewChild(AddBankStep2Component) step2!: AddBankStep2Component;
+
+  loading &#x3D; true;
+  error: string | null &#x3D; null;
+  ready &#x3D; false;
+  private populated &#x3D; false;
+  private submitStart &#x3D; 0;
+  
+  isSubmitting &#x3D; false;
+
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private bankApi: BankApiService,
+    private bankService: BankService,
+    private cd: ChangeDetectorRef,
+    private dialog: MatDialog,
+    private AuthService: AuthService,
+  ) {}
+
+  ngOnInit(): void {
+    this.loadBankData();
+  }
+
+ 
+
+  private loadBankData(): void {
+    const code &#x3D; this.route.snapshot.paramMap.get(&#x27;bankCode&#x27;);
+    if (!code) {
+      this.error &#x3D; &#x27;Aucun code de banque fourni.&#x27;;
+      this.loading &#x3D; false;
+      return;
+    }
+  
+    this.bankApi.getBankByCode(code).subscribe({
+      next: bank &#x3D;&gt; {
+        const rawCards &#x3D; (bank.cardProducts as any[]) || [];
+  
+        const nestedCards: CardProduct[] &#x3D; rawCards.map(flatCard &#x3D;&gt; ({
+          info: {
+            bankCode:     bank.pBankCode,
+            bin:          flatCard.bin,
+            description:  flatCard.description,
+            expiration:   flatCard.expiration,
+            trancheMin:   flatCard.trancheMin,
+            trancheMax:   flatCard.trancheMax,
+            indexPvk:     flatCard.indexPvk,
+            network:      flatCard.network,
+            plasticType:  flatCard.plasticType,
+            priorExp:     flatCard.priorExp,
+            productCode:  flatCard.productCode,
+            productType:  flatCard.productType,
+            renew:        flatCard.renew,
+            serviceCode:  flatCard.serviceCode,
+          } as any,
+          fees:     flatCard.fees,
+          services: flatCard.services,
+          limits:   flatCard.limits || [],
+        }));
+  
+        const bankReq: BankReq &#x3D; {
+          pBusinessDate: bank.pBusinessDate,
+          pBankCode:     bank.pBankCode,
+          pBankWording:  bank.pBankWording,
+          pCountryCode:  bank.pCountryCode,
+          pCurrencyCode: bank.pCurrencyCode,
+          p_action_flag: bank.p_action_flag || &#x27;2&#x27;,
+          cardProducts:  nestedCards,
+          branches:      bank.branches || [],
+          ressources:    bank.ressources || [],
+        };
+  
+        this.bankService.setBankRequest(bankReq);
+        this.loading &#x3D; false;
+        this.ready   &#x3D; true;
+      },
+      error: err &#x3D;&gt; {
+        console.error(&#x27;Erreur chargement banque :&#x27;, err);
+        this.error   &#x3D; &#x27;Impossible de charger la banque.&#x27;;
+        this.loading &#x3D; false;
+      }
+    });
+  }
+  
+  ngAfterViewChecked(): void {
+    if (this.ready &amp;&amp; !this.populated &amp;&amp; this.step1 &amp;&amp; this.step2 &amp;&amp; !this.step1.isLoadingResources) {
+      this.populateChildForms();
+      this.populated &#x3D; true;
+      this.cd.detectChanges();
+    }
+    // Immediately after “populateChildForms” has run (so step2 now exists),
+    // you can call initializeDemoDefaults() if it’s a demo user:
+    if (this.ready &amp;&amp; this.step2 &amp;&amp; this.AuthService.isDemoUser() ) {
+      this.step2.initializeDemoDefaults();
+      console.log(&quot;Initialized Fields for Demo User&quot;);
+    }
+  }
+
+  private populateChildForms(): void {
+    const req &#x3D; this.bankService.getBankRequest();
+
+    this.step1.bankData &#x3D; {
+      pBankWording:  req.pBankWording,
+      pCountryCode:  req.pCountryCode,
+      pCurrencyCode: req.pCurrencyCode,
+      pBankCode:     req.pBankCode,
+    };
+    this.step1.agencies  &#x3D; [...req.branches];
+
+    this.step1.selectedResources &#x3D; {};
+    req.ressources?.forEach(savedRes &#x3D;&gt; {
+      const match &#x3D; this.step1.availableResources.find(
+        ar &#x3D;&gt; ar.abrv_wording &#x3D;&#x3D;&#x3D; savedRes.resourceWording
+      );
+      if (match) {
+        this.step1.selectedResources[match.resource_id] &#x3D; true;
+      }
+    });
+
+    this.step2.bankRequest &#x3D; req;
+    this.step2.cards &#x3D; req.cardProducts.map(card &#x3D;&gt; ({
+      title:         card.info?.productType  || &#x27;Card&#x27;,
+      activeSection: &#x27;info&#x27;,
+      info:     card.info,
+      fees:     card.fees,
+      services: card.services,
+      limits:   card.limits,
+    }));
+    this.step2.activeCardIndex &#x3D; this.step2.cards.length &gt; 0 ? 0 : null;
+  }
+
+  private syncRequestFromForms(): BankReq | null {
+    const req &#x3D; this.bankService.getBankRequest();
+    if (!req) { return null; }
+
+    req.pBankWording  &#x3D; this.step1.bankData.pBankWording;
+    req.pCountryCode  &#x3D; this.step1.bankData.pCountryCode;
+    req.pCurrencyCode &#x3D; this.step1.bankData.pCurrencyCode;
+    req.pBankCode     &#x3D; this.step1.bankData.pBankCode;
+    req.branches      &#x3D; [...this.step1.agencies];
+
+    req.ressources &#x3D; this.step1.availableResources
+      .filter(res &#x3D;&gt; this.step1.selectedResources[res.resource_id])
+      .map(res &#x3D;&gt; ({
+        bankCode: req.pBankCode,
+        resourceId: res.resource_id,
+        resourceWording: res.abrv_wording
+      }));
+
+    req.cardProducts &#x3D; this.step2.cards.map(card &#x3D;&gt; ({
+      info:     card.info,
+      fees:     card.fees,
+      services: card.services,
+      limits:   card.limits
+    }));
+
+    this.bankService.setBankRequest(req);
+    return req;
+  }
+
+  onSubmit(): void {
+    this.submitStart &#x3D; Date.now();
+    const req &#x3D; this.syncRequestFromForms();
+    if (!req) {
+      this.error &#x3D; &#x27;Données introuvables.&#x27;;
+      return;
+    }
+    
+    this.isSubmitting &#x3D; true;
+    this.bankApi.editBank(req).subscribe({
+      next: () &#x3D;&gt; {
+        this.isSubmitting &#x3D; false;
+        const elapsedMs &#x3D; Date.now() - this.submitStart;
+        const seconds &#x3D; Math.floor(elapsedMs / 1000);
+        const minutes &#x3D; Math.floor(seconds / 60);
+        const remainingSeconds &#x3D; seconds % 60;
+        const elapsedStr &#x3D; minutes &gt; 0
+          ? &#x60;${minutes} min ${remainingSeconds} s&#x60;
+          : &#x60;${remainingSeconds} s&#x60;;
+          
+        const dialogRef &#x3D; this.dialog.open&lt;SuccessDialogComponent, SuccessDialogData&gt;(
+          SuccessDialogComponent,
+          {
+            data: { 
+              message: &#x27;La mise à jour a bien été effectuée !&#x27;,
+              elapsed: elapsedStr
+            },
+            disableClose: true
+          }
+        );
+        dialogRef.afterClosed().subscribe(() &#x3D;&gt; {
+          this.router.navigate([&#x27;/banks&#x27;]);
+        });
+      },
+      error: err &#x3D;&gt; {
+        console.error(&#x27;MàJ échouée :&#x27;, err);
+        this.error &#x3D; &#x27;La mise à jour a échoué.&#x27;;
+        this.isSubmitting &#x3D; false;
+      }
+    });
+  }
+
+  goBack(): void {
+    this.router.navigate([&#x27;/banks&#x27;]);
+  }
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;!-- Error message (if any) --&gt;
+&lt;div *ngIf&#x3D;&quot;error&quot; class&#x3D;&quot;alert alert-danger&quot;&gt;{{ error }}&lt;/div&gt;
+
+&lt;!-- Navigation Back Button --&gt;
+&lt;div class&#x3D;&quot;row mb-4&quot;&gt;
+  &lt;div class&#x3D;&quot;col-12&quot;&gt;
+    &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-back&quot; (click)&#x3D;&quot;goBack()&quot;&gt;
+      &lt;i class&#x3D;&quot;bi bi-arrow-left-short&quot;&gt;&lt;/i&gt;
+      {{ &quot;banks.details.back&quot; | translate }}
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Main content - no loading state needed anymore since we use a dialog --&gt;
+&lt;ng-container *ngIf&#x3D;&quot;ready&quot;&gt;
+  &lt;app-add-bank-step1&gt;&lt;/app-add-bank-step1&gt;
+  &lt;hr class&#x3D;&quot;my-4&quot; /&gt;
+  &lt;app-add-bank-step2&gt;&lt;/app-add-bank-step2&gt;
+  
+  &lt;div class&#x3D;&quot;text-end mt-4&quot;&gt;
+    &lt;button class&#x3D;&quot;btn btn-success&quot; (click)&#x3D;&quot;onSubmit()&quot; [disabled]&#x3D;&quot;isSubmitting&quot;&gt;
+      &lt;ng-container *ngIf&#x3D;&quot;!isSubmitting&quot;&gt;
+        Enregistrer les modifications
+      &lt;/ng-container&gt;
+      &lt;ng-container *ngIf&#x3D;&quot;isSubmitting&quot;&gt;
+        &lt;span class&#x3D;&quot;spinner-border spinner-border-sm&quot; role&#x3D;&quot;status&quot; aria-hidden&#x3D;&quot;true&quot;&gt;&lt;/span&gt;
+        &amp;nbsp;Chargement...
+      &lt;/ng-container&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/ng-container&gt;
+
+&lt;!-- Add at the bottom of your template --&gt;
+&lt;div *ngIf&#x3D;&quot;isSubmitting&quot; class&#x3D;&quot;loading-overlay&quot;&gt;
+  &lt;div class&#x3D;&quot;loader&quot;&gt;
+    &lt;div class&#x3D;&quot;box box-1&quot;&gt;
+      &lt;div class&#x3D;&quot;side-left&quot;&gt;&lt;/div&gt;
+      &lt;div class&#x3D;&quot;side-right&quot;&gt;&lt;/div&gt;
+      &lt;div class&#x3D;&quot;side-top&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;box box-2&quot;&gt;
+      &lt;div class&#x3D;&quot;side-left&quot;&gt;&lt;/div&gt;
+      &lt;div class&#x3D;&quot;side-right&quot;&gt;&lt;/div&gt;
+      &lt;div class&#x3D;&quot;side-top&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;box box-3&quot;&gt;
+      &lt;div class&#x3D;&quot;side-left&quot;&gt;&lt;/div&gt;
+      &lt;div class&#x3D;&quot;side-right&quot;&gt;&lt;/div&gt;
+      &lt;div class&#x3D;&quot;side-top&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;box box-4&quot;&gt;
+      &lt;div class&#x3D;&quot;side-left&quot;&gt;&lt;/div&gt;
+      &lt;div class&#x3D;&quot;side-right&quot;&gt;&lt;/div&gt;
+      &lt;div class&#x3D;&quot;side-top&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./edit-bank.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">/* Importer les styles des deux composants pour conserver exactement le même rendu */
+@use &#x27;../add-bank-step1/add-bank-step1.component.scss&#x27; as *;
+@use &#x27;../add-bank-step2/add-bank-step2.component.scss&#x27; as *;
+
+/* --- Styles Overrides for EditComponent --- */
+
+
+
+$primary-color: #0d6efd;
+$secondary-color: #6c757d;
+$accent-color: #17a2b8;
+$success-color: #28a745;
+$light-gray: #f8f9fa;
+$dark-gray: #343a40;
+$transition-speed: 0.3s;
+
+/* Cacher le sidebar de progression DANS app-add-bank-step1 (si existant et différent) */
+/* Vous aviez déjà caché app-progress-steps-sidebar et .progress-sidebar, */
+/* rendons-les plus spécifiques si nécessaire */
+:host ::ng-deep app-add-bank-step1 app-progress-steps-sidebar,
+:host ::ng-deep app-add-bank-step1 .progress-sidebar {
+  display: none !important;
+}
+
+/* Cacher le sidebar de progression spécifiquement DANS app-add-bank-step2 */
+/* Essayez ces sélecteurs. Il est possible que le nom de classe ou le composant soit différent. */
+/* Utilisez l&#x27;inspecteur de votre navigateur pour trouver le sélecteur exact si ceux-ci ne fonctionnent pas. */
+:host ::ng-deep app-add-bank-step2 app-progress-steps-sidebar, /* Si c&#x27;est un composant */
+:host ::ng-deep app-add-bank-step2 .progress-sidebar, /* Si c&#x27;est une classe commune */
+:host ::ng-deep app-add-bank-step2 .sidebar /* Autre nom de classe possible */ {
+  display: none !important;
+
+}
+
+/* Faire en sorte que le conteneur de contenu principal DANS app-add-bank-step2 prenne toute la largeur */
+/* Encore une fois, le nom de classe &#x27;.main-content&#x27; peut être différent dans step 2. */
+/* Utilisez l&#x27;inspecteur pour vérifier. */
+:host ::ng-deep app-add-bank-step2 .main-content, /* Classe commune */
+:host ::ng-deep app-add-bank-step2 .content-area /* Autre nom possible */ {
+  width: 100% !important;
+  max-width: 100% !important; /* S&#x27;assurer qu&#x27;il n&#x27;y a pas de max-width limitant */
+  margin: 0 !important; /* Supprimer les marges qui auraient pu faire de la place pour le sidebar */
+  padding: 0 15px !important; /* Maintenir un peu de padding intérieur si désiré */
+  flex-grow: 1 !important; /* Si le parent utilise flexbox */
+}
+
+.btn-back {
+  background: white;
+  color: $primary-color;
+  border: 2px solid $primary-color;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  transition: all $transition-speed;
+  
+  &amp;:hover {
+    background: $primary-color;
+    color: white;
+    transform: translateX(-5px);
+  }
+  
+  i {
+    transition: transform $transition-speed;
+  }
+  
+  &amp;:hover i {
+    transform: translateX(-3px);
+  }
+}
+
+/* --- Fin des Styles Overrides --- */
+
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.loader {
+  scale: 2;
+  height: 50px;
+  width: 40px;
+}
+
+.box {
+  position: relative;
+  opacity: 0;
+  left: 10px;
+}
+
+.side-left {
+  position: absolute;
+  background-color: #286cb5;
+  width: 19px;
+  height: 5px;
+  transform: skew(0deg, -25deg);
+  top: 14px;
+  left: 10px;
+}
+
+.side-right {
+  position: absolute;
+  background-color: #2f85e0;
+  width: 19px;
+  height: 5px;
+  transform: skew(0deg, 25deg);
+  top: 14px;
+  left: -9px;
+}
+
+.side-top {
+  position: absolute;
+  background-color: #5fa8f5;
+  width: 20px;
+  height: 20px;
+  rotate: 45deg;
+  transform: skew(-20deg, -20deg);
+}
+
+.box-1 {
+  animation: from-left 4s infinite;
+}
+
+.box-2 {
+  animation: from-right 4s infinite;
+  animation-delay: 1s;
+}
+
+.box-3 {
+  animation: from-left 4s infinite;
+  animation-delay: 2s;
+}
+
+.box-4 {
+  animation: from-right 4s infinite;
+  animation-delay: 3s;
+}
+
+@keyframes from-left {
+  0% {
+    z-index: 20;
+    opacity: 0;
+    translate: -20px -6px;
+  }
+
+  20% {
+    z-index: 10;
+    opacity: 1;
+    translate: 0px 0px;
+  }
+
+  40% {
+    z-index: 9;
+    translate: 0px 4px;
+  }
+
+  60% {
+    z-index: 8;
+    translate: 0px 8px;
+  }
+
+  80% {
+    z-index: 7;
+    opacity: 1;
+    translate: 0px 12px;
+  }
+
+  100% {
+    z-index: 5;
+    translate: 0px 30px;
+    opacity: 0;
+  }
+}
+
+@keyframes from-right {
+  0% {
+    z-index: 20;
+    opacity: 0;
+    translate: 20px -6px;
+  }
+
+  20% {
+    z-index: 10;
+    opacity: 1;
+    translate: 0px 0px;
+  }
+
+  40% {
+    z-index: 9;
+    translate: 0px 4px;
+  }
+
+  60% {
+    z-index: 8;
+    translate: 0px 8px;
+  }
+
+  80% {
+    z-index: 7;
+    opacity: 1;
+    translate: 0px 12px;
+  }
+
+  100% {
+    z-index: 5;
+    translate: 0px 30px;
+    opacity: 0;
+  }
+}
+
+/* ---------------------------------------
+   “Disable” Bank Name &amp; Bank Code fields
+   inside &lt;app-add-bank-step1&gt; when in Edit
+---------------------------------------- */
+:host ::ng-deep app-add-bank-step1 input[name&#x3D;&quot;pBankWording&quot;],
+:host ::ng-deep app-add-bank-step1 input[name&#x3D;&quot;pBankCode&quot;] {
+  pointer-events: none;         /* prevent clicking/focusing */
+  background-color: #e9ecef;    /* Bootstrap‐style “disabled” look */
+  color: #6c757d;               /* muted text color */
+  cursor: not-allowed;          /* show disabled cursor */
+}</code></pre>
+                <p class="comment">
+                    <code>../add-bank-step1/add-bank-step1.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.steps-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  position: relative;
+
+  &amp;::before {
+    content: &quot;&quot;;
+    position: absolute;
+    left: 16px;
+    top: 24px;
+    bottom: 24px;
+    width: 2px;
+    background-color: #dee2e6;
+    z-index: 0;
+  }
+}
+
+.step {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+
+  &amp;-circle {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #dee2e6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+  }
+
+  &amp;-content {
+    flex: 1;
+  }
+
+  &amp;.active {
+    .step-circle {
+      background-color: #0d6efd;
+      color: white;
+    }
+  }
+}
+
+.main-content {
+  padding: 2rem;
+}
+
+.agency-list {
+  border: 1px solid #dee2e6;
+  border-radius: 0.5rem;
+  padding: 1rem;
+
+  .form-check {
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid #eee;
+
+    &amp;:last-child {
+      border-bottom: none;
+    }
+  }
+}
+
+.btn-outline-primary.active {
+  background-color: #0d6efd;
+  color: white;
+}
+
+// add-bank-step1.component.scss
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+.container-fluid {
+  flex: 1;
+  display: flex;
+}
+
+.row {
+  flex: 1;
+  min-height: 0; // Fix for flexbox overflow
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  //overflow: hidden;
+  height: 100%;
+  &gt; div {
+    flex: 1;
+    overflow-y: auto; // Make content scrollable
+    padding: 2rem;
+    padding-bottom: 100px; // Space for the button
+  }
+}
+
+// Navigation button container
+.d-flex.justify-content-end {
+  position: sticky;
+  bottom: 0;
+  background: white;
+  padding: 1.5rem;
+  border-top: 1px solid #dee2e6;
+  margin-top: auto; // Push to bottom
+  z-index: 1;
+}
+/* New styles for the agency modal field groups */
+.field-group {
+  position: relative;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem; // space for the line
+
+  /* Subtle line linking the fields */
+  &amp;::after {
+    content: &quot;&quot;;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(50% + 0.5rem); // adjust based on desired vertical position
+    height: 1px;
+    background-color: #dee2e6;
+    z-index: -1;
+  }
+}
+
+/* ID field styling: smaller font and padding */
+.id-field {
+  font-size: 0.85rem;
+  padding: 0.375rem 0.75rem; // slightly smaller than default if desired
+}
+
+/* Field Group Container */
+.field-group {
+  margin-bottom: 1.5rem;
+}
+
+/* Connector line between groups */
+.connector-group {
+  height: 1px;
+  background-color: #dee2e6;
+  margin: 1.5rem 0; // Adjust spacing as needed
+}
+
+/* ID Field: smaller font and padding */
+.id-field {
+  font-size: 0.85rem;
+  padding: 0.375rem 0.75rem;
+}
+
+// Adjust modal size
+.agency-modal-dialog {
+  max-width: 500px; // Adjust this value as needed
+  width: 95%; // Ensures responsiveness
+
+  .modal-content {
+    max-height: 90vh; // Prevent modal from exceeding viewport height
+    overflow-y: auto; // Enable scrolling if content is too long
+  }
+}
+
+// Make form more compact
+.modal-body {
+  .field-group {
+    margin-bottom: 1rem;
+
+    &amp;::after {
+      top: calc(50% + 0.3rem);
+    }
+  }
+
+  .connector-group {
+    margin: 1rem 0;
+  }
+
+  .form-label {
+    margin-bottom: 0.25rem;
+  }
+
+  .modal-footer {
+    padding-top: 1rem;
+  }
+}
+
+// Animations
+@keyframes pulse-glow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(13, 110, 253, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 12px rgba(13, 110, 253, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(13, 110, 253, 0);
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .progress-sidebar {
+    .step3-nav .btn-success {
+      flex: 1;
+    }
+  }
+}
+
+.progress-sidebar {
+  padding: 0; // Remove padding if needed
+  background: transparent; // Ensure background is transparent
+}
+
+/* add-bank-step1.component.scss */
+
+/* Class to align placeholder text to the right */
+.placeholder-right::placeholder { /* Standard */
+  text-align: right;
+  padding-right: 0.5rem;
+  opacity: 0.7;
+}
+
+.placeholder-right::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+  text-align: right;
+  padding-right: 0.5rem; /* Uncommented */
+  opacity: 0.7; /* Uncommented */
+}
+
+.placeholder-right:-moz-placeholder { /* Firefox 4-18 (older) */
+  text-align: right;
+  opacity: 1; /* Keep this line for older Firefox */
+  padding-right: 0.5rem; /* Uncommented */
+  opacity: 0.7; /* Uncommented */
+}
+
+.placeholder-right::-moz-placeholder { /* Firefox 19+ */
+  text-align: right;
+  opacity: 1; /* Keep this line for Firefox */
+  padding-right: 0.5rem; /* Uncommented */
+  opacity: 0.7; /* Uncommented */
+}
+
+.placeholder-right:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  text-align: right;
+  padding-right: 0.5rem; /* Uncommented */
+  opacity: 0.7; /* Uncommented */
+}
+
+.placeholder-right::-ms-input-placeholder { /* Microsoft Edge (legacy) */
+ text-align: right;
+ padding-right: 0.5rem; /* Uncommented */
+ opacity: 0.7; /* Uncommented */
+}
+
+/* Ensure typed text aligns left */
+.placeholder-right {
+  text-align: left;
+}
+
+.agency-list-wrapper {
+  padding-left: 0; /* Remove any default padding on the left */
+  margin-left: 0; /* Ensure no extra margin pushes it to the center */
+  margin-top: 2rem; /* Add more space between the resources section and the agency list */
+}
+
+.agency-list {
+  width: 100%; /* Ensure the agency list takes the full width of its container */
+  text-align: left; /* Align content to the left */
+}
+
+.list-group-item {
+  border: 1px solid #dee2e6; /* Optional: Ensure the list items have a consistent border */
+  border-radius: 0.25rem; /* Optional: Add slight rounding to the corners */
+}</code></pre>
+                <p class="comment">
+                    <code>../add-bank-step2/add-bank-step2.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.container-fluid {
+  height: 100%; // Ensure container takes full height
+  display: flex;
+  flex-direction: column;
+}
+.row {
+  flex: 1; // Allow row to expand
+  min-height: 0;
+}
+
+/* step‑2.component.scss */
+.steps-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  position: relative;
+
+  &amp;::before {
+    content: &quot;&quot;;
+    position: absolute;
+    left: 16px;
+    top: 24px;
+    bottom: 24px;
+    width: 2px;
+    background-color: #dee2e6;
+    z-index: 0;
+  }
+}
+
+.step {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+
+  &amp;-circle {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #dee2e6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+  }
+
+  &amp;-content {
+    flex: 1;
+  }
+
+  &amp;.active {
+    .step-circle {
+      background-color: #0d6efd;
+      color: white;
+    }
+  }
+}
+
+
+
+
+/* Progress Sidebar - Match Step 1 */
+.progress-sidebar {
+  padding: 0;
+  background: transparent; // Match Step 1
+}
+
+/* Main Content - Match Step 1 */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+ // overflow-y: auto;
+  padding: 2rem;
+  background: white;
+  min-height: 0; // Add this
+}
+
+.content-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 2rem;
+  min-height: min-content;
+}
+
+/* Keep existing card styles but add: */
+.card-stack-container {
+  margin-bottom: 2rem;
+  background: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* Adjust navigation buttons positioning */
+.sidebar-navigation {
+  position: sticky;
+  bottom: 0;
+  background: white;
+  padding: 1.5rem;
+  border-top: 1px solid #dee2e6;
+  margin-top: auto;
+  z-index: 1;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .row {
+    flex-direction: column;
+  }
+
+  .progress-sidebar {
+    flex: 0 0 auto;
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #dee2e6;
+  }
+
+  .main-content {
+    flex: 1;
+    padding: 1rem;
+  }
+}
+
+/* Card Stack */
+.card-stack-container {
+  margin-bottom: 2rem;
+}
+
+.card-stack {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  overflow-x: auto;
+  background: white;
+  border-radius: 0.5rem;
+  min-height: 100px;
+  justify-content: flex-start;
+  max-width: calc(240px * 3 + 1rem * 2); // Limit to 3 cards visible
+}
+
+.card-item {
+  flex: 0 0 240px;
+  flex-shrink: 0;
+  background: white;
+  border-radius: 0.5rem;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &amp;:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  &amp;.active {
+    border-color: #0d6efd;
+    box-shadow: 0 4px 15px rgba(13, 110, 253, 0.2);
+  }
+
+  .delete-card-btn {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    padding: 2px 6px;
+    border: none;
+    background: transparent;
+    color: #dc3545;
+    opacity: 0;
+    transition: all 0.2s ease;
+    z-index: 2;
+
+    &amp;:hover {
+      color: #b02a37;
+      transform: scale(1.1);
+    }
+  }
+
+  .card-preview {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+    position: relative;
+    margin-bottom: 0.5rem;
+  }
+
+  &amp;:hover {
+    .card-skin-image {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+  }
+
+  &amp;.active {
+    .card-skin-image {
+      border: 2px solid rgba(13, 110, 253, 0.3);
+    }
+  }
+
+  &amp;:hover .delete-card-btn,
+  &amp;.active .delete-card-btn {
+    opacity: 1;
+  }
+
+  .hint-icon {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    color: #0d6efd;
+    font-size: 0.8rem;
+  }
+
+  .card-icon {
+    font-size: 2rem;
+    color: #0d6efd;
+  }
+}
+
+// Add transition to image
+.card-skin-image {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0.9;
+}
+
+.add-card-btn {
+  flex: 0 0 120px;
+  height: 120px;
+  background: #0d6efd; /* Blue when enabled */
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+
+  /* Enabled state with glowing effect */
+  &amp;:not(:disabled) {
+    animation: pulse-glow 2s infinite; /* Glowing effect */
+  }
+
+  /* Hover effects only when not disabled */
+  &amp;:hover:not(:disabled) {
+    background: #0b5ed7; /* Darker blue on hover */
+    transform: translateY(-2px); /* Slight lift */
+    box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3); /* Shadow on hover */
+  }
+
+  /* Disabled state */
+  &amp;:disabled {
+    background: #ccc; /* Grey when disabled */
+    color: #666; /* Darker grey text */
+    cursor: not-allowed; /* Blocked cursor */
+    box-shadow: none; /* No shadow */
+    animation: none; /* No glowing effect */
+  }
+}
+
+/* Define the glowing animation */
+@keyframes pulse-glow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(13, 110, 253, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 12px rgba(13, 110, 253, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(13, 110, 253, 0);
+  }
+}
+
+/* Card Details */
+.card-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+/* New Sequential Steps Design */
+.sequential-steps {
+  margin-bottom: 1.5rem;
+  overflow-x: auto;
+
+  .sequential-track {
+    display: flex;
+    position: relative;
+    min-width: 100%;
+    padding: 0 0.5rem;
+
+    &amp;::after {
+      content: &quot;&quot;;
+      position: absolute;
+      height: 2px;
+      background-color: #dee2e6;
+      top: 25px;
+      left: 40px;
+      right: 40px;
+      z-index: 0;
+    }
+  }
+
+  .sequential-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    position: relative;
+    padding: 0 0.5rem;
+    flex: 1;
+    min-width: 100px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    z-index: 1;
+
+    &amp;:hover {
+      .sequential-indicator {
+        transform: scale(1.1);
+        box-shadow: 0 2px 6px rgba(13, 110, 253, 0.2);
+      }
+    }
+
+    &amp;.active {
+      .sequential-indicator {
+        background-color: #0d6efd;
+        border-color: #0d6efd;
+        color: white;
+        transform: scale(1.1);
+      }
+
+      .sequential-label {
+        color: #0d6efd;
+        font-weight: 600;
+      }
+
+      &amp;::after {
+        content: &quot;&quot;;
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background-color: #0d6efd;
+        top: 25px;
+        left: 0;
+        z-index: -1;
+      }
+    }
+
+    &amp;.completed {
+      .sequential-indicator {
+        background-color: #e7f1ff;
+        border-color: #0d6efd;
+        color: #0d6efd;
+      }
+
+      &amp;::after {
+        content: &quot;&quot;;
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background-color: #0d6efd;
+        top: 25px;
+        left: 0;
+        z-index: -1;
+      }
+    }
+  }
+
+  .sequential-indicator {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: white;
+    border: 2px solid #dee2e6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    transition: all 0.3s ease;
+  }
+
+  .sequential-label {
+    font-size: 0.875rem;
+    text-align: center;
+    white-space: nowrap;
+    transition: color 0.3s ease;
+  }
+}
+
+/* Section Content */
+.section-content-wrapper {
+  background-color: white;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  flex: auto;
+}
+
+.section-content {
+  animation: fadeIn 0.3s ease;
+}
+
+.section-navigation {
+  display: flex;
+  margin-top: 1.5rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .sequential-steps {
+    .sequential-track {
+      padding: 0;
+    }
+
+    .sequential-item {
+      min-width: 80px;
+    }
+
+    .sequential-indicator {
+      width: 40px;
+      height: 40px;
+      font-size: 1rem;
+    }
+
+    .sequential-label {
+      font-size: 0.75rem;
+    }
+  }
+
+  .section-content-wrapper {
+    padding: 1rem;
+  }
+}
+
+/* Form Controls */
+.form-label {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.form-switch {
+  padding-left: 2.5rem;
+
+  .form-check-input {
+    width: 2.5rem;
+  }
+}
+
+// Animations
+@keyframes pulse-glow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(13, 110, 253, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 12px rgba(13, 110, 253, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(13, 110, 253, 0);
+  }
+}
+
+/* ... existing styles ... */
+
+/* From Uiverse.io by Praashoo7 */
+.flip-card {
+  background-color: transparent;
+  width: 240px;
+  height: 154px;
+  perspective: 1000px;
+  color: white;
+}
+
+.heading_8264 {
+  position: absolute;
+  letter-spacing: 0.2em;
+  font-size: 0.5em;
+  top: 2em;
+  left: 18.6em;
+}
+
+.logo {
+  position: absolute;
+  top: 6.8em;
+}
+/* Position the Mastercard logo */
+.mastercard-logo {
+  left: 9.7em; /* Moved to the left to make room for Visa logo */
+}
+
+/* Position the Visa logo */
+.visa-logo {
+  left: 12em; /* Position to the right of the Mastercard logo */
+}
+
+.chip {
+  position: absolute;
+  top: 2.3em;
+  left: 1.5em;
+}
+
+.contactless {
+  position: absolute;
+  top: 3.5em;
+  left: 12.4em;
+}
+
+.number {
+  position: absolute;
+  font-weight: bold;
+  font-size: 0.6em;
+  top: 8.3em;
+  left: 1.6em;
+}
+
+.valid_thru {
+  position: absolute;
+  font-weight: bold;
+  top: 635.8em;
+  font-size: 0.01em;
+  left: 140.3em;
+}
+
+.date_8264 {
+  position: absolute;
+  font-weight: bold;
+  font-size: 0.5em;
+  top: 13.6em;
+  left: 3.2em;
+}
+
+.name {
+  position: absolute;
+  font-weight: bold;
+  font-size: 0.5em;
+  top: 16.1em;
+  left: 2em;
+}
+
+.strip {
+  position: absolute;
+  background-color: black;
+  width: 15em;
+  height: 1.5em;
+  top: 2.4em;
+  background: repeating-linear-gradient(
+    45deg,
+    #303030,
+    #303030 10px,
+    #202020 10px,
+    #202020 20px
+  );
+}
+
+.mstrip {
+  position: absolute;
+  background-color: rgb(255, 255, 255);
+  width: 8em;
+  height: 0.8em;
+  top: 5em;
+  left: 0.8em;
+  border-radius: 2.5px;
+}
+
+.sstrip {
+  position: absolute;
+  background-color: rgb(255, 255, 255);
+  width: 4.1em;
+  height: 0.8em;
+  top: 5em;
+  left: 10em;
+  border-radius: 2.5px;
+}
+
+.code {
+  font-weight: bold;
+  text-align: center;
+  margin: 0.2em;
+  color: black;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  box-shadow: 0 8px 14px 0 rgba(0, 0, 0, 0.2);
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 1rem;
+}
+
+.flip-card-front {
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 2px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -1px 0px inset;
+  background-color: #171717;
+}
+
+.flip-card-back {
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 2px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -1px 0px inset;
+  background-color: #171717;
+  transform: rotateY(180deg);
+}
+/* Class to align placeholder text to the right */
+.placeholder-right::placeholder { /* Standard */
+  text-align: right;
+  padding-right: 0.5rem;
+  opacity: 0.7;
+}
+
+.placeholder-right::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+  text-align: right;
+  padding-right: 0.5rem; /* Uncommented */
+  opacity: 0.7; /* Uncommented */
+}
+
+.placeholder-right:-moz-placeholder { /* Firefox 4-18 (older) */
+  text-align: right;
+  opacity: 1; /* Keep this line for older Firefox */
+  padding-right: 0.5rem; /* Uncommented */
+  opacity: 0.7; /* Uncommented */
+}
+
+.placeholder-right::-moz-placeholder { /* Firefox 19+ */
+  text-align: right;
+  opacity: 1; /* Keep this line for Firefox */
+  padding-right: 0.5rem; /* Uncommented */
+  opacity: 0.7; /* Uncommented */
+}
+
+.placeholder-right:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  text-align: right;
+  padding-right: 0.5rem; /* Uncommented */
+  opacity: 0.7; /* Uncommented */
+}
+
+.placeholder-right::-ms-input-placeholder { /* Microsoft Edge (legacy) */
+ text-align: right;
+ padding-right: 0.5rem; /* Uncommented */
+ opacity: 0.7; /* Uncommented */
+}
+
+/* Ensure typed text aligns left */
+.placeholder-right {
+  text-align: left;
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><!-- Error message (if any) --><div *ngIf="error" class="alert alert-danger">{{ error }}</div><!-- Navigation Back Button --><div class="row mb-4">  <div class="col-12">    <button type="button" class="btn btn-back" (click)="goBack()">      <i class="bi bi-arrow-left-short"></i>      {{ "banks.details.back" | translate }}    </button>  </div></div><!-- Main content - no loading state needed anymore since we use a dialog --><ng-container *ngIf="ready">  <app-add-bank-step1></app-add-bank-step1>  <hr class="my-4" />  <app-add-bank-step2></app-add-bank-step2>    <div class="text-end mt-4">    <button class="btn btn-success" (click)="onSubmit()" [disabled]="isSubmitting">      <ng-container *ngIf="!isSubmitting">        Enregistrer les modifications      </ng-container>      <ng-container *ngIf="isSubmitting">        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>        &nbsp;Chargement...      </ng-container>    </button>  </div></ng-container><!-- Add at the bottom of your template --><div *ngIf="isSubmitting" class="loading-overlay">  <div class="loader">    <div class="box box-1">      <div class="side-left"></div>      <div class="side-right"></div>      <div class="side-top"></div>    </div>    <div class="box box-2">      <div class="side-left"></div>      <div class="side-right"></div>      <div class="side-top"></div>    </div>    <div class="box box-3">      <div class="side-left"></div>      <div class="side-right"></div>      <div class="side-top"></div>    </div>    <div class="box box-4">      <div class="side-left"></div>      <div class="side-right"></div>      <div class="side-top"></div>    </div>  </div></div></div>'
+    var COMPONENTS = [{'name': 'ActivityComponent', 'selector': 'app-activity'},{'name': 'AddBankStep1Component', 'selector': 'app-add-bank-step1'},{'name': 'AddBankStep2Component', 'selector': 'app-add-bank-step2'},{'name': 'AddBankStep3Component', 'selector': 'app-add-bank-step3'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BackOfficeActivityComponent', 'selector': 'app-back-office-activity'},{'name': 'BanksDetailsComponent', 'selector': 'app-banks-details'},{'name': 'BanksListComponent', 'selector': 'app-banks-list'},{'name': 'ConfirmDialogComponent', 'selector': 'app-confirm-dialog'},{'name': 'DashboardsListComponent', 'selector': 'app-dashboards-list'},{'name': 'EditBankComponent', 'selector': 'app-edit-bank'},{'name': 'HomeScreenComponent', 'selector': 'app-home-screen'},{'name': 'LoadingDialogComponent', 'selector': 'app-loading-dialog'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'SelectLimitsDialogComponent', 'selector': 'app-select-limits-dialog'},{'name': 'SideBarTestComponent', 'selector': 'app-progress-steps-sidebar'},{'name': 'SuccessDialogComponent', 'selector': 'app-success-dialog'},{'name': 'TextDialogComponent', 'selector': 'app-text-dialog'},{'name': 'TraceBatchModalComponent', 'selector': 'app-trace-batch-modal'}];
+    var DIRECTIVES = [{'name': 'TrancheRangeValidatorDirective', 'selector': '[appTrancheRangeValidator]'}];
+    var ACTUAL_COMPONENT = {'name': 'EditBankComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'EditBankComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

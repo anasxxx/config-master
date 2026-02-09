@@ -1,0 +1,48 @@
+<!-- app.component.html -->
+<div class="d-flex flex-column" style="min-height: 100vh">
+  <nav class="navbar navbar-expand-lg navbar-dark navbar-custom px-4">
+    <div
+      class="container-fluid d-flex justify-content-between align-items-center"
+    >
+      <!-- App Logo & Name -->
+      <a class="navbar-brand d-flex align-items-center" routerLink="/home">
+        <div class="logo-container me-2">
+          <img src="assets/images/logo.png" alt="Logo" class="navbar-logo" />
+        </div>
+        <span class="brand-text fw-semibold">{{ "app.name" | translate }}</span>
+      </a>
+
+      <!-- Language Picker -->
+      <div class="language-selector">
+        <div ngbDropdown class="d-inline-block">
+          <button class="btn btn-language" ngbDropdownToggle>
+            <i class="bi bi-globe me-1"></i>
+            <span class="d-none d-sm-inline">{{
+              getCurrentLanguageName()
+            }}</span>
+          </button>
+          <div ngbDropdownMenu class="dropdown-menu-end">
+            <button
+              ngbDropdownItem
+              (click)="switchLanguage('en')"
+              [class.active]="currentLang === 'en'"
+            >
+              <span class="language-flag me">🇺🇸</span> English
+            </button>
+            <button
+              ngbDropdownItem
+              (click)="switchLanguage('fr')"
+              [class.active]="currentLang === 'fr'"
+            >
+              <span class="language-flag">🇫🇷</span> Français
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="flex-grow-1 position-relative">
+    <router-outlet></router-outlet>
+  </div>
+</div>

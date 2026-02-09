@@ -1,0 +1,1230 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>config-master documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+        <link rel="stylesheet" href="../styles/vagrant.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">config-master documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  SelectLimitsDialogComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/add-bank-step2/add-bank-step2.component.ts</code>
+</p>
+
+
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-select-limits-dialog</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>CommonModule</code>
+                            <code>FormsModule</code>
+                            <code>TranslateModule</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-3">styles</td>
+                <td class="col-md-9"><code>
+    .limit-dialog-container {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      color: #333;
+    }
+    .dialog-title {
+      margin-bottom: 16px;
+      font-weight: 500;
+      color: #333;
+    }
+    .limits-list {
+      max-height: 300px;
+      overflow-y: auto;
+      margin-bottom: 16px;
+    }
+    .limit-item {
+      padding: 8px 0;
+      border-bottom: 1px solid #eee;
+    }
+    .limit-item:last-child {
+      border-bottom: none;
+    }
+    .limit-label {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      width: 100%;
+    }
+    .limit-text {
+      margin-left: 8px;
+    }
+    .dialog-actions {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 16px;
+    }
+  </code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">template</td>
+                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;limit-dialog-container&quot;&gt;
+  &lt;h2 class&#x3D;&quot;dialog-title&quot;&gt;{{ &#x27;banks.cardProducts.limits.selectLimits&#x27; | translate }}&lt;/h2&gt;
+  &lt;div class&#x3D;&quot;limits-list&quot;&gt;
+    &lt;div class&#x3D;&quot;limit-item&quot; *ngFor&#x3D;&quot;let limit of availableLimits&quot;&gt;
+      &lt;label class&#x3D;&quot;limit-label&quot;&gt;
+        &lt;input type&#x3D;&quot;checkbox&quot; [(ngModel)]&#x3D;&quot;selected[limit.id]&quot; /&gt;
+        &lt;span class&#x3D;&quot;limit-text&quot;&gt;{{ limit.label }}&lt;/span&gt;
+      &lt;/label&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;dialog-actions&quot;&gt;
+    &lt;button class&#x3D;&quot;btn btn-primary me-2&quot; (click)&#x3D;&quot;confirm()&quot;&gt;
+      {{ &#x27;general.Confirm&#x27; | translate }}
+    &lt;/button&gt;
+    &lt;button class&#x3D;&quot;btn btn-secondary&quot; (click)&#x3D;&quot;cancel()&quot;&gt;
+      {{ &#x27;general.Cancel&#x27; | translate }}
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#availableLimits" >availableLimits</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Public</span>
+                                <a href="#data" >data</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#dialogRef" >dialogRef</a>
+                            </li>
+                            <li>
+                                <a href="#selected" >selected</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#cancel" >cancel</a>
+                            </li>
+                            <li>
+                                <a href="#confirm" >confirm</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(dialogRef: <a href="../components/SelectLimitsDialogComponent.html" target="_self">MatDialogRef&lt;SelectLimitsDialogComponent&gt;</a>, data: literal type)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="100" class="link-to-prism">src/app/add-bank-step2/add-bank-step2.component.ts:100</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>dialogRef</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../components/SelectLimitsDialogComponent.html" target="_self" >MatDialogRef&lt;SelectLimitsDialogComponent&gt;</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>data</td>
+                                                  
+                                                        <td>
+                                                                    <code>literal type</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cancel"></a>
+                    <span class="name">
+                        <span ><b>cancel</b></span>
+                        <a href="#cancel"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>cancel()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="114"
+                                    class="link-to-prism">src/app/add-bank-step2/add-bank-step2.component.ts:114</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="confirm"></a>
+                    <span class="name">
+                        <span ><b>confirm</b></span>
+                        <a href="#confirm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>confirm()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="109"
+                                    class="link-to-prism">src/app/add-bank-step2/add-bank-step2.component.ts:109</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="availableLimits"></a>
+                    <span class="name">
+                        <span ><b>availableLimits</b></span>
+                        <a href="#availableLimits"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>any[]</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="100" class="link-to-prism">src/app/add-bank-step2/add-bank-step2.component.ts:100</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="data"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier">Public</span>
+                        <span ><b>data</b></span>
+                        <a href="#data"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>literal type</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @Inject(MAT_DIALOG_DATA)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="104" class="link-to-prism">src/app/add-bank-step2/add-bank-step2.component.ts:104</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dialogRef"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>dialogRef</b></span>
+                        <a href="#dialogRef"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../components/SelectLimitsDialogComponent.html" target="_self" >MatDialogRef&lt;SelectLimitsDialogComponent&gt;</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="103" class="link-to-prism">src/app/add-bank-step2/add-bank-step2.component.ts:103</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selected"></a>
+                    <span class="name">
+                        <span ><b>selected</b></span>
+                        <a href="#selected"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>literal type</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{}</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="99" class="link-to-prism">src/app/add-bank-step2/add-bank-step2.component.ts:99</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  Component,
+  AfterViewInit,
+  ViewChildren,
+  QueryList,
+  ViewChild,
+  ElementRef,
+  ChangeDetectorRef,
+  OnInit,
+  Inject,
+} from &#x27;@angular/core&#x27;;
+import { TranslateModule } from &#x27;@ngx-translate/core&#x27;;
+import { CommonModule, NgFor, NgIf } from &#x27;@angular/common&#x27;;
+import { FormsModule } from &#x27;@angular/forms&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
+import { NgbTooltip } from &#x27;@ng-bootstrap/ng-bootstrap&#x27;;
+import { SideBarTestComponent } from &#x27;../side-bar-test/side-bar-test.component&#x27;;
+import { BankReq } from &#x27;../models/bank-req.model&#x27;;
+import { BankService } from &#x27;../services/bank.service&#x27;;
+import { ConfirmDialogComponent } from &#x27;../confirm-dialog/confirm-dialog.component&#x27;;
+import { CardProduct } from &#x27;../models/card-product.model&#x27;;
+import { MigBinRangePlasticProdModule } from &#x27;../models/mig-bin-range-plastic-prod-module.model&#x27;;
+import { PreMigCardFeesModule } from &#x27;../models/pre-mig-card-fees-module.model&#x27;;
+import { MigServiceProdModule } from &#x27;../models/mig-service-prod-module.model&#x27;;
+import { MigLimitStandModule } from &#x27;../models/mig-limit-stand-module.model&#x27;;
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from &#x27;@angular/material/dialog&#x27;;
+import { Observable } from &#x27;rxjs&#x27;;
+import { SERVICES, NETWORKS, LIMITS } from &#x27;../shared/constants/constants&#x27;;
+import { AuthService } from &#x27;../services/Auth/auth.service&#x27;;
+import { TrancheRangeValidatorDirective } from &#x27;../shared/validators/RangeValidator&#x27;;
+
+// New dialog component
+@Component({
+  selector: &#x27;app-select-limits-dialog&#x27;,
+  standalone: true,
+  imports: [CommonModule, FormsModule, TranslateModule],
+  template: &#x60;
+    &lt;div class&#x3D;&quot;limit-dialog-container&quot;&gt;
+      &lt;h2 class&#x3D;&quot;dialog-title&quot;&gt;{{ &#x27;banks.cardProducts.limits.selectLimits&#x27; | translate }}&lt;/h2&gt;
+      &lt;div class&#x3D;&quot;limits-list&quot;&gt;
+        &lt;div class&#x3D;&quot;limit-item&quot; *ngFor&#x3D;&quot;let limit of availableLimits&quot;&gt;
+          &lt;label class&#x3D;&quot;limit-label&quot;&gt;
+            &lt;input type&#x3D;&quot;checkbox&quot; [(ngModel)]&#x3D;&quot;selected[limit.id]&quot; /&gt;
+            &lt;span class&#x3D;&quot;limit-text&quot;&gt;{{ limit.label }}&lt;/span&gt;
+          &lt;/label&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;dialog-actions&quot;&gt;
+        &lt;button class&#x3D;&quot;btn btn-primary me-2&quot; (click)&#x3D;&quot;confirm()&quot;&gt;
+          {{ &#x27;general.Confirm&#x27; | translate }}
+        &lt;/button&gt;
+        &lt;button class&#x3D;&quot;btn btn-secondary&quot; (click)&#x3D;&quot;cancel()&quot;&gt;
+          {{ &#x27;general.Cancel&#x27; | translate }}
+        &lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &#x60;,
+  styles: [&#x60;
+    .limit-dialog-container {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      color: #333;
+    }
+    .dialog-title {
+      margin-bottom: 16px;
+      font-weight: 500;
+      color: #333;
+    }
+    .limits-list {
+      max-height: 300px;
+      overflow-y: auto;
+      margin-bottom: 16px;
+    }
+    .limit-item {
+      padding: 8px 0;
+      border-bottom: 1px solid #eee;
+    }
+    .limit-item:last-child {
+      border-bottom: none;
+    }
+    .limit-label {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      width: 100%;
+    }
+    .limit-text {
+      margin-left: 8px;
+    }
+    .dialog-actions {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 16px;
+    }
+  &#x60;]
+})
+export class SelectLimitsDialogComponent {
+  selected: { [key: string]: boolean } &#x3D; {};
+  availableLimits: any[];
+
+  constructor(
+    public dialogRef: MatDialogRef&lt;SelectLimitsDialogComponent&gt;,
+    @Inject(MAT_DIALOG_DATA) public data: { availableLimits: any[] }
+  ) {
+    this.availableLimits &#x3D; data.availableLimits;
+  }
+
+  confirm() {
+    const selectedIds &#x3D; Object.keys(this.selected).filter(id &#x3D;&gt; this.selected[id]);
+    this.dialogRef.close(selectedIds);
+  }
+
+  cancel() {
+    this.dialogRef.close();
+  }
+}
+
+@Component({
+  selector: &#x27;app-add-bank-step2&#x27;,
+  standalone: true,
+  imports: [
+    TranslateModule,
+    NgFor,
+    FormsModule,
+    NgIf,
+    CommonModule,
+    SideBarTestComponent,
+    TrancheRangeValidatorDirective,
+  ],
+  templateUrl: &#x27;./add-bank-step2.component.html&#x27;,
+  styleUrls: [&#x27;./add-bank-step2.component.scss&#x27;],
+})
+export class AddBankStep2Component implements AfterViewInit, OnInit {
+  @ViewChild(&#x27;confirmDeleteMessage&#x27;) confirmDeleteMessage!: ElementRef;
+  @ViewChildren(&#x27;cardTooltip&#x27;) tooltips!: QueryList&lt;NgbTooltip&gt;;
+  currentStep &#x3D; 2;
+  public bankRequest!: BankReq;
+  public networks &#x3D; NETWORKS;
+
+  sections &#x3D; [
+    { id: &#x27;info&#x27;, icon: &#x27;bi-credit-card&#x27; },
+    { id: &#x27;range&#x27;, icon: &#x27;bi-braces&#x27; },
+    { id: &#x27;fees&#x27;, icon: &#x27;bi-cash-stack&#x27; },
+    { id: &#x27;services&#x27;, icon: &#x27;bi-gear&#x27; },
+    { id: &#x27;limits&#x27;, icon: &#x27;bi-speedometer2&#x27; },
+  ];
+
+  cards: (CardProduct &amp; {
+    title: string;
+    activeSection: string;
+  })[] &#x3D; [];
+
+  activeCardIndex: number | null &#x3D; null;
+
+  services &#x3D; SERVICES;
+
+  constructor(
+    private router: Router,
+    private cdRef: ChangeDetectorRef,
+    private bankService: BankService,
+    private dialog: MatDialog,
+    public AuthService: AuthService
+  ) {}
+
+  ngOnInit() {
+    this.AuthService.loadToken();
+  }
+
+  ngAfterViewInit() {
+    this.bankRequest &#x3D; this.bankService.getBankRequest();
+
+    if (typeof document &#x3D;&#x3D;&#x3D; &#x27;undefined&#x27;) return;
+
+    if (this.bankRequest.cardProducts &amp;&amp; this.bankRequest.cardProducts.length &gt; 0) {
+      this.cards &#x3D; this.bankRequest.cardProducts.map(card &#x3D;&gt; ({
+        ...card,
+        title: card.info?.productType || &#x27;Card&#x27;,
+        activeSection: &#x27;info&#x27;,
+      }));
+      this.activeCardIndex &#x3D; 0;
+      this.cdRef.detectChanges();
+    } else if (this.cards.length &#x3D;&#x3D;&#x3D; 0) {
+      this.addNewCard();
+      this.cdRef.detectChanges();
+    } else if (this.activeCardIndex &#x3D;&#x3D;&#x3D; null) {
+      this.activeCardIndex &#x3D; 0;
+      this.cdRef.detectChanges();
+    }
+     // once cards exists, set defaults for demo users
+     if (this.AuthService.isDemoUser()) {
+      console.log(&#x27;Initializing Hidden Demo Fields &#x27;);
+      this.initializeDemoDefaults();
+    }
+
+    setTimeout(() &#x3D;&gt; {
+      this.tooltips.forEach((tooltip) &#x3D;&gt; {
+        if (tooltip.isOpen()) tooltip.close();
+        tooltip.open();
+      });
+    }, 200);
+  }
+
+  addNewCard() {
+    if (!this.bankRequest || !this.bankRequest.pBankCode) {
+      console.warn(&#x27;Cannot add card: Bank Request or pBankCode is missing.&#x27;);
+      return;
+    }
+    const bankCode &#x3D; this.bankRequest.pBankCode;
+
+    // Initialize default limit with ID &#x3D; &#x27;10&#x27;
+    const defaultLimit &#x3D; new MigLimitStandModule();
+    defaultLimit.bankCode &#x3D; bankCode;
+    defaultLimit.productCode &#x3D; &#x27;&#x27;; // Will be set later via updateProductCodes
+    defaultLimit.limitsId &#x3D; &#x27;10&#x27;;
+
+    const newCard: CardProduct &amp; {
+      title: string;
+      activeSection: string;
+    } &#x3D; {
+      title: &#x27;New Card&#x27;,
+      activeSection: &#x27;info&#x27;,
+      info: { ...new MigBinRangePlasticProdModule(), bankCode },
+      fees: { ...new PreMigCardFeesModule(), bankCode },
+      services: { ...new MigServiceProdModule(), bankCode, productCode: &#x27;&#x27; },
+      limits: [defaultLimit], // Start with default limit
+    };
+
+    this.cards.push(newCard);
+    if (this.AuthService.isDemoUser()) {
+      this.setDemoDefaultsForCard(newCard);
+    }
+    this.activeCardIndex &#x3D; this.cards.length - 1;
+    setTimeout(() &#x3D;&gt; this.tooltips.last?.open(), 100);
+  }
+
+  deleteCard(index: number, event: MouseEvent) {
+    event.stopPropagation();
+
+    const message &#x3D; this.confirmDeleteMessage.nativeElement.textContent;
+
+    const confirmAction &#x3D; () &#x3D;&gt; {
+      return new Observable(observer &#x3D;&gt; {
+        observer.next(true);
+        observer.complete();
+      });
+    };
+
+    const dialogRef &#x3D; this.dialog.open(ConfirmDialogComponent, {
+      width: &#x27;550px&#x27;,
+      height: &#x27;auto&#x27;,
+      maxHeight: &#x27;90vh&#x27;,
+      panelClass: &#x27;custom-dialog-container&#x27;,
+      disableClose: true,
+      data: {
+        title: &#x27;Delete Card&#x27;,
+        message: message,
+        confirmButtonText: &#x27;Delete&#x27;,
+        cancelButtonText: &#x27;Cancel&#x27;,
+        confirmAction: confirmAction,
+      },
+    });
+
+    dialogRef.afterClosed().subscribe(result &#x3D;&gt; {
+      if (result &amp;&amp; result.success) {
+        this.cards.splice(index, 1);
+        if (this.activeCardIndex &#x3D;&#x3D;&#x3D; index) {
+          this.activeCardIndex &#x3D; this.cards.length &gt; 0 ? 0 : null;
+        } else if (this.activeCardIndex !&#x3D;&#x3D; null &amp;&amp; index &lt; this.activeCardIndex) {
+          this.activeCardIndex--;
+        }
+      }
+    });
+  }
+
+  addLimit() {
+    if (this.activeCardIndex &#x3D;&#x3D;&#x3D; null) return;
+    const card &#x3D; this.cards[this.activeCardIndex];
+    const currentLimitIds &#x3D; card.limits.map(limit &#x3D;&gt; limit.limitsId);
+    const availableLimits &#x3D; LIMITS.filter(limit &#x3D;&gt; !currentLimitIds.includes(limit.id));
+
+    const dialogRef &#x3D; this.dialog.open(SelectLimitsDialogComponent, {
+      data: { availableLimits },
+      width: &#x27;400px&#x27;,
+    });
+
+    dialogRef.afterClosed().subscribe(result &#x3D;&gt; {
+      if (result) {
+        const selectedIds &#x3D; result; // Array of selected limit IDs
+        selectedIds.forEach((id: string) &#x3D;&gt; {
+          if (!card.limits.some(limit &#x3D;&gt; limit.limitsId &#x3D;&#x3D;&#x3D; id)) {
+            const newLimit &#x3D; new MigLimitStandModule();
+            newLimit.bankCode &#x3D; this.bankRequest.pBankCode;
+            newLimit.productCode &#x3D; card.services.productCode ? &#x27;L&#x27; + card.services.productCode : &#x27;&#x27;;
+            newLimit.limitsId &#x3D; id;
+            card.limits.push(newLimit);
+          }
+        });
+        this.cdRef.detectChanges();
+      }
+    });
+  }
+
+  getLimitLabel(limitId: string): string {
+    const found &#x3D; LIMITS.find(l &#x3D;&gt; l.id &#x3D;&#x3D;&#x3D; limitId);
+    return found ? found.label : &#x27;&#x27;;
+  }
+
+  removeLimit(index: number) {
+    if (this.activeCardIndex &#x3D;&#x3D;&#x3D; null) return;
+    const card &#x3D; this.cards[this.activeCardIndex];
+    const limit &#x3D; card.limits[index];
+    if (limit.limitsId &#x3D;&#x3D;&#x3D; &#x27;10&#x27;) return; // Prevent removal of default limit
+    card.limits.splice(index, 1);
+    this.cdRef.detectChanges();
+  }
+
+  setActiveSection(section: string) {
+    if (this.activeCardIndex &#x3D;&#x3D;&#x3D; null) return;
+    this.cards[this.activeCardIndex].activeSection &#x3D; section;
+  }
+
+  isStepCompleted(sectionId: string): boolean {
+    if (this.activeCardIndex &#x3D;&#x3D;&#x3D; null) return false;
+    const card &#x3D; this.cards[this.activeCardIndex];
+    switch (sectionId) {
+      case &#x27;info&#x27;:
+        return !!card.info.bin &amp;&amp; !!card.info.productCode;
+      case &#x27;range&#x27;:
+        return (
+          (card.info.trancheMin?.trim() ?? &#x27;&#x27;) !&#x3D;&#x3D; &#x27;&#x27; &amp;&amp;
+          (card.info.trancheMax?.trim() ?? &#x27;&#x27;) !&#x3D;&#x3D; &#x27;&#x27;
+        );
+      case &#x27;fees&#x27;:
+        return (
+          (card.fees.description?.trim() ?? &#x27;&#x27;) !&#x3D;&#x3D; &#x27;&#x27;
+        );
+      case &#x27;services&#x27;:
+        return Object.values(card.services).some((v) &#x3D;&gt; v &#x3D;&#x3D;&#x3D; &#x27;X&#x27;);
+      case &#x27;limits&#x27;:
+        return card.limits.some(limit &#x3D;&gt; (limit.dailyTotalAmnt?.trim() ?? &#x27;&#x27;) !&#x3D;&#x3D; &#x27;&#x27;);
+      default:
+        return false;
+    }
+  }
+
+  getNextSectionId(): string | null {
+    if (this.activeCardIndex &#x3D;&#x3D;&#x3D; null) return null;
+    const currentSectionId &#x3D; this.cards[this.activeCardIndex].activeSection;
+    const currentIndex &#x3D; this.sections.findIndex(s &#x3D;&gt; s.id &#x3D;&#x3D;&#x3D; currentSectionId);
+    return currentIndex &lt; this.sections.length - 1 ? this.sections[currentIndex + 1].id : null;
+  }
+
+  getPreviousSectionId(): string | null {
+    if (this.activeCardIndex &#x3D;&#x3D;&#x3D; null) return null;
+    const currentSectionId &#x3D; this.cards[this.activeCardIndex].activeSection;
+    const currentIndex &#x3D; this.sections.findIndex(s &#x3D;&gt; s.id &#x3D;&#x3D;&#x3D; currentSectionId);
+    return currentIndex &gt; 0 ? this.sections[currentIndex - 1].id : null;
+  }
+
+  navigateToNextSection() {
+    const nextSectionId &#x3D; this.getNextSectionId();
+    if (nextSectionId) {
+      this.setActiveSection(nextSectionId);
+    }
+  }
+
+  navigateToPreviousSection() {
+    const prevSectionId &#x3D; this.getPreviousSectionId();
+    if (prevSectionId) {
+      this.setActiveSection(prevSectionId);
+    }
+  }
+
+  get isCardValid(): boolean {
+    if (!this.cards || this.cards.length &#x3D;&#x3D;&#x3D; 0) {
+      return false;
+    }
+    const card &#x3D; this.cards[0];
+    return (
+      (this.safeTrim(card.info?.bin) ?? &#x27;&#x27;) !&#x3D;&#x3D; &#x27;&#x27; &amp;&amp;
+      (this.safeTrim(card.info?.productType) ?? &#x27;&#x27;) !&#x3D;&#x3D; &#x27;&#x27; &amp;&amp;
+      (this.safeTrim(card.fees?.cardFeesCode) ?? &#x27;&#x27;) !&#x3D;&#x3D; &#x27;&#x27; &amp;&amp;
+      Object.values(card.services ?? {}).some(v &#x3D;&gt; v &#x3D;&#x3D;&#x3D; &#x27;X&#x27;) &amp;&amp;
+      card.limits.some(limit &#x3D;&gt; (this.safeTrim(limit.dailyTotalAmnt) ?? &#x27;&#x27;) !&#x3D;&#x3D; &#x27;&#x27;)
+    );
+  }
+
+  handleNextStep() {
+    if (this.isCardValid) {
+      const cardProducts &#x3D; this.cards.map(card &#x3D;&gt; ({
+        info: card.info,
+        fees: card.fees,
+        services: card.services,
+        limits: card.limits,
+      }));
+
+      this.bankRequest.cardProducts &#x3D; cardProducts;
+      this.bankService.setBankRequest(this.bankRequest);
+      console.log(&#x27;Bank Request:&#x27;, this.bankRequest);
+
+      this.router.navigate([&#x27;/addbank/step3&#x27;]);
+    }
+  }
+
+  handlePreviousStep() {
+    this.router.navigate([&#x27;/addbank/step1&#x27;]);
+  }
+
+  safeTrim(value: any): string {
+    return typeof value &#x3D;&#x3D;&#x3D; &#x27;string&#x27; ? value.trim() : value;
+  }
+
+  updateProductCodes() {
+    if (this.activeCardIndex !&#x3D;&#x3D; null &amp;&amp; this.cards[this.activeCardIndex]) {
+      const card &#x3D; this.cards[this.activeCardIndex];
+      const productCode &#x3D; card.info.productCode;
+      if (productCode) {
+        if (card.limits &amp;&amp; card.limits.length &gt; 0) {
+          card.limits.forEach(limit &#x3D;&gt; {
+            limit.productCode &#x3D; &#x27;L&#x27; + productCode;
+          });
+          console.log(&#x27;Updated limits.productCode:&#x27;, card.limits.map(l &#x3D;&gt; l.productCode));
+        }
+        if (card.services) {
+          card.services.productCode &#x3D; productCode;
+          console.log(&#x27;Updated services.productCode:&#x27;, card.services.productCode);
+        }
+        if(card.fees){
+          card.fees.cardFeesCode &#x3D; productCode;
+          console.log(&#x27;Updated fees.productCode:&#x27;, card.fees.cardFeesCode);
+        }
+      }
+    }
+  }
+
+  enableAllServices() {
+    if (this.activeCardIndex !&#x3D;&#x3D; null) {
+      const card &#x3D; this.cards[this.activeCardIndex];
+      this.services.forEach(service &#x3D;&gt; {
+        card.services[service.name] &#x3D; &#x27;X&#x27;;
+      });
+    }
+  }
+
+  disableAllServices() {
+    if (this.activeCardIndex !&#x3D;&#x3D; null) {
+      const card &#x3D; this.cards[this.activeCardIndex];
+      this.services.forEach(service &#x3D;&gt; {
+        card.services[service.name] &#x3D; &#x27;&#x27;;
+      });
+    }
+  }
+
+   /**
+   * Pre‑fill the hidden fields for a demo user so forms remain valid
+   */
+   public initializeDemoDefaults(): void {
+    if (this.AuthService.isDemoUser()) {
+      this.cards.forEach(card &#x3D;&gt; this.setDemoDefaultsForCard(card));
+    }
+  }
+
+  private setDemoDefaultsForCard(card: CardProduct &amp; { title: string; activeSection: string; }) {
+    const info &#x3D; card.info!;
+    info.plasticType &#x3D; &#x27;VDC&#x27;;
+    info.productType &#x3D; &#x27;DC&#x27;;
+    info.indexPvk    &#x3D; &#x27;1&#x27;;
+    info.renew       &#x3D; &#x27;M&#x27;;
+    info.priorExp    &#x3D; &#x27;2&#x27;;
+  
+    const fees &#x3D; card.fees!;
+    fees.cardFeesGracePeriod &#x3D; 0;
+  
+    card.limits.forEach(limit &#x3D;&gt; {
+      limit.dailyDomNbr   &#x3D; &#x27;999&#x27;;
+      limit.dailyIntNbr   &#x3D; &#x27;99&#x27;;
+      limit.dailyTotalNbr &#x3D; &#x27;999&#x27;;
+  
+      limit.weeklyDomNbr   &#x3D; &#x27;0&#x27;;
+      limit.weeklyIntNbr   &#x3D; &#x27;0&#x27;;
+      limit.weeklyTotalNbr &#x3D; &#x27;0&#x27;;
+  
+      limit.monthlyDomNbr   &#x3D; &#x27;0&#x27;;
+      limit.monthlyIntNbr   &#x3D; &#x27;0&#x27;;
+      limit.monthlyTotalNbr &#x3D; &#x27;0&#x27;;
+    });
+  }
+}</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="styleData">
+            <pre class="line-numbers"><code class="language-scss">
+    .limit-dialog-container {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      color: #333;
+    }
+    .dialog-title {
+      margin-bottom: 16px;
+      font-weight: 500;
+      color: #333;
+    }
+    .limits-list {
+      max-height: 300px;
+      overflow-y: auto;
+      margin-bottom: 16px;
+    }
+    .limit-item {
+      padding: 8px 0;
+      border-bottom: 1px solid #eee;
+    }
+    .limit-item:last-child {
+      border-bottom: none;
+    }
+    .limit-label {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      width: 100%;
+    }
+    .limit-text {
+      margin-left: 8px;
+    }
+    .dialog-actions {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 16px;
+    }
+  
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="limit-dialog-container">  <h2 class="dialog-title">{{ \'banks.cardProducts.limits.selectLimits\' | translate }}</h2>  <div class="limits-list">    <div class="limit-item" *ngFor="let limit of availableLimits">      <label class="limit-label">        <input type="checkbox" [(ngModel)]="selected[limit.id]" />        <span class="limit-text">{{ limit.label }}</span>      </label>    </div>  </div>  <div class="dialog-actions">    <button class="btn btn-primary me-2" (click)="confirm()">      {{ \'general.Confirm\' | translate }}    </button>    <button class="btn btn-secondary" (click)="cancel()">      {{ \'general.Cancel\' | translate }}    </button>  </div></div></div>'
+    var COMPONENTS = [{'name': 'ActivityComponent', 'selector': 'app-activity'},{'name': 'AddBankStep1Component', 'selector': 'app-add-bank-step1'},{'name': 'AddBankStep2Component', 'selector': 'app-add-bank-step2'},{'name': 'AddBankStep3Component', 'selector': 'app-add-bank-step3'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BackOfficeActivityComponent', 'selector': 'app-back-office-activity'},{'name': 'BanksDetailsComponent', 'selector': 'app-banks-details'},{'name': 'BanksListComponent', 'selector': 'app-banks-list'},{'name': 'ConfirmDialogComponent', 'selector': 'app-confirm-dialog'},{'name': 'DashboardsListComponent', 'selector': 'app-dashboards-list'},{'name': 'EditBankComponent', 'selector': 'app-edit-bank'},{'name': 'HomeScreenComponent', 'selector': 'app-home-screen'},{'name': 'LoadingDialogComponent', 'selector': 'app-loading-dialog'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'SelectLimitsDialogComponent', 'selector': 'app-select-limits-dialog'},{'name': 'SideBarTestComponent', 'selector': 'app-progress-steps-sidebar'},{'name': 'SuccessDialogComponent', 'selector': 'app-success-dialog'},{'name': 'TextDialogComponent', 'selector': 'app-text-dialog'},{'name': 'TraceBatchModalComponent', 'selector': 'app-trace-batch-modal'}];
+    var DIRECTIVES = [{'name': 'TrancheRangeValidatorDirective', 'selector': '[appTrancheRangeValidator]'}];
+    var ACTUAL_COMPONENT = {'name': 'SelectLimitsDialogComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'SelectLimitsDialogComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

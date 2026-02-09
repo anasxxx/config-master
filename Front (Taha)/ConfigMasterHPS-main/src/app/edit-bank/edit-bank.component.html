@@ -1,0 +1,57 @@
+<!-- Error message (if any) -->
+<div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+<!-- Navigation Back Button -->
+<div class="row mb-4">
+  <div class="col-12">
+    <button type="button" class="btn btn-back" (click)="goBack()">
+      <i class="bi bi-arrow-left-short"></i>
+      {{ "banks.details.back" | translate }}
+    </button>
+  </div>
+</div>
+
+<!-- Main content - no loading state needed anymore since we use a dialog -->
+<ng-container *ngIf="ready">
+  <app-add-bank-step1></app-add-bank-step1>
+  <hr class="my-4" />
+  <app-add-bank-step2></app-add-bank-step2>
+  
+  <div class="text-end mt-4">
+    <button class="btn btn-success" (click)="onSubmit()" [disabled]="isSubmitting">
+      <ng-container *ngIf="!isSubmitting">
+        Enregistrer les modifications
+      </ng-container>
+      <ng-container *ngIf="isSubmitting">
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        &nbsp;Chargement...
+      </ng-container>
+    </button>
+  </div>
+</ng-container>
+
+<!-- Add at the bottom of your template -->
+<div *ngIf="isSubmitting" class="loading-overlay">
+  <div class="loader">
+    <div class="box box-1">
+      <div class="side-left"></div>
+      <div class="side-right"></div>
+      <div class="side-top"></div>
+    </div>
+    <div class="box box-2">
+      <div class="side-left"></div>
+      <div class="side-right"></div>
+      <div class="side-top"></div>
+    </div>
+    <div class="box box-3">
+      <div class="side-left"></div>
+      <div class="side-right"></div>
+      <div class="side-top"></div>
+    </div>
+    <div class="box box-4">
+      <div class="side-left"></div>
+      <div class="side-right"></div>
+      <div class="side-top"></div>
+    </div>
+  </div>
+</div>
