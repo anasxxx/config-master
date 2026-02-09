@@ -1,0 +1,10 @@
+#our requirements for the project
+langchain
+langchain-core
+langchain-openai
+langchain-anthropic
+langchain-community
+langgraph
+openai
+anthropic
+python-dotenv
