@@ -19,3 +19,9 @@ from langgraph.runtime import Runtime
 from langchain.messages import AIMessage
 from langchain.chat_models import init_chat_model
 from typing import Any
+from dotenv import load_dotenv
+from longchain import LongChain
+from langchain import base_models
+
+
+load_dotenv()

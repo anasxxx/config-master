@@ -300,6 +300,11 @@ contextFetched: boolean = false;
           damping: 0.09,
           avoidOverlap: 1
         }
+      },
+      interaction: {
+        dragNodes: false,
+        dragView: false,
+        zoomView: false
       }
     };
   
