@@ -13,7 +13,8 @@
     "test": "ng test",
     "serve:ssr:ConfigMaster": "node dist/config-master/server/server.mjs",
     "compodoc:build": "npx compodoc -p tsconfig.json -d docs --theme vagrant",
-    "compodoc:serve": "npx compodoc -s -d docs --theme vagrant"
+    "compodoc:serve": "npx compodoc -s -d docs --theme vagrant",
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
@@ -50,6 +51,7 @@
     "@angular/compiler-cli": "^19.2.2",
     "@angular/localize": "^19.2.2",
     "@compodoc/compodoc": "^1.1.26",
+    "@playwright/test": "1.58.2",
     "@types/express": "^4.17.17",
     "@types/jasmine": "~5.1.7",
     "@types/node": "^22.13.10",
@@ -59,6 +61,7 @@
     "karma-coverage": "~2.2.1",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "playwright-ng-schematics": "^2.0.3",
     "typescript": "~5.8.2"
   }
 }
