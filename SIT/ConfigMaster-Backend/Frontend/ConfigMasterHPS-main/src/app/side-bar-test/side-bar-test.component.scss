@@ -1,0 +1,335 @@
+// --- Variables ---
+$sidebar-bg-color: #f8f9fa;
+$step-circle-size: 80px;
+$step-circle-border: 3px solid #dee2e6;
+$step-circle-bg: #ffffff;
+
+$step-active-color: #0d6efd; // Bootstrap primary blue
+$step-completed-color: #198754; // Bootstrap success green
+
+$text-muted-color: #6c757d;
+$transition-speed: 0.3s;
+@use "sass:color";
+
+// --- Sidebar Wrapper ---
+.sidebar-wrapper {
+  position: sticky;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 1000;
+  overflow-y: auto;
+  background-color: $sidebar-bg-color;
+}
+
+// --- Container Styling ---
+.steps-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 1.5rem;
+  padding-bottom: 100px;
+  position: relative;
+  background-image: url("/assets/images/ProgBar.svg");
+  background-repeat: no-repeat;
+  background-position: center 20%;
+  background-size: contain;
+  align-items: center;
+  justify-content: center;
+}
+
+// --- Steps Wrapper ---
+.steps-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 85%;
+  justify-content: space-between;
+  margin-top: 10%;
+  position: relative;
+}
+
+// --- Individual Step Styling ---
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform $transition-speed ease;
+  opacity: 0.7;
+  position: relative;
+  margin: 1rem 0;
+
+  // Active step styling
+  &.active {
+    opacity: 1;
+    transform: scale(1.15);
+    z-index: 2;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+
+    // Arrow indicator
+    &::after {
+      content: "";
+      position: absolute;
+      right: -30px;
+      top: 45%;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-top: 15px solid transparent;
+      border-bottom: 15px solid transparent;
+      border-left: 20px solid $step-active-color;
+      transition: all $transition-speed ease;
+    }
+
+    .step-circle {
+      &::before {
+        background-color: $step-active-color;
+      }
+      &::after {
+        background-color: color.adjust($step-active-color, $lightness: 45%);
+      }
+      i:not(.completed-check) {
+        color: $step-active-color;
+        transform: scale(1.2);
+      }
+    }
+  }
+
+  // Completed step styling
+  &.completed {
+    .step-circle {
+      &::before {
+        background-color: $step-completed-color;
+      }
+      &::after {
+        background-color: $step-completed-color;
+      }
+      i:not(.completed-check) {
+        display: none;
+      }
+      .completed-check {
+        display: inline-block;
+        color: #fff;
+        transform: scale(1.2);
+      }
+    }
+  }
+}
+
+// --- Step Circle (Hexagon) ---
+.step-circle {
+  width: $step-circle-size;
+  height: $step-circle-size;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all $transition-speed ease;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    background-color: #dee2e6;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    z-index: 0;
+    transition: background-color $transition-speed ease;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: $step-circle-bg;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    z-index: 1;
+    transition: background-color $transition-speed ease;
+  }
+
+  i {
+    font-size: 2rem;
+    color: $text-muted-color;
+    transition: all $transition-speed ease;
+    position: relative;
+    z-index: 2;
+  }
+}
+
+// --- Navigation Button Area ---
+.sidebar-navigation {
+  position: absolute; // Change from relative positioning
+  bottom: 0px; // Position at bottom with some padding
+  left: 0;
+  right: 0;
+  width: 100%;
+  padding: 0rem 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: $sidebar-bg-color; // Match sidebar background
+
+  .btn {
+    display: flex;
+    width: 80%;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    padding: 0.5rem 1.5rem;
+    transition: all 0.2s ease;
+    margin: 0 0.5rem;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    }
+  }
+}
+
+// Responsive Adjustments
+@media (max-width: 768px) {
+  .sidebar-wrapper {
+    width: 35%;
+
+    .step.active::after {
+      right: -25px;
+      border-left-width: 15px;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .sidebar-wrapper {
+    width: 80%;
+
+    .step.active::after {
+      right: -15px;
+      border-left-width: 12px;
+    }
+  }
+}
+
+/* The rest will remain unchanged, or you can add further rules for them */
+// Target second and third step specifically
+.steps-wrapper {
+  justify-content: space-around;
+  .step:nth-child(2) {
+    margin-top: 38%; // Adjust this value as needed
+  }
+
+  .step:nth-child(3) {
+    margin-top: 38%; // Adjust this value as needed
+    margin-bottom: auto; // This helps maintain spacing at the bottom
+  }
+
+  .step:nth-child(1){
+    margin-top:20%;
+  }
+}
+
+// --- Step Title Styling ---
+.step-title {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-align: center;
+  color: $text-muted-color;
+  transition: all $transition-speed ease;
+  max-width: 120px; // Limit width to keep text neat
+  overflow: hidden;
+  text-overflow: ellipsis;
+  
+  // New styles for better legibility:
+  background-color: rgba(255, 255, 255, 0.8);  // semi-transparent white backdrop
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: transparent;
+    transform: translateX(-50%);
+    transition: width $transition-speed ease, background-color $transition-speed ease;
+  }
+}
+
+// Update active step to include title styling
+.step {
+  &.active {
+    .step-title {
+      color: $step-active-color;
+      font-weight: 600;
+      transform: scale(1.05);
+    }
+    .step-title::after {
+      width: 70%;
+      background-color: $step-active-color;
+    }
+  }
+
+  &.completed {
+    .step-title {
+      color: $step-completed-color;
+    }
+    .step-title::after {
+      width: 70%;
+      background-color: $step-completed-color;
+    }
+  }
+}
+
+// Make sure the entire step (icon + title) is aligned properly
+.step-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+button[disabled] {
+  background-color: #cccccc !important; /* Grey background */
+  border-color: #cccccc !important; /* Grey border */
+  color: #666666 !important; /* Dimmed text color */
+  cursor: not-allowed; /* Not allowed cursor */
+  opacity: 0.7;
+}
+
+// --- Active Step Title Styling ---
+.active-step-title {
+  position: absolute;          /* take it out of the document flow */
+  top: 0.5rem;                   /* push it up (tweak this value) */
+  left: 50%;                   /* center it horizontally */
+  transform: translateX(-50%); /* perfect centering */
+  font-size: 1.20rem;          /* bump up the size */
+  font-weight: 500;
+  text-align: center;
+  color: $step-active-color;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 0.3rem 0.75rem;
+  border-radius: 0.25rem;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+  z-index: 3;                  /* make sure it sits above everything */
+  white-space: nowrap;         /* keep it on one line */
+  
+  &.completed {
+    color: $step-completed-color;
+    
+    &::after {
+      background-color: $step-completed-color;
+    }
+  }
+}

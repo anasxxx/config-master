@@ -1,0 +1,3880 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>config-master documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+        <link rel="stylesheet" href="../styles/vagrant.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">config-master documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  DashboardsListComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/dashboards-list/dashboards-list.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+                <code>OnDestroy</code>
+                <code>AfterViewInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">providers</td>
+                <td class="col-md-9">
+                            <code>provideCharts(withDefaultRegisterables())</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-dashboards-list</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>CommonModule</code>
+                            <code>FormsModule</code>
+                            <code>NgClass</code>
+                            <code>NgIf</code>
+                            <code>TranslateModule</code>
+                            <code>BaseChartDirective</code>
+                            <code>RouterOutlet</code>
+                            <code>RouterModule</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./dashboards-list.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./dashboards-list.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#activityExpanded" >activityExpanded</a>
+                            </li>
+                            <li>
+                                <a href="#archNode1" >archNode1</a>
+                            </li>
+                            <li>
+                                <a href="#archNode2" >archNode2</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#authService" >authService</a>
+                            </li>
+                            <li>
+                                <a href="#bankContext" >bankContext</a>
+                            </li>
+                            <li>
+                                <a href="#banks" >banks</a>
+                            </li>
+                            <li>
+                                <a href="#banksError" >banksError</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Optional</span>
+                                <a href="#banksSub" >banksSub</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Optional</span>
+                                <a href="#chart" >chart</a>
+                            </li>
+                            <li>
+                                <a href="#contextError" >contextError</a>
+                            </li>
+                            <li>
+                                <a href="#contextFetched" >contextFetched</a>
+                            </li>
+                            <li>
+                                <a href="#isLoadingBanks" >isLoadingBanks</a>
+                            </li>
+                            <li>
+                                <a href="#isLoadingContext" >isLoadingContext</a>
+                            </li>
+                            <li>
+                                <a href="#isLoadingNodes" >isLoadingNodes</a>
+                            </li>
+                            <li>
+                                <a href="#isLoadingPatches" >isLoadingPatches</a>
+                            </li>
+                            <li>
+                                <a href="#isLoadingTransactions" >isLoadingTransactions</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Optional</span>
+                                <a href="#network1" >network1</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Optional</span>
+                                <a href="#network2" >network2</a>
+                            </li>
+                            <li>
+                                <a href="#node1Error" >node1Error</a>
+                            </li>
+                            <li>
+                                <a href="#node2Error" >node2Error</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Optional</span>
+                                <a href="#nodesSub" >nodesSub</a>
+                            </li>
+                            <li>
+                                <a href="#pageTitle" >pageTitle</a>
+                            </li>
+                            <li>
+                                <a href="#patches" >patches</a>
+                            </li>
+                            <li>
+                                <a href="#patchesError" >patchesError</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Optional</span>
+                                <a href="#patchesSub" >patchesSub</a>
+                            </li>
+                            <li>
+                                <a href="#selectedBankCode" >selectedBankCode</a>
+                            </li>
+                            <li>
+                                <a href="#selectedBankWording" >selectedBankWording</a>
+                            </li>
+                            <li>
+                                <a href="#selectedTransactionDate" >selectedTransactionDate</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#shouldRenderDiagrams" >shouldRenderDiagrams</a>
+                            </li>
+                            <li>
+                                <a href="#sidebarExpanded" >sidebarExpanded</a>
+                            </li>
+                            <li>
+                                <a href="#today" >today</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Optional</span>
+                                <a href="#transactionChartData" >transactionChartData</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#transactionChartOptions" >transactionChartOptions</a>
+                            </li>
+                            <li>
+                                <a href="#transactions" >transactions</a>
+                            </li>
+                            <li>
+                                <a href="#transactionsError" >transactionsError</a>
+                            </li>
+                            <li>
+                                <a href="#username" >username</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#fetchBankContext" >fetchBankContext</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#formatTo_ddMMyyyy" >formatTo_ddMMyyyy</a>
+                            </li>
+                            <li>
+                                <a href="#getUserInitials" >getUserInitials</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#loadArchitectureNodes" >loadArchitectureNodes</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#loadBanks" >loadBanks</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#loadPatches" >loadPatches</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#loadTransactions" >loadTransactions</a>
+                            </li>
+                            <li>
+                                <a href="#logout" >logout</a>
+                            </li>
+                            <li>
+                                <a href="#ngAfterViewInit" >ngAfterViewInit</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onBankSelect" >onBankSelect</a>
+                            </li>
+                            <li>
+                                <a href="#onDateChange" >onDateChange</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#renderDiagrams" >renderDiagrams</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#resetContextData" >resetContextData</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#setUsername" >setUsername</a>
+                            </li>
+                            <li>
+                                <a href="#toggleActivity" >toggleActivity</a>
+                            </li>
+                            <li>
+                                <a href="#toggleSidebar" >toggleSidebar</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#bankSelected" >bankSelected</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(authService: <a href="../injectables/AuthService.html" target="_self">AuthService</a>, router: Router, platformId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank">Object</a>, patchArchetService: <a href="../injectables/PatchArchetService.html" target="_self">PatchArchetService</a>, bankService: <a href="../injectables/BankApiService.html" target="_self">BankApiService</a>, dashboardService: <a href="../injectables/DashboardService.html" target="_self">DashboardService</a>, translate: TranslateService)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="113" class="link-to-prism">src/app/dashboards-list/dashboards-list.component.ts:113</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>authService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                    <code>Router</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>platformId</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank" >Object</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>patchArchetService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/PatchArchetService.html" target="_self" >PatchArchetService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>bankService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/BankApiService.html" target="_self" >BankApiService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>dashboardService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/DashboardService.html" target="_self" >DashboardService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>translate</td>
+                                                  
+                                                        <td>
+                                                                    <code>TranslateService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+    <section data-compodoc="block-outputs">
+    <h3 id="outputs">Outputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="bankSelected"></a>
+                        <b>bankSelected</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>EventEmitter</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="112" class="link-to-prism">src/app/dashboards-list/dashboards-list.component.ts:112</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="fetchBankContext"></a>
+                    <span class="name">
+                        <span ><b>fetchBankContext</b></span>
+                        <a href="#fetchBankContext"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>fetchBankContext()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="477"
+                                    class="link-to-prism">src/app/dashboards-list/dashboards-list.component.ts:477</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="formatTo_ddMMyyyy"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>formatTo_ddMMyyyy</b></span>
+                        <a href="#formatTo_ddMMyyyy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>formatTo_ddMMyyyy(isoDate: string | null)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="387"
+                                    class="link-to-prism">src/app/dashboards-list/dashboards-list.component.ts:387</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>isoDate</td>
+                                            <td>
+                                                        <code>string | null</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getUserInitials"></a>
+                    <span class="name">
+                        <span ><b>getUserInitials</b></span>
+                        <a href="#getUserInitials"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getUserInitials()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="213"
+                                    class="link-to-prism">src/app/dashboards-list/dashboards-list.component.ts:213</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadArchitectureNodes"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>loadArchitectureNodes</b></span>
+                        <a href="#loadArchitectureNodes"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>loadArchitectureNodes(code: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="222"
+                                    class="link-to-prism">src/app/dashboards-list/dashboards-list.component.ts:222</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>code</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadBanks"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>loadBanks</b></span>
+                        <a href="#loadBanks"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>loadBanks()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="172"
+                                    class="link-to-prism">src/app/dashboards-list/dashboards-list.component.ts:172</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadPatches"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>loadPatches</b></span>
+                        <a href="#loadPatches"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>loadPatches()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="151"
+                                    class="link-to-prism">src/app/dashboards-list/dashboards-list.component.ts:151</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadTransactions"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>loadTransactions</b></span>
+                        <a href="#loadTransactions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>loadTransactions()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="395"
+                                    class="link-to-prism">src/app/dashboards-list/dashboards-list.component.ts:395</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="logout"></a>
+                    <span class="name">
+                        <span ><b>logout</b></span>
+                        <a href="#logout"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>logout()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="209"
+                                    class="link-to-prism">src/app/dashboards-list/dashboards-list.component.ts:209</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngAfterViewInit"></a>
+                    <span class="name">
+                        <span ><b>ngAfterViewInit</b></span>
+                        <a href="#ngAfterViewInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngAfterViewInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="129"
+                                    class="link-to-prism">src/app/dashboards-list/dashboards-list.component.ts:129</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="464"
+                                    class="link-to-prism">src/app/dashboards-list/dashboards-list.component.ts:464</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="135"
+                                    class="link-to-prism">src/app/dashboards-list/dashboards-list.component.ts:135</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onBankSelect"></a>
+                    <span class="name">
+                        <span ><b>onBankSelect</b></span>
+                        <a href="#onBankSelect"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onBankSelect()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="189"
+                                    class="link-to-prism">src/app/dashboards-list/dashboards-list.component.ts:189</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onDateChange"></a>
+                    <span class="name">
+                        <span ><b>onDateChange</b></span>
+                        <a href="#onDateChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onDateChange(newDate: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="380"
+                                    class="link-to-prism">src/app/dashboards-list/dashboards-list.component.ts:380</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>newDate</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="renderDiagrams"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>renderDiagrams</b></span>
+                        <a href="#renderDiagrams"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>renderDiagrams()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="276"
+                                    class="link-to-prism">src/app/dashboards-list/dashboards-list.component.ts:276</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="resetContextData"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>resetContextData</b></span>
+                        <a href="#resetContextData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>resetContextData()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="512"
+                                    class="link-to-prism">src/app/dashboards-list/dashboards-list.component.ts:512</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setUsername"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>setUsername</b></span>
+                        <a href="#setUsername"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>setUsername()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="142"
+                                    class="link-to-prism">src/app/dashboards-list/dashboards-list.component.ts:142</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toggleActivity"></a>
+                    <span class="name">
+                        <span ><b>toggleActivity</b></span>
+                        <a href="#toggleActivity"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>toggleActivity()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="125"
+                                    class="link-to-prism">src/app/dashboards-list/dashboards-list.component.ts:125</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toggleSidebar"></a>
+                    <span class="name">
+                        <span ><b>toggleSidebar</b></span>
+                        <a href="#toggleSidebar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>toggleSidebar()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="205"
+                                    class="link-to-prism">src/app/dashboards-list/dashboards-list.component.ts:205</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="activityExpanded"></a>
+                    <span class="name">
+                        <span ><b>activityExpanded</b></span>
+                        <a href="#activityExpanded"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/app/dashboards-list/dashboards-list.component.ts:48</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="archNode1"></a>
+                    <span class="name">
+                        <span ><b>archNode1</b></span>
+                        <a href="#archNode1"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Architecte.html" target="_self" >Architecte[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">src/app/dashboards-list/dashboards-list.component.ts:65</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="archNode2"></a>
+                    <span class="name">
+                        <span ><b>archNode2</b></span>
+                        <a href="#archNode2"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Architecte.html" target="_self" >Architecte[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">src/app/dashboards-list/dashboards-list.component.ts:66</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="authService"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>authService</b></span>
+                        <a href="#authService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="116" class="link-to-prism">src/app/dashboards-list/dashboards-list.component.ts:116</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="bankContext"></a>
+                    <span class="name">
+                        <span ><b>bankContext</b></span>
+                        <a href="#bankContext"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/ContextBank.html" target="_self" >ContextBank | null</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">src/app/dashboards-list/dashboards-list.component.ts:76</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="banks"></a>
+                    <span class="name">
+                        <span ><b>banks</b></span>
+                        <a href="#banks"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../classes/BankReq.html" target="_self" >BankReq[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/app/dashboards-list/dashboards-list.component.ts:57</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="banksError"></a>
+                    <span class="name">
+                        <span ><b>banksError</b></span>
+                        <a href="#banksError"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/app/dashboards-list/dashboards-list.component.ts:59</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="banksSub"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Optional</span>
+                        <span ><b>banksSub</b></span>
+                        <a href="#banksSub"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subscription</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/app/dashboards-list/dashboards-list.component.ts:61</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="chart"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier">Optional</span>
+                        <span ><b>chart</b></span>
+                        <a href="#chart"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>BaseChartDirective</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;transactionPieChart&#x27;)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="113" class="link-to-prism">src/app/dashboards-list/dashboards-list.component.ts:113</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="contextError"></a>
+                    <span class="name">
+                        <span ><b>contextError</b></span>
+                        <a href="#contextError"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">src/app/dashboards-list/dashboards-list.component.ts:78</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="contextFetched"></a>
+                    <span class="name">
+                        <span ><b>contextFetched</b></span>
+                        <a href="#contextFetched"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">src/app/dashboards-list/dashboards-list.component.ts:79</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isLoadingBanks"></a>
+                    <span class="name">
+                        <span ><b>isLoadingBanks</b></span>
+                        <a href="#isLoadingBanks"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">src/app/dashboards-list/dashboards-list.component.ts:58</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isLoadingContext"></a>
+                    <span class="name">
+                        <span ><b>isLoadingContext</b></span>
+                        <a href="#isLoadingContext"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">src/app/dashboards-list/dashboards-list.component.ts:77</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isLoadingNodes"></a>
+                    <span class="name">
+                        <span ><b>isLoadingNodes</b></span>
+                        <a href="#isLoadingNodes"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">src/app/dashboards-list/dashboards-list.component.ts:67</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isLoadingPatches"></a>
+                    <span class="name">
+                        <span ><b>isLoadingPatches</b></span>
+                        <a href="#isLoadingPatches"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/app/dashboards-list/dashboards-list.component.ts:52</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isLoadingTransactions"></a>
+                    <span class="name">
+                        <span ><b>isLoadingTransactions</b></span>
+                        <a href="#isLoadingTransactions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">src/app/dashboards-list/dashboards-list.component.ts:85</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="network1"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Optional</span>
+                        <span ><b>network1</b></span>
+                        <a href="#network1"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Network</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">src/app/dashboards-list/dashboards-list.component.ts:71</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="network2"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Optional</span>
+                        <span ><b>network2</b></span>
+                        <a href="#network2"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Network</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="72" class="link-to-prism">src/app/dashboards-list/dashboards-list.component.ts:72</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="node1Error"></a>
+                    <span class="name">
+                        <span ><b>node1Error</b></span>
+                        <a href="#node1Error"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">src/app/dashboards-list/dashboards-list.component.ts:68</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="node2Error"></a>
+                    <span class="name">
+                        <span ><b>node2Error</b></span>
+                        <a href="#node2Error"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">src/app/dashboards-list/dashboards-list.component.ts:69</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="nodesSub"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Optional</span>
+                        <span ><b>nodesSub</b></span>
+                        <a href="#nodesSub"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subscription</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">src/app/dashboards-list/dashboards-list.component.ts:70</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="pageTitle"></a>
+                    <span class="name">
+                        <span ><b>pageTitle</b></span>
+                        <a href="#pageTitle"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;dashboard.title&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/dashboards-list/dashboards-list.component.ts:44</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="patches"></a>
+                    <span class="name">
+                        <span ><b>patches</b></span>
+                        <a href="#patches"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Patch.html" target="_self" >Patch[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">src/app/dashboards-list/dashboards-list.component.ts:51</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="patchesError"></a>
+                    <span class="name">
+                        <span ><b>patchesError</b></span>
+                        <a href="#patchesError"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/app/dashboards-list/dashboards-list.component.ts:53</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="patchesSub"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Optional</span>
+                        <span ><b>patchesSub</b></span>
+                        <a href="#patchesSub"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subscription</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/app/dashboards-list/dashboards-list.component.ts:54</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectedBankCode"></a>
+                    <span class="name">
+                        <span ><b>selectedBankCode</b></span>
+                        <a href="#selectedBankCode"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">src/app/dashboards-list/dashboards-list.component.ts:60</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectedBankWording"></a>
+                    <span class="name">
+                        <span ><b>selectedBankWording</b></span>
+                        <a href="#selectedBankWording"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/app/dashboards-list/dashboards-list.component.ts:62</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectedTransactionDate"></a>
+                    <span class="name">
+                        <span ><b>selectedTransactionDate</b></span>
+                        <a href="#selectedTransactionDate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="83" class="link-to-prism">src/app/dashboards-list/dashboards-list.component.ts:83</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="shouldRenderDiagrams"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>shouldRenderDiagrams</b></span>
+                        <a href="#shouldRenderDiagrams"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">src/app/dashboards-list/dashboards-list.component.ts:73</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sidebarExpanded"></a>
+                    <span class="name">
+                        <span ><b>sidebarExpanded</b></span>
+                        <a href="#sidebarExpanded"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/app/dashboards-list/dashboards-list.component.ts:46</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="today"></a>
+                    <span class="name">
+                        <span ><b>today</b></span>
+                        <a href="#today"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank" >Date</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Date()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/dashboards-list/dashboards-list.component.ts:47</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="transactionChartData"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Optional</span>
+                        <span ><b>transactionChartData</b></span>
+                        <a href="#transactionChartData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>ChartData&lt;pie | number[] | string | []&gt;</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">src/app/dashboards-list/dashboards-list.component.ts:88</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="transactionChartOptions"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>transactionChartOptions</b></span>
+                        <a href="#transactionChartOptions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>ChartOptions&lt;pie&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  responsive: true,
+  maintainAspectRatio: false,
+  plugins: {
+    legend: { position: &#x27;left&#x27; },
+    tooltip: { enabled: true },
+    datalabels: {
+      color: &#x27;#fff&#x27;, // White text for visibility
+      borderRadius: 3, // Rounded corners for the label background
+      padding: 4, // Padding inside the label background
+      formatter: (value: number, context: any) &#x3D;&gt; {
+        return value &gt; 0 ? &#x60;${value}%&#x60; : &#x27;&#x27;; // Only show non-zero values
+      },
+      font: {
+        weight: &#x27;bold&#x27;,
+        size: 12,
+      },
+      anchor: &#x27;center&#x27;,
+      align: &#x27;center&#x27;,
+    },
+  },
+}</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="89" class="link-to-prism">src/app/dashboards-list/dashboards-list.component.ts:89</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="transactions"></a>
+                    <span class="name">
+                        <span ><b>transactions</b></span>
+                        <a href="#transactions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Transaction.html" target="_self" >Transaction[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">src/app/dashboards-list/dashboards-list.component.ts:84</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="transactionsError"></a>
+                    <span class="name">
+                        <span ><b>transactionsError</b></span>
+                        <a href="#transactionsError"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="86" class="link-to-prism">src/app/dashboards-list/dashboards-list.component.ts:86</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="username"></a>
+                    <span class="name">
+                        <span ><b>username</b></span>
+                        <a href="#username"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;John Doe&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/dashboards-list/dashboards-list.component.ts:45</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { CommonModule, isPlatformBrowser, NgClass, NgIf } from &#x27;@angular/common&#x27;;
+import { Component, OnInit, OnDestroy, PLATFORM_ID, Inject, Output, EventEmitter, AfterViewInit, ViewChild } from &#x27;@angular/core&#x27;;
+import { FormsModule } from &#x27;@angular/forms&#x27;;
+import { Router, RouterModule, RouterOutlet } from &#x27;@angular/router&#x27;;
+import { AuthService } from &#x27;../services/Auth/auth.service&#x27;;
+import { TranslateModule, TranslateService } from &#x27;@ngx-translate/core&#x27;;
+import { provideCharts, withDefaultRegisterables, BaseChartDirective } from &#x27;ng2-charts&#x27;;
+import { Chart, ChartData, ChartOptions, registerables } from &#x27;chart.js&#x27;;
+import { Subscription, catchError, forkJoin,of } from &#x27;rxjs&#x27;;
+
+import { Patch } from &#x27;../models/patch.model&#x27;;
+import { PatchArchetService } from &#x27;../services/Patch_Architecture/patch-service.service&#x27;;
+import { BankApiService } from &#x27;../services/Bank/bank-api.service&#x27;;
+import { BankReq } from &#x27;../models/bank-req.model&#x27;;
+import { Architecte } from &#x27;../models/architecte.model&#x27;;
+import { Transaction } from &#x27;../models/transaction.model&#x27;;
+import { DashboardService } from &#x27;../services/Dashboard/dashboard-service.service&#x27;; 
+import { Network, DataSet, Node, Edge } from &#x27;vis-network/standalone&#x27;;
+import ChartDataLabels from &#x27;chartjs-plugin-datalabels&#x27;;
+import { ContextBank } from &#x27;../models/context-bank.model&#x27;;
+
+// Register chart.js components and the datalabels plugin
+Chart.register(...registerables, ChartDataLabels);
+
+@Component({
+  selector: &#x27;app-dashboards-list&#x27;,
+  standalone: true,
+  imports: [
+    CommonModule,
+    FormsModule,
+    NgClass,
+    NgIf,
+    TranslateModule,
+    BaseChartDirective,
+    RouterOutlet,
+    RouterModule,
+  ],
+  templateUrl: &#x27;./dashboards-list.component.html&#x27;,
+  styleUrls: [&#x27;./dashboards-list.component.scss&#x27;],
+  providers: [provideCharts(withDefaultRegisterables())],
+})
+export class DashboardsListComponent implements OnInit, OnDestroy, AfterViewInit {
+  // UI state
+  pageTitle &#x3D; &#x27;dashboard.title&#x27;;
+  username &#x3D; &#x27;John Doe&#x27;;
+  sidebarExpanded &#x3D; false;
+  today: Date &#x3D; new Date();
+  activityExpanded &#x3D; false;
+
+  // Patches
+  patches: Patch[] &#x3D; [];
+  isLoadingPatches &#x3D; true;
+  patchesError: string | null &#x3D; null;
+  private patchesSub?: Subscription;
+
+  // Banks
+  banks: BankReq[] &#x3D; [];
+  isLoadingBanks &#x3D; true;
+  banksError: string | null &#x3D; null;
+  selectedBankCode: string | null &#x3D; null;
+  private banksSub?: Subscription;
+  selectedBankWording!: string;
+
+  // Architecture nodes
+  archNode1: Architecte[] &#x3D; [];
+  archNode2: Architecte[] &#x3D; [];
+  isLoadingNodes &#x3D; false;
+  node1Error: string | null &#x3D; null;
+  node2Error: string | null &#x3D; null;
+  private nodesSub?: Subscription;
+  private network1?: Network;
+  private network2?: Network;
+  private shouldRenderDiagrams &#x3D; false;
+
+  // Context-related properties
+bankContext: ContextBank | null &#x3D; null;
+isLoadingContext: boolean &#x3D; false;
+contextError: string | null &#x3D; null;
+contextFetched: boolean &#x3D; false;
+
+
+  // Transactions
+  selectedTransactionDate: string | null &#x3D; null;
+  transactions: Transaction[] &#x3D; [];
+  isLoadingTransactions &#x3D; false;
+  transactionsError: string | null &#x3D; null;
+  // 1) New chart properties
+  public transactionChartData?: ChartData&lt;&#x27;pie&#x27;, number[], string | string[]&gt;;
+  public transactionChartOptions: ChartOptions&lt;&#x27;pie&#x27;&gt; &#x3D; {
+  responsive: true,
+  maintainAspectRatio: false,
+  plugins: {
+    legend: { position: &#x27;left&#x27; },
+    tooltip: { enabled: true },
+    datalabels: {
+      color: &#x27;#fff&#x27;, // White text for visibility
+      borderRadius: 3, // Rounded corners for the label background
+      padding: 4, // Padding inside the label background
+      formatter: (value: number, context: any) &#x3D;&gt; {
+        return value &gt; 0 ? &#x60;${value}%&#x60; : &#x27;&#x27;; // Only show non-zero values
+      },
+      font: {
+        weight: &#x27;bold&#x27;,
+        size: 12,
+      },
+      anchor: &#x27;center&#x27;,
+      align: &#x27;center&#x27;,
+    },
+  },
+};
+
+  @Output() bankSelected &#x3D; new EventEmitter&lt;string&gt;();
+  @ViewChild(&#x27;transactionPieChart&#x27;) chart?: BaseChartDirective;
+
+  constructor(
+    public authService: AuthService,
+    private router: Router,
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private patchArchetService: PatchArchetService,
+    private bankService: BankApiService,
+    private dashboardService: DashboardService,
+    private translate: TranslateService
+  ) {}
+
+  toggleActivity() {
+    this.activityExpanded &#x3D; !this.activityExpanded;
+  }
+
+  ngAfterViewInit(): void {
+    if (this.shouldRenderDiagrams) {
+      this.renderDiagrams();
+    }
+  }
+
+  ngOnInit(): void {
+    this.setUsername();
+    this.loadPatches();
+    this.loadBanks();
+    
+  }
+
+  private setUsername(): void {
+    const userInfo &#x3D; this.authService.getUserInfo();
+    if (userInfo?.email) {
+      this.username &#x3D; userInfo.email.split(&#x27;@&#x27;)[0];
+    } else if (this.authService.loggedUser) {
+      this.username &#x3D; this.authService.loggedUser.split(&#x27;@&#x27;)[0];
+    }
+  }
+
+  private loadPatches(): void {
+    this.isLoadingPatches &#x3D; true;
+    this.patchesError &#x3D; null;
+
+    this.patchesSub &#x3D; this.patchArchetService.getAllPatches().subscribe({
+      next: data &#x3D;&gt; {
+        this.patches &#x3D; data;
+        this.isLoadingPatches &#x3D; false;
+      },
+      error: err &#x3D;&gt; {
+        console.error(err);
+        const key &#x3D; &#x27;dashboard.patches.errorLoading&#x27;;
+        const msg &#x3D; this.translate.instant(key);
+        this.patchesError &#x3D; msg &#x3D;&#x3D;&#x3D; key
+          ? &#x27;Failed to load patches. Please try again later.&#x27;
+          : msg;
+        this.isLoadingPatches &#x3D; false;
+      }
+    });
+  }
+
+  private loadBanks(): void {
+    this.isLoadingBanks &#x3D; true;
+    this.banksError &#x3D; null;
+
+    this.banksSub &#x3D; this.bankService.getAllBanks().subscribe({
+      next: list &#x3D;&gt; {
+        this.banks &#x3D; list;
+        this.isLoadingBanks &#x3D; false;
+      },
+      error: err &#x3D;&gt; {
+        console.error(err);
+        this.banksError &#x3D; &#x27;Failed to load banks. Please try again later.&#x27;;
+        this.isLoadingBanks &#x3D; false;
+      }
+    });
+  }
+
+  onBankSelect(): void {
+    if (this.selectedBankCode) {
+      this.bankSelected.emit(this.selectedBankCode);
+      const selectedBank &#x3D; this.banks.find(bank &#x3D;&gt; bank.pBankCode &#x3D;&#x3D;&#x3D; this.selectedBankCode);
+      this.selectedBankWording &#x3D; selectedBank ? selectedBank.pBankWording : &#x27;Unknown Bank&#x27;;
+      console.log(&quot;Selected Bank Code:&quot;, this.selectedBankCode, &quot;Selected Bank Wording:&quot;, this.selectedBankWording);
+      this.loadArchitectureNodes(this.selectedBankCode);
+      this.fetchBankContext();
+      if (this.selectedTransactionDate) {
+        this.loadTransactions();
+      }
+      this.resetContextData();
+    }
+  }
+
+
+  toggleSidebar(): void {
+    this.sidebarExpanded &#x3D; !this.sidebarExpanded;
+  }
+
+  logout(): void {
+    this.authService.logout();
+  }
+
+  getUserInitials(): string {
+    if (!this.username) return &#x27;??&#x27;;
+    const parts &#x3D; this.username.split(/[.\-_@ ]+/);
+    if (parts.length &gt; 1) {
+      return (parts[0][0] + parts[1][0]).toUpperCase();
+    }
+    return parts[0].substring(0, 2).toUpperCase();
+  }
+
+  private loadArchitectureNodes(code: string) {
+    this.isLoadingNodes &#x3D; true;
+  
+    // Reset both data and errors before fetching
+    this.archNode1 &#x3D; [];
+    this.archNode2 &#x3D; [];
+    this.node1Error &#x3D; null;
+    this.node2Error &#x3D; null;
+    this.shouldRenderDiagrams &#x3D; false;
+  
+    this.nodesSub &#x3D; forkJoin({
+      node1: this.patchArchetService.getArchitectureNode1(code).pipe(
+        catchError(err &#x3D;&gt; {
+          // If Node 1 fails, store the error string and return an empty array
+          this.node1Error &#x3D; &#x60;Failed to load Node 1: ${err.message || err}&#x60;;
+          return of&lt;Architecte[]&gt;([]);
+        })
+      ),
+      node2: this.patchArchetService.getArchitectureNode2(code).pipe(
+        catchError(err &#x3D;&gt; {
+          // If Node 2 fails, store the error string and return an empty array
+          this.node2Error &#x3D; &#x60;Failed to load Node 2: ${err.message || err}&#x60;;
+          return of&lt;Architecte[]&gt;([]);
+        })
+      )
+    }).subscribe({
+      next: ({ node1, node2 }) &#x3D;&gt; {
+        // Assign whatever came back (possibly empty arrays on error)
+        this.archNode1 &#x3D; Array.isArray(node1) ? node1 : [];
+        this.archNode2 &#x3D; Array.isArray(node2) ? node2 : [];
+  
+        this.isLoadingNodes &#x3D; false;
+  
+        // Only render diagrams for whichever node(s) actually have data
+        // If either array has at least one item, we attempt rendering
+        if ((this.archNode1.length &gt; 0 || this.archNode2.length &gt; 0) &amp;&amp;
+            isPlatformBrowser(this.platformId)) {
+          this.shouldRenderDiagrams &#x3D; true;
+          // Allow Angular to paint the &lt;div id&#x3D;&quot;networkDiagramX&quot;&gt; first,
+          // then call renderDiagrams() in a setTimeout(..., 0).
+          setTimeout(() &#x3D;&gt; this.renderDiagrams(), 0);
+        }
+      },
+      error: (err) &#x3D;&gt; {
+        // In practice, forkJoin will not call this if we catch errors above,
+        // but it’s good to have a fallback.
+        console.error(&#x27;Unexpected error in forkJoin&#x27;, err);
+        this.node1Error &#x3D; this.node1Error || &#x27;Failed to load Node 1.&#x27;;
+        this.node2Error &#x3D; this.node2Error || &#x27;Failed to load Node 2.&#x27;;
+        this.isLoadingNodes &#x3D; false;
+      }
+    });
+  }
+
+  private renderDiagrams(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
+  
+    const options &#x3D; {
+      nodes: { font: { size: 14, color: &#x27;#000&#x27; }, borderWidth: 2 },
+      edges: {
+        color: &#x27;#00008B&#x27;,
+        width: 2,
+        length: 200,
+        font: { size: 12, color: &#x27;#000&#x27;, align: &#x27;top&#x27;, strokeWidth: 0 },
+        arrows: { // Default global arrow configuration
+          to: { enabled: true, scaleFactor: 1.5, type: &#x27;arrow&#x27; },
+          from: { enabled: true, scaleFactor: 1.5, type: &#x27;arrow&#x27; }
+        }
+      },
+      physics: {
+        enabled: false,
+        stabilization: true,
+        solver: &#x27;barnesHut&#x27;,
+        barnesHut: {
+          gravitationalConstant: -2000,
+          centralGravity: 0.3,
+          springLength: 200,
+          springConstant: 0.04,
+          damping: 0.09,
+          avoidOverlap: 1
+        }
+      }
+    };
+  
+    // ─── Render Node 1 ───
+    if (this.archNode1.length &gt; 0) {
+      const container1 &#x3D; document.getElementById(&#x27;networkDiagram1&#x27;);
+      if (container1) {
+        if (this.network1) {
+          this.network1.destroy();
+        }
+        const nodes1 &#x3D; new DataSet&lt;Node&gt;([
+          { id: &#x27;bank1&#x27;, label: this.selectedBankWording, color: &#x27;#4682B4&#x27;, shape: &#x27;circle&#x27;, size: 40 }
+        ]);
+        const edges1 &#x3D; new DataSet&lt;Edge&gt;();
+  
+        this.archNode1.forEach((node, index) &#x3D;&gt; {
+          const wordingId &#x3D; &#x60;wording1_${index}&#x60;;
+          const wordingLabel &#x3D; &#x60;${node.libelle}\n${node.resourceId}&#x60;;
+          nodes1.add({
+            id: wordingId,
+            label: wordingLabel,
+            color: &#x27;#FFD700&#x27;,
+            shape: &#x27;ellipse&#x27;,
+            size: 40
+          });
+  
+          // Correctly define the source and target of the edge based on prisConnectMode
+          const from &#x3D; node.prisConnectMode &#x3D;&#x3D;&#x3D; &#x27;M&#x27; ? wordingId : &#x27;bank1&#x27;;
+          const to &#x3D; node.prisConnectMode &#x3D;&#x3D;&#x3D; &#x27;M&#x27; ? &#x27;bank1&#x27; : wordingId;
+          const label &#x3D; &#x60;( ${node.resourceLive}, ${node.prisProcessingStep} )&#x60;;
+  
+          // Always point the arrow towards the &#x27;to&#x27; node of the defined edge
+          edges1.add({ from, to, label, font: { align: &#x27;top&#x27; }, arrows: &#x27;to&#x27; }); // MODIFIED LINE
+        });
+  
+        this.network1 &#x3D; new Network(container1, { nodes: nodes1, edges: edges1 }, options);
+      }
+    }
+  
+    // ─── Render Node 2 ───
+    if (this.archNode2.length &gt; 0) {
+      const container2 &#x3D; document.getElementById(&#x27;networkDiagram2&#x27;);
+      if (container2) {
+        if (this.network2) {
+          this.network2.destroy();
+        }
+        const nodes2 &#x3D; new DataSet&lt;Node&gt;([
+          { id: &#x27;bank2&#x27;, label: this.selectedBankWording, color: &#x27;#4682B4&#x27;, shape: &#x27;circle&#x27;, size: 40 }
+        ]);
+        const edges2 &#x3D; new DataSet&lt;Edge&gt;();
+  
+        this.archNode2.forEach((node, index) &#x3D;&gt; {
+          const wordingId &#x3D; &#x60;wording2_${index}&#x60;;
+          const wordingLabel &#x3D; &#x60;${node.libelle}\n${node.resourceId}&#x60;;
+          nodes2.add({
+            id: wordingId,
+            label: wordingLabel,
+            color: &#x27;#FFD700&#x27;,
+            shape: &#x27;ellipse&#x27;,
+            size: 40
+          });
+  
+          // Correctly define the source and target of the edge based on prisConnectMode
+          const from &#x3D; node.prisConnectMode &#x3D;&#x3D;&#x3D; &#x27;M&#x27; ? wordingId : &#x27;bank2&#x27;;
+          const to &#x3D; node.prisConnectMode &#x3D;&#x3D;&#x3D; &#x27;M&#x27; ? &#x27;bank2&#x27; : wordingId;
+          const label &#x3D; &#x60;( ${node.resourceLive},  ${node.prisProcessingStep} )&#x60;;
+  
+          // Always point the arrow towards the &#x27;to&#x27; node of the defined edge
+          edges2.add({ from, to, label, font: { align: &#x27;top&#x27; }, arrows: &#x27;to&#x27; }); // MODIFIED LINE
+        });
+  
+        this.network2 &#x3D; new Network(container2, { nodes: nodes2, edges: edges2 }, options);
+      }
+    }
+  }
+  
+
+  onDateChange(newDate: string): void {
+    this.selectedTransactionDate &#x3D; newDate; // Keep as YYYY-MM-DD for the input
+    if (this.selectedBankCode &amp;&amp; this.selectedTransactionDate) {
+      this.loadTransactions();
+    }
+  }
+
+  public formatTo_ddMMyyyy(isoDate: string | null): string {
+    if (!isoDate) {
+      return &#x27;&#x27;;
+    }
+    const [year, month, day] &#x3D; isoDate.split(&#x27;-&#x27;);
+    return &#x60;${day}-${month}-${year}&#x60;;
+  }
+
+private loadTransactions(): void {
+  if (!this.selectedBankCode || !this.selectedTransactionDate) {
+    return;
+  }
+  this.isLoadingTransactions &#x3D; true;
+  this.transactionsError &#x3D; null;
+
+  const formattedDate &#x3D; this.formatTo_ddMMyyyy(this.selectedTransactionDate);
+
+  this.dashboardService.getTransactions(this.selectedBankCode, formattedDate)
+    .subscribe({
+      next: (transactions) &#x3D;&gt; {
+        this.transactions &#x3D; transactions;
+        this.isLoadingTransactions &#x3D; false;
+
+        if (this.transactions.length &gt; 0) {
+        const t &#x3D; this.transactions[0];
+
+       // 1. Normalize strings:
+    const approvedStr       &#x3D; (t.perApproved                || &#x27;&#x27;).replace(&#x27;%&#x27;,&#x27;&#x27;).trim();
+    const cancelAprStr      &#x3D; (t.perCancellationApproved   || &#x27;&#x27;).replace(&#x27;,&#x27;,&#x27;.&#x27;).replace(&#x27;%&#x27;,&#x27;&#x27;).trim();
+    const cancelRejStr      &#x3D; (t.perCancellationRejected   || &#x27;&#x27;).replace(&#x27;,&#x27;,&#x27;.&#x27;).replace(&#x27;%&#x27;,&#x27;&#x27;).trim();
+    const declinedTechStr   &#x3D; (t.perDeclinedTech           || &#x27;&#x27;).replace(&#x27;,&#x27;,&#x27;.&#x27;).replace(&#x27;%&#x27;,&#x27;&#x27;).trim();
+    const declinedFoncStr   &#x3D; (t.perDeclinedFonc           || &#x27;&#x27;).replace(&#x27;,&#x27;,&#x27;.&#x27;).replace(&#x27;%&#x27;,&#x27;&#x27;).trim();
+
+    // 2. Parse floats (fallback to 0 if still NaN):
+    const approved           &#x3D; isNaN(parseFloat(approvedStr))         ? 0 : parseFloat(approvedStr);
+    const cancelApproved     &#x3D; isNaN(parseFloat(cancelAprStr))        ? 0 : parseFloat(cancelAprStr);
+    const cancelRejected     &#x3D; isNaN(parseFloat(cancelRejStr))        ? 0 : parseFloat(cancelRejStr);
+    const declinedTech       &#x3D; isNaN(parseFloat(declinedTechStr))     ? 0 : parseFloat(declinedTechStr);
+    const declinedFonc       &#x3D; isNaN(parseFloat(declinedFoncStr))     ? 0 : parseFloat(declinedFoncStr);
+
+    console.log({ approved, cancelApproved, cancelRejected, declinedTech, declinedFonc });
+  // 3) Build your pieChartData exactly as before
+  this.transactionChartData &#x3D; {
+    labels: [
+      this.translate.instant(&#x27;dashboard.transactions.perApproved&#x27;),
+      this.translate.instant(&#x27;dashboard.transactions.perCancellationApproved&#x27;),
+      this.translate.instant(&#x27;dashboard.transactions.perCancellationRejected&#x27;),
+      this.translate.instant(&#x27;dashboard.transactions.perDeclinedTech&#x27;),
+      this.translate.instant(&#x27;dashboard.transactions.perDeclinedFonc&#x27;),
+    ],
+    datasets: [{
+      data: [
+        approved,
+        cancelApproved,
+        cancelRejected,
+        declinedTech,
+        declinedFonc
+      ],
+      backgroundColor: [
+        &#x27;#4CAF50&#x27;, &#x27;#FFC107&#x27;, &#x27;#FF5722&#x27;, &#x27;#03A9F4&#x27;, &#x27;#9C27B0&#x27;
+      ],
+      type:&#x27;pie&#x27;,
+      hoverBorderColor: &#x27;#fff&#x27;,
+      
+    }]
+  };
+}
+
+      },
+      error: (err) &#x3D;&gt; {
+        console.error(&#x27;Error loading transactions&#x27;, err);
+        this.transactionsError &#x3D; &#x27;Failed to load transactions. Please try again later.&#x27;;
+        this.isLoadingTransactions &#x3D; false;
+      }
+    });
+}
+
+  ngOnDestroy(): void {
+    this.patchesSub?.unsubscribe();
+    this.banksSub?.unsubscribe();
+    this.nodesSub?.unsubscribe();
+    if (this.network1) {
+      this.network1.destroy();
+    }
+    if (this.network2) {
+      this.network2.destroy();
+    }
+  }
+
+  // Add this method to your component class:
+fetchBankContext(): void {
+  if (!this.selectedBankCode) {
+    return;
+  }
+
+  this.isLoadingContext &#x3D; true;
+  this.contextError &#x3D; null;
+  this.bankContext &#x3D; null;
+
+  this.patchArchetService.getContextBank(this.selectedBankCode).subscribe({
+    next: (response) &#x3D;&gt; {
+      this.isLoadingContext &#x3D; false;
+      this.contextFetched &#x3D; true;
+      
+      if (typeof response &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
+        // It&#x27;s an error message (404 case)
+        this.contextError &#x3D; response;
+        this.bankContext &#x3D; null;
+      } else {
+        // It&#x27;s a ContextBank object
+        this.bankContext &#x3D; response;
+        this.contextError &#x3D; null;
+      }
+    },
+    error: (error) &#x3D;&gt; {
+      this.isLoadingContext &#x3D; false;
+      this.contextFetched &#x3D; true;
+      this.contextError &#x3D; &#x27;Une erreur est survenue lors du chargement du contexte.&#x27;;
+      this.bankContext &#x3D; null;
+      console.error(&#x27;Error fetching bank context:&#x27;, error);
+    }
+  });
+}
+
+// Add this helper method:
+private resetContextData(): void {
+  this.bankContext &#x3D; null;
+  this.isLoadingContext &#x3D; false;
+  this.contextError &#x3D; null;
+  this.contextFetched &#x3D; false;
+}
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;sidebar-container&quot;&gt;
+  &lt;!-- Sidebar --&gt;
+  &lt;div class&#x3D;&quot;sidebar&quot; [class.expanded]&#x3D;&quot;sidebarExpanded&quot;&gt;
+    &lt;!-- Toggle button for sidebar --&gt;
+    &lt;button class&#x3D;&quot;sidebar-toggle&quot; (click)&#x3D;&quot;toggleSidebar()&quot;&gt;
+      &lt;i class&#x3D;&quot;bi&quot; [ngClass]&#x3D;&quot;sidebarExpanded ? &#x27;bi-chevron-left&#x27; : &#x27;bi-chevron-right&#x27;&quot;&gt;&lt;/i&gt;
+    &lt;/button&gt;
+
+    &lt;div class&#x3D;&quot;d-flex flex-column h-100&quot;&gt;
+      &lt;!-- User info --&gt;
+      &lt;div class&#x3D;&quot;p-3 mb-3 text-center&quot;&gt;
+        &lt;div class&#x3D;&quot;user-avatar mb-2&quot;&gt;{{ getUserInitials() }}&lt;/div&gt;
+        &lt;div class&#x3D;&quot;text-white&quot; *ngIf&#x3D;&quot;sidebarExpanded&quot;&gt;{{ username }}&lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Navigation --&gt;
+      &lt;nav class&#x3D;&quot;flex-grow-1&quot;&gt;
+        &lt;a class&#x3D;&quot;nav-item d-block&quot; routerLink&#x3D;&quot;/dashboards&quot; routerLinkActive&#x3D;&quot;active&quot;&gt;
+          &lt;i class&#x3D;&quot;bi bi-speedometer2 me-2&quot;&gt;&lt;/i&gt;
+          &lt;span class&#x3D;&quot;nav-text&quot; *ngIf&#x3D;&quot;sidebarExpanded&quot;&gt;{{ &#x27;nav.dashboard&#x27; | translate }}&lt;/span&gt;
+        &lt;/a&gt;
+        &lt;a class&#x3D;&quot;nav-item d-block&quot; routerLink&#x3D;&quot;/banks&quot; routerLinkActive&#x3D;&quot;active&quot;&gt;
+          &lt;i class&#x3D;&quot;bi bi-bank2 me-2&quot;&gt;&lt;/i&gt;
+          &lt;span class&#x3D;&quot;nav-text&quot; *ngIf&#x3D;&quot;sidebarExpanded&quot;&gt;{{ &#x27;nav.banks&#x27; | translate }}&lt;/span&gt;
+        &lt;/a&gt;
+
+        &lt;!-- Activity item with toggle --&gt;
+        &lt;a class&#x3D;&quot;nav-item d-block&quot; routerLinkActive&#x3D;&quot;active&quot; (click)&#x3D;&quot;toggleActivity()&quot;&gt;
+          &lt;i class&#x3D;&quot;bi bi-activity me-2&quot;&gt;&lt;/i&gt;
+          &lt;span class&#x3D;&quot;nav-text&quot; *ngIf&#x3D;&quot;sidebarExpanded&quot;&gt;{{ &#x27;nav.activity&#x27; | translate }}&lt;/span&gt;
+          &lt;i class&#x3D;&quot;bi&quot; [ngClass]&#x3D;&quot;activityExpanded ? &#x27;bi-chevron-down&#x27; : &#x27;bi-chevron-right&#x27;&quot;&gt;&lt;/i&gt;
+        &lt;/a&gt;
+
+        &lt;!-- Sub-items for Activity --&gt;
+        &lt;div *ngIf&#x3D;&quot;activityExpanded&quot; class&#x3D;&quot;sub-nav&quot;&gt;
+          &lt;a class&#x3D;&quot;nav-item d-block sub-item&quot; routerLink&#x3D;&quot;/activity&quot; routerLinkActive&#x3D;&quot;active&quot;&gt;
+            &lt;i class&#x3D;&quot;bi bi-people me-2&quot;&gt;&lt;/i&gt;
+            &lt;span class&#x3D;&quot;nav-text&quot; *ngIf&#x3D;&quot;sidebarExpanded&quot;&gt;{{ &#x27;nav.front_office&#x27; | translate }}&lt;/span&gt;
+          &lt;/a&gt;
+          &lt;a class&#x3D;&quot;nav-item d-block sub-item&quot; routerLink&#x3D;&quot;/backOfficeActivity&quot; routerLinkActive&#x3D;&quot;active&quot;&gt;
+            &lt;i class&#x3D;&quot;bi bi-briefcase me-2&quot;&gt;&lt;/i&gt;
+            &lt;span class&#x3D;&quot;nav-text&quot; *ngIf&#x3D;&quot;sidebarExpanded&quot;&gt;{{ &#x27;nav.back_office&#x27; | translate }}&lt;/span&gt;
+          &lt;/a&gt;
+        &lt;/div&gt;
+      &lt;/nav&gt;
+
+      &lt;!-- Logout --&gt;
+      &lt;div class&#x3D;&quot;mt-auto p-3&quot;&gt;
+        &lt;button class&#x3D;&quot;btn btn-light w-100&quot; (click)&#x3D;&quot;logout()&quot;&gt;
+          &lt;i class&#x3D;&quot;bi bi-box-arrow-left me-2&quot;&gt;&lt;/i&gt;
+          &lt;span *ngIf&#x3D;&quot;sidebarExpanded&quot;&gt;{{ &#x27;nav.logout&#x27; | translate }}&lt;/span&gt;
+        &lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class&#x3D;&quot;main-content&quot; [class.sidebar-expanded]&#x3D;&quot;sidebarExpanded&quot;&gt;
+    
+    &lt;!-- Header --&gt;
+    &lt;ng-container header-content&gt;
+      &lt;div class&#x3D;&quot;header-container d-flex align-items-center justify-content-between mb-4&quot;&gt;
+        &lt;div class&#x3D;&quot;d-flex align-items-center&quot;&gt;
+          &lt;button class&#x3D;&quot;mobile-toggle me-3 d-md-none&quot; (click)&#x3D;&quot;toggleSidebar()&quot;&gt;
+            &lt;i class&#x3D;&quot;bi bi-list&quot;&gt;&lt;/i&gt;
+          &lt;/button&gt;
+          &lt;div&gt;
+            &lt;h4 class&#x3D;&quot;mb-0 fw-bold&quot;&gt;{{ pageTitle | translate }}&lt;/h4&gt;
+            &lt;small class&#x3D;&quot;text-muted d-none d-md-block&quot;&gt;
+              {{ &#x27;home.welcome&#x27; | translate }}, {{ username }}
+            &lt;/small&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;banks-section mb-4&quot;&gt;
+          &lt;div *ngIf&#x3D;&quot;isLoadingBanks; else loadedBanks&quot; class&#x3D;&quot;text-center py-3&quot;&gt;
+            &lt;div class&#x3D;&quot;spinner-border text-primary&quot; style&#x3D;&quot;width:2rem; height:2rem;&quot;&gt;&lt;/div&gt;
+            &lt;small class&#x3D;&quot;d-block mt-2&quot;&gt;{{ &#x27;general.loading&#x27; | translate }}&lt;/small&gt;
+          &lt;/div&gt;
+      
+          &lt;ng-template #loadedBanks&gt;
+            &lt;div *ngIf&#x3D;&quot;banksError&quot; class&#x3D;&quot;alert alert-danger&quot;&gt;
+              {{ banksError }}
+            &lt;/div&gt;
+      
+            &lt;div *ngIf&#x3D;&quot;!banksError &amp;&amp; banks.length &gt; 0&quot; class&#x3D;&quot;bank-select-wrapper&quot;&gt;
+              &lt;select
+                class&#x3D;&quot;form-select&quot;
+                [(ngModel)]&#x3D;&quot;selectedBankCode&quot;
+                (ngModelChange)&#x3D;&quot;onBankSelect()&quot;
+              &gt;
+                &lt;option [ngValue]&#x3D;&quot;null&quot; disabled&gt;{{ &#x27;banks.selectPlaceholder&#x27; | translate }}&lt;/option&gt;
+                &lt;option *ngFor&#x3D;&quot;let b of banks&quot; [ngValue]&#x3D;&quot;b.pBankCode&quot;&gt;
+                  {{ b.pBankWording }} ({{ b.pBankCode }})
+                &lt;/option&gt;
+              &lt;/select&gt;
+            &lt;/div&gt;
+      
+            &lt;div *ngIf&#x3D;&quot;!banksError &amp;&amp; banks.length &#x3D;&#x3D;&#x3D; 0&quot; class&#x3D;&quot;text-center py-3 text-muted&quot;&gt;
+              &lt;i class&#x3D;&quot;bi bi-inbox fs-2 mb-2&quot;&gt;&lt;/i&gt;
+              &lt;div&gt;{{ &#x27;dashboard.noData&#x27; | translate }}&lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/ng-template&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;d-none d-md-flex align-items-center&quot;&gt;
+          &lt;div class&#x3D;&quot;date-display me-3&quot;&gt;
+            &lt;i class&#x3D;&quot;bi bi-calendar3 me-2&quot;&gt;&lt;/i&gt;
+            {{ today | date: &#x27;EEEE, MMMM d, y&#x27; }}
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/ng-container&gt;
+
+    &lt;!-- Context section --&gt;
+    &lt;div *ngIf&#x3D;&quot;selectedBankCode&quot; class&#x3D;&quot;context-section bg-white rounded-4 shadow-sm p-4 mb-4&quot;&gt;
+      &lt;div class&#x3D;&quot;d-flex align-items-center justify-content-between mb-3&quot;&gt;
+        &lt;h3 class&#x3D;&quot;fw-semibold mb-0&quot;&gt;{{ &#x27;dashboard.context.title&#x27; | translate }}&lt;/h3&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Loading state --&gt;
+      &lt;div *ngIf&#x3D;&quot;isLoadingContext&quot; class&#x3D;&quot;text-center py-3&quot;&gt;
+        &lt;div class&#x3D;&quot;spinner-border text-primary&quot; style&#x3D;&quot;width:2rem; height:2rem;&quot;&gt;&lt;/div&gt;
+        &lt;small class&#x3D;&quot;d-block mt-2&quot;&gt;{{ &#x27;general.loading&#x27; | translate }}&lt;/small&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Error state --&gt;
+      &lt;div *ngIf&#x3D;&quot;contextError &amp;&amp; !isLoadingContext&quot; class&#x3D;&quot;alert alert-danger d-flex align-items-center&quot;&gt;
+        &lt;i class&#x3D;&quot;bi bi-exclamation-triangle-fill me-2&quot;&gt;&lt;/i&gt;
+        &lt;div&gt;{{ contextError }}&lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Context data display --&gt;
+      &lt;div *ngIf&#x3D;&quot;!isLoadingContext &amp;&amp; !contextError &amp;&amp; bankContext&quot; class&#x3D;&quot;context-info&quot;&gt;
+        &lt;div class&#x3D;&quot;row&quot;&gt;
+          &lt;div class&#x3D;&quot;col-md-6&quot;&gt;
+            &lt;div class&#x3D;&quot;info-card p-3 border rounded&quot;&gt;
+              &lt;div class&#x3D;&quot;d-flex align-items-center mb-2&quot;&gt;
+                &lt;i class&#x3D;&quot;bi bi-bank2 text-primary me-2&quot;&gt;&lt;/i&gt;
+                &lt;strong&gt;{{ &#x27;banks.details.bank_code&#x27; | translate }}&lt;/strong&gt;
+              &lt;/div&gt;
+              &lt;p class&#x3D;&quot;mb-0 text-muted&quot;&gt;{{ bankContext.bankCode }}&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;col-md-6&quot;&gt;
+            &lt;div class&#x3D;&quot;info-card p-3 border rounded&quot;&gt;
+              &lt;div class&#x3D;&quot;d-flex align-items-center mb-2&quot;&gt;
+                &lt;i class&#x3D;&quot;bi bi-info-circle text-primary me-2&quot;&gt;&lt;/i&gt;
+                &lt;strong&gt;{{ &#x27;dashboard.context.description&#x27; | translate }}&lt;/strong&gt;
+              &lt;/div&gt;
+              &lt;p class&#x3D;&quot;mb-0 text-muted&quot;&gt;{{ bankContext.description }}&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;!-- No data state --&gt;
+      &lt;div *ngIf&#x3D;&quot;!isLoadingContext &amp;&amp; !contextError &amp;&amp; bankContext &#x3D;&#x3D;&#x3D; null &amp;&amp; contextFetched&quot; 
+           class&#x3D;&quot;text-center py-4 text-muted&quot;&gt;
+        &lt;i class&#x3D;&quot;bi bi-info-circle fs-2 mb-2&quot;&gt;&lt;/i&gt;
+        &lt;p&gt;{{ &#x27;dashboard.context.noDataSubtext&#x27; | translate }}&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+&lt;!-- Transactions section --&gt;
+&lt;div *ngIf&#x3D;&quot;selectedBankCode&quot; class&#x3D;&quot;transactions-section bg-white rounded-4 shadow-sm p-4 mb-4&quot;&gt;
+  &lt;div class&#x3D;&quot;d-flex align-items-center justify-content-between mb-3&quot;&gt;
+    &lt;h3 class&#x3D;&quot;fw-semibold mb-0&quot;&gt;{{ &#x27;dashboard.transactions.title&#x27; | translate }}&lt;/h3&gt;
+    &lt;small class&#x3D;&quot;text-muted&quot; *ngIf&#x3D;&quot;transactions?.length&quot;&gt;
+      {{ &#x27;dashboard.transactions.total&#x27; | translate }}:
+      &lt;strong&gt;{{ transactions[0].totalTransaction }}&lt;/strong&gt;
+    &lt;/small&gt;
+    &lt;div class&#x3D;&quot;input-group date-input-group&quot; style&#x3D;&quot;max-width: 200px;&quot;&gt;
+      &lt;span class&#x3D;&quot;input-group-text&quot;&gt;&lt;i class&#x3D;&quot;bi bi-calendar3&quot;&gt;&lt;/i&gt;&lt;/span&gt;
+      &lt;input
+        type&#x3D;&quot;date&quot;
+        class&#x3D;&quot;form-control&quot;
+        [(ngModel)]&#x3D;&quot;selectedTransactionDate&quot;
+        (ngModelChange)&#x3D;&quot;onDateChange($event)&quot;
+        aria-label&#x3D;&quot;Transaction date&quot;
+      /&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div *ngIf&#x3D;&quot;!selectedTransactionDate &amp;&amp; !isLoadingTransactions&quot; class&#x3D;&quot;text-center py-3 text-muted&quot;&gt;
+    &lt;p&gt;{{ &#x27;dashboard.transactions.selectDate&#x27; | translate }}&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div *ngIf&#x3D;&quot;isLoadingTransactions&quot; class&#x3D;&quot;text-center py-3&quot;&gt;
+    &lt;div class&#x3D;&quot;spinner-border text-primary&quot; style&#x3D;&quot;width:2rem; height:2rem;&quot;&gt;&lt;/div&gt;
+    &lt;small class&#x3D;&quot;d-block mt-2&quot;&gt;{{ &#x27;general.loading&#x27; | translate }}&lt;/small&gt;
+  &lt;/div&gt;
+
+  &lt;div *ngIf&#x3D;&quot;transactionsError &amp;&amp; !isLoadingTransactions&quot; class&#x3D;&quot;alert alert-danger&quot;&gt;
+    {{ transactionsError }}
+  &lt;/div&gt;
+
+  &lt;div *ngIf&#x3D;&quot;!isLoadingTransactions &amp;&amp; !transactionsError &amp;&amp; transactions.length &gt; 0&quot; class&#x3D;&quot;chart-container&quot; style&#x3D;&quot;height: 300px;&quot;&gt;
+    &lt;canvas
+      #transactionPieChart baseChart
+      [data]&#x3D;&quot;transactionChartData&quot;
+      [options]&#x3D;&quot;transactionChartOptions&quot;
+      [type]&#x3D;&quot;&#x27;pie&#x27;&quot;&gt;
+    &lt;/canvas&gt;
+  &lt;/div&gt;
+
+  &lt;div *ngIf&#x3D;&quot;!isLoadingTransactions &amp;&amp; !transactionsError &amp;&amp; transactions.length &#x3D;&#x3D;&#x3D; 0 &amp;&amp; selectedTransactionDate&quot; 
+       class&#x3D;&quot;text-center py-5 text-muted&quot;&gt;
+    &lt;i class&#x3D;&quot;bi bi-receipt-cutoff fs-2 mb-2&quot;&gt;&lt;/i&gt;
+    &lt;p&gt;{{ &#x27;dashboard.transactions.empty&#x27; | translate }}&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Architecture Nodes: appears only when a bank is chosen --&gt;
+&lt;div *ngIf&#x3D;&quot;selectedBankCode&quot; class&#x3D;&quot;arch-nodes-section bg-white rounded-4 shadow-sm p-4 mb-4&quot;&gt;
+  &lt;h3 class&#x3D;&quot;mb-3 fw-semibold&quot;&gt;
+    {{ &#x27;dashboard.architecture.title&#x27; | translate }}
+  &lt;/h3&gt;
+
+  &lt;!-- ─── 1) Entire‐section Loading Spinner ─── --&gt;
+  &lt;div *ngIf&#x3D;&quot;isLoadingNodes&quot; class&#x3D;&quot;text-center py-3&quot;&gt;
+    &lt;div class&#x3D;&quot;spinner-border text-primary&quot; style&#x3D;&quot;width:2rem; height:2rem;&quot;&gt;&lt;/div&gt;
+    &lt;small class&#x3D;&quot;d-block mt-2&quot;&gt;{{ &#x27;general.loading&#x27; | translate }}&lt;/small&gt;
+  &lt;/div&gt;
+
+  &lt;!-- ─── 2) Once loading completes, show two columns ─── --&gt;
+  &lt;div *ngIf&#x3D;&quot;!isLoadingNodes&quot; class&#x3D;&quot;row gx-4 gy-3&quot;&gt;
+
+    &lt;!-- ─── Column for Node 1 ─── --&gt;
+    &lt;div class&#x3D;&quot;col-12 col-md-6&quot;&gt;
+      &lt;h5&gt;{{ &#x27;dashboard.architecture.node1&#x27; | translate }}&lt;/h5&gt;
+
+      &lt;!-- If archNode1 has data, render the diagram container --&gt;
+      &lt;ng-container *ngIf&#x3D;&quot;archNode1.length &gt; 0; else showNode1Error&quot;&gt;
+        &lt;div class&#x3D;&quot;diagram-container&quot; style&#x3D;&quot;height: 300px;&quot;&gt;
+          &lt;div id&#x3D;&quot;networkDiagram1&quot; style&#x3D;&quot;width: 100%; height: 100%;&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/ng-container&gt;
+
+      &lt;!-- If Node 1 failed (node1Error), show its own error alert --&gt;
+      &lt;ng-template #showNode1Error&gt;
+        &lt;div class&#x3D;&quot;alert alert-danger&quot;&gt;
+          {{ node1Error || (&#x27;dashboard.architecture.noDataFound&#x27; | translate) }}
+        &lt;/div&gt;
+      &lt;/ng-template&gt;
+    &lt;/div&gt;
+
+    &lt;!-- ─── Column for Node 2 ─── --&gt;
+    &lt;div class&#x3D;&quot;col-12 col-md-6&quot;&gt;
+      &lt;h5&gt;{{ &#x27;dashboard.architecture.node2&#x27; | translate }}&lt;/h5&gt;
+
+      &lt;!-- If archNode2 has data, render the diagram container --&gt;
+      &lt;ng-container *ngIf&#x3D;&quot;archNode2.length &gt; 0; else showNode2Error&quot;&gt;
+        &lt;div class&#x3D;&quot;diagram-container&quot; style&#x3D;&quot;height: 300px;&quot;&gt;
+          &lt;div id&#x3D;&quot;networkDiagram2&quot; style&#x3D;&quot;width: 100%; height: 100%;&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/ng-container&gt;
+
+      &lt;!-- If Node 2 failed (node2Error), show its own error alert --&gt;
+      &lt;ng-template #showNode2Error&gt;
+        &lt;div class&#x3D;&quot;alert alert-danger&quot;&gt;
+          {{ node2Error || (&#x27;dashboard.architecture.noDataFound&#x27; | translate) }}
+        &lt;/div&gt;
+      &lt;/ng-template&gt;
+    &lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+
+    &lt;!-- Patches table --&gt;
+    &lt;div class&#x3D;&quot;patches-section bg-white rounded-4 shadow-sm p-4 mt-4 mb-4&quot;&gt;
+      &lt;h3 class&#x3D;&quot;mb-3 fw-semibold&quot;&gt;{{ &#x27;dashboard.patches.title&#x27; | translate }}&lt;/h3&gt;
+      &lt;div *ngIf&#x3D;&quot;isLoadingPatches&quot; class&#x3D;&quot;text-center py-5&quot;&gt;
+        &lt;div class&#x3D;&quot;spinner-border text-primary&quot; style&#x3D;&quot;width:3rem; height:3rem;&quot;&gt;
+          &lt;span class&#x3D;&quot;visually-hidden&quot;&gt;{{ &#x27;general.loading&#x27; | translate }}&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;p class&#x3D;&quot;mt-3 mb-0&quot;&gt;{{ &#x27;general.loadingPatches&#x27; | translate }}&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div *ngIf&#x3D;&quot;patchesError &amp;&amp; !isLoadingPatches&quot; class&#x3D;&quot;alert alert-danger d-flex align-items-center&quot;&gt;
+        &lt;i class&#x3D;&quot;bi bi-exclamation-triangle-fill me-2&quot;&gt;&lt;/i&gt;
+        &lt;div&gt;{{ patchesError }}&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div *ngIf&#x3D;&quot;!isLoadingPatches &amp;&amp; !patchesError &amp;&amp; patches.length &gt; 0&quot; class&#x3D;&quot;table-responsive&quot;&gt;
+        &lt;table class&#x3D;&quot;table table-hover align-middle&quot;&gt;
+          &lt;thead class&#x3D;&quot;table-light&quot;&gt;
+            &lt;tr&gt;
+              &lt;th&gt;{{ &#x27;dashboard.patches.header.id&#x27; | translate }}&lt;/th&gt;
+              &lt;th&gt;{{ &#x27;dashboard.patches.header.description&#x27; | translate }}&lt;/th&gt;
+              &lt;th&gt;{{ &#x27;dashboard.patches.header.bankCode&#x27; | translate }}&lt;/th&gt;
+              &lt;th&gt;{{ &#x27;dashboard.patches.header.owner&#x27; | translate }}&lt;/th&gt;
+              &lt;th&gt;{{ &#x27;dashboard.patches.header.creationDate&#x27; | translate }}&lt;/th&gt;
+            &lt;/tr&gt;
+          &lt;/thead&gt;
+          &lt;tbody&gt;
+            &lt;tr *ngFor&#x3D;&quot;let patch of patches&quot;&gt;
+              &lt;td&gt;{{ patch.idPatch }}&lt;/td&gt;
+              &lt;td&gt;{{ patch.description }}&lt;/td&gt;
+              &lt;td&gt;{{ patch.codeBancaire }}&lt;/td&gt;
+              &lt;td&gt;{{ patch.proprietaire }}&lt;/td&gt;
+              &lt;td&gt;{{ patch.dateCreate | date:&#x27;mediumDate&#x27; }}&lt;/td&gt;
+            &lt;/tr&gt;
+          &lt;/tbody&gt;
+        &lt;/table&gt;
+      &lt;/div&gt;
+      &lt;div *ngIf&#x3D;&quot;!isLoadingPatches &amp;&amp; !patchesError &amp;&amp; patches.length &#x3D;&#x3D;&#x3D; 0&quot; class&#x3D;&quot;text-center py-5 text-muted&quot;&gt;
+        &lt;i class&#x3D;&quot;bi bi-inbox fs-1 mb-3&quot;&gt;&lt;/i&gt;
+        &lt;h5&gt;{{ &#x27;dashboard.patches.noDataFound&#x27; | translate }}&lt;/h5&gt;
+        &lt;p&gt;{{ &#x27;dashboard.patches.noDataSubtext&#x27; | translate }}&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;router-outlet&gt;&lt;/router-outlet&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./dashboards-list.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">/* Combined Dashboard Styles - Original sidebar with enhanced content */
+
+// Variables
+$sidebar-width-collapsed: 70px;
+$sidebar-width-expanded: 250px;
+$primary-color: #0d6efd; // Bootstrap primary
+$transition-speed: 0.3s;
+
+/* home-screen.component.scss */
+.sidebar-container {
+  display: flex;
+  height: calc(100vh - 64px); // Adjust to match the exact navbar height
+  overflow: hidden;
+}
+
+.sidebar {
+  background: #2c3e50;
+  color: white;
+  transition: all 0.3s ease;
+  position: relative;
+  height: 100%;
+  flex: 0 0 70px;
+
+  // Expanded state for desktop
+  &amp;.expanded {
+    flex: 0 0 250px;
+  }
+
+  // Mobile specific styles
+  @media (max-width: 768px) {
+    position: fixed;
+    height: 100vh;
+    left: -250px;
+    width: 250px;
+    z-index: 1000;
+
+    &amp;.expanded {
+      left: 0;
+    }
+  }
+
+  // Toggle button
+  .sidebar-toggle {
+    position: absolute;
+    right: -15px;
+    top: 20px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #3498db;
+    color: white;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1001;
+    cursor: pointer;
+
+    // Hide on mobile
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+}
+
+.main-content {
+  flex: 1;
+  padding: 2rem;
+  transition: all 0.3s ease;
+  overflow-x: hidden;
+  background-color: #f5f7fa;
+
+  @media (min-width: 768px) {
+    margin-left: 0 !important;
+    width: 100% !important;
+
+    &amp;.sidebar-expanded {
+      margin-left: 250px;
+      width: calc(100% - 250px);
+    }
+  }
+}
+
+.nav-item {
+  color: #ecf0f1;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+
+  &amp;:hover,
+  &amp;.active {
+    background: #34495e;
+  }
+
+  // Icon only styling for collapsed state
+  i {
+    font-size: 1.2rem;
+    min-width: 24px;
+    text-align: center;
+  }
+}
+
+.user-avatar {
+  width: 50px;
+  height: 50px;
+  background: #3498db;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  font-weight: bold;
+}
+
+// Mobile menu toggle button
+.mobile-toggle {
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem 0.5rem;
+  color: #2c3e50;
+}
+
+// Overlay for mobile when sidebar is open
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+
+  @media (max-width: 768px) {
+    &amp;.active {
+      display: block;
+    }
+  }
+}
+
+// When in collapsed state, center just the icons
+.sidebar:not(.expanded) {
+  .nav-item {
+    justify-content: center;
+    padding: 0.75rem;
+
+    i {
+      margin-right: 0;
+    }
+  }
+
+  .btn {
+    padding: 0.375rem;
+    display: flex;
+    justify-content: center;
+
+    i {
+      margin-right: 0;
+    }
+  }
+}
+
+// Main content - enhanced version
+.main-content {
+  margin-left: $sidebar-width-collapsed;
+  padding: 24px;
+  width: calc(100% - #{$sidebar-width-collapsed});
+  transition: margin-left $transition-speed ease, width $transition-speed ease;
+
+  &amp;.sidebar-expanded {
+    margin-left: $sidebar-width-expanded;
+    width: calc(100% - #{$sidebar-width-expanded});
+  }
+  .patches-section {
+    h3 {
+      font-weight: 600; // Or use Bootstrap&#x27;s fw-semibold class directly
+    }
+
+    .table {
+      th {
+        font-weight: 600; // Bootstrap&#x27;s .fw-semibold equivalent
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--bs-secondary-color); // Using Bootstrap variable for subtle header text
+      }
+      td {
+        font-size: 0.9rem;
+        vertical-align: middle; // Ensure this if not using .align-middle on table
+      }
+
+      
+       border: 1px solid var(--bs-border-color);
+       thead th {
+         border-bottom-width: 2px;
+       }
+    }
+
+    .text-muted { // For &quot;No data found&quot; message
+      i.bi-inbox {
+        color: #adb5bd; // A slightly more prominent muted color for the icon
+      }
+      h5 {
+        font-weight: 500;
+      }
+    }
+  }
+
+}
+
+// Header styling - enhanced
+.header-container {
+  background-color: white;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  margin-bottom: 24px;
+
+  .mobile-toggle {
+    background: none;
+    border: none;
+    color: $primary-color;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 5px;
+  }
+
+  h4 {
+    color: #333;
+  }
+
+  .date-display {
+    color: #666;
+    font-size: 14px;
+  }
+
+  .notifications-icon {
+    font-size: 18px;
+    color: #666;
+    cursor: pointer;
+
+    .notification-badge {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      background-color: $primary-color;
+      color: white;
+      border-radius: 50%;
+      width: 16px;
+      height: 16px;
+      font-size: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+// Dashboard content - enhanced
+.dashboard-content {
+  margin-bottom: 24px;
+
+  .dashboard-actions {
+    .btn-group {
+      .btn {
+        font-size: 13px;
+
+        &amp;:hover {
+          background-color: $primary-color;
+          color: white;
+          border-color: $primary-color;
+        }
+      }
+    }
+  }
+}
+
+// Chart containers - enhanced
+.charts-container {
+  .chart-container {
+    height: 300px;
+    transition: all 0.3s ease;
+
+    &amp;:hover {
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    h5 {
+      color: #333;
+    }
+
+    .btn-link {
+      padding: 4px;
+
+      &amp;:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+        border-radius: 4px;
+      }
+    }
+  }
+}
+
+// Recent activity section - enhanced
+.recent-activity {
+  .activity-item {
+    transition: background-color 0.2s ease;
+
+    &amp;:hover {
+      background-color: rgba(0, 0, 0, 0.01);
+    }
+
+    .activity-icon {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      i {
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+// Mobile sidebar overlay
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  display: none;
+
+  &amp;.active {
+    display: block;
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0 !important;
+    width: 100% !important;
+    padding: 16px;
+  }
+
+  .sidebar {
+    transform: translateX(-100%);
+
+    &amp;.expanded {
+      transform: translateX(0);
+    }
+  }
+}
+
+/* Banks selector styling */
+.banks-section {
+  .bank-select-wrapper {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .form-select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border: 2px solid #ddd;
+    border-radius: 0.5rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+
+    &amp;:hover {
+      border-color: #007bff;
+    }
+    &amp;:focus {
+      outline: none;
+      border-color: #0056b3;
+      box-shadow: 0 0 0 0.2rem rgba(0,123,255,0.25);
+    }
+  }
+}
+
+.arch-nodes-section {
+  h3 {
+    text-align: center;
+  }
+  .list-group {
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    max-height: 300px;
+    overflow-y: auto;
+  }
+  .list-group-item {
+    border: none;
+    border-bottom: 1px solid #f0f0f0;
+    &amp;:last-child {
+      border-bottom: none;
+    }
+  }
+}
+
+/* Transactions section styling (matches other sections) */
+.transactions-section {
+  h3 {
+    text-align: center;
+  }
+  .text-center {
+    color: #888;
+    font-style: italic;
+  }
+  i.bi-receipt-cutoff {
+    color: #bbb;
+  }
+}
+
+/* Transactions section styling */
+.transactions-section {
+  .date-input-group {
+    .input-group-text {
+      background: #f8f9fa;
+      border: 2px solid #ddd;
+      border-right: none;
+      border-radius: 0.5rem 0 0 0.5rem;
+    }
+    .form-control {
+      border: 2px solid #ddd;
+      border-left: none;
+      border-radius: 0 0.5rem 0.5rem 0;
+      padding: 0.5rem 0.75rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      &amp;:hover {
+        border-color: #007bff;
+      }
+      &amp;:focus {
+        outline: none;
+        border-color: #0056b3;
+        box-shadow: 0 0 0 0.2rem rgba(0,123,255,0.25);
+      }
+    }
+  }
+}
+
+.sub-nav {
+  padding-left: 20px; /* Indent sub-items */
+}
+
+.sub-item {
+  font-size: 0.9em; /* Slightly smaller text for sub-items */
+  color: #ccc; /* Example: lighter color to differentiate from main items */
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="sidebar-container">  <!-- Sidebar -->  <div class="sidebar" [class.expanded]="sidebarExpanded">    <!-- Toggle button for sidebar -->    <button class="sidebar-toggle" (click)="toggleSidebar()">      <i class="bi" [ngClass]="sidebarExpanded ? \'bi-chevron-left\' : \'bi-chevron-right\'"></i>    </button>    <div class="d-flex flex-column h-100">      <!-- User info -->      <div class="p-3 mb-3 text-center">        <div class="user-avatar mb-2">{{ getUserInitials() }}</div>        <div class="text-white" *ngIf="sidebarExpanded">{{ username }}</div>      </div>      <!-- Navigation -->      <nav class="flex-grow-1">        <a class="nav-item d-block" routerLink="/dashboards" routerLinkActive="active">          <i class="bi bi-speedometer2 me-2"></i>          <span class="nav-text" *ngIf="sidebarExpanded">{{ \'nav.dashboard\' | translate }}</span>        </a>        <a class="nav-item d-block" routerLink="/banks" routerLinkActive="active">          <i class="bi bi-bank2 me-2"></i>          <span class="nav-text" *ngIf="sidebarExpanded">{{ \'nav.banks\' | translate }}</span>        </a>        <!-- Activity item with toggle -->        <a class="nav-item d-block" routerLinkActive="active" (click)="toggleActivity()">          <i class="bi bi-activity me-2"></i>          <span class="nav-text" *ngIf="sidebarExpanded">{{ \'nav.activity\' | translate }}</span>          <i class="bi" [ngClass]="activityExpanded ? \'bi-chevron-down\' : \'bi-chevron-right\'"></i>        </a>        <!-- Sub-items for Activity -->        <div *ngIf="activityExpanded" class="sub-nav">          <a class="nav-item d-block sub-item" routerLink="/activity" routerLinkActive="active">            <i class="bi bi-people me-2"></i>            <span class="nav-text" *ngIf="sidebarExpanded">{{ \'nav.front_office\' | translate }}</span>          </a>          <a class="nav-item d-block sub-item" routerLink="/backOfficeActivity" routerLinkActive="active">            <i class="bi bi-briefcase me-2"></i>            <span class="nav-text" *ngIf="sidebarExpanded">{{ \'nav.back_office\' | translate }}</span>          </a>        </div>      </nav>      <!-- Logout -->      <div class="mt-auto p-3">        <button class="btn btn-light w-100" (click)="logout()">          <i class="bi bi-box-arrow-left me-2"></i>          <span *ngIf="sidebarExpanded">{{ \'nav.logout\' | translate }}</span>        </button>      </div>    </div>  </div>  <div class="main-content" [class.sidebar-expanded]="sidebarExpanded">        <!-- Header -->    <ng-container header-content>      <div class="header-container d-flex align-items-center justify-content-between mb-4">        <div class="d-flex align-items-center">          <button class="mobile-toggle me-3 d-md-none" (click)="toggleSidebar()">            <i class="bi bi-list"></i>          </button>          <div>            <h4 class="mb-0 fw-bold">{{ pageTitle | translate }}</h4>            <small class="text-muted d-none d-md-block">              {{ \'home.welcome\' | translate }}, {{ username }}            </small>          </div>        </div>        <div class="banks-section mb-4">          <div *ngIf="isLoadingBanks; else loadedBanks" class="text-center py-3">            <div class="spinner-border text-primary" style="width:2rem; height:2rem;"></div>            <small class="d-block mt-2">{{ \'general.loading\' | translate }}</small>          </div>                <ng-template #loadedBanks>            <div *ngIf="banksError" class="alert alert-danger">              {{ banksError }}            </div>                  <div *ngIf="!banksError && banks.length > 0" class="bank-select-wrapper">              <select                class="form-select"                [(ngModel)]="selectedBankCode"                (ngModelChange)="onBankSelect()"              >                <option [ngValue]="null" disabled>{{ \'banks.selectPlaceholder\' | translate }}</option>                <option *ngFor="let b of banks" [ngValue]="b.pBankCode">                  {{ b.pBankWording }} ({{ b.pBankCode }})                </option>              </select>            </div>                  <div *ngIf="!banksError && banks.length === 0" class="text-center py-3 text-muted">              <i class="bi bi-inbox fs-2 mb-2"></i>              <div>{{ \'dashboard.noData\' | translate }}</div>            </div>          </ng-template>        </div>        <div class="d-none d-md-flex align-items-center">          <div class="date-display me-3">            <i class="bi bi-calendar3 me-2"></i>            {{ today | date: \'EEEE, MMMM d, y\' }}          </div>        </div>      </div>    </ng-container>    <!-- Context section -->    <div *ngIf="selectedBankCode" class="context-section bg-white rounded-4 shadow-sm p-4 mb-4">      <div class="d-flex align-items-center justify-content-between mb-3">        <h3 class="fw-semibold mb-0">{{ \'dashboard.context.title\' | translate }}</h3>      </div>      <!-- Loading state -->      <div *ngIf="isLoadingContext" class="text-center py-3">        <div class="spinner-border text-primary" style="width:2rem; height:2rem;"></div>        <small class="d-block mt-2">{{ \'general.loading\' | translate }}</small>      </div>      <!-- Error state -->      <div *ngIf="contextError && !isLoadingContext" class="alert alert-danger d-flex align-items-center">        <i class="bi bi-exclamation-triangle-fill me-2"></i>        <div>{{ contextError }}</div>      </div>      <!-- Context data display -->      <div *ngIf="!isLoadingContext && !contextError && bankContext" class="context-info">        <div class="row">          <div class="col-md-6">            <div class="info-card p-3 border rounded">              <div class="d-flex align-items-center mb-2">                <i class="bi bi-bank2 text-primary me-2"></i>                <strong>{{ \'banks.details.bank_code\' | translate }}</strong>              </div>              <p class="mb-0 text-muted">{{ bankContext.bankCode }}</p>            </div>          </div>          <div class="col-md-6">            <div class="info-card p-3 border rounded">              <div class="d-flex align-items-center mb-2">                <i class="bi bi-info-circle text-primary me-2"></i>                <strong>{{ \'dashboard.context.description\' | translate }}</strong>              </div>              <p class="mb-0 text-muted">{{ bankContext.description }}</p>            </div>          </div>        </div>      </div>      <!-- No data state -->      <div *ngIf="!isLoadingContext && !contextError && bankContext === null && contextFetched"            class="text-center py-4 text-muted">        <i class="bi bi-info-circle fs-2 mb-2"></i>        <p>{{ \'dashboard.context.noDataSubtext\' | translate }}</p>      </div>    </div><!-- Transactions section --><div *ngIf="selectedBankCode" class="transactions-section bg-white rounded-4 shadow-sm p-4 mb-4">  <div class="d-flex align-items-center justify-content-between mb-3">    <h3 class="fw-semibold mb-0">{{ \'dashboard.transactions.title\' | translate }}</h3>    <small class="text-muted" *ngIf="transactions?.length">      {{ \'dashboard.transactions.total\' | translate }}:      <strong>{{ transactions[0].totalTransaction }}</strong>    </small>    <div class="input-group date-input-group" style="max-width: 200px;">      <span class="input-group-text"><i class="bi bi-calendar3"></i></span>      <input        type="date"        class="form-control"        [(ngModel)]="selectedTransactionDate"        (ngModelChange)="onDateChange($event)"        aria-label="Transaction date"      />    </div>  </div>  <div *ngIf="!selectedTransactionDate && !isLoadingTransactions" class="text-center py-3 text-muted">    <p>{{ \'dashboard.transactions.selectDate\' | translate }}</p>  </div>  <div *ngIf="isLoadingTransactions" class="text-center py-3">    <div class="spinner-border text-primary" style="width:2rem; height:2rem;"></div>    <small class="d-block mt-2">{{ \'general.loading\' | translate }}</small>  </div>  <div *ngIf="transactionsError && !isLoadingTransactions" class="alert alert-danger">    {{ transactionsError }}  </div>  <div *ngIf="!isLoadingTransactions && !transactionsError && transactions.length > 0" class="chart-container" style="height: 300px;">    <canvas      #transactionPieChart baseChart      [data]="transactionChartData"      [options]="transactionChartOptions"      [type]="\'pie\'">    </canvas>  </div>  <div *ngIf="!isLoadingTransactions && !transactionsError && transactions.length === 0 && selectedTransactionDate"        class="text-center py-5 text-muted">    <i class="bi bi-receipt-cutoff fs-2 mb-2"></i>    <p>{{ \'dashboard.transactions.empty\' | translate }}</p>  </div></div><!-- Architecture Nodes: appears only when a bank is chosen --><div *ngIf="selectedBankCode" class="arch-nodes-section bg-white rounded-4 shadow-sm p-4 mb-4">  <h3 class="mb-3 fw-semibold">    {{ \'dashboard.architecture.title\' | translate }}  </h3>  <!-- ─── 1) Entire‐section Loading Spinner ─── -->  <div *ngIf="isLoadingNodes" class="text-center py-3">    <div class="spinner-border text-primary" style="width:2rem; height:2rem;"></div>    <small class="d-block mt-2">{{ \'general.loading\' | translate }}</small>  </div>  <!-- ─── 2) Once loading completes, show two columns ─── -->  <div *ngIf="!isLoadingNodes" class="row gx-4 gy-3">    <!-- ─── Column for Node 1 ─── -->    <div class="col-12 col-md-6">      <h5>{{ \'dashboard.architecture.node1\' | translate }}</h5>      <!-- If archNode1 has data, render the diagram container -->      <ng-container *ngIf="archNode1.length > 0; else showNode1Error">        <div class="diagram-container" style="height: 300px;">          <div id="networkDiagram1" style="width: 100%; height: 100%;"></div>        </div>      </ng-container>      <!-- If Node 1 failed (node1Error), show its own error alert -->      <ng-template #showNode1Error>        <div class="alert alert-danger">          {{ node1Error || (\'dashboard.architecture.noDataFound\' | translate) }}        </div>      </ng-template>    </div>    <!-- ─── Column for Node 2 ─── -->    <div class="col-12 col-md-6">      <h5>{{ \'dashboard.architecture.node2\' | translate }}</h5>      <!-- If archNode2 has data, render the diagram container -->      <ng-container *ngIf="archNode2.length > 0; else showNode2Error">        <div class="diagram-container" style="height: 300px;">          <div id="networkDiagram2" style="width: 100%; height: 100%;"></div>        </div>      </ng-container>      <!-- If Node 2 failed (node2Error), show its own error alert -->      <ng-template #showNode2Error>        <div class="alert alert-danger">          {{ node2Error || (\'dashboard.architecture.noDataFound\' | translate) }}        </div>      </ng-template>    </div>  </div></div>    <!-- Patches table -->    <div class="patches-section bg-white rounded-4 shadow-sm p-4 mt-4 mb-4">      <h3 class="mb-3 fw-semibold">{{ \'dashboard.patches.title\' | translate }}</h3>      <div *ngIf="isLoadingPatches" class="text-center py-5">        <div class="spinner-border text-primary" style="width:3rem; height:3rem;">          <span class="visually-hidden">{{ \'general.loading\' | translate }}</span>        </div>        <p class="mt-3 mb-0">{{ \'general.loadingPatches\' | translate }}</p>      </div>      <div *ngIf="patchesError && !isLoadingPatches" class="alert alert-danger d-flex align-items-center">        <i class="bi bi-exclamation-triangle-fill me-2"></i>        <div>{{ patchesError }}</div>      </div>      <div *ngIf="!isLoadingPatches && !patchesError && patches.length > 0" class="table-responsive">        <table class="table table-hover align-middle">          <thead class="table-light">            <tr>              <th>{{ \'dashboard.patches.header.id\' | translate }}</th>              <th>{{ \'dashboard.patches.header.description\' | translate }}</th>              <th>{{ \'dashboard.patches.header.bankCode\' | translate }}</th>              <th>{{ \'dashboard.patches.header.owner\' | translate }}</th>              <th>{{ \'dashboard.patches.header.creationDate\' | translate }}</th>            </tr>          </thead>          <tbody>            <tr *ngFor="let patch of patches">              <td>{{ patch.idPatch }}</td>              <td>{{ patch.description }}</td>              <td>{{ patch.codeBancaire }}</td>              <td>{{ patch.proprietaire }}</td>              <td>{{ patch.dateCreate | date:\'mediumDate\' }}</td>            </tr>          </tbody>        </table>      </div>      <div *ngIf="!isLoadingPatches && !patchesError && patches.length === 0" class="text-center py-5 text-muted">        <i class="bi bi-inbox fs-1 mb-3"></i>        <h5>{{ \'dashboard.patches.noDataFound\' | translate }}</h5>        <p>{{ \'dashboard.patches.noDataSubtext\' | translate }}</p>      </div>    </div>    <router-outlet></router-outlet>  </div></div></div>'
+    var COMPONENTS = [{'name': 'ActivityComponent', 'selector': 'app-activity'},{'name': 'AddBankStep1Component', 'selector': 'app-add-bank-step1'},{'name': 'AddBankStep2Component', 'selector': 'app-add-bank-step2'},{'name': 'AddBankStep3Component', 'selector': 'app-add-bank-step3'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BackOfficeActivityComponent', 'selector': 'app-back-office-activity'},{'name': 'BanksDetailsComponent', 'selector': 'app-banks-details'},{'name': 'BanksListComponent', 'selector': 'app-banks-list'},{'name': 'ConfirmDialogComponent', 'selector': 'app-confirm-dialog'},{'name': 'DashboardsListComponent', 'selector': 'app-dashboards-list'},{'name': 'EditBankComponent', 'selector': 'app-edit-bank'},{'name': 'HomeScreenComponent', 'selector': 'app-home-screen'},{'name': 'LoadingDialogComponent', 'selector': 'app-loading-dialog'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'SelectLimitsDialogComponent', 'selector': 'app-select-limits-dialog'},{'name': 'SideBarTestComponent', 'selector': 'app-progress-steps-sidebar'},{'name': 'SuccessDialogComponent', 'selector': 'app-success-dialog'},{'name': 'TextDialogComponent', 'selector': 'app-text-dialog'},{'name': 'TraceBatchModalComponent', 'selector': 'app-trace-batch-modal'}];
+    var DIRECTIVES = [{'name': 'TrancheRangeValidatorDirective', 'selector': '[appTrancheRangeValidator]'}];
+    var ACTUAL_COMPONENT = {'name': 'DashboardsListComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'DashboardsListComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

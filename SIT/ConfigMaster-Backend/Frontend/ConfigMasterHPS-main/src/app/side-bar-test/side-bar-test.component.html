@@ -1,0 +1,63 @@
+<div class="sidebar-wrapper" [class.show]="isSidebarVisible">
+  <div class="steps-container">
+    <!-- Active step title displayed at the top -->
+    <div
+  class="active-step-title"
+  [class.completed]="isStepCompleted(steps[currentStep - 1].step)"
+>
+  Step {{ currentStep }}: {{ steps[currentStep - 1].titleKey | translate }}
+</div>
+    <div class="steps-wrapper">
+      <div
+        *ngFor="let stepInfo of steps"
+        class="step"
+        [class.active]="isStepActive(stepInfo.step)"
+        [class.completed]="isStepCompleted(stepInfo.step)"
+      >
+        <div class="step-inner">
+          <div class="step-circle">
+            <i class="bi {{ stepInfo.icon }}"></i>
+            <i
+              *ngIf="isStepCompleted(stepInfo.step)"
+              class="bi bi-check-lg completed-check"
+            ></i>
+          </div>
+          <!-- Spacer to maintain step positioning -->
+          <div class="step-title-spacer"></div>
+        </div>
+      </div>
+    </div>
+    <div class="sidebar-navigation">
+      <ng-container *ngIf="currentStep === 1">
+        <button
+          class="btn btn-primary"
+          (click)="onNextStep()"
+          [disabled]="nextDisabled"
+        >
+          Next
+        </button>
+      </ng-container>
+      <ng-container *ngIf="currentStep > 1 && currentStep < steps.length">
+        <button class="btn btn-secondary" (click)="onPreviousStep()">
+          Previous
+        </button>
+        <button
+          class="btn btn-primary"
+          (click)="onNextStep()"
+          [disabled]="nextDisabled"
+        >
+          Next
+        </button>
+      </ng-container>
+      <ng-container *ngIf="currentStep === steps.length">
+        <button class="btn btn-secondary" (click)="onPreviousStep()" >
+          Previous
+        </button>
+        <button class="btn btn-success" (click)="onSubmit()" [disabled]="nextDisabled">
+          <span *ngIf="nextDisabled" class="spinner-border spinner-border-sm me-1" role="status"></span>
+          Submit
+        </button>
+      </ng-container>
+    </div>
+  </div>
+</div>
