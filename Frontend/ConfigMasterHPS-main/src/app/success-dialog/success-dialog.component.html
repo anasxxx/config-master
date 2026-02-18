@@ -1,0 +1,15 @@
+<div class="success-dialog-container">
+  <div class="success-dialog">
+    <div class="success-icon">
+      <mat-icon>check_circle</mat-icon>
+    </div>
+    <h2 class="success-title">Success!</h2>
+    <p class="success-message">{{ data.message }}</p>
+    <p *ngIf="data.elapsed" class="text-muted">
+      Durée écoulée : {{ data.elapsed }}
+    </p>
+    <div class="action-buttons">
+      <button class="ok-button" mat-button (click)="onOk()">OK</button>
+    </div>
+  </div>
+</div>

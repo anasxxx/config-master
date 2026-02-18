@@ -1,0 +1,391 @@
+<div class="container-fluid h-100">
+  <div class="row g-0 h-100">
+    <div class="col-md-3 progress-sidebar">
+      <app-progress-steps-sidebar
+        [currentStep]="currentStep"
+        [isSidebarVisible]="true"
+        [nextDisabled]="!isFormValid"
+        (nextStepClicked)="handleNextStep()"
+      ></app-progress-steps-sidebar>
+    </div>
+
+    <div class="col-md-9 main-content">
+      <div class="p-4">
+        <h4 class="mb-4">{{ "banks.add.step1.header" | translate }}</h4>
+
+        <div class="row g-3 mb-4">
+          <div class="col-md-6">
+            <label class="form-label">
+              {{ "banks.add.step1.bankName" | translate }} <span class="text-danger"></span>
+            </label>
+            <input
+              type="text"
+              class="form-control placeholder-right"
+              [(ngModel)]="bankData.pBankWording"
+              name="pBankWording"
+              required
+              maxlength="40"
+              placeholder="Max: 40"
+              #pBankWording="ngModel"
+            />
+            <div *ngIf="pBankWording.invalid && (pBankWording.dirty || pBankWording.touched)" class="text-danger small mt-1">
+              <div *ngIf="pBankWording.errors?.['required']">
+                {{ "validation.required" | translate : { field: ('banks.add.step1.bankName' | translate) } }}
+              </div>
+              <div *ngIf="pBankWording.errors?.['maxlength']">
+                {{ "validation.maxlength" | translate : { field: ('banks.add.step1.bankName' | translate), length: 40 } }}
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <label class="form-label">
+              {{ "banks.add.step1.country" | translate }} <span class="text-danger"></span>
+            </label>
+            <select
+              class="form-select"
+              [(ngModel)]="bankData.pCountryCode"
+              name="pCountryCode"
+              required
+              [disabled]="isLoadingCountries"
+              #pCountryCode="ngModel"
+            >
+              <option value="" disabled>
+                {{ "banks.selectCountry" | translate }}
+              </option>
+              <option
+                *ngFor="let country of countries"
+                [value]="country.countryCode"
+              >
+                {{ country.wording }} ({{ country.abrvWording }})
+              </option>
+              <option *ngIf="isLoadingCountries" disabled>
+                {{ "banks.loadingCountries" | translate }}
+              </option>
+            </select>
+             <div *ngIf="pCountryCode.invalid && (pCountryCode.dirty || pCountryCode.touched)" class="text-danger small mt-1">
+                <div *ngIf="pCountryCode.errors?.['required']">
+                    {{ "validation.required" | translate : { field: ('banks.add.step1.country' | translate) } }}
+                </div>
+            </div>
+            <small *ngIf="bankData.pCountryCode && !pCountryCode.invalid" class="text-muted d-block mt-1"> Selected: {{ getCountryName(bankData.pCountryCode) }}
+            </small>
+          </div>
+
+          <div class="col-md-3">
+            <label class="form-label">
+              {{ "banks.add.step1.currency" | translate }} <span class="text-danger"></span>
+            </label>
+            <select
+              class="form-select"
+              [(ngModel)]="bankData.pCurrencyCode"
+              name="pCurrencyCode"
+              required
+              [disabled]="isLoadingCurrencies"
+              #pCurrencyCode="ngModel"
+            >
+              <option value="" disabled>
+                {{ "banks.selectCurrency" | translate }}
+              </option>
+              <option
+                *ngFor="let currency of currencies"
+                [value]="currency.currencyCode"
+              >
+                {{ currency.currencyName }} ({{ currency.currencyAlpha }})
+              </option>
+              <option *ngIf="isLoadingCurrencies" disabled>
+                {{ "banks.loadingCurrencies" | translate }}
+              </option>
+            </select>
+            <div *ngIf="pCurrencyCode.invalid && (pCurrencyCode.dirty || pCurrencyCode.touched)" class="text-danger small mt-1">
+                <div *ngIf="pCurrencyCode.errors?.['required']">
+                    {{ "validation.required" | translate : { field: ('banks.add.step1.currency' | translate) } }}
+                </div>
+            </div>
+            <small *ngIf="bankData.pCurrencyCode && !pCurrencyCode.invalid" class="text-muted d-block mt-1"> Selected: {{ getCurrencyName(bankData.pCurrencyCode) }}
+            </small>
+          </div>
+
+          <div class="col-md-3">
+            <label class="form-label">
+              {{ "banks.add.step1.code" | translate }} <span class="text-danger"></span>
+            </label>
+            <input
+              type="text"
+              class="form-control  placeholder-right"
+              [(ngModel)]="bankData.pBankCode"
+              name="pBankCode"
+              required
+              #pBankCode="ngModel"
+              placeholder="Max: 6"
+            />
+             <div *ngIf="pBankCode.invalid && (pBankCode.dirty || pBankCode.touched)" class="text-danger small mt-1">
+                <div *ngIf="pBankCode.errors?.['required']">
+                    {{ "validation.required" | translate : { field: ('banks.add.step1.code' | translate) } }}
+                </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">
+              {{ "banks.add.step1.resource" | translate }} 
+            </label>
+          
+            <div *ngIf="isLoadingResources" class="spinner-border spinner-border-sm" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          
+            <div *ngIf="!isLoadingResources && loadError" class="alert alert-warning alert-sm p-2">
+               {{ "banks.resources.errorLoadingResources" | translate }} </div>
+          
+            <div *ngIf="!isLoadingResources && !loadError && availableResources.length > 0" class="resource-checkbox-list border p-2 rounded" style="max-height: 150px; overflow-y: auto;">
+              <div *ngFor="let resource of availableResources" class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  [id]="'resource-' + resource.resource_id"
+                  [checked]="selectedResources[resource.resource_id]"
+                  (change)="onResourceSelectionChange(resource.resource_id, $any($event.target).checked)"
+                >
+                <label class="form-check-label" [for]="'resource-' + resource.resource_id">
+                  {{ resource.abrv_wording }}  </label>
+              </div>
+            </div>
+          
+             <div *ngIf="!isLoadingResources && !loadError && availableResources.length === 0" class="text-muted small">
+               {{ "banks.resources.noResourcesAvailable" | translate }} </div>
+
+        <ng-container *ngIf="!isDemo">
+        <div class="row g-3 mb-4">
+          <div class="col-md-12 agency-list-wrapper">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h6>{{ "banks.add.step1.agencies" | translate }} <span class="text-danger"></span></h6> <button class="btn btn-sm btn-primary" (click)="openAddModal()">
+              {{ "banks.add.step1.addAgency" | translate }}
+            </button>
+          </div>
+
+          <div class="agency-list">
+            <div class="list-group">
+              <div
+                *ngFor="let agency of agencies; let i = index"
+                class="list-group-item d-flex justify-content-between align-items-center mb-2"
+              >
+                <div class="agency-info">
+                   <h6 class="mb-1 fw-semibold">{{ agency.branchWording }}</h6>
+                   <small class="text-muted">
+                     {{ agency.cityWording }}, {{ agency.regionWording }}
+                     ({{ 'banks.add.step1.branchCode' | translate }}: {{ agency.branchCode }},
+                      {{ 'banks.add.step1.cityCode' | translate }}: {{ agency.cityCode }},
+                      {{ 'banks.add.step1.regionCode' | translate }}: {{ agency.regionCode }})
+                   </small>
+                 </div>
+                <div class="agency-actions">
+                  <button
+                    class="btn btn-sm btn-outline-primary me-2"
+                    (click)="openEditModal(agency, i)"
+                    [attr.aria-label]="'banks.add.step1.editAgency' | translate"
+                    ngbTooltip="{{ 'banks.add.step1.editAgency' | translate }}"
+                  >
+                    <i class="bi bi-pencil"></i>
+                  </button>
+                  <button
+                    class="btn btn-sm btn-outline-danger"
+                    (click)="deleteAgency(i)"
+                    [attr.aria-label]="'common.delete' | translate"
+                    ngbTooltip="{{ 'common.delete' | translate }}"
+                  >
+                    <i class="bi bi-trash"></i>
+                  </button>
+                </div>
+              </div>
+              <div *ngIf="agencies.length === 0" class="alert alert-warning text-center py-2 small">
+                  {{ "validation.NoData" | translate : { field: ('banks.add.step1.agencies' | translate) } }}
+              </div>
+
+            </div>
+          </div>
+
+          <div
+            class="modal fade"
+            [class.show]="showModal"
+            [style.display]="showModal ? 'block' : 'none'"
+          >
+            <div class="modal-dialog modal-dialog-centered agency-modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">
+                    {{
+                      isEditing
+                        ? ("banks.add.step1.editAgency" | translate)
+                        : ("banks.add.step1.addAgency" | translate)
+                    }}
+                  </h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    (click)="closeModal()"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <form #agencyForm="ngForm" (ngSubmit)="handleAgencySubmit()">
+                    <div class="field-group mb-3">
+                      <label class="form-label">
+                        {{ "banks.add.step1.branchWording" | translate }} <span class="text-danger"></span>
+                      </label>
+                      <input
+                        type="text"
+                        class="form-control main-field placeholder-right"
+                        [(ngModel)]="currentAgency.branchWording"
+                        name="branchWording"
+                        required
+                        #branchWording="ngModel"
+                        maxlength="40" placeholder="Max: 40" />
+                      <div *ngIf="branchWording.invalid && (branchWording.dirty || branchWording.touched)" class="text-danger small mt-1">
+                        <div *ngIf="branchWording.errors?.['required']">
+                          {{ "validation.required" | translate : { field: ('banks.add.step1.branchWording' | translate) } }}
+                        </div>
+                        <div *ngIf="branchWording.errors?.['maxlength']">
+                            {{ "validation.maxlength" | translate : { field: ('banks.add.step1.branchWording' | translate), length: 40 } }}
+                        </div>
+                      </div>
+                
+                      <label class="form-label small mt-2">
+                        {{ "banks.add.step1.branchCode" | translate }} <span class="text-danger"></span>
+                      </label>
+                      <input
+                        type="text"
+                        class="form-control id-field placeholder-right"
+                        [(ngModel)]="currentAgency.branchCode"
+                        name="branchCode"
+                        required
+                        #branchCode="ngModel"
+                        maxlength="6" placeholder="Max: 6" />
+                      <div *ngIf="branchCode.invalid && (branchCode.dirty || branchCode.touched)" class="text-danger small mt-1">
+                        <div *ngIf="branchCode.errors?.['required']">
+                          {{ "validation.required" | translate : { field: ('banks.add.step1.branchCode' | translate) } }}
+                        </div>
+                         <div *ngIf="branchCode.errors?.['maxlength']">
+                            {{ "validation.maxlength" | translate : { field: ('banks.add.step1.branchCode' | translate), length: 6 } }}
+                        </div>
+                      </div>
+                    </div>
+                
+                    <div class="connector-group"></div>
+                
+                    <div class="field-group mb-3">
+                      <label class="form-label">
+                        {{ "banks.add.step1.cityWording" | translate }} <span class="text-danger"></span>
+                      </label>
+                      <input
+                        type="text"
+                        class="form-control main-field placeholder-right"
+                        [(ngModel)]="currentAgency.cityWording"
+                        name="cityWording"
+                        required
+                        #cityWording="ngModel"
+                        maxlength="32" placeholder="Max: 32" />
+                      <div *ngIf="cityWording.invalid && (cityWording.dirty || cityWording.touched)" class="text-danger small mt-1">
+                        <div *ngIf="cityWording.errors?.['required']">
+                          {{ "validation.required" | translate : { field: ('banks.add.step1.cityWording' | translate) } }}
+                        </div>
+                         <div *ngIf="cityWording.errors?.['maxlength']">
+                            {{ "validation.maxlength" | translate : { field: ('banks.add.step1.cityWording' | translate), length: 32 } }}
+                        </div>
+                      </div>
+                
+                      <label class="form-label small mt-2">
+                        {{ "banks.add.step1.cityCode" | translate }} <span class="text-danger"></span>
+                      </label>
+                      <input
+                        type="text"
+                        class="form-control id-field placeholder-right"
+                        [(ngModel)]="currentAgency.cityCode"
+                        name="cityCode"
+                        required
+                        #cityCode="ngModel"
+                        maxlength="5" placeholder="Max: 5" />
+                      <div *ngIf="cityCode.invalid && (cityCode.dirty || cityCode.touched)" class="text-danger small mt-1">
+                        <div *ngIf="cityCode.errors?.['required']">
+                          {{ "validation.required" | translate : { field: ('banks.add.step1.cityCode' | translate) } }}
+                        </div>
+                        <div *ngIf="cityCode.errors?.['maxlength']">
+                            {{ "validation.maxlength" | translate : { field: ('banks.add.step1.cityCode' | translate), length: 5 } }}
+                        </div>
+                      </div>
+                    </div>
+                
+                    <div class="connector-group"></div>
+                
+                    <div class="field-group mb-3">
+                      <label class="form-label">
+                        {{ "banks.add.step1.regionWording" | translate }} <span class="text-danger"></span>
+                      </label>
+                      <input
+                        type="text"
+                        class="form-control main-field placeholder-right"
+                        [(ngModel)]="currentAgency.regionWording"
+                        name="regionWording"
+                        required
+                        #regionWording="ngModel"
+                        maxlength="30" placeholder="Max: 30" />
+                      <div *ngIf="regionWording.invalid && (regionWording.dirty || regionWording.touched)" class="text-danger small mt-1">
+                        <div *ngIf="regionWording.errors?.['required']">
+                          {{ "validation.required" | translate : { field: ('banks.add.step1.regionWording' | translate) } }}
+                        </div>
+                        <div *ngIf="regionWording.errors?.['maxlength']">
+                            {{ "validation.maxlength" | translate : { field: ('banks.add.step1.regionWording' | translate), length: 30 } }}
+                        </div>
+                      </div>
+                
+                      <label class="form-label small mt-2">
+                        {{ "banks.add.step1.regionCode" | translate }} <span class="text-danger"></span>
+                      </label>
+                      <input
+                        type="text"
+                        class="form-control id-field placeholder-right"
+                        [(ngModel)]="currentAgency.regionCode"
+                        name="regionCode"
+                        required
+                        #regionCode="ngModel"
+                        maxlength="3" placeholder="Max: 3" />
+                      <div *ngIf="regionCode.invalid && (regionCode.dirty || regionCode.touched)" class="text-danger small mt-1">
+                        <div *ngIf="regionCode.errors?.['required']">
+                          {{ "validation.required" | translate : { field: ('banks.add.step1.regionCode' | translate) } }}
+                        </div>
+                        <div *ngIf="regionCode.errors?.['maxlength']">
+                            {{ "validation.maxlength" | translate : { field: ('banks.add.step1.regionCode' | translate), length: 3 } }}
+                        </div>
+                      </div>
+                </div>
+
+                    <div class="modal-footer mt-4">
+                      <button
+                        type="button"
+                        class="btn btn-secondary"
+                        (click)="closeModal()"
+                      >
+                        {{ "banks.add.cancel" | translate }}
+                      </button>
+                      <button
+                        type="submit"
+                        class="btn btn-primary"
+                        [disabled]="!agencyForm.form.valid" >
+                        {{
+                          isEditing
+                            ? ("banks.add.update" | translate)
+                            : ("banks.add.save" | translate)
+                        }}
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="modal-backdrop fade"
+            [class.show]="showModal"
+            [style.display]="showModal ? 'block' : 'none'"
+          ></div>
+        </div> </div> </ng-container></div> </div> </div> 

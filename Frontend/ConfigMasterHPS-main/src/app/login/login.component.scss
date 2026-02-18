@@ -1,0 +1,162 @@
+.login-container {
+  max-width: 1100px;
+  width: 100%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.banking-info-panel {
+  background: linear-gradient(135deg, #1976d2 0%, #0d47a1 100%);
+  border-radius: 16px 0 0 16px;
+
+  .logo-area {
+    img {
+      max-height: 40px;
+      height: auto;
+      width: auto;
+    }
+  }
+
+  .feature-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.login-form-panel {
+  background-color: #fff;
+  border-radius: 0 16px 16px 0;
+
+  .card {
+    height: 100%;
+  }
+
+  .form-control,
+  .input-group-text,
+  .btn {
+    border-radius: 8px;
+  }
+
+  .form-control:focus {
+    box-shadow: none;
+    border-color: #1976d2;
+  }
+
+  .form-label {
+    font-weight: 500;
+  }
+
+  .btn-primary {
+    background: linear-gradient(to right, #1976d2, #1565c0);
+    border: none;
+
+    &:hover {
+      background: linear-gradient(to right, #1565c0, #0d47a1);
+    }
+  }
+}
+
+// Make login form responsive
+@media (max-width: 991.98px) {
+  .login-container {
+    max-width: 500px;
+    margin: 0 15px;
+  }
+
+  .login-form-panel {
+    border-radius: 16px;
+  }
+}
+
+// Custom styling for input groups with icons
+.input-group-text {
+  color: #6c757d;
+}
+
+// Button hover effects
+.btn-outline-secondary {
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #f8f9fa;
+    color: #1976d2;
+    border-color: #1976d2;
+  }
+}
+
+// Base styling for the login container
+.login-container {
+  max-width: 1100px;
+  width: 95%;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+// Styling for the info panel
+.banking-info-panel {
+  background: linear-gradient(135deg, #1e88e5, #1565c0);
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+}
+
+// Styling for the login form panel
+.login-form-panel {
+  background-color: #ffffff;
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
+
+// Button group styling
+.btn-group {
+  width: 100%;
+  .btn {
+    flex: 1;
+    font-weight: 500;
+    border-width: 2px;
+    
+    &.active {
+      background-color: #1565c0;
+      color: white;
+      border-color: #1565c0;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    &:hover:not(.active) {
+      background-color: rgba(21, 101, 192, 0.08);
+    }
+
+    i {
+      font-size: 1.1rem;
+    }
+  }
+}
+
+// Feature icons styling
+.feature-icon {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  i {
+    font-size: 1.2rem;
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 991.98px) {
+  .login-container {
+    width: 100%;
+    max-width: 500px;
+  }
+}

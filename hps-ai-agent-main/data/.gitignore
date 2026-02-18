@@ -1,0 +1,6 @@
+.venv/
+__pycache__/
+*.pyc
+data/output/
+data/output/*.xml
+secret_vault.json

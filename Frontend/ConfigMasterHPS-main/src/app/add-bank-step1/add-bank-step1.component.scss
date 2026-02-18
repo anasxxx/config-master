@@ -1,0 +1,277 @@
+.steps-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 16px;
+    top: 24px;
+    bottom: 24px;
+    width: 2px;
+    background-color: #dee2e6;
+    z-index: 0;
+  }
+}
+
+.step {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+
+  &-circle {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #dee2e6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+  }
+
+  &-content {
+    flex: 1;
+  }
+
+  &.active {
+    .step-circle {
+      background-color: #0d6efd;
+      color: white;
+    }
+  }
+}
+
+.main-content {
+  padding: 2rem;
+}
+
+.agency-list {
+  border: 1px solid #dee2e6;
+  border-radius: 0.5rem;
+  padding: 1rem;
+
+  .form-check {
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid #eee;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}
+
+.btn-outline-primary.active {
+  background-color: #0d6efd;
+  color: white;
+}
+
+// add-bank-step1.component.scss
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+.container-fluid {
+  flex: 1;
+  display: flex;
+}
+
+.row {
+  flex: 1;
+  min-height: 0; // Fix for flexbox overflow
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  //overflow: hidden;
+  height: 100%;
+  > div {
+    flex: 1;
+    overflow-y: auto; // Make content scrollable
+    padding: 2rem;
+    padding-bottom: 100px; // Space for the button
+  }
+}
+
+// Navigation button container
+.d-flex.justify-content-end {
+  position: sticky;
+  bottom: 0;
+  background: white;
+  padding: 1.5rem;
+  border-top: 1px solid #dee2e6;
+  margin-top: auto; // Push to bottom
+  z-index: 1;
+}
+/* New styles for the agency modal field groups */
+.field-group {
+  position: relative;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem; // space for the line
+
+  /* Subtle line linking the fields */
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(50% + 0.5rem); // adjust based on desired vertical position
+    height: 1px;
+    background-color: #dee2e6;
+    z-index: -1;
+  }
+}
+
+/* ID field styling: smaller font and padding */
+.id-field {
+  font-size: 0.85rem;
+  padding: 0.375rem 0.75rem; // slightly smaller than default if desired
+}
+
+/* Field Group Container */
+.field-group {
+  margin-bottom: 1.5rem;
+}
+
+/* Connector line between groups */
+.connector-group {
+  height: 1px;
+  background-color: #dee2e6;
+  margin: 1.5rem 0; // Adjust spacing as needed
+}
+
+/* ID Field: smaller font and padding */
+.id-field {
+  font-size: 0.85rem;
+  padding: 0.375rem 0.75rem;
+}
+
+// Adjust modal size
+.agency-modal-dialog {
+  max-width: 500px; // Adjust this value as needed
+  width: 95%; // Ensures responsiveness
+
+  .modal-content {
+    max-height: 90vh; // Prevent modal from exceeding viewport height
+    overflow-y: auto; // Enable scrolling if content is too long
+  }
+}
+
+// Make form more compact
+.modal-body {
+  .field-group {
+    margin-bottom: 1rem;
+
+    &::after {
+      top: calc(50% + 0.3rem);
+    }
+  }
+
+  .connector-group {
+    margin: 1rem 0;
+  }
+
+  .form-label {
+    margin-bottom: 0.25rem;
+  }
+
+  .modal-footer {
+    padding-top: 1rem;
+  }
+}
+
+// Animations
+@keyframes pulse-glow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(13, 110, 253, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 12px rgba(13, 110, 253, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(13, 110, 253, 0);
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .progress-sidebar {
+    .step3-nav .btn-success {
+      flex: 1;
+    }
+  }
+}
+
+.progress-sidebar {
+  padding: 0; // Remove padding if needed
+  background: transparent; // Ensure background is transparent
+}
+
+/* add-bank-step1.component.scss */
+
+/* Class to align placeholder text to the right */
+.placeholder-right::placeholder { /* Standard */
+  text-align: right;
+  padding-right: 0.5rem;
+  opacity: 0.7;
+}
+
+.placeholder-right::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+  text-align: right;
+  padding-right: 0.5rem; /* Uncommented */
+  opacity: 0.7; /* Uncommented */
+}
+
+.placeholder-right:-moz-placeholder { /* Firefox 4-18 (older) */
+  text-align: right;
+  opacity: 1; /* Keep this line for older Firefox */
+  padding-right: 0.5rem; /* Uncommented */
+  opacity: 0.7; /* Uncommented */
+}
+
+.placeholder-right::-moz-placeholder { /* Firefox 19+ */
+  text-align: right;
+  opacity: 1; /* Keep this line for Firefox */
+  padding-right: 0.5rem; /* Uncommented */
+  opacity: 0.7; /* Uncommented */
+}
+
+.placeholder-right:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  text-align: right;
+  padding-right: 0.5rem; /* Uncommented */
+  opacity: 0.7; /* Uncommented */
+}
+
+.placeholder-right::-ms-input-placeholder { /* Microsoft Edge (legacy) */
+ text-align: right;
+ padding-right: 0.5rem; /* Uncommented */
+ opacity: 0.7; /* Uncommented */
+}
+
+/* Ensure typed text aligns left */
+.placeholder-right {
+  text-align: left;
+}
+
+.agency-list-wrapper {
+  padding-left: 0; /* Remove any default padding on the left */
+  margin-left: 0; /* Ensure no extra margin pushes it to the center */
+  margin-top: 2rem; /* Add more space between the resources section and the agency list */
+}
+
+.agency-list {
+  width: 100%; /* Ensure the agency list takes the full width of its container */
+  text-align: left; /* Align content to the left */
+}
+
+.list-group-item {
+  border: 1px solid #dee2e6; /* Optional: Ensure the list items have a consistent border */
+  border-radius: 0.25rem; /* Optional: Add slight rounding to the corners */
+}

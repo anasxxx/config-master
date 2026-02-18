@@ -1,0 +1,691 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.container-fluid {
+  height: 100%; // Ensure container takes full height
+  display: flex;
+  flex-direction: column;
+}
+.row {
+  flex: 1; // Allow row to expand
+  min-height: 0;
+}
+
+/* step‑2.component.scss */
+.steps-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 16px;
+    top: 24px;
+    bottom: 24px;
+    width: 2px;
+    background-color: #dee2e6;
+    z-index: 0;
+  }
+}
+
+.step {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+
+  &-circle {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #dee2e6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+  }
+
+  &-content {
+    flex: 1;
+  }
+
+  &.active {
+    .step-circle {
+      background-color: #0d6efd;
+      color: white;
+    }
+  }
+}
+
+
+
+
+/* Progress Sidebar - Match Step 1 */
+.progress-sidebar {
+  padding: 0;
+  background: transparent; // Match Step 1
+}
+
+/* Main Content - Match Step 1 */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+ // overflow-y: auto;
+  padding: 2rem;
+  background: white;
+  min-height: 0; // Add this
+}
+
+.content-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 2rem;
+  min-height: min-content;
+}
+
+/* Keep existing card styles but add: */
+.card-stack-container {
+  margin-bottom: 2rem;
+  background: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* Adjust navigation buttons positioning */
+.sidebar-navigation {
+  position: sticky;
+  bottom: 0;
+  background: white;
+  padding: 1.5rem;
+  border-top: 1px solid #dee2e6;
+  margin-top: auto;
+  z-index: 1;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .row {
+    flex-direction: column;
+  }
+
+  .progress-sidebar {
+    flex: 0 0 auto;
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #dee2e6;
+  }
+
+  .main-content {
+    flex: 1;
+    padding: 1rem;
+  }
+}
+
+/* Card Stack */
+.card-stack-container {
+  margin-bottom: 2rem;
+}
+
+.card-stack {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  overflow-x: auto;
+  background: white;
+  border-radius: 0.5rem;
+  min-height: 100px;
+  justify-content: flex-start;
+  max-width: calc(240px * 3 + 1rem * 2); // Limit to 3 cards visible
+}
+
+.card-item {
+  flex: 0 0 240px;
+  flex-shrink: 0;
+  background: white;
+  border-radius: 0.5rem;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  &.active {
+    border-color: #0d6efd;
+    box-shadow: 0 4px 15px rgba(13, 110, 253, 0.2);
+  }
+
+  .delete-card-btn {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    padding: 2px 6px;
+    border: none;
+    background: transparent;
+    color: #dc3545;
+    opacity: 0;
+    transition: all 0.2s ease;
+    z-index: 2;
+
+    &:hover {
+      color: #b02a37;
+      transform: scale(1.1);
+    }
+  }
+
+  .card-preview {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+    position: relative;
+    margin-bottom: 0.5rem;
+  }
+
+  &:hover {
+    .card-skin-image {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+  }
+
+  &.active {
+    .card-skin-image {
+      border: 2px solid rgba(13, 110, 253, 0.3);
+    }
+  }
+
+  &:hover .delete-card-btn,
+  &.active .delete-card-btn {
+    opacity: 1;
+  }
+
+  .hint-icon {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    color: #0d6efd;
+    font-size: 0.8rem;
+  }
+
+  .card-icon {
+    font-size: 2rem;
+    color: #0d6efd;
+  }
+}
+
+// Add transition to image
+.card-skin-image {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0.9;
+}
+
+.add-card-btn {
+  flex: 0 0 120px;
+  height: 120px;
+  background: #0d6efd; /* Blue when enabled */
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+
+  /* Enabled state with glowing effect */
+  &:not(:disabled) {
+    animation: pulse-glow 2s infinite; /* Glowing effect */
+  }
+
+  /* Hover effects only when not disabled */
+  &:hover:not(:disabled) {
+    background: #0b5ed7; /* Darker blue on hover */
+    transform: translateY(-2px); /* Slight lift */
+    box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3); /* Shadow on hover */
+  }
+
+  /* Disabled state */
+  &:disabled {
+    background: #ccc; /* Grey when disabled */
+    color: #666; /* Darker grey text */
+    cursor: not-allowed; /* Blocked cursor */
+    box-shadow: none; /* No shadow */
+    animation: none; /* No glowing effect */
+  }
+}
+
+/* Define the glowing animation */
+@keyframes pulse-glow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(13, 110, 253, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 12px rgba(13, 110, 253, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(13, 110, 253, 0);
+  }
+}
+
+/* Card Details */
+.card-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+/* New Sequential Steps Design */
+.sequential-steps {
+  margin-bottom: 1.5rem;
+  overflow-x: auto;
+
+  .sequential-track {
+    display: flex;
+    position: relative;
+    min-width: 100%;
+    padding: 0 0.5rem;
+
+    &::after {
+      content: "";
+      position: absolute;
+      height: 2px;
+      background-color: #dee2e6;
+      top: 25px;
+      left: 40px;
+      right: 40px;
+      z-index: 0;
+    }
+  }
+
+  .sequential-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    position: relative;
+    padding: 0 0.5rem;
+    flex: 1;
+    min-width: 100px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    z-index: 1;
+
+    &:hover {
+      .sequential-indicator {
+        transform: scale(1.1);
+        box-shadow: 0 2px 6px rgba(13, 110, 253, 0.2);
+      }
+    }
+
+    &.active {
+      .sequential-indicator {
+        background-color: #0d6efd;
+        border-color: #0d6efd;
+        color: white;
+        transform: scale(1.1);
+      }
+
+      .sequential-label {
+        color: #0d6efd;
+        font-weight: 600;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background-color: #0d6efd;
+        top: 25px;
+        left: 0;
+        z-index: -1;
+      }
+    }
+
+    &.completed {
+      .sequential-indicator {
+        background-color: #e7f1ff;
+        border-color: #0d6efd;
+        color: #0d6efd;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background-color: #0d6efd;
+        top: 25px;
+        left: 0;
+        z-index: -1;
+      }
+    }
+  }
+
+  .sequential-indicator {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: white;
+    border: 2px solid #dee2e6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    transition: all 0.3s ease;
+  }
+
+  .sequential-label {
+    font-size: 0.875rem;
+    text-align: center;
+    white-space: nowrap;
+    transition: color 0.3s ease;
+  }
+}
+
+/* Section Content */
+.section-content-wrapper {
+  background-color: white;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  flex: auto;
+}
+
+.section-content {
+  animation: fadeIn 0.3s ease;
+}
+
+.section-navigation {
+  display: flex;
+  margin-top: 1.5rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .sequential-steps {
+    .sequential-track {
+      padding: 0;
+    }
+
+    .sequential-item {
+      min-width: 80px;
+    }
+
+    .sequential-indicator {
+      width: 40px;
+      height: 40px;
+      font-size: 1rem;
+    }
+
+    .sequential-label {
+      font-size: 0.75rem;
+    }
+  }
+
+  .section-content-wrapper {
+    padding: 1rem;
+  }
+}
+
+/* Form Controls */
+.form-label {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.form-switch {
+  padding-left: 2.5rem;
+
+  .form-check-input {
+    width: 2.5rem;
+  }
+}
+
+// Animations
+@keyframes pulse-glow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(13, 110, 253, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 12px rgba(13, 110, 253, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(13, 110, 253, 0);
+  }
+}
+
+/* ... existing styles ... */
+
+/* From Uiverse.io by Praashoo7 */
+.flip-card {
+  background-color: transparent;
+  width: 240px;
+  height: 154px;
+  perspective: 1000px;
+  color: white;
+}
+
+.heading_8264 {
+  position: absolute;
+  letter-spacing: 0.2em;
+  font-size: 0.5em;
+  top: 2em;
+  left: 18.6em;
+}
+
+.logo {
+  position: absolute;
+  top: 6.8em;
+}
+/* Position the Mastercard logo */
+.mastercard-logo {
+  left: 9.7em; /* Moved to the left to make room for Visa logo */
+}
+
+/* Position the Visa logo */
+.visa-logo {
+  left: 12em; /* Position to the right of the Mastercard logo */
+}
+
+.chip {
+  position: absolute;
+  top: 2.3em;
+  left: 1.5em;
+}
+
+.contactless {
+  position: absolute;
+  top: 3.5em;
+  left: 12.4em;
+}
+
+.number {
+  position: absolute;
+  font-weight: bold;
+  font-size: 0.6em;
+  top: 8.3em;
+  left: 1.6em;
+}
+
+.valid_thru {
+  position: absolute;
+  font-weight: bold;
+  top: 635.8em;
+  font-size: 0.01em;
+  left: 140.3em;
+}
+
+.date_8264 {
+  position: absolute;
+  font-weight: bold;
+  font-size: 0.5em;
+  top: 13.6em;
+  left: 3.2em;
+}
+
+.name {
+  position: absolute;
+  font-weight: bold;
+  font-size: 0.5em;
+  top: 16.1em;
+  left: 2em;
+}
+
+.strip {
+  position: absolute;
+  background-color: black;
+  width: 15em;
+  height: 1.5em;
+  top: 2.4em;
+  background: repeating-linear-gradient(
+    45deg,
+    #303030,
+    #303030 10px,
+    #202020 10px,
+    #202020 20px
+  );
+}
+
+.mstrip {
+  position: absolute;
+  background-color: rgb(255, 255, 255);
+  width: 8em;
+  height: 0.8em;
+  top: 5em;
+  left: 0.8em;
+  border-radius: 2.5px;
+}
+
+.sstrip {
+  position: absolute;
+  background-color: rgb(255, 255, 255);
+  width: 4.1em;
+  height: 0.8em;
+  top: 5em;
+  left: 10em;
+  border-radius: 2.5px;
+}
+
+.code {
+  font-weight: bold;
+  text-align: center;
+  margin: 0.2em;
+  color: black;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  box-shadow: 0 8px 14px 0 rgba(0, 0, 0, 0.2);
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 1rem;
+}
+
+.flip-card-front {
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 2px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -1px 0px inset;
+  background-color: #171717;
+}
+
+.flip-card-back {
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 2px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -1px 0px inset;
+  background-color: #171717;
+  transform: rotateY(180deg);
+}
+/* Class to align placeholder text to the right */
+.placeholder-right::placeholder { /* Standard */
+  text-align: right;
+  padding-right: 0.5rem;
+  opacity: 0.7;
+}
+
+.placeholder-right::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+  text-align: right;
+  padding-right: 0.5rem; /* Uncommented */
+  opacity: 0.7; /* Uncommented */
+}
+
+.placeholder-right:-moz-placeholder { /* Firefox 4-18 (older) */
+  text-align: right;
+  opacity: 1; /* Keep this line for older Firefox */
+  padding-right: 0.5rem; /* Uncommented */
+  opacity: 0.7; /* Uncommented */
+}
+
+.placeholder-right::-moz-placeholder { /* Firefox 19+ */
+  text-align: right;
+  opacity: 1; /* Keep this line for Firefox */
+  padding-right: 0.5rem; /* Uncommented */
+  opacity: 0.7; /* Uncommented */
+}
+
+.placeholder-right:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  text-align: right;
+  padding-right: 0.5rem; /* Uncommented */
+  opacity: 0.7; /* Uncommented */
+}
+
+.placeholder-right::-ms-input-placeholder { /* Microsoft Edge (legacy) */
+ text-align: right;
+ padding-right: 0.5rem; /* Uncommented */
+ opacity: 0.7; /* Uncommented */
+}
+
+/* Ensure typed text aligns left */
+.placeholder-right {
+  text-align: left;
+}

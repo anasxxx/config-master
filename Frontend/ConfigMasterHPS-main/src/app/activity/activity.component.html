@@ -1,0 +1,170 @@
+<!-- back-office-activity.component.html -->
+<div class="sidebar-container">
+  <!-- Sidebar -->
+  <div class="sidebar" [class.expanded]="sidebarExpanded">
+    <!-- Toggle button for sidebar -->
+    <button class="sidebar-toggle" (click)="toggleSidebar()">
+      <i class="bi" [ngClass]="sidebarExpanded ? 'bi-chevron-left' : 'bi-chevron-right'"></i>
+    </button>
+
+    <div class="d-flex flex-column h-100">
+      <!-- User info -->
+      <div class="p-3 mb-3 text-center">
+        <div class="user-avatar mb-2">{{ getUserInitials() }}</div>
+        <div class="text-white" *ngIf="sidebarExpanded">{{ username }}</div>
+      </div>
+
+      <!-- Navigation -->
+      <nav class="flex-grow-1">
+        <a class="nav-item d-block" routerLink="/dashboards" routerLinkActive="active">
+          <i class="bi bi-speedometer2 me-2"></i>
+          <span class="nav-text" *ngIf="sidebarExpanded">{{ 'nav.dashboard' | translate }}</span>
+        </a>
+        <a class="nav-item d-block" routerLink="/banks" routerLinkActive="active">
+          <i class="bi bi-bank2 me-2"></i>
+          <span class="nav-text" *ngIf="sidebarExpanded">{{ 'nav.banks' | translate }}</span>
+        </a>
+
+        <!-- Activity item with toggle -->
+        <a class="nav-item d-block" routerLinkActive="active" (click)="toggleActivity()">
+          <i class="bi bi-activity me-2"></i>
+          <span class="nav-text" *ngIf="sidebarExpanded">{{ 'nav.activity' | translate }}</span>
+          <i class="bi" [ngClass]="activityExpanded ? 'bi-chevron-down' : 'bi-chevron-right'"></i>
+        </a>
+
+        <!-- Sub-items for Activity -->
+        <div *ngIf="activityExpanded" class="sub-nav">
+          <a class="nav-item d-block sub-item" routerLink="/activity" routerLinkActive="active">
+            <i class="bi bi-people me-2"></i>
+            <span class="nav-text" *ngIf="sidebarExpanded">{{ 'nav.front_office' | translate }}</span>
+          </a>
+          <a class="nav-item d-block sub-item" routerLink="/backOfficeActivity" routerLinkActive="active">
+            <i class="bi bi-briefcase me-2"></i>
+            <span class="nav-text" *ngIf="sidebarExpanded">{{ 'nav.back_office' | translate }}</span>
+          </a>
+        </div>
+      </nav>
+
+      <!-- Logout -->
+      <div class="mt-auto p-3">
+        <button class="btn btn-light w-100" (click)="logout()">
+          <i class="bi bi-box-arrow-left me-2"></i>
+          <span *ngIf="sidebarExpanded">{{ 'nav.logout' | translate }}</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content flex-grow-1">
+    <div class="container-fluid h-100">
+      <!-- Header -->
+      <div class="row mb-4">
+        <div class="col-12">
+          <h2 class="text-center page-title">{{ 'campagne.title' | translate }}</h2>
+        </div>
+      </div>
+
+      <!-- Work in Progress Indicator -->
+      <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+          <div class="work-in-progress-card">
+            <div class="card shadow-lg border-0">
+              <div class="card-body text-center p-5">
+                <!-- Gearbox from Uiverse.io -->
+                <div class="gearbox mb-4">
+                  <div class="overlay"></div>
+                  <div class="gear one">
+                    <div class="gear-inner">
+                      <div class="bar"></div>
+                      <div class="bar"></div>
+                      <div class="bar"></div>
+                    </div>
+                  </div>
+                  <div class="gear two">
+                    <div class="gear-inner">
+                      <div class="bar"></div>
+                      <div class="bar"></div>
+                      <div class="bar"></div>
+                    </div>
+                  </div>
+                  <div class="gear three">
+                    <div class="gear-inner">
+                      <div class="bar"></div>
+                      <div class="bar"></div>
+                      <div class="bar"></div>
+                    </div>
+                  </div>
+                  <div class="gear four large">
+                    <div class="gear-inner">
+                      <div class="bar"></div>
+                      <div class="bar"></div>
+                      <div class="bar"></div>
+                      <div class="bar"></div>
+                      <div class="bar"></div>
+                      <div class="bar"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Main Message -->
+                <h3 class="wip-title mb-3">
+                  <i class="bi bi-exclamation-triangle-fill text-warning me-2"></i>
+                  {{ 'campagne.description' | translate }}
+                </h3>
+
+                <p class="wip-description mb-4">
+                  {{ 'campagne.description' | translate }}
+                </p>
+
+                <!-- Progress Bar -->
+                <div class="progress mb-4" style="height: 8px;">
+                  <div
+                    class="progress-bar progress-bar-striped progress-bar-animated bg-info"
+                    role="progressbar"
+                    style="width: 75%;"
+                    aria-valuenow="75"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  >
+                  </div>
+                </div>
+
+                <!-- Status Badge -->
+                <div class="mb-4">
+                  <span class="badge bg-info fs-6 px-3 py-2">
+                    <i class="bi bi-clock me-1"></i>
+                    COMING SOON 
+                  </span>
+                </div>
+
+                <!-- Additional Info -->
+                <div class="alert alert-light border-0" role="alert">
+                  <i class="bi bi-info-circle me-2"></i>
+                  <small class="text-muted">
+                    EXPECTED : Q2 2025
+                    <a href="#" class="text-decoration-none">
+                      GET NOTIFIED WHEN AVAILABLE
+                    </a>
+                  </small>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="d-flex gap-3 justify-content-center mt-4">
+                  <button class="btn btn-outline-primary">
+                    <i class="bi bi-arrow-left me-2"></i>
+                    {{ 'campagne.backToDashboard' | translate }}
+                  </button>
+                  <button class="btn btn-primary">
+                    <i class="bi bi-envelope me-2"></i>
+                    {{ 'campagne.contactSupport' | translate }}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>  
+    </div>
+  </div>
+</div>
