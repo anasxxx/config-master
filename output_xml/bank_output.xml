@@ -1,0 +1,2993 @@
+<?xml version="1.0" ?>
+<configuration>
+  <json_parameters>
+    
+  
+    <meta>
+      
+    
+      <greeted>True</greeted>
+      
+    
+      <state>chatting</state>
+      
+    
+      <intent>CREATE_BANK</intent>
+      
+    
+      <started_questions>True</started_questions>
+      
+  
+    </meta>
+    
+  
+    <bank>
+      
+    
+      <name>anas</name>
+      
+    
+      <country>MA</country>
+      
+    
+      <currency>EUR</currency>
+      
+    
+      <bank_code>ANS</bank_code>
+      
+    
+      <resources>
+        
+      
+        <item>VISA_SMS</item>
+        
+    
+      </resources>
+      
+    
+      <agencies>
+        
+      
+        <item>
+          
+        
+          <agency_name>MAIN AGENCY</agency_name>
+          
+        
+          <agency_code>001</agency_code>
+          
+        
+          <city>CASABLANCA</city>
+          
+        
+          <city_code>01</city_code>
+          
+        
+          <region>CASABLANCA-SETTAT</region>
+          
+        
+          <region_code>CS1</region_code>
+          
+      
+        </item>
+        
+    
+      </agencies>
+      
+  
+    </bank>
+    
+  
+    <cards>
+      
+    
+      <item>
+        
+      
+        <card_info>
+          
+        
+          <bin>453210</bin>
+          
+        
+          <plastic_type>001</plastic_type>
+          
+        
+          <card_description>VISA CLASSIC</card_description>
+          
+        
+          <product_type>001</product_type>
+          
+        
+          <product_code>VC001</product_code>
+          
+        
+          <pvk_index>1</pvk_index>
+          
+        
+          <service_code>101</service_code>
+          
+        
+          <network>VISA</network>
+          
+        
+          <expiration>3</expiration>
+          
+        
+          <renewal_option>Y</renewal_option>
+          
+        
+          <pre_expiration>1</pre_expiration>
+          
+      
+        </card_info>
+        
+      
+        <card_range>
+          
+        
+          <start_range>4532100000000000</start_range>
+          
+        
+          <end_range>4532109999999999</end_range>
+          
+      
+        </card_range>
+        
+      
+        <fees>
+          
+        
+          <fee_description>STANDARD FEES</fee_description>
+          
+        
+          <billing_event>ANNUAL</billing_event>
+          
+        
+          <grace_period>30</grace_period>
+          
+        
+          <billing_period>12</billing_period>
+          
+        
+          <registration_fee>50.00</registration_fee>
+          
+        
+          <periodic_fee>100.00</periodic_fee>
+          
+        
+          <replacement_fee>25.00</replacement_fee>
+          
+        
+          <pin_recalculation_fee>10.00</pin_recalculation_fee>
+          
+      
+        </fees>
+        
+      
+        <services>
+          
+        
+          <enabled>
+            
+          
+            <item>Retrait</item>
+            
+          
+            <item>Achats</item>
+            
+          
+            <item>E-commerce</item>
+            
+          
+            <item>Consultation Solde</item>
+            
+          
+            <item>Changement PIN</item>
+            
+        
+          </enabled>
+          
+      
+        </services>
+        
+      
+        <limits>
+          
+        
+          <selected_limit_types>
+            
+          
+            <item>Retrait</item>
+            
+          
+            <item>Purchase</item>
+            
+        
+          </selected_limit_types>
+          
+        
+          <by_type>
+            
+          
+            <DEFAULT>
+              
+            
+              <domestic>
+                
+              
+                <daily_amount>5000.00</daily_amount>
+                
+              
+                <daily_count>5</daily_count>
+                
+              
+                <weekly_amount>20000.00</weekly_amount>
+                
+              
+                <weekly_count>20</weekly_count>
+                
+              
+                <monthly_amount>50000.00</monthly_amount>
+                
+              
+                <monthly_count>50</monthly_count>
+                
+            
+              </domestic>
+              
+            
+              <international>
+                
+              
+                <daily_amount>3000.00</daily_amount>
+                
+              
+                <daily_count>3</daily_count>
+                
+              
+                <weekly_amount>10000.00</weekly_amount>
+                
+              
+                <weekly_count>10</weekly_count>
+                
+              
+                <monthly_amount>30000.00</monthly_amount>
+                
+              
+                <monthly_count>30</monthly_count>
+                
+            
+              </international>
+              
+            
+              <total>
+                
+              
+                <daily_amount>8000.00</daily_amount>
+                
+              
+                <daily_count>8</daily_count>
+                
+              
+                <weekly_amount>30000.00</weekly_amount>
+                
+              
+                <weekly_count>30</weekly_count>
+                
+              
+                <monthly_amount>80000.00</monthly_amount>
+                
+              
+                <monthly_count>80</monthly_count>
+                
+            
+              </total>
+              
+            
+              <per_transaction>
+                
+              
+                <min_amount>10.00</min_amount>
+                
+              
+                <max_amount>2000.00</max_amount>
+                
+            
+              </per_transaction>
+              
+          
+            </DEFAULT>
+            
+        
+          </by_type>
+          
+      
+        </limits>
+        
+    
+      </item>
+      
+  
+    </cards>
+    
+  
+    <options>
+      
+    
+      <resources_examples>
+        
+      
+        <item>MCD_MDS</item>
+        
+      
+        <item>MCD_CIS</item>
+        
+      
+        <item>UPI</item>
+        
+      
+        <item>HOST_BANK</item>
+        
+      
+        <item>SID</item>
+        
+      
+        <item>VISA_BASE1</item>
+        
+      
+        <item>VISA_SMS</item>
+        
+    
+      </resources_examples>
+      
+    
+      <services>
+        
+      
+        <item>Retrait</item>
+        
+      
+        <item>Cash Advance</item>
+        
+      
+        <item>Transferts</item>
+        
+      
+        <item>Consultation Solde</item>
+        
+      
+        <item>Changement PIN</item>
+        
+      
+        <item>Envoi d'argent</item>
+        
+      
+        <item>Original</item>
+        
+      
+        <item>Achats</item>
+        
+      
+        <item>E-commerce</item>
+        
+      
+        <item>Quasi-Cash</item>
+        
+      
+        <item>Mini-Relevé</item>
+        
+      
+        <item>Remboursements</item>
+        
+      
+        <item>Paiement Factures</item>
+        
+      
+        <item>Authentification</item>
+        
+      
+        <item>Cashback</item>
+        
+    
+      </services>
+      
+    
+      <limit_types>
+        
+      
+        <item>Retrait</item>
+        
+      
+        <item>Purchase</item>
+        
+      
+        <item>CASH_advance</item>
+        
+      
+        <item>Quasi-cash</item>
+        
+      
+        <item>E-commerce</item>
+        
+    
+      </limit_types>
+      
+  
+    </options>
+    
+  
+    <case_id>20260218_121800_anas</case_id>
+    
+  
+    <status>
+      
+    
+      <missing_fields/>
+      
+    
+      <errors/>
+      
+    
+      <is_complete>True</is_complete>
+      
+    
+      <is_valid>True</is_valid>
+      
+  
+    </status>
+    
+  
+    <artifacts>
+      
+    
+      <xml_path/>
+      
+    
+      <pdf_path/>
+      
+  
+    </artifacts>
+    
+  
+    <hps/>
+    
+
+  </json_parameters>
+  <sql_parameters>
+    
+  
+    <parameter>
+      
+    
+      <name>v_max_ind   PLS_INTEGER :</name>
+      
+    
+      <value>0</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>v_cur_ind   PLS_INTEGER :</name>
+      
+    
+      <value>0</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>v_env_info_trace.user_name      :</name>
+      
+    
+      <value>global_vars.USER_NAME</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>v_env_info_trace.module_code    :</name>
+      
+    
+      <value>global_vars.ML_ADMINISTRATION</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>v_env_info_trace.package_name   :</name>
+      
+    
+      <value>$$PLSQL_UNIT</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>v_env_info_trace.function_name  :</name>
+      
+    
+      <value>'LOAD_BANK_CONV_COM_PARAMETERS'</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>v_env_info_trace.lang           :</name>
+      
+    
+      <value>global_vars.LANG</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>v_max_ind    :</name>
+      
+    
+      <value>0</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>v_cur_ind    :</name>
+      
+    
+      <value>0</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>v_env_info_trace.user_message   :</name>
+      
+    
+      <value>NULL</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>v_count                                  PLS_INTEGER :</name>
+      
+    
+      <value>0</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>where country_code</name>
+      
+    
+      <value>p_country_code</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>IF v_count</name>
+      
+    
+      <value>'0'</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>v_region_code:</name>
+      
+    
+      <value>'001'</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>and rownum</name>
+      
+    
+      <value>'1' </value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>where region_code</name>
+      
+    
+      <value>v_region_code</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>and country_code</name>
+      
+    
+      <value>p_country_code</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>v_city_code:</name>
+      
+    
+      <value>'00001'</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,'000000000000',NULL,NULL,NULL,NULL,NULL,NULL,9,537,1237,1752,to_number('134459,74','999999D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),'SIAINT_BO',TO_DATE('2016-07-25 10:08:42', 'YYYY-MM-DD HH24:MI:SS'),'PARAM_BASELINE',TO_DATE('2016-07-25 10:08:42', 'YYYY-MM-DD HH24:MI:SS'))</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,'000000000000','00000000',NULL,NULL,NULL,NULL,NULL,351,702,852,to_number('113092,74','999999D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),'SIAINT_BO',TO_DATE('2016-07-25 10:08:42', 'YYYY-MM-DD HH24:MI:SS'),'POWERCARD',TO_DATE('2015-11-18 00:00:00', 'YYYY-MM-DD HH24:MI:SS'))</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,'702',TO_DATE('2021-06-21 00:00:00', 'YYYY-MM-DD HH24:MI:SS'),'C','A','N',2,to_number('410,82','999D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),to_number('410,82','999D99','NLS_NUMERIC_CHARACTERS ='', '''),to_number('410,82','999D99','NLS_NUMERIC_CHARACTERS ='', '''),to_number('410,82','999D99','NLS_NUMERIC_CHARACTERS ='', '''),to_number('410,82','999D99','NLS_NUMERIC_CHARACTERS ='', '''),to_number('410,82','999D99','NLS_NUMERIC_CHARACTERS ='', '''),to_number('410,82','999D99','NLS_NUMERIC_CHARACTERS ='', '''),to_number('410,82','999D99','NLS_NUMERIC_CHARACTERS ='', '''),to_number('410,82','999D99','NLS_NUMERIC_CHARACTERS ='', '''),to_number('410,82','999D99','NLS_NUMERIC_CHARACTERS ='', '''),'VilasiP',TO_DATE('2021-06-21 14:36:29', 'YYYY-MM-DD HH24:MI:SS'),'POWERCCA',TO_DATE('2021-06-21 14:38:18', 'YYYY-MM-DD HH24:MI:SS'))</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,'784',TO_DATE('2022-07-05 00:00:00', 'YYYY-MM-DD HH24:MI:SS'),'C','A','N',2,to_number('171,15','999D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),to_number('171,15','999D99','NLS_NUMERIC_CHARACTERS ='', '''),to_number('171,15','999D99','NLS_NUMERIC_CHARACTERS ='', '''),to_number('171,15','999D99','NLS_NUMERIC_CHARACTERS ='', '''),to_number('171,15','999D99','NLS_NUMERIC_CHARACTERS ='', '''),to_number('171,15','999D99','NLS_NUMERIC_CHARACTERS ='', '''),to_number('171,15','999D99','NLS_NUMERIC_CHARACTERS ='', '''),to_number('171,15','999D99','NLS_NUMERIC_CHARACTERS ='', '''),to_number('171,15','999D99','NLS_NUMERIC_CHARACTERS ='', '''),to_number('171,15','999D99','NLS_NUMERIC_CHARACTERS ='', '''),'VilasiP',TO_DATE('2022-07-05 12:19:38', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,'156',TO_DATE('2022-07-05 00:00:00', 'YYYY-MM-DD HH24:MI:SS'),'C','A','N',2,to_number('93,84','99D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),to_number('93,84','99D99','NLS_NUMERIC_CHARACTERS ='', '''),to_number('93,84','99D99','NLS_NUMERIC_CHARACTERS ='', '''),to_number('93,84','99D99','NLS_NUMERIC_CHARACTERS ='', '''),to_number('93,84','99D99','NLS_NUMERIC_CHARACTERS ='', '''),to_number('93,84','99D99','NLS_NUMERIC_CHARACTERS ='', '''),to_number('93,84','99D99','NLS_NUMERIC_CHARACTERS ='', '''),to_number('93,84','99D99','NLS_NUMERIC_CHARACTERS ='', '''),to_number('93,84','99D99','NLS_NUMERIC_CHARACTERS ='', '''),to_number('93,84','99D99','NLS_NUMERIC_CHARACTERS ='', '''),'VilasiP',TO_DATE('2022-07-05 12:18:40', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,'702',TO_DATE('2022-07-05 00:00:00', 'YYYY-MM-DD HH24:MI:SS'),'C','A','N',2,to_number('449,36','999D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),to_number('449,36','999D99','NLS_NUMERIC_CHARACTERS ='', '''),to_number('449,36','999D99','NLS_NUMERIC_CHARACTERS ='', '''),to_number('449,36','999D99','NLS_NUMERIC_CHARACTERS ='', '''),to_number('449,36','999D99','NLS_NUMERIC_CHARACTERS ='', '''),to_number('449,36','999D99','NLS_NUMERIC_CHARACTERS ='', '''),to_number('449,36','999D99','NLS_NUMERIC_CHARACTERS ='', '''),to_number('449,36','999D99','NLS_NUMERIC_CHARACTERS ='', '''),to_number('449,36','999D99','NLS_NUMERIC_CHARACTERS ='', '''),to_number('449,36','999D99','NLS_NUMERIC_CHARACTERS ='', '''),'VilasiP',TO_DATE('2022-07-05 12:20:35', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,'978',TO_DATE('2022-07-05 00:00:00', 'YYYY-MM-DD HH24:MI:SS'),'C','A','N',2,to_number('651,08','999D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),to_number('651,08','999D99','NLS_NUMERIC_CHARACTERS ='', '''),to_number('651,08','999D99','NLS_NUMERIC_CHARACTERS ='', '''),to_number('651,08','999D99','NLS_NUMERIC_CHARACTERS ='', '''),to_number('651,08','999D99','NLS_NUMERIC_CHARACTERS ='', '''),to_number('651,08','999D99','NLS_NUMERIC_CHARACTERS ='', '''),to_number('651,08','999D99','NLS_NUMERIC_CHARACTERS ='', '''),to_number('651,08','999D99','NLS_NUMERIC_CHARACTERS ='', '''),to_number('651,08','999D99','NLS_NUMERIC_CHARACTERS ='', '''),to_number('651,08','999D99','NLS_NUMERIC_CHARACTERS ='', '''),'VilasiP',TO_DATE('2022-07-05 12:21:28', 'YYYY-MM-DD HH24:MI:SS'),'POWERCCA',TO_DATE('2022-07-05 12:21:36', 'YYYY-MM-DD HH24:MI:SS'))</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,'840',TO_DATE('2022-07-05 00:00:00', 'YYYY-MM-DD HH24:MI:SS'),'C','A','N',2,to_number('628,65','999D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),to_number('628,65','999D99','NLS_NUMERIC_CHARACTERS ='', '''),to_number('628,65','999D99','NLS_NUMERIC_CHARACTERS ='', '''),to_number('628,65','999D99','NLS_NUMERIC_CHARACTERS ='', '''),to_number('628,65','999D99','NLS_NUMERIC_CHARACTERS ='', '''),to_number('628,65','999D99','NLS_NUMERIC_CHARACTERS ='', '''),to_number('628,65','999D99','NLS_NUMERIC_CHARACTERS ='', '''),to_number('628,65','999D99','NLS_NUMERIC_CHARACTERS ='', '''),to_number('628,65','999D99','NLS_NUMERIC_CHARACTERS ='', '''),to_number('628,65','999D99','NLS_NUMERIC_CHARACTERS ='', '''),'VilasiP',TO_DATE('2022-07-05 12:22:26', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,'826',TO_DATE('2022-07-05 00:00:00', 'YYYY-MM-DD HH24:MI:SS'),'C','A','N',2,to_number('758,8','999D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),to_number('758,8','999D9','NLS_NUMERIC_CHARACTERS ='', '''),to_number('758,8','999D9','NLS_NUMERIC_CHARACTERS ='', '''),to_number('758,8','999D9','NLS_NUMERIC_CHARACTERS ='', '''),to_number('758,8','999D9','NLS_NUMERIC_CHARACTERS ='', '''),to_number('758,8','999D9','NLS_NUMERIC_CHARACTERS ='', '''),to_number('758,8','999D9','NLS_NUMERIC_CHARACTERS ='', '''),to_number('758,8','999D9','NLS_NUMERIC_CHARACTERS ='', '''),to_number('758,8','999D9','NLS_NUMERIC_CHARACTERS ='', '''),to_number('758,8','999D9','NLS_NUMERIC_CHARACTERS ='', '''),'VilasiP',TO_DATE('2022-07-05 12:24:03', 'YYYY-MM-DD HH24:MI:SS'),'POWERCCA',TO_DATE('2022-07-05 12:24:08', 'YYYY-MM-DD HH24:MI:SS'))</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,to_number('9999999999,99','9999999999D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,to_number('9999999999,98','9999999999D99','NLS_NUMERIC_CHARACTERS ='', '''),NULL,NULL,to_number('9999999999,97','9999999999D99','NLS_NUMERIC_CHARACTERS ='', '''),NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,1,NULL,NULL,10,NULL,NULL,0,NULL,NULL,0,15,0,0,0,0,NULL,NULL,'BA45256',TO_DATE('2016-07-25 10:09:05', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>v_sequence_id :</name>
+      
+    
+      <value>v_sequence_id+1</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>v_sequence_id:</name>
+      
+    
+      <value>LPAD( v_sequence_id+ 1,6,'0');   INSERT INTO st_new_VISA_INTERCHANGE_PAR</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','LAC Interregional Standard','STANDARD: Standard Consumer',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'L',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'INTER',23,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,6','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','LAC Interregional Chip Fee Programs','ELECTRONIC: Full Chip Data',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'05',NULL,NULL,'0;2','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,3,'F',NULL,NULL,NULL,'5',NULL,NULL,NULL,NULL,'INTER',20,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,1','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','LAC Interregional Chip Fee Programs','ELECTRONIC: Full Chip Data',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'05',NULL,NULL,'0;2','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,3,'N',NULL,'1;2',NULL,'5',NULL,NULL,NULL,NULL,'INTER',20,NULL,NULL,'STD',NULL,'c','E',NULL,to_number('1,1','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','LAC Interregional Chip Fee Programs','ELECTRONIC: Full Chip Data',NULL,NULL,NULL,NULL,NULL,NULL,'A','05',NULL,NULL,'0;2','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,3,'L',NULL,NULL,NULL,'5',NULL,NULL,NULL,NULL,'INTER',20,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,1','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'C         ','LAC Interregional Airline Fee Programs','AIR CHIP FULL: Airline Full Chip Data',NULL,NULL,NULL,NULL,NULL,NULL,'A','05',NULL,NULL,'0;2','I','4511','I',NULL,NULL,NULL,NULL,NULL,'Y1;Y3',NULL,3,'F',NULL,NULL,NULL,'5',NULL,NULL,NULL,NULL,'INTER',20,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,1','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'C         ','LAC Interregional Airline Fee Programs','AIR CHIP FULL: Airline Full Chip Data',NULL,NULL,NULL,NULL,NULL,NULL,'A','05',NULL,NULL,'0;2','I','4511','I',NULL,NULL,NULL,NULL,NULL,'Y1;Y3',NULL,3,'N',NULL,'1;2',NULL,'5',NULL,NULL,NULL,NULL,'INTER',20,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,1','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'C         ','LAC Interregional Airline Fee Programs','AIR CHIP FULL: Airline Full Chip Data',NULL,NULL,NULL,NULL,NULL,NULL,'A','05',NULL,NULL,'0;2','I',NULL,NULL,'3000','3299','I',NULL,NULL,'Y1;Y3',NULL,3,'F',NULL,NULL,NULL,'5',NULL,NULL,NULL,NULL,'INTER',20,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,1','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'C         ','LAC Interregional Airline Fee Programs','AIR CHIP FULL: Airline Full Chip Data',NULL,NULL,NULL,NULL,NULL,NULL,'A','05',NULL,NULL,'0;2',NULL,NULL,NULL,'3000','3299','I',NULL,NULL,'Y1;Y3',NULL,3,'N',NULL,'1;2',NULL,'5',NULL,NULL,NULL,NULL,'INTER',20,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,1','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'C         ','LAC Interregional Airline Fee Programs','INTR AIRLINE: Airline Full Chip Data',NULL,NULL,NULL,NULL,NULL,NULL,'A','05',NULL,NULL,'0;2','I','4511','I',NULL,NULL,NULL,NULL,NULL,'Y1;Y3',NULL,3,'L',NULL,NULL,NULL,'5',NULL,NULL,NULL,NULL,'INTER',20,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,1','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'C         ','LAC Interregional Airline Fee Programs','INTR AIRLINE: Airline Full Chip Data',NULL,NULL,NULL,NULL,NULL,NULL,'A','05',NULL,NULL,'0;2','I',NULL,NULL,'3000','3299','I',NULL,NULL,'Y1;Y3',NULL,3,'L',NULL,NULL,NULL,'5',NULL,NULL,NULL,NULL,'INTER',20,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,1','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','LAC Interregional Chip Fee Programs','ELECTRONIC: Full Chip Data with PIN',NULL,NULL,NULL,NULL,NULL,NULL,'A','05',NULL,NULL,'0;2','E',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,3,'F',NULL,NULL,NULL,'5',NULL,NULL,NULL,NULL,'INTER',20,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,1','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','LAC Interregional Chip Fee Programs','ELECTRONIC: Full Chip Data with PIN',NULL,NULL,NULL,NULL,NULL,NULL,'A','05',NULL,NULL,'0;2','E',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,3,'N',NULL,'1;2',NULL,'5',NULL,NULL,NULL,NULL,'INTER',20,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,1','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','LAC Interregional Chip Fee Programs','ELECTRONIC: Full Chip Data with PIN',NULL,NULL,NULL,NULL,NULL,NULL,'A','05',NULL,NULL,'0;2','E',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,3,'L',NULL,NULL,NULL,'5',NULL,NULL,NULL,NULL,'INTER',20,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,1','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'C         ','LAC Interregional Airline Fee Programs','INTR AIRLINE: Airline Full Chip Data with PIN',NULL,NULL,NULL,NULL,NULL,NULL,'A','05',NULL,NULL,'0;2','E','4511','I',NULL,NULL,NULL,NULL,NULL,'Y1;Y3',NULL,3,'F',NULL,NULL,NULL,'5',NULL,NULL,NULL,NULL,'INTER',20,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,1','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'C         ','LAC Interregional Airline Fee Programs','INTR AIRLINE: Airline Full Chip Data with PIN',NULL,NULL,NULL,NULL,NULL,NULL,'A','05',NULL,NULL,'0;2','E','4511','I',NULL,NULL,NULL,NULL,NULL,'Y1;Y3',NULL,3,'N',NULL,'1;2',NULL,'5',NULL,NULL,NULL,NULL,'INTER',20,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,1','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'C         ','LAC Interregional Airline Fee Programs','INTR AIRLINE: Airline Full Chip Data with PIN',NULL,NULL,NULL,NULL,NULL,NULL,'A','05',NULL,NULL,'0;2','E',NULL,NULL,'3000','3299','I',NULL,NULL,'Y1;Y3',NULL,3,'F',NULL,NULL,NULL,'5',NULL,NULL,NULL,NULL,'INTER',20,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,1','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'C         ','LAC Interregional Airline Fee Programs','INTR AIRLINE: Airline Full Chip Data with PIN',NULL,NULL,NULL,NULL,NULL,NULL,'A','05',NULL,NULL,'0;2','E',NULL,NULL,'3000','3299','I',NULL,NULL,'Y1;Y3',NULL,3,'N',NULL,'1;2',NULL,'5',NULL,NULL,NULL,NULL,'INTER',20,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,1','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'C         ','LAC Interregional Airline Fee Programs','INTR AIRLINE: Airline Full Chip Data with PIN',NULL,NULL,NULL,NULL,NULL,NULL,'A','05',NULL,NULL,'0;2','E','4511','I',NULL,NULL,NULL,NULL,NULL,'Y1;Y3',NULL,3,'L',NULL,NULL,NULL,'5',NULL,NULL,NULL,NULL,'INTER',20,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,1','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'C         ','LAC Interregional Airline Fee Programs','INTR AIRLINE: Airline Full Chip Data with PIN',NULL,NULL,NULL,NULL,NULL,NULL,'A','05',NULL,NULL,'0;2','E',NULL,NULL,'3000','3299','I',NULL,NULL,'Y1;Y3',NULL,3,'L',NULL,NULL,NULL,'5',NULL,NULL,NULL,NULL,'INTER',20,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,1','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','LAC Interregional Standard','PREMIUM CARD: Standard Premium',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'N',NULL,NULL,NULL,'5',NULL,NULL,NULL,NULL,'INTER',24,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,8','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','LAC Interregional Standard','PREMIUM CARD: Standard Premium',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'N1',NULL,'3;4;5;6',NULL,'5',NULL,NULL,NULL,NULL,'INTER',24,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,8','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','LAC Interregional Standard','PREMIUM CARD: Standard Premium',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'C',NULL,'1',NULL,'5',NULL,NULL,NULL,NULL,'INTER',24,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,8','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','LAC Interregional Standard','PREMIUM CARD: Standard Premium',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'I',NULL,'2',NULL,'5',NULL,NULL,NULL,NULL,'INTER',24,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,8','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','LAC Interregional Standard','SPR PREMIUM CARD: Standard Super Premium',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'C',NULL,'3;4;5;6',NULL,'5',NULL,NULL,NULL,NULL,'INTER',24,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,97','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','LAC Interregional Standard','SPR PREMIUM CARD: Standard Super Premium',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'I',NULL,'3;4;5;6',NULL,'5',NULL,NULL,NULL,NULL,'INTER',24,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,97','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','LAC Interregional Standard','SPR PREMIUM CARD: Standard Super Premium',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'D',NULL,'1',NULL,'5',NULL,NULL,NULL,NULL,'INTER',24,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,97','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','TIENDAS DE DESCUENTO (GRUPO SIMAN) (Manual)','Acuerdo Local El Salvador TIENDAS DE DESCUENTO (GRUPO SIMAN)',NULL,NULL,NULL,NULL,NULL,NULL,'A','00;01',NULL,NULL,NULL,NULL,'5310','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'222','222','222','INTRA',1,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('1,88','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','TIENDAS POR DEPARTAMENTOS (Manual)','Acuerdo Local El Salvador TIENDAS POR DEPARTAMENTOS',NULL,NULL,NULL,NULL,NULL,NULL,'A','00;01',NULL,NULL,NULL,NULL,'5311','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'222','222','222','INTRA',1,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('3,75','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','TIENDA DE VARIEDADES (Manual)','Acuerdo Local El Salvador TIENDA DE VARIEDADES',NULL,NULL,NULL,NULL,NULL,NULL,'A','00;01',NULL,NULL,NULL,NULL,'5331','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'222','222','222','INTRA',1,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('2,25','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','SUPERMERCADOS (Manual)','Acuerdo Local El Salvador SUPERMERCADOS',NULL,NULL,NULL,NULL,NULL,NULL,'A','00;01',NULL,NULL,NULL,NULL,'5411','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'222','222','222','INTRA',1,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('1,5','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','AUTOMOTRICES TALLERES Y REPUESTOS (Manual)','Acuerdo Local El Salvador AUTOMOTRICES TALLERES Y REPUESTOS',NULL,NULL,NULL,NULL,NULL,NULL,'A','00;01',NULL,NULL,NULL,NULL,'5533','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'222','222','222','INTRA',1,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('4,5','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','COMIDA RAPIDA (Manual)','Acuerdo Local El Salvador COMIDA RAPIDA',NULL,NULL,NULL,NULL,NULL,NULL,'A','00;01',NULL,NULL,NULL,NULL,'5814','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'222','222','222','INTRA',1,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('2,25','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','FARMACIAS (Manual)','Acuerdo Local El Salvador FARMACIAS',NULL,NULL,NULL,NULL,NULL,NULL,'A','00;01',NULL,NULL,NULL,NULL,'5912','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'222','222','222','INTRA',1,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('4,5','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','RETIROS DE EFECTIVO (Manual)','Acuerdo Local El Salvador RETIROS DE EFECTIVO',NULL,NULL,NULL,NULL,NULL,NULL,'A','00;01',NULL,NULL,NULL,NULL,'6010','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'222','222','222','INTRA',1,NULL,NULL,'STD',NULL,'D','N',NULL,to_number('2,5','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','CLINICAS MEDICOS Y LABORATORIOS (Manual)','Acuerdo Local El Salvador CLINICAS MEDICOS Y LABORATORIOS',NULL,NULL,NULL,NULL,NULL,NULL,'A','00;01',NULL,NULL,NULL,NULL,'8011','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'222','222','222','INTRA',1,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('4,5','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','HOSPITALES (Manual)','Acuerdo Local El Salvador HOSPITALES',NULL,NULL,NULL,NULL,NULL,NULL,'A','00;01',NULL,NULL,NULL,NULL,'8062','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'222','222','222','INTRA',1,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('4,5','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'C         ','LAC Intraregional Airline Fee Programs','LAC AIRLINE:Airline',NULL,NULL,NULL,NULL,NULL,NULL,'A',NULL,NULL,NULL,'0;2','E',NULL,NULL,'3000','3299','I',NULL,NULL,'Y1;Y3',NULL,3,'F',NULL,'5',NULL,'5',NULL,NULL,NULL,NULL,'INTRA',10,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,1','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:37', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'C         ','LAC Intraregional Airline Fee Programs','LAC AIRLINE:Airline',NULL,NULL,NULL,NULL,NULL,NULL,'A',NULL,NULL,NULL,'0;2','I','4511','I',NULL,NULL,NULL,NULL,NULL,'Y1;Y3',NULL,3,'F',NULL,'5',NULL,'5',NULL,NULL,NULL,NULL,'INTRA',10,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,1','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:37', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'C         ','LAC Intraregional Airline Fee Programs','LAC AIRLINE:Airline',NULL,NULL,NULL,NULL,NULL,NULL,'A',NULL,NULL,NULL,'0;2','I',NULL,NULL,'3000','3299','I',NULL,NULL,'Y1;Y3',NULL,3,'F',NULL,'5',NULL,'5',NULL,NULL,NULL,NULL,'INTRA',10,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,1','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:37', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'C         ','LAC Intraregional Airline Fee Programs','LAC AIRLINE: Airline',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'4511','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'F',NULL,'5',NULL,'5',NULL,NULL,NULL,NULL,'INTRA',12,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,1','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:37', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'C         ','LAC Intraregional Airline Fee Programs','LAC AIRLINE: Airline',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'3000','3299','I',NULL,NULL,NULL,NULL,NULL,'F',NULL,'5',NULL,'5',NULL,NULL,NULL,NULL,'INTRA',12,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,1','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:37', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'C         ','LAC Intraregional Airline Fee Programs','LAC AIRLINE: Airline',NULL,NULL,NULL,NULL,NULL,NULL,'A',NULL,NULL,NULL,'0;2','E','4511','I',NULL,NULL,NULL,NULL,NULL,'Y1;Y3',NULL,3,'L',NULL,'5',NULL,'5',NULL,NULL,NULL,NULL,'INTRA',10,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,1','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:37', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'C         ','LAC Intraregional Airline Fee Programs','LAC AIRLINE: Airline',NULL,NULL,NULL,NULL,NULL,NULL,'A',NULL,NULL,NULL,'0;2','E',NULL,NULL,'3000','3299','I',NULL,NULL,'Y1;Y3',NULL,3,'L',NULL,'5',NULL,'5',NULL,NULL,NULL,NULL,'INTRA',10,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,1','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:37', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'C         ','LAC Intraregional Airline Fee Programs','LAC AIRLINE: Airline',NULL,NULL,NULL,NULL,NULL,NULL,'A',NULL,NULL,NULL,'0;2','I','4511','I',NULL,NULL,NULL,NULL,NULL,'Y1;Y3',NULL,3,'L',NULL,'5',NULL,'5',NULL,NULL,NULL,NULL,'INTRA',10,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,1','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:37', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'C         ','LAC Intraregional Airline Fee Programs','LAC AIRLINE: Airline',NULL,NULL,NULL,NULL,NULL,NULL,'A',NULL,NULL,NULL,'0;2','I',NULL,NULL,'3000','3299','I',NULL,NULL,'Y1;Y3',NULL,3,'L',NULL,'5',NULL,'5',NULL,NULL,NULL,NULL,'INTRA',10,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,1','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:37', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'C         ','LAC Intraregional Airline Fee Programs','LAC AIRLINE: Airline',NULL,NULL,NULL,NULL,NULL,'5','A','07;90;91',NULL,NULL,NULL,NULL,'4511','I',NULL,NULL,NULL,NULL,NULL,'Y1;Y3',NULL,3,'L',NULL,'5',NULL,'5',NULL,NULL,NULL,NULL,'INTRA',10,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,1','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:37', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'C         ','LAC Intraregional Airline Fee Programs','LAC AIRLINE: Airline',NULL,NULL,NULL,NULL,NULL,'5','A','07;90;91',NULL,NULL,NULL,NULL,NULL,NULL,'3000','3299','I',NULL,NULL,'Y1;Y3',NULL,3,'L',NULL,'5',NULL,'5',NULL,NULL,NULL,NULL,'INTRA',10,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,1','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:37', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'C         ','LAC Intraregional Airline Fee Programs','LAC AIRLINE: Airline',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'4511','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'L',NULL,'5',NULL,'5',NULL,NULL,NULL,NULL,'INTRA',12,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,1','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:37', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','Comidas Rapidas (Manual)','Acuerdo Local Honduras Comidas Rapidas',NULL,NULL,NULL,NULL,NULL,NULL,'A','00;01',NULL,NULL,NULL,NULL,'5814','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'340','340','340','INTRA',1,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('1,75','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','Dentistas y Ortodoncistas (Manual)','Acuerdo Local Honduras Dentistas y Ortodoncistas',NULL,NULL,NULL,NULL,NULL,NULL,'A','00;01',NULL,NULL,NULL,NULL,'8021','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'340','340','340','INTRA',1,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('2,45','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','Optometristas y Oftalmólogos (Manual)','Acuerdo Local Honduras Optometristas y Oftalmólogos',NULL,NULL,NULL,NULL,NULL,NULL,'A','00;01',NULL,NULL,NULL,NULL,'8042','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'340','340','340','INTRA',1,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('2,45','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','Osteologos (Manual)','Acuerdo Local Honduras Osteologos',NULL,NULL,NULL,NULL,NULL,NULL,'A','00;01',NULL,NULL,NULL,NULL,'8031','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'340','340','340','INTRA',1,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('2,45','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','Quiropracticos (Manual)','Acuerdo Local Honduras Quiropracticos',NULL,NULL,NULL,NULL,NULL,NULL,'A','00;01',NULL,NULL,NULL,NULL,'8041','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'340','340','340','INTRA',1,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('2,45','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','Quiropodista, Podologos (Manual)','Acuerdo Local Honduras Quiropodista, Podologos',NULL,NULL,NULL,NULL,NULL,NULL,'A','00;01',NULL,NULL,NULL,NULL,'8049','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'340','340','340','INTRA',1,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('2,45','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','Servicios Medicos y Practicantes (Manual)','Acuerdo Local Honduras Servicios Medicos y Practicantes',NULL,NULL,NULL,NULL,NULL,NULL,'A','00;01',NULL,NULL,NULL,NULL,'8099','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'340','340','340','INTRA',1,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('2,45','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','Tiendas por Departamentos (Manual)','Acuerdo Local Honduras Tiendas por Departamentos',NULL,NULL,NULL,NULL,NULL,NULL,'A','00;01',NULL,NULL,NULL,NULL,'5311','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'340','340','340','INTRA',1,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('2,45','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','Hoteles (Manual)','Acuerdo Local Honduras Hoteles',NULL,NULL,NULL,NULL,NULL,NULL,'A','00;01',NULL,NULL,NULL,NULL,'7011','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'340','340','340','INTRA',1,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('2,8','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','Lineas Aereas (Manual)','Acuerdo Local Honduras Lineas Aereas',NULL,NULL,NULL,NULL,NULL,NULL,'A','00;01',NULL,NULL,NULL,NULL,'4511','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'340','340','340','INTRA',1,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('2,8','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','Alquiler de Automoviles (Manual)','Acuerdo Local Honduras Alquiler de Automoviles',NULL,NULL,NULL,NULL,NULL,NULL,'A','00;01',NULL,NULL,NULL,NULL,'7512','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'340','340','340','INTRA',1,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('2,8','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','Alquiler de Camiones (Manual)','Acuerdo Local Honduras Alquiler de Camiones',NULL,NULL,NULL,NULL,NULL,NULL,'A','00;01',NULL,NULL,NULL,NULL,'7513','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'340','340','340','INTRA',1,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('2,8','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','Agencias de Viajes (Manual)','Acuerdo Local Honduras Agencias de Viajes',NULL,NULL,NULL,NULL,NULL,NULL,'A','00;01',NULL,NULL,NULL,NULL,'4722','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'340','340','340','INTRA',1,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('2,8','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','Otros (Manual)','Acuerdo Local Honduras Otros',NULL,NULL,NULL,NULL,NULL,NULL,'A','00;01',NULL,NULL,NULL,NULL,'8398;9399;9311;5541;5542;8211;8220;8241;8249;8299;5411;5814;6513;7832;6300;5972;5251;5200;5211;5912;8062;8011;8071;8021;8042;8031;8041;8049;8099;5311;7011;4511;7512;7513;4722;7995','E',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'340','340','340','INTRA',1,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('3,37','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','VETERINARIAS (Electronico)','Acuerdo Local El Salvador VETERINARIAS',NULL,NULL,NULL,NULL,NULL,NULL,'A',NULL,NULL,NULL,NULL,NULL,'742','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'222','222','222','INTRA',2,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('4,5','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','MOTELES (Electronico)','Acuerdo Local El Salvador MOTELES',NULL,NULL,NULL,NULL,NULL,NULL,'A',NULL,NULL,NULL,NULL,NULL,'3615','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'222','222','222','INTRA',2,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('4,5','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','Utilities (Electronico)','Acuerdo Local Belize Utilities',NULL,NULL,NULL,NULL,NULL,NULL,'A',NULL,NULL,NULL,NULL,NULL,'9399','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'084','084','084','INTRA',2,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('1,5','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','All Other Merchants (Electronico)','Acuerdo Local Belize All Other Merchants',NULL,NULL,NULL,NULL,NULL,NULL,'A',NULL,NULL,NULL,NULL,NULL,'5541;5411;9399','E',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'084','084','084','INTRA',2,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('1,75','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','Gas Station (Manual)','Acuerdo Local Belize Gas Station',NULL,NULL,NULL,NULL,NULL,NULL,'A','00;01',NULL,NULL,NULL,NULL,'5541','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'084','084','084','INTRA',1,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('0,75','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','Supermarkets (Manual)','Acuerdo Local Belize Supermarkets',NULL,NULL,NULL,NULL,NULL,NULL,'A','00;01',NULL,NULL,NULL,NULL,'5411','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'084','084','084','INTRA',1,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('1,6','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','Utilities (Manual)','Acuerdo Local Belize Utilities',NULL,NULL,NULL,NULL,NULL,NULL,'A','00;01',NULL,NULL,NULL,NULL,'9399','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'084','084','084','INTRA',1,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('1,5','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','All Other Merchants (Manual)','Acuerdo Local Belize All Other Merchants',NULL,NULL,NULL,NULL,NULL,NULL,'A','00;01',NULL,NULL,NULL,NULL,'5541;5411;9399','E',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'084','084','084','INTRA',1,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('1,75','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','Instituciones sin Fines de Lucro (Electronico)','Acuerdo Local Honduras Instituciones sin Fines de Lucro',NULL,NULL,NULL,NULL,NULL,NULL,'A',NULL,NULL,NULL,NULL,NULL,'8398','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'340','340','340','INTRA',2,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('0,5','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','Pagos Transacciones Gobierno (Electronico)','Acuerdo Local Honduras Pagos Transacciones Gobierno',NULL,NULL,NULL,NULL,NULL,NULL,'A',NULL,NULL,NULL,NULL,NULL,'9399','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'340','340','340','INTRA',2,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('0,5','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','Pago de Impuestos (Electronico)','Acuerdo Local Honduras Pago de Impuestos',NULL,NULL,NULL,NULL,NULL,NULL,'A',NULL,NULL,NULL,NULL,NULL,'9311','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'340','340','340','INTRA',2,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('0,5','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','Gasolineras (Electronico)','Acuerdo Local Honduras Gasolineras',NULL,NULL,NULL,NULL,NULL,NULL,'A',NULL,NULL,NULL,NULL,NULL,'5541','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'340','340','340','INTRA',2,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('0,6','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','Gasolineras- Pago en Bomba (Electronico)','Acuerdo Local Honduras Gasolineras- Pago en Bomba',NULL,NULL,NULL,NULL,NULL,NULL,'A',NULL,NULL,NULL,NULL,NULL,'5542','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'340','340','340','INTRA',2,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('0,6','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','Escuelas Primarias y Secundarias (Electronico)','Acuerdo Local Honduras Escuelas Primarias y Secundarias',NULL,NULL,NULL,NULL,NULL,NULL,'A',NULL,NULL,NULL,NULL,NULL,'8211','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'340','340','340','INTRA',2,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('0,75','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','Colegios y Universidades (Electronico)','Acuerdo Local Honduras Colegios y Universidades',NULL,NULL,NULL,NULL,NULL,NULL,'A',NULL,NULL,NULL,NULL,NULL,'8220','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'340','340','340','INTRA',2,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('0,75','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','Escuelas por Correspondencia (Electronico)','Acuerdo Local Honduras Escuelas por Correspondencia',NULL,NULL,NULL,NULL,NULL,NULL,'A',NULL,NULL,NULL,NULL,NULL,'8241','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'340','340','340','INTRA',2,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('0,75','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','Escuelas Vocacionales (Electronico)','Acuerdo Local Honduras Escuelas Vocacionales',NULL,NULL,NULL,NULL,NULL,NULL,'A',NULL,NULL,NULL,NULL,NULL,'8249','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'340','340','340','INTRA',2,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('0,75','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','Servicios de Escuelas y Educacion (Electronico)','Acuerdo Local Honduras Servicios de Escuelas y Educacion',NULL,NULL,NULL,NULL,NULL,NULL,'A',NULL,NULL,NULL,NULL,NULL,'8299','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'340','340','340','INTRA',2,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('0,75','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','Supermercados (Electronico)','Acuerdo Local Honduras Supermercados',NULL,NULL,NULL,NULL,NULL,NULL,'A',NULL,NULL,NULL,NULL,NULL,'5411','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'340','340','340','INTRA',2,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('1,75','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','Comidas Rapidas (Electronico)','Acuerdo Local Honduras Comidas Rapidas',NULL,NULL,NULL,NULL,NULL,NULL,'A',NULL,NULL,NULL,NULL,NULL,'5814','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'340','340','340','INTRA',2,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('1,75','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','Franquicias Internacionales o Nacionales de Comida (Electronico)','Acuerdo Local Honduras Franquicias Internacionales o Nacionales de Comida',NULL,NULL,NULL,NULL,NULL,NULL,'A',NULL,NULL,NULL,NULL,NULL,'5972','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'340','340','340','INTRA',2,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('2,15','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','Ferreterías (Electronico)','Acuerdo Local Honduras Ferreterías',NULL,NULL,NULL,NULL,NULL,NULL,'A',NULL,NULL,NULL,NULL,NULL,'5251','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'340','340','340','INTRA',2,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('2,45','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','TIENDAS DE DESCUENTO (GRUPO SIMAN) (Electronico)','Acuerdo Local El Salvador TIENDAS DE DESCUENTO (GRUPO SIMAN)',NULL,NULL,NULL,NULL,NULL,NULL,'A',NULL,NULL,NULL,NULL,NULL,'5310','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'222','222','222','INTRA',2,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('1,88','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','TIENDAS POR DEPARTAMENTOS (Electronico)','Acuerdo Local El Salvador TIENDAS POR DEPARTAMENTOS',NULL,NULL,NULL,NULL,NULL,NULL,'A',NULL,NULL,NULL,NULL,NULL,'5311','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,65,NULL,NULL,'5',NULL,'5',NULL,'222','222','222','INTRA',2,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('3,75','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','TIENDA DE VARIEDADES (Electronico)','Acuerdo Local El Salvador TIENDA DE VARIEDADES',NULL,NULL,NULL,NULL,NULL,NULL,'A',NULL,NULL,NULL,NULL,NULL,'5331','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'222','222','222','INTRA',2,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('2,25','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','SUPERMERCADOS (Electronico)','Acuerdo Local El Salvador SUPERMERCADOS',NULL,NULL,NULL,NULL,NULL,NULL,'A',NULL,NULL,NULL,NULL,NULL,'5411','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'222','222','222','INTRA',2,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('1,5','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','AUTOMOTRICES TALLERES Y REPUESTOS (Electronico)','Acuerdo Local El Salvador AUTOMOTRICES TALLERES Y REPUESTOS',NULL,NULL,NULL,NULL,NULL,NULL,'A',NULL,NULL,NULL,NULL,NULL,'5533','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'02','5',NULL,'5',NULL,'222','222','222','INTRA',2,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('4,5','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','COMIDA RAPIDA (Electronico)','Acuerdo Local El Salvador COMIDA RAPIDA',NULL,NULL,NULL,NULL,NULL,NULL,'A',NULL,NULL,NULL,NULL,NULL,'5814','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'222','222','222','INTRA',2,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('2,25','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','FARMACIAS (Electronico)','Acuerdo Local El Salvador FARMACIAS',NULL,NULL,NULL,NULL,NULL,NULL,'A',NULL,NULL,NULL,NULL,NULL,'5912','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'222','222','222','INTRA',2,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('4,5','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','RETIROS DE EFECTIVO (Electronico)','Acuerdo Local El Salvador RETIROS DE EFECTIVO',NULL,NULL,NULL,NULL,NULL,NULL,'A',NULL,NULL,NULL,NULL,NULL,'6010','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'222','222','222','INTRA',2,NULL,NULL,'STD',NULL,'D','N',NULL,to_number('2,5','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','CLINICAS MEDICOS Y LABORATORIOS (Electronico)','Acuerdo Local El Salvador CLINICAS MEDICOS Y LABORATORIOS',NULL,NULL,NULL,NULL,NULL,NULL,'A',NULL,NULL,NULL,NULL,NULL,'8011','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'222','222','222','INTRA',2,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('4,5','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','HOSPITALES (Electronico)','Acuerdo Local El Salvador HOSPITALES',NULL,NULL,NULL,NULL,NULL,NULL,'A',NULL,NULL,NULL,NULL,NULL,'8062','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'222','222','222','INTRA',2,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('4,5','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','VETERINARIAS (Manual)','Acuerdo Local El Salvador VETERINARIAS',NULL,NULL,NULL,NULL,NULL,NULL,'A','00;01',NULL,NULL,NULL,NULL,'742','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'222','222','222','INTRA',1,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('4,5','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','Gas Station (Electronico)','Acuerdo Local Belize Gas Station',NULL,NULL,NULL,NULL,NULL,NULL,'A',NULL,NULL,NULL,NULL,NULL,'5541','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'084','084','084','INTRA',2,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('0,75','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','Supermarkets (Electronico)','Acuerdo Local Belize Supermarkets',NULL,NULL,NULL,NULL,NULL,NULL,'A',NULL,NULL,NULL,NULL,NULL,'5411','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'084','084','084','INTRA',2,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('1,6','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'C         ','LAC Intraregional Airline Fee Programs','LAC AIRLINE: Airline',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'3000','3299','I',NULL,NULL,NULL,NULL,NULL,'L',NULL,'5',NULL,'5',NULL,NULL,NULL,NULL,'INTRA',12,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,1','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','LAC Intraregional Chip Fee Programs','LAC ELECTRONIC:Electronic',NULL,NULL,NULL,NULL,NULL,NULL,'A',NULL,NULL,NULL,'0;2','E',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Y1;Y3',NULL,3,'F',NULL,'5',NULL,'5',NULL,NULL,NULL,NULL,'INTRA',10,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,1','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','LAC Intraregional Chip Fee Programs','LAC ELECTRONIC:Electronic',NULL,NULL,NULL,NULL,NULL,NULL,'A',NULL,NULL,NULL,'0;2','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Y1;Y3',NULL,3,'F;',NULL,'5',NULL,'5',NULL,NULL,NULL,NULL,'INTRA',10,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,1','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','LAC Intraregional Chip Fee Programs','LAC CHIP ISS: Issuer Chip',NULL,NULL,NULL,NULL,NULL,'0;1;2;3; ;4;6;7;8;9','A','90;91',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Y1;Y3',NULL,3,'F',NULL,'5',NULL,'5',NULL,NULL,NULL,NULL,'INTRA',10,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,2','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','LAC Intraregional Chip Fee Programs','LAC ELECTRONIC: Electronic',NULL,NULL,NULL,NULL,NULL,NULL,'A',NULL,NULL,NULL,'0;2','E',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Y1;Y3',NULL,3,'L',NULL,'5',NULL,'5',NULL,NULL,NULL,NULL,'INTRA',10,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,1','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','LAC Intraregional Chip Fee Programs','LAC ELECTRONIC: Electronic',NULL,NULL,NULL,NULL,NULL,NULL,'A',NULL,NULL,NULL,'0;2','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Y1;Y3',NULL,3,'L',NULL,'5',NULL,'5',NULL,NULL,NULL,NULL,'INTRA',10,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,1','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','Farmacias (Electronico)','Acuerdo Local Honduras Farmacias',NULL,NULL,NULL,NULL,NULL,NULL,'A',NULL,NULL,NULL,NULL,NULL,'5912','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'340','340','340','INTRA',2,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('2,45','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','Laboratorios Medicos y Dentales (Electronico)','Acuerdo Local Honduras Laboratorios Medicos y Dentales',NULL,NULL,NULL,NULL,NULL,NULL,'A',NULL,NULL,NULL,NULL,NULL,'8071','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'340','340','340','INTRA',2,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('2,45','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','Dentistas y Ortodoncistas (Electronico)','Acuerdo Local Honduras Dentistas y Ortodoncistas',NULL,NULL,NULL,NULL,NULL,NULL,'A',NULL,NULL,NULL,NULL,NULL,'8021','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,9,NULL,NULL,'5',NULL,'5',NULL,'340','340','340','INTRA',2,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('2,45','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','Optometristas y Oftalmólogos (Electronico)','Acuerdo Local Honduras Optometristas y Oftalmólogos','F1',NULL,NULL,NULL,NULL,NULL,'A',NULL,NULL,NULL,NULL,NULL,'8042','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'340','340','340','INTRA',2,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('2,45','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','Osteologos (Electronico)','Acuerdo Local Honduras Osteologos',NULL,NULL,NULL,NULL,NULL,NULL,'A',NULL,NULL,NULL,NULL,NULL,'8031','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'340','340','340','INTRA',2,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('2,45','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','Quiropracticos (Electronico)','Acuerdo Local Honduras Quiropracticos',NULL,NULL,NULL,NULL,NULL,NULL,'A',NULL,NULL,NULL,NULL,NULL,'8041','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'340','340','340','INTRA',2,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('2,45','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','Quiropodista, Podologos (Electronico)','Acuerdo Local Honduras Quiropodista, Podologos',NULL,NULL,NULL,NULL,NULL,NULL,'A',NULL,NULL,NULL,NULL,NULL,'8049','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'340','340','340','INTRA',2,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('2,45','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','Servicios Medicos y Practicantes (Electronico)','Acuerdo Local Honduras Servicios Medicos y Practicantes',NULL,NULL,NULL,NULL,NULL,NULL,'A',NULL,NULL,NULL,NULL,NULL,'8099','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'340','340','340','INTRA',2,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('2,45','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','Tiendas por Departamentos (Electronico)','Acuerdo Local Honduras Tiendas por Departamentos',NULL,NULL,NULL,NULL,NULL,NULL,'A',NULL,NULL,NULL,NULL,NULL,'5311','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'340','340','340','INTRA',2,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('2,45','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','Hoteles (Electronico)','Acuerdo Local Honduras Hoteles',NULL,NULL,NULL,NULL,NULL,NULL,'A',NULL,NULL,NULL,NULL,NULL,'7011','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'340','340','340','INTRA',2,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('2,8','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','Lineas Aereas (Electronico)','Acuerdo Local Honduras Lineas Aereas',NULL,NULL,NULL,NULL,NULL,NULL,'A',NULL,NULL,NULL,NULL,NULL,'4511','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'340','340','340','INTRA',2,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('2,8','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','Alquiler de Automoviles (Electronico)','Acuerdo Local Honduras Alquiler de Automoviles',NULL,NULL,NULL,NULL,NULL,NULL,'A',NULL,NULL,NULL,NULL,NULL,'7512','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'340','340','340','INTRA',2,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('2,8','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','Alquiler de Camiones (Electronico)','Acuerdo Local Honduras Alquiler de Camiones',NULL,NULL,NULL,NULL,NULL,NULL,'A',NULL,NULL,NULL,NULL,NULL,'7513','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'340','340','340','INTRA',2,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('2,8','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','Agencias de Viajes (Electronico)','Acuerdo Local Honduras Agencias de Viajes',NULL,NULL,NULL,NULL,NULL,NULL,'A',NULL,NULL,NULL,NULL,NULL,'4722','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'340','340','340','INTRA',2,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('2,8','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','Otros (Electronico)','Acuerdo Local Honduras Otros',NULL,NULL,NULL,NULL,NULL,NULL,'A',NULL,NULL,NULL,NULL,NULL,'8398;9399;9311;5541;5542;8211;8220;8241;8249;8299;5411;5814;6513;7832;6300;5972;5251;5200;5211;5912;8062;8011;8071;8021;8042;8031;8041;8049;8099;5311;7011;4511;7512;7513;4722;7995','E',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'340','340','340','INTRA',2,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('3,37','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','Instituciones sin Fines de Lucro (Manual)','Acuerdo Local Honduras Instituciones sin Fines de Lucro',NULL,NULL,NULL,NULL,NULL,NULL,'A','00;01',NULL,NULL,NULL,NULL,'8398','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'340','340','340','INTRA',1,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('0,5','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','Pagos Transacciones Gobierno (Manual)','Acuerdo Local Honduras Pagos Transacciones Gobierno',NULL,NULL,NULL,NULL,NULL,NULL,'A','00;01',NULL,NULL,NULL,NULL,'9399','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'340','340','340','INTRA',1,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('0,5','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','Pago de Impuestos (Manual)','Acuerdo Local Honduras Pago de Impuestos',NULL,NULL,NULL,NULL,NULL,NULL,'A','00;01',NULL,NULL,NULL,NULL,'9311','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'340','340','340','INTRA',1,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('0,5','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','Gasolineras (Manual)','Acuerdo Local Honduras Gasolineras',NULL,NULL,NULL,NULL,NULL,NULL,'A','00;01',NULL,NULL,NULL,NULL,'5541','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'340','340','340','INTRA',1,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('0,6','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','Gasolineras- Pago en Bomba (Manual)','Acuerdo Local Honduras Gasolineras- Pago en Bomba',NULL,NULL,NULL,NULL,NULL,NULL,'A','00;01',NULL,NULL,NULL,NULL,'5542','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'340','340','340','INTRA',1,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('0,6','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','Escuelas Primarias y Secundarias (Manual)','Acuerdo Local Honduras Escuelas Primarias y Secundarias',NULL,NULL,NULL,NULL,NULL,NULL,'A','00;01',NULL,NULL,NULL,NULL,'8211','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'340','340','340','INTRA',1,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('0,75','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','Colegios y Universidades (Manual)','Acuerdo Local Honduras Colegios y Universidades',NULL,NULL,NULL,NULL,NULL,NULL,'A','00;01',NULL,NULL,NULL,NULL,'8220','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'340','340','340','INTRA',1,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('0,75','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','Escuelas por Correspondencia (Manual)','Acuerdo Local Honduras Escuelas por Correspondencia',NULL,NULL,NULL,NULL,NULL,NULL,'A','00;01',NULL,NULL,NULL,NULL,'8241','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'340','340','340','INTRA',1,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('0,75','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','Escuelas Vocacionales (Manual)','Acuerdo Local Honduras Escuelas Vocacionales',NULL,NULL,NULL,NULL,NULL,NULL,'A','00;01',NULL,NULL,NULL,NULL,'8249','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'340','340','340','INTRA',1,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('0,75','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','Servicios de Escuelas y Educacion (Manual)','Acuerdo Local Honduras Servicios de Escuelas y Educacion',NULL,NULL,NULL,NULL,NULL,NULL,'A','00;01',NULL,NULL,NULL,NULL,'8299','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'340','340','340','INTRA',1,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('0,75','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','Supermercados (Manual)','Acuerdo Local Honduras Supermercados',NULL,NULL,NULL,NULL,NULL,NULL,'A','00;01',NULL,NULL,NULL,NULL,'5411','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'340','340','340','INTRA',1,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('1,75','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','MOTELES (Manual)','Acuerdo Local El Salvador MOTELES',NULL,NULL,NULL,NULL,NULL,NULL,'A','00;01',NULL,NULL,NULL,NULL,'3615','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'222','222','222','INTRA',1,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('4,5','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','Franquicias Internacionales o Nacionales de Comida (Manual)','Acuerdo Local Honduras Franquicias Internacionales o Nacionales de Comida',NULL,NULL,NULL,NULL,NULL,NULL,'A','00;01',NULL,NULL,NULL,NULL,'5972','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'340','340','340','INTRA',1,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('2,15','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','Ferreterías (Manual)','Acuerdo Local Honduras Ferreterías',NULL,NULL,NULL,NULL,NULL,NULL,'A','00;01',NULL,NULL,NULL,NULL,'5251','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'340','340','340','INTRA',1,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('2,45','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','Bodegas de Suministros de Hogar (Manual)','Acuerdo Local Honduras Bodegas de Suministros de Hogar',NULL,NULL,NULL,NULL,NULL,NULL,'A','00;01',NULL,NULL,NULL,NULL,'5200','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'340','340','340','INTRA',1,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('2,45','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','Bodegasd de Materiales de Construccion (Manual)','Acuerdo Local Honduras Bodegasd de Materiales de Construccion',NULL,NULL,NULL,NULL,NULL,NULL,'A','00;01',NULL,NULL,NULL,NULL,'5211','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'340','340','340','INTRA',1,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('2,45','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','Farmacias (Manual)','Acuerdo Local Honduras Farmacias',NULL,NULL,NULL,NULL,NULL,NULL,'A','00;01',NULL,NULL,NULL,NULL,'5912','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'340','340','340','INTRA',1,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('2,45','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','Hospitales (Manual)','Acuerdo Local Honduras Hospitales',NULL,NULL,NULL,NULL,NULL,NULL,'A','00;01',NULL,NULL,NULL,NULL,'8062','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'340','340','340','INTRA',1,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('2,45','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','Clinicas y Servicios Medicos Especializados (Manual)','Acuerdo Local Honduras Clinicas y Servicios Medicos Especializados',NULL,NULL,NULL,NULL,NULL,NULL,'A','00;01',NULL,NULL,NULL,NULL,'8011','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'340','340','340','INTRA',1,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('2,45','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','Laboratorios Medicos y Dentales (Manual)','Acuerdo Local Honduras Laboratorios Medicos y Dentales',NULL,NULL,NULL,NULL,NULL,NULL,'A','00;01',NULL,NULL,NULL,NULL,'8071','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,'340','340','340','INTRA',1,NULL,NULL,'STD',NULL,'C','N',NULL,to_number('2,45','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','LAC Intraregional Chip Fee Programs','LAC CHIP ISS: Issuer Chip',NULL,NULL,NULL,NULL,NULL,'0;1;2;3; ;4;6;7;8;9','A','90;91',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Y1;Y3',NULL,3,'L',NULL,'5',NULL,'5',NULL,NULL,NULL,NULL,'INTRA',10,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,2','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','LAC Intraregional Electronic Fee Program','LAC ELECTRONIC: Intl_Pre-PS2000',NULL,NULL,NULL,NULL,NULL,NULL,'A','05;07;90;91',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,3,'F',NULL,'5',NULL,'5',NULL,NULL,NULL,NULL,'INTRA',11,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,1','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','LAC Intraregional Electronic Fee Program','LAC ELECTRNIC: Electronic',NULL,NULL,NULL,NULL,NULL,NULL,'A','05;07;90;91',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,3,'L',NULL,'5',NULL,'5',NULL,NULL,NULL,NULL,'INTRA',11,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,1','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','LAC Intraregional eCommerce Fee Program','LAC SET MRCH: Non-Authenticated 3D Merchant',NULL,NULL,NULL,NULL,NULL,NULL,'A','05;01',NULL,'6',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'F',NULL,'5',NULL,'5',NULL,NULL,NULL,NULL,'INTRA',10,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,44','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','LAC Intraregional eCommerce Fee Program','LAC SET MRCH SEC: Authenticated',NULL,NULL,NULL,NULL,NULL,NULL,'A','05;01',NULL,'5',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'F',NULL,'5',NULL,'5',NULL,NULL,NULL,NULL,'INTRA',10,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,44','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','LAC Intraregional eCommerce Fee Program','LAC SET MRCH: Secure Electronic Commerce',NULL,NULL,NULL,NULL,NULL,NULL,'A','05;01',NULL,'6',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'L',NULL,'5',NULL,'5',NULL,NULL,NULL,NULL,'INTRA',10,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,44','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','LAC Intraregional eCommerce Fee Program','LAC SET MRCH SEC : Secure Electronic Commerce',NULL,NULL,NULL,NULL,NULL,NULL,'A','05;01',NULL,'5',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'L',NULL,'5',NULL,'5',NULL,NULL,NULL,NULL,'INTRA',10,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,44','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','LAC Intraregional Standard','STANDARD: Standard POS',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'F',NULL,'5',NULL,'5',NULL,NULL,NULL,NULL,'INTRA',13,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,6','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','LAC Intraregional Standard','LAC PREMIUM: Standard POS',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'N',NULL,'5',NULL,'5',NULL,NULL,NULL,NULL,'INTRA',13,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,8','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','LAC Intraregional Standard','LAC SPR PREMIUM: Standard POS',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'I',NULL,'5',NULL,'5',NULL,NULL,NULL,NULL,'INTRA',13,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,97','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','LAC Intraregional Standard','STANDARD: Standard',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'L',NULL,'5',NULL,'5',NULL,NULL,NULL,NULL,'INTRA',13,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,6','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','LAC Intraregional Standard','IR REGULATED DB: Standard LAC Regional Issuer Specified POS',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,NULL,NULL,NULL,'INTRA',14,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('0,05','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),to_number('0,22','9D99','NLS_NUMERIC_CHARACTERS ='', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'H         ','LAC Intraregional ATM Cash Withdrawal with Access Fee','ATM-TIER II AF: Cash Disbursement without Access Fee',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'6011','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,3,NULL,NULL,'5',NULL,'5',NULL,NULL,NULL,NULL,'INTRA',13,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('0,52','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),to_number('0,65','9D99','NLS_NUMERIC_CHARACTERS ='', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','LAC Intraregional Manual Cash','STANDARD',NULL,NULL,NULL,NULL,NULL,NULL,'N',NULL,NULL,NULL,NULL,NULL,'6010','I',NULL,NULL,NULL,NULL,NULL,'00',NULL,NULL,NULL,NULL,'5',NULL,'5',NULL,NULL,NULL,NULL,'INTRA',13,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('0,33','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),to_number('1,75','9D99','NLS_NUMERIC_CHARACTERS ='', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'H         ','LAC Interregional ATM Balance Inquiry','ATM BALANCE INQ','30',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'6011','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,NULL,NULL,NULL,'INTER',23,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('0,3','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'H         ','LAC Interregional ATM Decline','ATM DECLINE','04',NULL,NULL,NULL,NULL,NULL,'A',NULL,NULL,NULL,NULL,NULL,'6011','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,NULL,NULL,NULL,'INTER',23,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('0,3','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'H         ','LAC Interregional ATM Transfer','ATM TRANSFER','62',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'6011','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,NULL,NULL,NULL,'INTER',23,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('0,3','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'H         ','LAC Interregional ATM Cash Withdrawal without Access Fee','ATM-TIER II LAC: Cash Disbursement without Access Fee',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'6011','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,3,NULL,NULL,NULL,NULL,'5',NULL,NULL,NULL,NULL,'INTER',24,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('0,52','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),to_number('0,65','9D99','NLS_NUMERIC_CHARACTERS ='', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','LAC Interregional Standard','STANDARD: Standard Consumer',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'F',NULL,NULL,NULL,'5',NULL,NULL,NULL,NULL,'INTER',23,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,6','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','LAC Interregional Standard','STANDARD: Standard Consumer',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'N',NULL,'1;2',NULL,'5',NULL,NULL,NULL,NULL,'INTER',23,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,6','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','LAC Interregional Manual Cash','STANDARD',NULL,NULL,NULL,NULL,NULL,NULL,'N',NULL,NULL,NULL,NULL,NULL,'6010','I',NULL,NULL,NULL,NULL,NULL,'00',NULL,NULL,NULL,NULL,NULL,NULL,'5',NULL,NULL,NULL,NULL,'INTER',24,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('0,33','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),to_number('1,75','9D99','NLS_NUMERIC_CHARACTERS ='', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','LAC Interregional Electronic Fee Program','ELECTRONIC: Electronic',NULL,NULL,NULL,NULL,NULL,NULL,'A','05;07;90;91',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Y1;Y3',NULL,3,'F',NULL,NULL,NULL,'5',NULL,NULL,NULL,NULL,'INTER',21,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,1','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','LAC Interregional Electronic Fee Program','ELECTRONIC: Electronic',NULL,NULL,NULL,NULL,NULL,NULL,'A','05;07;90;91',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Y1;Y3',NULL,3,'N',NULL,'1;2',NULL,'5',NULL,NULL,NULL,NULL,'INTER',21,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,1','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'C         ','LAC Interregional Airline Fee Programs','INTR AIRLINE: Airline Acquirer Chip',NULL,NULL,NULL,NULL,NULL,'5','A','07;90;91',NULL,NULL,NULL,NULL,'4511','I',NULL,NULL,NULL,NULL,NULL,'Y1;Y3',NULL,3,'F',NULL,NULL,NULL,'5',NULL,NULL,NULL,NULL,'INTER',20,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,1','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'C         ','LAC Interregional Airline Fee Programs','INTR AIRLINE: Airline Acquirer Chip',NULL,NULL,NULL,NULL,NULL,'5','A','07;90;91',NULL,NULL,NULL,NULL,'4511','I',NULL,NULL,NULL,NULL,NULL,'Y1;Y3',NULL,3,'N',NULL,'1;2',NULL,'5',NULL,NULL,NULL,NULL,'INTER',20,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,1','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'C         ','LAC Interregional Airline Fee Programs','INTR AIRLINE: Airline Acquirer Chip',NULL,NULL,NULL,NULL,NULL,'5','A','07;90;91',NULL,NULL,NULL,NULL,NULL,NULL,'3000','3299','I',NULL,NULL,'Y1;Y3',NULL,3,'F',NULL,NULL,NULL,'5',NULL,NULL,NULL,NULL,'INTER',20,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,1','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'C         ','LAC Interregional Airline Fee Programs','INTR AIRLINE: Airline Acquirer Chip',NULL,NULL,NULL,NULL,NULL,'5','A','07;90;91',NULL,NULL,NULL,NULL,NULL,NULL,'3000','3299','I',NULL,NULL,'Y1;Y3',NULL,3,'N',NULL,'1;2',NULL,'5',NULL,NULL,NULL,NULL,'INTER',20,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,1','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','LAC Interregional Chip Fee Programs','CHIP ISS: Issuer Chip',NULL,NULL,NULL,NULL,NULL,'0;1;2;3;4; ;8;9','A','90;91',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,3,'F',NULL,NULL,NULL,'5',NULL,NULL,NULL,NULL,'INTER',20,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,2','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','LAC Interregional Chip Fee Programs','CHIP ISS: Issuer Chip',NULL,NULL,NULL,NULL,NULL,'0;1;2;3;4; ;8;9','A','90;91',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,3,'N',NULL,'1;2',NULL,'5',NULL,NULL,NULL,NULL,'INTER',20,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,2','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','LAC Interregional eCommerce Fee Program','LAC SET MRCH: Non-Authenticated 3D Merchant',NULL,NULL,NULL,NULL,NULL,NULL,'A','01',NULL,'6',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'F',NULL,NULL,NULL,'5',NULL,NULL,NULL,NULL,'INTER',20,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,44','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','LAC Interregional eCommerce Fee Program','LAC SET MRCH: Non-Authenticated 3D Merchant',NULL,NULL,NULL,NULL,NULL,NULL,'A','01',NULL,'6',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'N',NULL,'1;2',NULL,'5',NULL,NULL,NULL,NULL,'INTER',20,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,44','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','LAC Interregional eCommerce Fee Program','AUTHENTICTD SEC: eCommerce-ECI5 (3-D Secure)',NULL,NULL,NULL,NULL,NULL,NULL,'A','01',NULL,'5',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'F',NULL,NULL,NULL,'5',NULL,NULL,NULL,NULL,'INTER',20,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,44','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','LAC Interregional eCommerce Fee Program','AUTHENTICTD SEC: eCommerce-ECI5 (3-D Secure)',NULL,NULL,NULL,NULL,NULL,NULL,'A','01',NULL,'5',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'N',NULL,'1;2',NULL,'5',NULL,NULL,NULL,NULL,'INTER',20,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,44','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'C         ','LAC Interregional Airline Fee Programs','INTR AIRLINE: International Airline',NULL,NULL,NULL,NULL,NULL,'0;1;2;3;4; ;8;9',NULL,NULL,NULL,NULL,NULL,NULL,'4511','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,15,'F',NULL,NULL,NULL,'5',NULL,NULL,NULL,NULL,'INTER',22,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,1','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'C         ','LAC Interregional Airline Fee Programs','INTR AIRLINE: International Airline',NULL,NULL,NULL,NULL,NULL,'0;1;2;3;4; ;8;9',NULL,NULL,NULL,NULL,NULL,NULL,'4511','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,15,'N',NULL,'1;2',NULL,'5',NULL,NULL,NULL,NULL,'INTER',22,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,1','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'C         ','LAC Interregional Airline Fee Programs','INTR AIRLINE: International Airline',NULL,NULL,NULL,NULL,NULL,'0;1;2;3;4; ;8;9',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'3000','3299','I',NULL,NULL,NULL,NULL,15,'F',NULL,NULL,NULL,'5',NULL,NULL,NULL,NULL,'INTER',22,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,1','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'C         ','LAC Interregional Airline Fee Programs','INTR AIRLINE: International Airline',NULL,NULL,NULL,NULL,NULL,'0;1;2;3;4; ;8;9',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'3000','3299','I',NULL,NULL,NULL,NULL,15,'N',NULL,'1;2',NULL,'5',NULL,NULL,NULL,NULL,'INTER',22,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,1','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','LAC Interregional Chip Fee Programs','CHIP ISS: Issuer Chip',NULL,NULL,NULL,NULL,NULL,'0;1;2;3;4; ;8;9','A','90;91',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,3,'L',NULL,NULL,NULL,'5',NULL,NULL,NULL,NULL,'INTER',20,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,2','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'B         ','LAC Interregional Electronic Fee Program','ELECTRONIC: Electronic',NULL,NULL,NULL,NULL,NULL,NULL,'A','05;07;90;91',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Y1;Y3',NULL,NULL,'L',NULL,NULL,NULL,'5',NULL,NULL,NULL,NULL,'INTER',21,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,1','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','LAC Interregional eCommerce Fee Program','NONAUTHND MRCH: eCommerce-ECI6 (Non-Authenticated Attempt from 3-D capable merchant)',NULL,NULL,NULL,NULL,NULL,NULL,'A','01',NULL,'6',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'L',NULL,NULL,NULL,'5',NULL,NULL,NULL,NULL,'INTER',20,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,44','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'0         ','LAC Interregional eCommerce Fee Program','AUTHENTICTD SEC: eCommerce-ECI5 (3-D Secure)',NULL,NULL,NULL,NULL,NULL,NULL,'A','01',NULL,'5',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'L',NULL,NULL,NULL,'5',NULL,NULL,NULL,NULL,'INTER',20,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,44','9D99','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'C         ','LAC Interregional Airline Fee Programs','INTRA AIRLINE: International Airline',NULL,NULL,NULL,NULL,NULL,'0;1;2;3;4; ;8;9',NULL,NULL,NULL,NULL,NULL,NULL,'4511','I',NULL,NULL,NULL,NULL,NULL,NULL,NULL,15,'L',NULL,NULL,NULL,'5',NULL,NULL,NULL,NULL,'INTER',22,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,1','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+  
+    <parameter>
+      
+    
+      <name>VALUES(p_bank_code,LPAD( v_sequence_id+ 1,6,'0'),'C         ','LAC Interregional Airline Fee Programs','INTRA AIRLINE: International Airline',NULL,NULL,NULL,NULL,NULL,'0;1;2;3;4; ;8;9',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'3000','3299','I',NULL,NULL,NULL,NULL,15,'L',NULL,NULL,NULL,'5',NULL,NULL,NULL,NULL,'INTER',22,NULL,NULL,'STD',NULL,'C','E',NULL,to_number('1,1','9D9','NLS_NUMERIC_CHARACTERS</name>
+      
+    
+      <value>'', '''),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SIAINT_BO',TO_DATE('2016-07-25 10:08:36', 'YYYY-MM-DD HH24:MI:SS'),NULL,NULL)</value>
+      
+  
+    </parameter>
+    
+
+  </sql_parameters>
+</configuration>
