@@ -1,0 +1,24 @@
+{
+  "meta": {
+    "goal_id": 8,
+    "client": "client",
+    "client_n": 5,
+    "action": "add",
+    "created_at": "2026-02-18T15:57:55"
+  },
+  "goal": "je veux ajouter une bank s appelle hps au maroc en mad",
+  "facts": {
+    "bank.name": "HPS",
+    "bank.country": "Maroc",
+    "bank.currency": "MAD"
+  },
+  "history": [
+    {
+      "agent": "DONE",
+      "user": "all required fields filled"
+    }
+  ],
+  "plan": [],
+  "current_step": null,
+  "done": true
+}

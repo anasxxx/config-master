@@ -1,0 +1,382 @@
+{
+  "meta": {
+    "goal_id": 19,
+    "client": "client",
+    "client_n": 16,
+    "action": "add",
+    "created_at": "2026-02-19T10:11:01"
+  },
+  "goal": "creer",
+  "facts": {
+    "bank": {
+      "name": "kfkf",
+      "country": "Marshall Islands",
+      "currency": "KLFL",
+      "bank_code": "22555",
+      "resources": [
+        "erfee"
+      ],
+      "agencies": [
+        {
+          "agency_name": "erff",
+          "agency_code": "77777777",
+          "city": "rrrrrrrrrrrrrr",
+          "city_code": "rrrrrrrrrr",
+          "region": "rrrrrrrrrrrrrr",
+          "region_code": "rrrrrrrrrrrrrrr"
+        }
+      ]
+    },
+    "cards": [
+      {
+        "card_info": {
+          "bin": "rrrrrrrrrrrrrrrrrrrr",
+          "plastic_type": "rrrrrrrrrrrrrrrrr",
+          "card_description": "rrrrrrrrrrr",
+          "product_type": "infos",
+          "product_code": "jjf",
+          "pvk_index": "0001",
+          "service_code": "prd001",
+          "network": "vikfkf",
+          "expiration": "jfjfjf",
+          "renewal_option": ",r,r,r",
+          "pre_expiration": "krkrrr"
+        },
+        "card_range": {
+          "note": "k,rfr"
+        },
+        "fees": {
+          "fee_description": "kke",
+          "billing_event": "eddddddddddd",
+          "grace_period": "ddddddddddd",
+          "billing_period": "ddddddddddddd",
+          "registration_fee": "ddddddddddddddddd",
+          "periodic_fee": "dddddddddddddddd",
+          "replacement_fee": "dddddddddddddddd",
+          "pin_recalculation_fee": "ddddddddddddddddd"
+        },
+        "services": {
+          "enabled": [
+            "dddddddddddddd"
+          ]
+        },
+        "limits": {
+          "selected_limit_types": [
+            "ddddddddddddd"
+          ],
+          "by_type": {
+            "DEFAULT": {
+              "domestic": {
+                "daily_amount": "ddddddddddddddddd",
+                "daily_count": "dddddddddddddddddddd",
+                "weekly_amount": "ddddddddddddddddddddd",
+                "weekly_count": "dddddddddddddddddddddddd",
+                "monthly_amount": "dddddddddddddd",
+                "monthly_count": "dddddddddddd"
+              },
+              "international": {
+                "daily_amount": "ddddddddddddd",
+                "daily_count": "ddddddddddddddd",
+                "weekly_amount": "dddddddddddddd",
+                "weekly_count": "dddddddddddddddd",
+                "monthly_amount": "dddddddddddddddddddd",
+                "monthly_count": "ddddddddddddddddd"
+              },
+              "total": {
+                "daily_amount": "ddddddddddddddddddd",
+                "daily_count": "dddddddddddddddd",
+                "weekly_amount": "ddddddddddddddd",
+                "weekly_count": "ddddddddddddd",
+                "monthly_amount": "dddddddddddddd",
+                "monthly_count": "ddddddddddddd"
+              },
+              "per_transaction": {
+                "min_amount": "ddddddddddd",
+                "max_amount": "dddddddddddd"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "options": {
+      "resources_examples": [
+        "MCD_MDS",
+        "MCD_CIS",
+        "UPI",
+        "HOST_BANK",
+        "SID",
+        "VISA_BASE1",
+        "VISA_SMS"
+      ],
+      "services": [
+        "Retrait",
+        "Cash Advance",
+        "Transferts",
+        "Consultation Solde",
+        "Changement PIN",
+        "Envoi d'argent",
+        "Original",
+        "Achats",
+        "E-commerce",
+        "Quasi-Cash",
+        "Mini-Relevé",
+        "Remboursements",
+        "Paiement Factures",
+        "Authentification",
+        "Cashback"
+      ],
+      "limit_types": [
+        "Retrait",
+        "Purchase",
+        "CASH_advance",
+        "Quasi-cash",
+        "E-commerce"
+      ]
+    },
+    "constraints": {
+      "bank_code_max_length": 6,
+      "agency_code_max_length": 6,
+      "city_max_length": 32,
+      "city_code_max_length": 5,
+      "region_max_length": 30,
+      "region_code_max_length": 3,
+      "expiration_max_length": 2,
+      "renewal_option_max_length": 1,
+      "pre_expiration_max_length": 1,
+      "limit_amount_max_digits": 20,
+      "limit_count_max_digits": 3
+    }
+  },
+  "history": [
+    {
+      "agent": "Quel est le nom de la banque ?",
+      "user": "kfkf"
+    },
+    {
+      "agent": "Quel est le pays de la banque ? ",
+      "user": "krkrk"
+    },
+    {
+      "agent": "Quel est le pays de la banque ? ",
+      "user": "kfkfk"
+    },
+    {
+      "agent": "Quel est le pays de la banque ? ",
+      "user": "kfkflf"
+    },
+    {
+      "agent": "Quel est le pays de la banque ? ",
+      "user": "mars"
+    },
+    {
+      "agent": "Quelle est la devise ? (ex: MAD, EUR, USD)",
+      "user": "klfl"
+    },
+    {
+      "agent": "Quel est le code de la banque (bank code) ?",
+      "user": "22555"
+    },
+    {
+      "agent": "Quelles ressources veux-tu activer ? (ex: accounts, cards, transactions) Donne une liste séparée par virgules.",
+      "user": "erfee"
+    },
+    {
+      "agent": "Quel est le nom de la première agence ?",
+      "user": "erff"
+    },
+    {
+      "agent": "Quel est le code de cette agence ?",
+      "user": "77777777"
+    },
+    {
+      "agent": "Dans quelle ville se trouve cette agence ?",
+      "user": "rrrrrrrrrrrrrr"
+    },
+    {
+      "agent": "Quel est le code de la ville ?",
+      "user": "rrrrrrrrrr"
+    },
+    {
+      "agent": "Quelle est la région ?",
+      "user": "rrrrrrrrrrrrrr"
+    },
+    {
+      "agent": "Quel est le code de la région ?",
+      "user": "rrrrrrrrrrrrrrr"
+    },
+    {
+      "agent": "Quel est le BIN de la carte ? (6 à 8 chiffres)",
+      "user": "rrrrrrrrrrrrrrrrrrrr"
+    },
+    {
+      "agent": "Peux-tu me donner : cartes  (première) > infos carte > plastic type ?",
+      "user": "rrrrrrrrrrrrrrrrr"
+    },
+    {
+      "agent": "Peux-tu me donner : cartes  (première) > infos carte > card description ?",
+      "user": "rrrrrrrrrrr"
+    },
+    {
+      "agent": "Peux-tu me donner : cartes  (première) > infos carte > product type ?",
+      "user": "infos"
+    },
+    {
+      "agent": "Peux-tu me donner : cartes  (première) > infos carte > product code ?",
+      "user": "jjf"
+    },
+    {
+      "agent": "Peux-tu me donner : cartes  (première) > infos carte > pvk index ?",
+      "user": "0001"
+    },
+    {
+      "agent": "Peux-tu me donner : cartes  (première) > infos carte > service code ?",
+      "user": "prd001"
+    },
+    {
+      "agent": "Quel est le réseau de la carte ? (ex: VISA, MASTERCARD)",
+      "user": "vikfkf"
+    },
+    {
+      "agent": "Peux-tu me donner : cartes  (première) > infos carte > expiration ?",
+      "user": "jfjfjf"
+    },
+    {
+      "agent": "Peux-tu me donner : cartes  (première) > infos carte > renewal option ?",
+      "user": ",r,r,r"
+    },
+    {
+      "agent": "Peux-tu me donner : cartes  (première) > infos carte > pre expiration ?",
+      "user": "krkrrr"
+    },
+    {
+      "agent": "Peux-tu me donner : cartes  (première) > card range > note ?",
+      "user": "k,rfr"
+    },
+    {
+      "agent": "Peux-tu me donner : cartes  (première) > fees > fee description ?",
+      "user": "kke"
+    },
+    {
+      "agent": "Peux-tu me donner : cartes  (première) > fees > billing event ?",
+      "user": "eddddddddddd"
+    },
+    {
+      "agent": "Peux-tu me donner : cartes  (première) > fees > grace period ?",
+      "user": "ddddddddddd"
+    },
+    {
+      "agent": "Peux-tu me donner : cartes  (première) > fees > billing period ?",
+      "user": "ddddddddddddd"
+    },
+    {
+      "agent": "Peux-tu me donner : cartes  (première) > fees > registration fee ?",
+      "user": "ddddddddddddddddd"
+    },
+    {
+      "agent": "Peux-tu me donner : cartes  (première) > fees > periodic fee ?",
+      "user": "dddddddddddddddd"
+    },
+    {
+      "agent": "Peux-tu me donner : cartes  (première) > fees > replacement fee ?",
+      "user": "dddddddddddddddd"
+    },
+    {
+      "agent": "Peux-tu me donner : cartes  (première) > fees > pin recalculation fee ?",
+      "user": "ddddddddddddddddd"
+    },
+    {
+      "agent": "Quels services veux-tu activer pour la carte ? (liste séparée par virgules)",
+      "user": "dddddddddddddd"
+    },
+    {
+      "agent": "Peux-tu me donner : cartes  (première) > limits > selected limit types ?",
+      "user": "ddddddddddddd"
+    },
+    {
+      "agent": "Peux-tu me donner : cartes  (première) > limits > by type > DEFAULT > domestic > daily amount ?",
+      "user": "ddddddddddddddddd"
+    },
+    {
+      "agent": "Peux-tu me donner : cartes  (première) > limits > by type > DEFAULT > domestic > daily count ?",
+      "user": "dddddddddddddddddddd"
+    },
+    {
+      "agent": "Peux-tu me donner : cartes  (première) > limits > by type > DEFAULT > domestic > weekly amount ?",
+      "user": "ddddddddddddddddddddd"
+    },
+    {
+      "agent": "Peux-tu me donner : cartes  (première) > limits > by type > DEFAULT > domestic > weekly count ?",
+      "user": "dddddddddddddddddddddddd"
+    },
+    {
+      "agent": "Peux-tu me donner : cartes  (première) > limits > by type > DEFAULT > domestic > monthly amount ?",
+      "user": "dddddddddddddd"
+    },
+    {
+      "agent": "Peux-tu me donner : cartes  (première) > limits > by type > DEFAULT > domestic > monthly count ?",
+      "user": "dddddddddddd"
+    },
+    {
+      "agent": "Peux-tu me donner : cartes  (première) > limits > by type > DEFAULT > international > daily amount ?",
+      "user": "ddddddddddddd"
+    },
+    {
+      "agent": "Peux-tu me donner : cartes  (première) > limits > by type > DEFAULT > international > daily count ?",
+      "user": "ddddddddddddddd"
+    },
+    {
+      "agent": "Peux-tu me donner : cartes  (première) > limits > by type > DEFAULT > international > weekly amount ?",
+      "user": "dddddddddddddd"
+    },
+    {
+      "agent": "Peux-tu me donner : cartes  (première) > limits > by type > DEFAULT > international > weekly count ?",
+      "user": "dddddddddddddddd"
+    },
+    {
+      "agent": "Peux-tu me donner : cartes  (première) > limits > by type > DEFAULT > international > monthly amount ?",
+      "user": "dddddddddddddddddddd"
+    },
+    {
+      "agent": "Peux-tu me donner : cartes  (première) > limits > by type > DEFAULT > international > monthly count ?",
+      "user": "ddddddddddddddddd"
+    },
+    {
+      "agent": "Peux-tu me donner : cartes  (première) > limits > by type > DEFAULT > total > daily amount ?",
+      "user": "ddddddddddddddddddd"
+    },
+    {
+      "agent": "Peux-tu me donner : cartes  (première) > limits > by type > DEFAULT > total > daily count ?",
+      "user": "dddddddddddddddd"
+    },
+    {
+      "agent": "Peux-tu me donner : cartes  (première) > limits > by type > DEFAULT > total > weekly amount ?",
+      "user": "ddddddddddddddd"
+    },
+    {
+      "agent": "Peux-tu me donner : cartes  (première) > limits > by type > DEFAULT > total > weekly count ?",
+      "user": "ddddddddddddd"
+    },
+    {
+      "agent": "Peux-tu me donner : cartes  (première) > limits > by type > DEFAULT > total > monthly amount ?",
+      "user": "dddddddddddddd"
+    },
+    {
+      "agent": "Peux-tu me donner : cartes  (première) > limits > by type > DEFAULT > total > monthly count ?",
+      "user": "ddddddddddddd"
+    },
+    {
+      "agent": "Peux-tu me donner : cartes  (première) > limits > by type > DEFAULT > per transaction > min amount ?",
+      "user": "ddddddddddd"
+    },
+    {
+      "agent": "Peux-tu me donner : cartes  (première) > limits > by type > DEFAULT > per transaction > max amount ?",
+      "user": "dddddddddddd"
+    },
+    {
+      "agent": "DONE",
+      "user": "all fields filled"
+    }
+  ],
+  "done": true
+}
