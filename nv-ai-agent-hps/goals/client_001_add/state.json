@@ -1,0 +1,22 @@
+{
+  "meta": {
+    "goal_id": 4,
+    "client": "client",
+    "client_n": 1,
+    "action": "add",
+    "created_at": "2026-02-18T15:39:34"
+  },
+  "goal": "mon but est d ajouter une banque qui s appelle hps se trouve au maroc et en mad",
+  "facts": {
+    "bank.name": "HPS"
+  },
+  "history": [
+    {
+      "agent": "Quel est le nom de la banque ?",
+      "user": "hps"
+    }
+  ],
+  "plan": [],
+  "current_step": null,
+  "done": false
+}

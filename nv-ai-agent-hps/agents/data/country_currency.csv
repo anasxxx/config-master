@@ -1,0 +1,113 @@
+country,currency
+maroc,MAD
+morocco,MAD
+algerie,DZD
+algeria,DZD
+tunisie,TND
+tunisia,TND
+egypte,EGP
+egypt,EGP
+senegal,XOF
+cote d'ivoire,XOF
+ivory coast,XOF
+mali,XOF
+burkina faso,XOF
+benin,XOF
+togo,XOF
+cameroon,XAF
+cameroun,XAF
+gabon,XAF
+congo,XAF
+rdc,CDF
+republique democratique du congo,CDF
+ghana,GHS
+nigeria,NGN
+kenya,KES
+ethiopie,ETB
+south africa,ZAR
+afrique du sud,ZAR
+france,EUR
+germany,EUR
+allemagne,EUR
+spain,EUR
+espagne,EUR
+italy,EUR
+italie,EUR
+belgium,EUR
+belgique,EUR
+netherlands,EUR
+holland,EUR
+portugal,EUR
+ireland,EUR
+austria,EUR
+finland,EUR
+greece,EUR
+luxembourg,EUR
+slovakia,EUR
+slovenia,EUR
+estonia,EUR
+latvia,EUR
+lithuania,EUR
+malta,EUR
+cyprus,EUR
+united kingdom,GBP
+royaume uni,GBP
+uk,GBP
+england,GBP
+switzerland,CHF
+suisse,CHF
+denmark,DKK
+norway,NOK
+sweden,SEK
+poland,PLN
+czech republic,CZK
+hungary,HUF
+romania,RON
+bulgaria,BGN
+serbia,RSD
+croatia,EUR
+bosnia,BAM
+united states,USD
+usa,USD
+canada,CAD
+mexico,MXN
+brazil,BRL
+argentina,ARS
+chile,CLP
+colombia,COP
+peru,PEN
+venezuela,VES
+uruguay,UYU
+paraguay,PYG
+bolivia,BOB
+china,CNY
+japan,JPY
+south korea,KRW
+korea,KRW
+india,INR
+pakistan,PKR
+bangladesh,BDT
+sri lanka,LKR
+indonesia,IDR
+malaysia,MYR
+thailand,THB
+vietnam,VND
+philippines,PHP
+singapore,SGD
+hong kong,HKD
+taiwan,TWD
+australia,AUD
+new zealand,NZD
+turkey,TRY
+turquie,TRY
+saudi arabia,SAR
+arabie saoudite,SAR
+uae,AED
+emirats arabes unis,AED
+qatar,QAR
+kuwait,KWD
+bahrain,BHD
+oman,OMR
+israel,ILS
+jordan,JOD
+lebanon,LBP

@@ -1,0 +1,198 @@
+{
+  "meta": {
+    "goal_id": 17,
+    "client": "client",
+    "client_n": 14,
+    "action": "add",
+    "created_at": "2026-02-19T09:53:10"
+  },
+  "goal": "hey je veux creer une bank qui s appelle hps au maroc",
+  "facts": {
+    "bank": {
+      "name": "hps",
+      "country": "Maroc",
+      "currency": "MAD",
+      "bank_code": "1258",
+      "resources": [
+        "accounts"
+      ],
+      "agencies": [
+        {
+          "agency_name": "mery",
+          "agency_code": "1258",
+          "city": "casa",
+          "city_code": "20558",
+          "region": "casab",
+          "region_code": "20500"
+        }
+      ]
+    },
+    "cards": [
+      {
+        "card_info": {
+          "bin": "25896314",
+          "plastic_type": null,
+          "card_description": null,
+          "product_type": null,
+          "product_code": null,
+          "pvk_index": null,
+          "service_code": null,
+          "network": null,
+          "expiration": null,
+          "renewal_option": null,
+          "pre_expiration": null
+        },
+        "card_range": {
+          "note": ""
+        },
+        "fees": {
+          "fee_description": null,
+          "billing_event": null,
+          "grace_period": null,
+          "billing_period": null,
+          "registration_fee": null,
+          "periodic_fee": null,
+          "replacement_fee": null,
+          "pin_recalculation_fee": null
+        },
+        "services": {
+          "enabled": []
+        },
+        "limits": {
+          "selected_limit_types": [],
+          "by_type": {
+            "DEFAULT": {
+              "domestic": {
+                "daily_amount": null,
+                "daily_count": null,
+                "weekly_amount": null,
+                "weekly_count": null,
+                "monthly_amount": null,
+                "monthly_count": null
+              },
+              "international": {
+                "daily_amount": null,
+                "daily_count": null,
+                "weekly_amount": null,
+                "weekly_count": null,
+                "monthly_amount": null,
+                "monthly_count": null
+              },
+              "total": {
+                "daily_amount": null,
+                "daily_count": null,
+                "weekly_amount": null,
+                "weekly_count": null,
+                "monthly_amount": null,
+                "monthly_count": null
+              },
+              "per_transaction": {
+                "min_amount": null,
+                "max_amount": null
+              }
+            }
+          }
+        }
+      }
+    ],
+    "options": {
+      "resources_examples": [
+        "MCD_MDS",
+        "MCD_CIS",
+        "UPI",
+        "HOST_BANK",
+        "SID",
+        "VISA_BASE1",
+        "VISA_SMS"
+      ],
+      "services": [
+        "Retrait",
+        "Cash Advance",
+        "Transferts",
+        "Consultation Solde",
+        "Changement PIN",
+        "Envoi d'argent",
+        "Original",
+        "Achats",
+        "E-commerce",
+        "Quasi-Cash",
+        "Mini-Relevé",
+        "Remboursements",
+        "Paiement Factures",
+        "Authentification",
+        "Cashback"
+      ],
+      "limit_types": [
+        "Retrait",
+        "Purchase",
+        "CASH_advance",
+        "Quasi-cash",
+        "E-commerce"
+      ]
+    },
+    "constraints_seen_in_screenshots": {
+      "bank_code_max_length": 6,
+      "agency_code_max_length": 6,
+      "city_max_length": 32,
+      "city_code_max_length": 5,
+      "region_max_length": 30,
+      "region_code_max_length": 3,
+      "expiration_max_length": 2,
+      "renewal_option_max_length": 1,
+      "pre_expiration_max_length": 1,
+      "limit_amount_max_digits": 20,
+      "limit_count_max_digits": 3
+    }
+  },
+  "history": [
+    {
+      "agent": "Quel est le nom de la banque ?",
+      "user": "hps"
+    },
+    {
+      "agent": "Quel est le pays de la banque ? ",
+      "user": "maroc"
+    },
+    {
+      "agent": "Quelle est la devise ? (ex: MAD, EUR, USD)",
+      "user": "mad"
+    },
+    {
+      "agent": "Quel est le code de la banque (bank code) ?",
+      "user": "1258"
+    },
+    {
+      "agent": "Quelles ressources veux-tu activer ? (ex: accounts, cards, transactions) Donne une liste séparée par virgules.",
+      "user": "accounts"
+    },
+    {
+      "agent": "Quel est le nom de la première agence ?",
+      "user": "mery"
+    },
+    {
+      "agent": "Quel est le code de cette agence ?",
+      "user": "1258"
+    },
+    {
+      "agent": "Dans quelle ville se trouve cette agence ?",
+      "user": "casa"
+    },
+    {
+      "agent": "Quel est le code de la ville ?",
+      "user": "20558"
+    },
+    {
+      "agent": "Quelle est la région ?",
+      "user": "casab"
+    },
+    {
+      "agent": "Quel est le code de la région ?",
+      "user": "20500"
+    },
+    {
+      "agent": "Quel est le BIN de la carte ? (6 à 8 chiffres)",
+      "user": "25896314"
+    }
+  ],
+  "done": false
+}
