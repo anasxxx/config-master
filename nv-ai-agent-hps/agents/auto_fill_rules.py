@@ -65,7 +65,7 @@ def _load_currency_csv_by_alpha2() -> dict:
                 mapping[a2] = currency
     return mapping
 
-# Charge une fois au démarrage
+
 ALPHA2_TO_CURRENCY_CSV = _load_currency_csv_by_alpha2()
 
 def auto_fill(facts: dict) -> None:
@@ -77,7 +77,7 @@ def auto_fill(facts: dict) -> None:
     if not country:
         return
 
-    # Ne pas écraser si devise déjà là
+    
     if bank.get("currency"):
         return
 
