@@ -126,7 +126,7 @@ def brain_step(
             if path.startswith("cards.0.card_info."): return 20
             if path == "cards.0.services.enabled": return 25
 
-            # ✅ Limits MVP : après infos carte
+            #  Limits MVP : après infos carte
             if path.startswith("cards.0.limits.by_type.DEFAULT.domestic."): return 40
             if path.startswith("cards.0.limits.by_type.DEFAULT.international."): return 41
 
@@ -137,7 +137,7 @@ def brain_step(
 
         next_path = sorted(miss, key=_priority)[0]
 
-    # ✅ Multi-field si groupe
+    #  Multi-field si groupe
     group_paths = GROUPS.get(next_path)
     if group_paths:
         group_missing = [p for p in group_paths if p in miss]

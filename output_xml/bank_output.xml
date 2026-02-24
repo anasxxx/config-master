@@ -6,451 +6,409 @@
     <meta>
       
     
-      <greeted>True</greeted>
+      <goal_id>82</goal_id>
       
     
-      <state>chatting</state>
+      <client>client</client>
       
     
-      <intent>CREATE_BANK</intent>
+      <client_n>79</client_n>
       
     
-      <started_questions>True</started_questions>
+      <action>modify</action>
+      
+    
+      <created_at>2026-02-23T12:42:30</created_at>
+      
+    
+      <last_question_path>bank.name</last_question_path>
+      
+    
+      <last_question_paths>
+        
+      
+        <item>bank.name</item>
+        
+    
+      </last_question_paths>
       
   
     </meta>
     
   
-    <bank>
+    <goal>client_071_modify</goal>
+    
+  
+    <facts>
       
     
-      <name>anas</name>
-      
-    
-      <country>MA</country>
-      
-    
-      <currency>EUR</currency>
-      
-    
-      <bank_code>ANS</bank_code>
-      
-    
-      <resources>
+      <bank>
         
       
-        <item>VISA_SMS</item>
+        <name>None</name>
+        
+      
+        <country>None</country>
+        
+      
+        <currency>None</currency>
+        
+      
+        <bank_code>None</bank_code>
+        
+      
+        <resources/>
+        
+      
+        <agencies>
+          
+        
+          <item>
+            
+          
+            <agency_name>None</agency_name>
+            
+          
+            <agency_code>None</agency_code>
+            
+          
+            <city>None</city>
+            
+          
+            <city_code>None</city_code>
+            
+          
+            <region>None</region>
+            
+          
+            <region_code>None</region_code>
+            
+        
+          </item>
+          
+      
+        </agencies>
         
     
-      </resources>
+      </bank>
       
     
-      <agencies>
+      <cards>
         
       
         <item>
           
         
-          <agency_name>MAIN AGENCY</agency_name>
+          <card_info>
+            
+          
+            <bin>None</bin>
+            
+          
+            <plastic_type>None</plastic_type>
+            
+          
+            <card_description>None</card_description>
+            
+          
+            <product_type>None</product_type>
+            
+          
+            <product_code>None</product_code>
+            
+          
+            <pvk_index>None</pvk_index>
+            
+          
+            <service_code>None</service_code>
+            
+          
+            <network>None</network>
+            
+          
+            <expiration>None</expiration>
+            
+          
+            <renewal_option>None</renewal_option>
+            
+          
+            <pre_expiration>None</pre_expiration>
+            
+        
+          </card_info>
           
         
-          <agency_code>001</agency_code>
+          <card_range>
+            
+          
+            <note/>
+            
+        
+          </card_range>
           
         
-          <city>CASABLANCA</city>
+          <fees>
+            
+          
+            <fee_description>None</fee_description>
+            
+          
+            <billing_event>None</billing_event>
+            
+          
+            <grace_period>None</grace_period>
+            
+          
+            <billing_period>None</billing_period>
+            
+          
+            <registration_fee>None</registration_fee>
+            
+          
+            <periodic_fee>None</periodic_fee>
+            
+          
+            <replacement_fee>None</replacement_fee>
+            
+          
+            <pin_recalculation_fee>None</pin_recalculation_fee>
+            
+        
+          </fees>
           
         
-          <city_code>01</city_code>
+          <services>
+            
+          
+            <enabled/>
+            
+        
+          </services>
           
         
-          <region>CASABLANCA-SETTAT</region>
+          <limits>
+            
           
+            <selected_limit_types/>
+            
+          
+            <by_type>
+              
+            
+              <DEFAULT>
+                
+              
+                <domestic>
+                  
+                
+                  <daily_amount>None</daily_amount>
+                  
+                
+                  <daily_count>None</daily_count>
+                  
+                
+                  <weekly_amount>None</weekly_amount>
+                  
+                
+                  <weekly_count>None</weekly_count>
+                  
+                
+                  <monthly_amount>None</monthly_amount>
+                  
+                
+                  <monthly_count>None</monthly_count>
+                  
+              
+                </domestic>
+                
+              
+                <international>
+                  
+                
+                  <daily_amount>None</daily_amount>
+                  
+                
+                  <daily_count>None</daily_count>
+                  
+                
+                  <weekly_amount>None</weekly_amount>
+                  
+                
+                  <weekly_count>None</weekly_count>
+                  
+                
+                  <monthly_amount>None</monthly_amount>
+                  
+                
+                  <monthly_count>None</monthly_count>
+                  
+              
+                </international>
+                
+              
+                <total>
+                  
+                
+                  <daily_amount>None</daily_amount>
+                  
+                
+                  <daily_count>None</daily_count>
+                  
+                
+                  <weekly_amount>None</weekly_amount>
+                  
+                
+                  <weekly_count>None</weekly_count>
+                  
+                
+                  <monthly_amount>None</monthly_amount>
+                  
+                
+                  <monthly_count>None</monthly_count>
+                  
+              
+                </total>
+                
+              
+                <per_transaction>
+                  
+                
+                  <min_amount>None</min_amount>
+                  
+                
+                  <max_amount>None</max_amount>
+                  
+              
+                </per_transaction>
+                
+            
+              </DEFAULT>
+              
+          
+            </by_type>
+            
         
-          <region_code>CS1</region_code>
+          </limits>
           
       
         </item>
         
     
-      </agencies>
-      
-  
-    </bank>
-    
-  
-    <cards>
+      </cards>
       
     
-      <item>
+      <options>
         
       
-        <card_info>
+        <resources_examples>
           
         
-          <bin>453210</bin>
+          <item>MCD_MDS</item>
           
         
-          <plastic_type>001</plastic_type>
+          <item>MCD_CIS</item>
           
         
-          <card_description>VISA CLASSIC</card_description>
+          <item>UPI</item>
           
         
-          <product_type>001</product_type>
+          <item>HOST_BANK</item>
           
         
-          <product_code>VC001</product_code>
+          <item>SID</item>
           
         
-          <pvk_index>1</pvk_index>
+          <item>VISA_BASE1</item>
           
         
-          <service_code>101</service_code>
-          
-        
-          <network>VISA</network>
-          
-        
-          <expiration>3</expiration>
-          
-        
-          <renewal_option>Y</renewal_option>
-          
-        
-          <pre_expiration>1</pre_expiration>
+          <item>VISA_SMS</item>
           
       
-        </card_info>
-        
-      
-        <card_range>
-          
-        
-          <start_range>4532100000000000</start_range>
-          
-        
-          <end_range>4532109999999999</end_range>
-          
-      
-        </card_range>
-        
-      
-        <fees>
-          
-        
-          <fee_description>STANDARD FEES</fee_description>
-          
-        
-          <billing_event>ANNUAL</billing_event>
-          
-        
-          <grace_period>30</grace_period>
-          
-        
-          <billing_period>12</billing_period>
-          
-        
-          <registration_fee>50.00</registration_fee>
-          
-        
-          <periodic_fee>100.00</periodic_fee>
-          
-        
-          <replacement_fee>25.00</replacement_fee>
-          
-        
-          <pin_recalculation_fee>10.00</pin_recalculation_fee>
-          
-      
-        </fees>
+        </resources_examples>
         
       
         <services>
           
         
-          <enabled>
-            
+          <item>Retrait</item>
           
-            <item>Retrait</item>
-            
-          
-            <item>Achats</item>
-            
-          
-            <item>E-commerce</item>
-            
-          
-            <item>Consultation Solde</item>
-            
-          
-            <item>Changement PIN</item>
-            
         
-          </enabled>
+          <item>Cash Advance</item>
+          
+        
+          <item>Transferts</item>
+          
+        
+          <item>Consultation Solde</item>
+          
+        
+          <item>Changement PIN</item>
+          
+        
+          <item>Envoi d'argent</item>
+          
+        
+          <item>Original</item>
+          
+        
+          <item>Achats</item>
+          
+        
+          <item>E-commerce</item>
+          
+        
+          <item>Quasi-Cash</item>
+          
+        
+          <item>Mini-Relevé</item>
+          
+        
+          <item>Remboursements</item>
+          
+        
+          <item>Paiement Factures</item>
+          
+        
+          <item>Authentification</item>
+          
+        
+          <item>Cashback</item>
           
       
         </services>
         
       
-        <limits>
+        <limit_types>
           
         
-          <selected_limit_types>
-            
-          
-            <item>Retrait</item>
-            
-          
-            <item>Purchase</item>
-            
-        
-          </selected_limit_types>
+          <item>Retrait</item>
           
         
-          <by_type>
-            
+          <item>Purchase</item>
           
-            <DEFAULT>
-              
-            
-              <domestic>
-                
-              
-                <daily_amount>5000.00</daily_amount>
-                
-              
-                <daily_count>5</daily_count>
-                
-              
-                <weekly_amount>20000.00</weekly_amount>
-                
-              
-                <weekly_count>20</weekly_count>
-                
-              
-                <monthly_amount>50000.00</monthly_amount>
-                
-              
-                <monthly_count>50</monthly_count>
-                
-            
-              </domestic>
-              
-            
-              <international>
-                
-              
-                <daily_amount>3000.00</daily_amount>
-                
-              
-                <daily_count>3</daily_count>
-                
-              
-                <weekly_amount>10000.00</weekly_amount>
-                
-              
-                <weekly_count>10</weekly_count>
-                
-              
-                <monthly_amount>30000.00</monthly_amount>
-                
-              
-                <monthly_count>30</monthly_count>
-                
-            
-              </international>
-              
-            
-              <total>
-                
-              
-                <daily_amount>8000.00</daily_amount>
-                
-              
-                <daily_count>8</daily_count>
-                
-              
-                <weekly_amount>30000.00</weekly_amount>
-                
-              
-                <weekly_count>30</weekly_count>
-                
-              
-                <monthly_amount>80000.00</monthly_amount>
-                
-              
-                <monthly_count>80</monthly_count>
-                
-            
-              </total>
-              
-            
-              <per_transaction>
-                
-              
-                <min_amount>10.00</min_amount>
-                
-              
-                <max_amount>2000.00</max_amount>
-                
-            
-              </per_transaction>
-              
-          
-            </DEFAULT>
-            
         
-          </by_type>
+          <item>CASH_advance</item>
+          
+        
+          <item>Quasi-cash</item>
+          
+        
+          <item>E-commerce</item>
           
       
-        </limits>
+        </limit_types>
         
     
-      </item>
+      </options>
       
   
-    </cards>
+    </facts>
     
   
-    <options>
-      
-    
-      <resources_examples>
-        
-      
-        <item>MCD_MDS</item>
-        
-      
-        <item>MCD_CIS</item>
-        
-      
-        <item>UPI</item>
-        
-      
-        <item>HOST_BANK</item>
-        
-      
-        <item>SID</item>
-        
-      
-        <item>VISA_BASE1</item>
-        
-      
-        <item>VISA_SMS</item>
-        
-    
-      </resources_examples>
-      
-    
-      <services>
-        
-      
-        <item>Retrait</item>
-        
-      
-        <item>Cash Advance</item>
-        
-      
-        <item>Transferts</item>
-        
-      
-        <item>Consultation Solde</item>
-        
-      
-        <item>Changement PIN</item>
-        
-      
-        <item>Envoi d'argent</item>
-        
-      
-        <item>Original</item>
-        
-      
-        <item>Achats</item>
-        
-      
-        <item>E-commerce</item>
-        
-      
-        <item>Quasi-Cash</item>
-        
-      
-        <item>Mini-Relevé</item>
-        
-      
-        <item>Remboursements</item>
-        
-      
-        <item>Paiement Factures</item>
-        
-      
-        <item>Authentification</item>
-        
-      
-        <item>Cashback</item>
-        
-    
-      </services>
-      
-    
-      <limit_types>
-        
-      
-        <item>Retrait</item>
-        
-      
-        <item>Purchase</item>
-        
-      
-        <item>CASH_advance</item>
-        
-      
-        <item>Quasi-cash</item>
-        
-      
-        <item>E-commerce</item>
-        
-    
-      </limit_types>
-      
-  
-    </options>
+    <history/>
     
   
-    <case_id>20260218_121800_anas</case_id>
-    
-  
-    <status>
-      
-    
-      <missing_fields/>
-      
-    
-      <errors/>
-      
-    
-      <is_complete>True</is_complete>
-      
-    
-      <is_valid>True</is_valid>
-      
-  
-    </status>
-    
-  
-    <artifacts>
-      
-    
-      <xml_path/>
-      
-    
-      <pdf_path/>
-      
-  
-    </artifacts>
-    
-  
-    <hps/>
+    <done>False</done>
     
 
   </json_parameters>

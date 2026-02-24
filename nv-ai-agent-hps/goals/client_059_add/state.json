@@ -10,83 +10,83 @@
   "facts": {
     "bank": {
       "name": "MERYEM",
-      "country": null,
-      "currency": null,
-      "bank_code": null,
-      "resources": [],
+      "country": "Morocco",
+      "currency": "MAD",
+      "bank_code": "M059",
+      "resources": ["accounts", "transactions"],
       "agencies": [
         {
-          "agency_name": null,
-          "agency_code": null,
-          "city": null,
-          "city_code": null,
-          "region": null,
-          "region_code": null
+          "agency_name": "Agency59",
+          "agency_code": "A059",
+          "city": "Rabat",
+          "city_code": "R059",
+          "region": "Region59",
+          "region_code": "R059"
         }
       ]
     },
     "cards": [
       {
         "card_info": {
-          "bin": null,
-          "plastic_type": null,
-          "card_description": null,
-          "product_type": null,
-          "product_code": null,
-          "pvk_index": null,
-          "service_code": null,
-          "network": null,
-          "expiration": null,
-          "renewal_option": null,
-          "pre_expiration": null
+          "bin": "59005900",
+          "plastic_type": "plastic",
+          "card_description": "Moroccan card",
+          "product_type": "credit",
+          "product_code": "PC059",
+          "pvk_index": "IDX59",
+          "service_code": "SC59",
+          "network": "MASTERCARD",
+          "expiration": "24",
+          "renewal_option": "auto",
+          "pre_expiration": "1 month"
         },
         "card_range": {
           "note": ""
         },
         "fees": {
-          "fee_description": null,
-          "billing_event": null,
-          "grace_period": null,
-          "billing_period": null,
-          "registration_fee": null,
-          "periodic_fee": null,
-          "replacement_fee": null,
-          "pin_recalculation_fee": null
+          "fee_description": "Moroccan annual fee",
+          "billing_event": "activation",
+          "grace_period": "10",
+          "billing_period": "monthly",
+          "registration_fee": "40",
+          "periodic_fee": "4",
+          "replacement_fee": "15",
+          "pin_recalculation_fee": "2"
         },
         "services": {
-          "enabled": []
+          "enabled": ["Online", "ATM"]
         },
         "limits": {
-          "selected_limit_types": [],
+          "selected_limit_types": ["Retrait", "Purchase"],
           "by_type": {
             "DEFAULT": {
               "domestic": {
-                "daily_amount": null,
-                "daily_count": null,
-                "weekly_amount": null,
-                "weekly_count": null,
-                "monthly_amount": null,
-                "monthly_count": null
+                "daily_amount": "7000",
+                "daily_count": "14",
+                "weekly_amount": "35000",
+                "weekly_count": "70",
+                "monthly_amount": "140000",
+                "monthly_count": "280"
               },
               "international": {
-                "daily_amount": null,
-                "daily_count": null,
-                "weekly_amount": null,
-                "weekly_count": null,
-                "monthly_amount": null,
-                "monthly_count": null
+                "daily_amount": "5000",
+                "daily_count": "10",
+                "weekly_amount": "25000",
+                "weekly_count": "50",
+                "monthly_amount": "100000",
+                "monthly_count": "200"
               },
               "total": {
-                "daily_amount": null,
-                "daily_count": null,
-                "weekly_amount": null,
-                "weekly_count": null,
-                "monthly_amount": null,
-                "monthly_count": null
+                "daily_amount": "12000",
+                "daily_count": "24",
+                "weekly_amount": "60000",
+                "weekly_count": "120",
+                "monthly_amount": "240000",
+                "monthly_count": "480"
               },
               "per_transaction": {
-                "min_amount": null,
-                "max_amount": null
+                "min_amount": "30",
+                "max_amount": "3000"
               }
             }
           }

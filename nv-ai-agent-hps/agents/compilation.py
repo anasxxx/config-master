@@ -29,8 +29,9 @@ model= ChatOllama(model="llama3.2:3b",
                   temperature=0.7)
 
 def _read_json_impl() -> Dict[str, Any]:
-    """Read the most recently modified JSON file from BASE_DIR and return its parsed content."""
-    json_files = glob.glob(os.path.join(BASE_DIR, "*.json"))
+    """Read the most recently modified JSON file from the goals directory and its subdirectories and return its parsed content."""
+    goals_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'goals'))
+    json_files = glob.glob(os.path.join(goals_dir, '**', '*.json'), recursive=True)
     if not json_files:
         return {}
     latest_json = max(json_files, key=os.path.getmtime)
@@ -151,4 +152,3 @@ if __name__ == "__main__":
     print(f"SQL XML: {sql_xml_path}")
     print(f"Combined output: {output_path}")
     print(delete_status)
-

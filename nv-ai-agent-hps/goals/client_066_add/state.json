@@ -11,82 +11,82 @@
     "bank": {
       "name": "flms",
       "country": "Suisse",
-      "currency": null,
-      "bank_code": null,
-      "resources": [],
+      "currency": "CHF",
+      "bank_code": "CH001",
+      "resources": ["accounts", "transactions"],
       "agencies": [
         {
-          "agency_name": null,
-          "agency_code": null,
-          "city": null,
-          "city_code": null,
-          "region": null,
-          "region_code": null
+          "agency_name": "Agency66",
+          "agency_code": "A066",
+          "city": "Geneva",
+          "city_code": "G066",
+          "region": "Region66",
+          "region_code": "R066"
         }
       ]
     },
     "cards": [
       {
         "card_info": {
-          "bin": null,
-          "plastic_type": null,
-          "card_description": null,
-          "product_type": null,
-          "product_code": null,
-          "pvk_index": null,
-          "service_code": null,
-          "network": null,
-          "expiration": null,
-          "renewal_option": null,
-          "pre_expiration": null
+          "bin": "66006666",
+          "plastic_type": "plastic",
+          "card_description": "Swiss card",
+          "product_type": "debit",
+          "product_code": "PC066",
+          "pvk_index": "IDX66",
+          "service_code": "SC66",
+          "network": "VISA",
+          "expiration": "36",
+          "renewal_option": "auto",
+          "pre_expiration": "3 months"
         },
         "card_range": {
           "note": ""
         },
         "fees": {
-          "fee_description": null,
-          "billing_event": null,
-          "grace_period": null,
-          "billing_period": null,
-          "registration_fee": null,
-          "periodic_fee": null,
-          "replacement_fee": null,
-          "pin_recalculation_fee": null
+          "fee_description": "Swiss annual fee",
+          "billing_event": "activation",
+          "grace_period": "20",
+          "billing_period": "monthly",
+          "registration_fee": "60",
+          "periodic_fee": "6",
+          "replacement_fee": "25",
+          "pin_recalculation_fee": "4"
         },
         "services": {
-          "enabled": []
+          "enabled": ["Online", "ATM"]
         },
         "limits": {
-          "selected_limit_types": [],
+          "selected_limit_types": ["Retrait", "Purchase"],
           "by_type": {
             "DEFAULT": {
               "domestic": {
-                "daily_amount": null,
-                "daily_count": null,
-                "weekly_amount": null,
-                "weekly_count": null,
-                "monthly_amount": null,
-                "monthly_count": null
+                "daily_amount": "6000",
+                "daily_count": "12",
+                "weekly_amount": "30000",
+                "weekly_count": "60",
+                "monthly_amount": "120000",
+                "monthly_count": "240"
               },
               "international": {
-                "daily_amount": null,
-                "daily_count": null,
-                "weekly_amount": null,
-                "weekly_count": null,
-                "monthly_amount": null,
-                "monthly_count": null
+                "daily_amount": "4000",
+                "daily_count": "8",
+                "weekly_amount": "20000",
+                "weekly_count": "40",
+                "monthly_amount": "80000",
+                "monthly_count": "160"
               },
               "total": {
-                "daily_amount": null,
-                "daily_count": null,
-                "weekly_amount": null,
-                "weekly_count": null,
-                "monthly_amount": null,
-                "monthly_count": null
+                "daily_amount": "10000",
+                "daily_count": "20",
+                "weekly_amount": "50000",
+                "weekly_count": "100",
+                "monthly_amount": "200000",
+                "monthly_count": "400"
               },
               "per_transaction": {
-                "min_amount": null,
-                "max_amount": null
+                "min_amount": "20",
+                "max_amount": "2500"
               }
             }
           }

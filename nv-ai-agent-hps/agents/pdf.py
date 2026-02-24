@@ -11,7 +11,7 @@ from reportlab.lib.units import inch
 from reportlab.lib.pagesizes import A4
 
 
-# ── Palette ───────────────────────────────────────────────────────────────────
+# Palette 
 C_DARK_BLUE  = colors.HexColor("#1F4E79")
 C_MID_BLUE   = colors.HexColor("#2E75B6")
 C_LIGHT_BLUE = colors.HexColor("#D6E4F0")
@@ -29,18 +29,19 @@ HIDDEN_KEYS = {"meta", "options", "artifacts", "hps"}
 
 
 class JSONToPDFAgent:
-    TARGET_FOLDER = r"C:\Users\mahmo\PFE\Config_Master\hps-ai-agent-main\app\dynamic_params"
-    OUTPUT_FOLDER = r"C:\Users\mahmo\PFE\Config_Master\hps-ai-agent-main\app\pdfs"
+    TARGET_FOLDER = r"C:\Users\mahmo\PFE\config_master\nv-ai-agent-hps\goals"
+    OUTPUT_FOLDER = r"C:\Users\mahmo\PFE\Config_Master\nv-ai-agent-hps\pdfs"
     LOGO_PATH     = r"C:\Users\mahmo\PFE\Config_Master\Logo-HPS.jpg"
 
-    def __init__(self, output_filename="HPS_Config_Report.pdf"):
+    def __init__(self, output_filename="HPS_Config_Report.pdf", json_path=None):
         os.makedirs(self.OUTPUT_FOLDER, exist_ok=True)
         self.output_path = os.path.join(self.OUTPUT_FOLDER, output_filename)
-        self.json_path = self.data = None
+        self.json_path = json_path
+        self.data = None
         self.elements  = []
         self._init_styles()
 
-    # ── Styles ────────────────────────────────────────────────────────────────
+    # Styles 
     def _init_styles(self):
         self.s_title = ParagraphStyle(
             "Title", fontSize=18, fontName="Helvetica-Bold",
@@ -86,9 +87,13 @@ class JSONToPDFAgent:
             textColor=C_RED, alignment=1
         )
 
-    # ── Helpers ───────────────────────────────────────────────────────────────
+    #  Helpers 
     def _fp(self, t): return Paragraph(str(t), self.s_field)
-    def _vp(self, t): return Paragraph(str(t), self.s_val)
+    def _vp(self, t):
+        # Always show the field, use '—' for None/null/empty
+        if t is None or (isinstance(t, str) and t.strip() == ""):
+            return Paragraph("—", self.s_val)
+        return Paragraph(str(t), self.s_val)
     def _hp(self, t): return Paragraph(str(t), self.s_hdr)
 
     @staticmethod
@@ -99,22 +104,26 @@ class JSONToPDFAgent:
         try:    return f"{float(v):,.2f} {cur}"
         except: return f"{v} {cur}"
 
-    # ── File helpers ──────────────────────────────────────────────────────────
+    # File helpers 
     def find_latest_json(self):
-        files = [
-            os.path.join(self.TARGET_FOLDER, f)
-            for f in os.listdir(self.TARGET_FOLDER) if f.endswith(".json")
-        ]
-        if not files:
-            raise FileNotFoundError("No JSON files found.")
-        self.json_path = max(files, key=os.path.getmtime)
+        if self.json_path:
+            # Already set, skip finding
+            return
+        json_files = []
+        for root, dirs, files in os.walk(self.TARGET_FOLDER):
+            for f in files:
+                if f.endswith(".json"):
+                    json_files.append(os.path.join(root, f))
+        if not json_files:
+            raise FileNotFoundError("No JSON files found in goals directory.")
+        self.json_path = max(json_files, key=os.path.getmtime)
         print(f"Latest JSON: {os.path.basename(self.json_path)}")
 
     def load_json(self):
         with open(self.json_path, "r", encoding="utf-8") as f:
             self.data = json.load(f)
 
-    # ── Table builders ────────────────────────────────────────────────────────
+    # Table builders 
     def _base_cmds(self, n_rows, hdr_rows=1):
         """Common table style commands with zebra striping."""
         cmds = [
@@ -235,7 +244,7 @@ class JSONToPDFAgent:
         t.setStyle(TableStyle(cmds))
         return t
 
-    # ── Section title ─────────────────────────────────────────────────────────
+    # Section title 
     def _sec_title(self, text):
         self.elements.append(Spacer(1, 0.15 * inch))
         self.elements.append(HRFlowable(
@@ -243,7 +252,7 @@ class JSONToPDFAgent:
         ))
         self.elements.append(Paragraph(text, self.s_sec))
 
-    # ── Header block ──────────────────────────────────────────────────────────
+    # Header block 
     def _add_header(self, case_id, generated_at):
         if os.path.exists(self.LOGO_PATH):
             logo = Image(self.LOGO_PATH, width=1.5 * inch, height=0.8 * inch)
@@ -261,7 +270,7 @@ class JSONToPDFAgent:
             width="100%", thickness=1.5, color=C_DARK_BLUE, spaceAfter=6
         ))
 
-    # ── Status badge ──────────────────────────────────────────────────────────
+    # Status badge 
     def _add_status_badge(self, status):
         ok = status.get("is_valid") and status.get("is_complete")
         label  = "[OK]  Complete & Valid" if ok else "[!!]  Incomplete / Invalid"
@@ -269,7 +278,7 @@ class JSONToPDFAgent:
         self.elements.append(Spacer(1, 0.05 * inch))
         self.elements.append(Paragraph(label, style))
 
-    # ── Section renderers ─────────────────────────────────────────────────────
+    # Section renderers 
     def _add_bank_section(self, bank):
         self._sec_title(">> Bank Information")
         rows = [
@@ -367,14 +376,31 @@ class JSONToPDFAgent:
         ]
         self.elements.append(self._kv_table(rows))
 
-    # ── Main ──────────────────────────────────────────────────────────────────
+    
     def run(self):
         print("Starting execution...")
         self.find_latest_json()
         self.load_json()
 
-        data      = self.data
-        case_id   = data.get("case_id", "N/A")
+        raw_data = self.data
+        status_data = raw_data.get("status", {})
+
+        # Support state.json structure: facts + meta
+        if "facts" in raw_data and isinstance(raw_data.get("facts"), dict):
+            data = raw_data.get("facts", {})
+            meta = raw_data.get("meta", {})
+            if not status_data:
+                status_data = {
+                    "is_complete": bool(raw_data.get("done")),
+                    "is_valid": bool(raw_data.get("done")),
+                    "missing_fields": [],
+                    "errors": [],
+                }
+            case_id = raw_data.get("case_id", meta.get("goal_id", "N/A"))
+        else:
+            data = raw_data
+            case_id = data.get("case_id", "N/A")
+
         currency  = data.get("bank", {}).get("currency", "")
         generated = datetime.now().strftime("%Y-%m-%d  %H:%M:%S")
 
@@ -385,11 +411,11 @@ class JSONToPDFAgent:
         )
 
         self._add_header(case_id, generated)
-        self._add_status_badge(data.get("status", {}))
+        self._add_status_badge(status_data)
         self._add_bank_section(data.get("bank", {}))
         self._add_agencies_section(data.get("bank", {}).get("agencies", []))
         self._add_cards_section(data.get("cards", []), currency)
-        self._add_status_section(data.get("status", {}))
+        self._add_status_section(status_data)
 
         print("Generating PDF...")
         doc.build(self.elements)

@@ -113,7 +113,7 @@ CARD_INFO_QUESTIONS = {
     "cards.0.card_info.product_type": "Type de carte (ex: DEBIT ou CREDIT)",
     "cards.0.card_info.product_code": "Code du produit carte (ex: PRD001)",
 
-    # ✅ Simplification des termes techniques
+    # Simplification des termes techniques
     "cards.0.card_info.pvk_index": "Paramètre sécurité PIN (PVK index). Si tu ne sais pas, mets 1",
     "cards.0.card_info.service_code": "Code service de la carte. Si tu ne sais pas, mets 101",
 

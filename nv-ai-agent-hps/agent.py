@@ -4,7 +4,7 @@ from pathlib import Path
 from datetime import datetime
 import re
 import copy
-
+from agents.pdf import JSONToPDFAgent
 from agents.auto_fill_rules import auto_fill
 from agents.brain import brain_step
 
@@ -21,6 +21,19 @@ from agents.conversation_agent import (
     apply_single_field_answer,
     apply_multi_field_answer,
 )
+from agents.compilation import (
+    read_json,
+    read_sql,
+    json_to_xml,
+    sql_to_xml,
+    combine_json_sql_to_xml,
+    delete_temp_files,
+
+)
+from agents.pdf import *
+
+
+
 
 BASE_DIR = Path(__file__).parent
 GOALS_DIR = BASE_DIR / "goals"
@@ -28,7 +41,7 @@ INDEX_FILE = GOALS_DIR / "index.json"
 TEMPLATE_FILE = BASE_DIR / "configmaster_required_fields.json"
 
 
-# -------------------- JSON I/O --------------------
+# JSON I/O 
 def load_json(path: Path, default):
     if not path.exists():
         return default
@@ -42,7 +55,7 @@ def save_json(path: Path, data):
         json.dump(data, f, indent=2, ensure_ascii=False)
 
 
-# -------------------- Utils --------------------
+# Utils 
 SMALLTALK = {"ok", "okay", "merci", "thx", "cool", "parfait", "bien", "daccord", "d'accord", "👍", "✅"}
 
 
@@ -210,6 +223,13 @@ def run_goal(index: dict, goal_id: int, template_obj: dict, req_paths: list):
 
         if user_msg.lower().strip() == "exit":
             save_json(state_path, state)
+            # Generate PDF if state is complete
+            if state.get("done") is True:
+                folder_name = match["folder"] if "folder" in match else "client"
+                pdf_name = f"HPS_Config_Report_{folder_name}.pdf"
+                from agents.pdf import JSONToPDFAgent
+                agent = JSONToPDFAgent(pdf_name, json_path=str(state_path))
+                agent.run()
             print("AGENT> au revoir. Tu pourras reprendre en disant 'continue'.\n")
             return "EXIT_APP"
 
@@ -393,10 +413,6 @@ def main():
 
             continue
 
-        if intent == "UNKNOWN":
-            print("AGENT> Dis-moi si tu veux ajouter/modifier et quoi exactement.\n")
-            continue
-
         if intent == "CREATE":
             if msg.lower().strip() in {"creer", "créer", "ajouter", "add", "nouveau", "new", "nv"}:
                 print("AGENT> OK. Décris la banque en une phrase (nom + pays + devise si possible).")
@@ -410,9 +426,25 @@ def main():
 
             index = load_json(INDEX_FILE, {"last_id": 0, "goals": []})
             status = run_goal(index, gid, template_obj, req_paths)
+            # Find the folder for the new goal
+            match = next((g for g in index.get("goals", []) if int(g["goal_id"]) == gid), None)
+            
+            if match:
+                state_path = GOALS_DIR / match["folder"] / "state.json"
+                # Only generate PDF if state is complete
+                state = load_json(state_path, {})
+                save_json(state_path, state)
+                if state.get("done") is True:
+                    pdf_name = f"HPS_Config_Report_{match['folder']}.pdf"
+                    agent = JSONToPDFAgent(pdf_name, json_path=str(state_path))
+                    agent.run()
+
             if status == "EXIT_APP":
                 break
             continue
+            agent.run()
+
+            
 
 
 if __name__ == "__main__":
