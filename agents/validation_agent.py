@@ -1,14 +1,12 @@
 import json
 from pathlib import Path
 import re
-
-
+from agents.prompts import PROMPT_BUSINESS_VALIDATOR
 # Validation Agent
 #  Charge le template JSON (contrat)
 #  Construit la liste des champs "à remplir"
 #  Détecte les champs manquants
 #  Génère des questions pour chaque champ
-
 
 
 def load_template(template_path: Path) -> dict:
@@ -48,7 +46,7 @@ def _iter_leaf_paths(template_obj, prefix=""):
             yield from _iter_leaf_paths(v, p)
     elif isinstance(template_obj, list):
         if len(template_obj) == 0:
-            
+            # list itself required
             yield prefix
         else:
             p = f"{prefix}.0" if prefix else "0"
@@ -90,7 +88,7 @@ CUSTOM_QUESTIONS = {
     # Bank
     "bank.name": "Quel est le nom de la banque ?",
     "bank.country": "Quel est le pays de la banque ? ",
-    "bank.currency": "Quelle est la devise ? (ex: MAD, EUR, USD)",
+    "bank.currency": "Quelle est la devise ? ",
     "bank.bank_code": "Quel est le code de la banque (bank code) ?",
     "bank.resources": "Quelles ressources veux-tu activer ? (ex: accounts, cards, transactions) Donne une liste séparée par virgules.",
     # First agency (index 0)
@@ -104,9 +102,25 @@ CUSTOM_QUESTIONS = {
     "cards.0.card_info.bin": "Quel est le BIN de la carte ? (6 à 8 chiffres)",
     "cards.0.card_info.network": "Quel est le réseau de la carte ? (ex: VISA, MASTERCARD)",
     "cards.0.card_info.product": "Quel est le produit carte ? (ex: Classic, Gold...)",
-    "cards.0.services.enabled": "Quels services veux-tu activer pour la carte ? (liste séparée par virgules)",
+    "cards.0.services.enabled": "Quels services veux-tu activer pour la carte ? (liste séparée par virgules) (ex: 3DS, TOKENIZATION)",
 }
 
+
+#  card_info 
+CARD_INFO_QUESTIONS = {
+    "cards.0.card_info.plastic_type": "Type de carte (plastique) (ex: PVC)",
+    "cards.0.card_info.card_description": "Nom/description de la carte (ex: Carte Classic)",
+    "cards.0.card_info.product_type": "Type de carte (ex: DEBIT ou CREDIT)",
+    "cards.0.card_info.product_code": "Code du produit carte (ex: PRD001)",
+
+    # ✅ Simplification des termes techniques
+    "cards.0.card_info.pvk_index": "Paramètre sécurité PIN (PVK index). Si tu ne sais pas, mets 1",
+    "cards.0.card_info.service_code": "Code service de la carte. Si tu ne sais pas, mets 101",
+
+    "cards.0.card_info.expiration": "Durée de validité de la carte (ex: 36 mois)",
+    "cards.0.card_info.renewal_option": "Renouvellement automatique ? (ex: AUTO ou MANUAL)",
+    "cards.0.card_info.pre_expiration": "Délai avant expiration pour lancer le renouvellement (ex: 30 jours)",
+}
 
 HUMAN_LABELS = {
     "bank": "banque",
@@ -133,7 +147,6 @@ HUMAN_LABELS = {
 
 
 def _index_to_ordinal(idx: int) -> str:
-    
     ords = ["première", "deuxième", "troisième", "quatrième", "cinquième"]
     return ords[idx] if 0 <= idx < len(ords) else f"numéro {idx+1}"
 
@@ -143,57 +156,188 @@ def _pretty_segment(seg: str) -> str:
 
 
 def _pretty_path(path: str) -> str:
-    
     parts = path.split(".")
     out = []
     i = 0
     while i < len(parts):
         p = parts[i]
         if p.isdigit():
-            
             idx = int(p)
             out.append(f"({_index_to_ordinal(idx)})")
             i += 1
             continue
         out.append(_pretty_segment(p))
         i += 1
-    
     s = " > ".join(out)
     s = re.sub(r">\s+\(", " (", s)
     return s
+
+
+def _friendly_limits_question(path: str) -> str:
+    """
+    Convertit un path limits profond en question courte.
+    Ex:
+    cards.0.limits.by_type.DEFAULT.domestic.daily_amount
+    -> "Quel est le montant limite national par jour ? (ex: 20000)"
+    """
+    if path.endswith("limits.selected_limit_types"):
+        return "Quels types de limites veux-tu activer ? (ex: DEFAULT) Donne une liste séparée par virgules."
+
+    m = re.search(
+        r"cards\.0\.limits\.by_type\.([A-Za-z0-9_]+)\.(domestic|international|total|per_transaction)\.(daily|weekly|monthly)_(amount|count|min|max)$",
+        path,
+    )
+    if not m:
+        return ""
+
+    _limit_type, scope, period, metric = m.groups()
+
+    scope_fr = {
+        "domestic": "national",
+        "international": "international",
+        "total": "global",
+        "per_transaction": "par transaction",
+    }.get(scope, scope)
+
+    period_fr = {"daily": "par jour", "weekly": "par semaine", "monthly": "par mois"}.get(
+        period, period
+    )
+
+    metric_fr = {
+        "amount": "montant",
+        "count": "nombre d’opérations",
+        "min": "montant minimum",
+        "max": "montant maximum",
+    }.get(metric, metric)
+
+    if scope == "per_transaction":
+        return f"Quel est le {metric_fr} {scope_fr} ? (ex: 100)"
+    return f"Quel est le {metric_fr} limite {scope_fr} {period_fr} ? (ex: 20000)"
+
+
+def _friendly_fees_question(path: str) -> str:
+    """
+    Simplifie cards.0.fees.* en questions lisibles.
+    """
+    if not path.startswith("cards.0.fees."):
+        return ""
+
+    field = path.split(".")[-1]
+    mapping = {
+        "fee_description": "Quelle est la description des frais ?",
+        "billing_event": "Quel est l’événement de facturation ? (ex: ISSUANCE, RENEWAL)",
+        "grace_period": "Quelle est la période de grâce ? (en jours, ex: 30)",
+        "billing_period": "Quelle est la période de facturation ? (ex: MONTHLY, YEARLY)",
+        "registration_fee": "Quels sont les frais d’inscription ? (ex: 50)",
+        "periodic_fee": "Quels sont les frais périodiques ? (ex: 10)",
+        "replacement_fee": "Quels sont les frais de remplacement ? (ex: 25)",
+        "pin_recalculation_fee": "Quels sont les frais de recalcul du PIN ? (ex: 5)",
+    }
+    return mapping.get(field, "Peux-tu préciser les frais ?")
+
+
+def _humanize_question(path: str, q: str) -> str:
+    base = (q or "").strip()
+    if not base:
+        base = "Peux-tu préciser cette information ?"
+
+    if "?" not in base and "(ex:" not in base.lower():
+        base = base.rstrip(".") + " ?"
+
+    intros = [
+        "",
+        "Parfait.",
+        "Top.",
+        "D'accord.",
+        "Super.",
+    ]
+    idx = sum(ord(c) for c in (path + "|" + base)) % len(intros)
+    intro = intros[idx]
+
+    explain = ""
+    if path.endswith(".currency"):
+        explain = "Format attendu: code ISO à 3 lettres (ex: MAD, EUR)."
+    elif path.endswith(".bin"):
+        explain = "Format attendu: 6 à 8 chiffres."
+    elif path.endswith(".network"):
+        explain = "Valeurs courantes: VISA ou MASTERCARD."
+    elif path.endswith(".code") or path.endswith("_code"):
+        explain = "Je prends le code exact."
+    elif path.endswith(".resources") or path.endswith(".enabled"):
+        explain = "Tu peux répondre sous forme de liste, séparée par des virgules."
+
+    msg = f"{intro} {base}".strip()
+    if explain:
+        msg = f"{msg} {explain}".strip()
+    return msg
 
 
 def next_question_for_missing(path: str) -> str:
     """
     Retourne une question simple pour ce champ manquant.
     """
+    # 0) mapping ultra précis
     if path in CUSTOM_QUESTIONS:
-        return CUSTOM_QUESTIONS[path]
+        q = CUSTOM_QUESTIONS[path]
+        return _humanize_question(path, q)
 
-    
+    if path in CARD_INFO_QUESTIONS:
+        q = CARD_INFO_QUESTIONS[path]
+        return _humanize_question(path, q)
+
+    # 1) limits
+    ql = _friendly_limits_question(path)
+    if ql:
+        return _humanize_question(path, ql)
+
+    # 2) fees
+    qf = _friendly_fees_question(path)
+    if qf:
+        return _humanize_question(path, qf)
+
+    # 3) règles simples par suffixe
     if path.endswith(".country"):
-        return "Quel est le pays ? "
+        q = "Quel est le pays ?"
+        return _humanize_question(path, q)
     if path.endswith(".currency"):
-        return "Quelle est la devise ? "
+        q = "Quelle est la devise ?"
+        return _humanize_question(path, q)
     if path.endswith(".name"):
-        return "Quel est le nom ?"
+        q = "Quel est le nom ?"
+        return _humanize_question(path, q)
     if path.endswith(".code"):
-        return "Quel est le code ?"
+        q = "Quel est le code ?"
+        return _humanize_question(path, q)
     if path.endswith(".bin"):
-        return "Quel est le BIN ? (6 à 8 chiffres)"
+        q = "Quel est le BIN ? (6 à 8 chiffres)"
+        return _humanize_question(path, q)
     if path.endswith(".network"):
-        return "Quel est le réseau ? (VISA, MASTERCARD..)"
+        q = "Quel est le réseau ? (VISA, MASTERCARD)"
+        return _humanize_question(path, q)
     if path.endswith(".resources") or path.endswith(".enabled"):
-        return "Donne la liste (séparée par virgules)."
+        q = "Donne la liste (séparée par virgules)."
+        return _humanize_question(path, q)
 
-    
-    return f"Peux-tu me donner : {_pretty_path(path)} ?"
-def humain_missing_list(missing:list,limit:int=8) -> str:
+    # 4) fallback SIMPLE (plus de chemin complet)
+    leaf = path.split(".")[-1].replace("_", " ")
+    q = f"Peux-tu préciser {leaf} ?"
+    return _humanize_question(path, q)
+
+
+def humain_missing_list(missing: list, limit: int = 8) -> str:
     if not missing:
         return "rien ne manque"
-    shown=missing[:limit]
-    more=len(missing)-len(shown)
-    s=",".join(_pretty_path(p) for p in shown)
+    shown = missing[:limit]
+    more = len(missing) - len(shown)
+    s = ",".join(_pretty_path(p) for p in shown)
     if more > 0:
-        s+=f" ... (={more} autres)"
-        return s
+        s += f" ... (={more} autres)"
+    return s
+def format_business_errors(errors: list[dict]) -> str:
+    if not errors:
+        return ""
+    lines = ["⚠ Problème de cohérence métier:"]
+    for e in errors[:5]:
+        lines.append(f"- {e.get('path')}: {e.get('reason')}")
+    lines.append("Corrige ces champs puis réessaie.")
+    return "\n".join(lines)
