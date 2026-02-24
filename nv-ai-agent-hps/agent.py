@@ -30,6 +30,7 @@ from agents.compilation import (
     delete_temp_files,
 
 )
+from agents.bank_pipeline import run_pipeline
 from agents.pdf import *
 
 
@@ -438,6 +439,11 @@ def main():
                     pdf_name = f"HPS_Config_Report_{match['folder']}.pdf"
                     agent = JSONToPDFAgent(pdf_name, json_path=str(state_path))
                     agent.run()
+                    try:
+                        run_pipeline(state_path=state_path, do_verify=True)
+                        print("AGENT> Banque envoyée au backend avec succès.\n")
+                    except Exception as exc:
+                        print(f"AGENT> Erreur lors de l'envoi au backend: {exc}\n")
 
             if status == "EXIT_APP":
                 break

@@ -26,29 +26,16 @@ public class SpringSecurityConfig {
 	            .cors(Customizer.withDefaults())
 	            .csrf(csrf -> csrf.disable())
 	            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-	            .authorizeHttpRequests(auth -> auth
-<<<<<<< HEAD
-	                    .requestMatchers("/v1/api/login","/v2/api-docs/**",
-	                            "/v3/api-docs/**",
-	                            "/swagger-resources/**",
-	                            "/swagger-ui/**",
-	                            "/swagger-ui.html",
-	                            "/h2-console"
+                    .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/v1/api/login","/v2/api-docs/**",
+                            "/v3/api-docs/**",
+                            "/swagger-resources/**",
+                            "/swagger-ui/**",
+                            "/swagger-ui.html",
+                            "/h2-console"
 
-	                            ).permitAll()  // Permet l'accès sans authentification
-=======
-                            .requestMatchers("/v1/api/login","/v2/api-docs/**",
-                                    "/v3/api-docs/**",
-                                    "/swagger-resources/**",
-                                    "/swagger-ui/**",
-                                    "/swagger-ui.html",
-                                    "/h2-console",
-                                    "/v1/api/banksParam/**",
-                                    "/v1/api/banks/**"
-
-                                    ).permitAll()  // Permet l'accès sans authentification (temporarily allow banks endpoints for testing)
->>>>>>> 5ebc2dba95c7d55027c06cad81a2a181222f221d
-	                    .anyRequest().authenticated())          // Toutes les autres requêtes doivent être authentifiées
+                            ).permitAll()  // Permet l'accès sans authentification
+                        .anyRequest().authenticated())          // Toutes les autres requêtes doivent être authentifiées
 	            .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
 	            .build();
 	}
