@@ -75,13 +75,14 @@ def brain_step(
         if last_paths:
             miss_after = missing_paths(state["facts"], template_obj, req_paths)
             miss_after = [p for p in miss_after if not _is_ignored(p)]
+            pending_last_paths = [p for p in last_paths if p in miss_after]
 
-            if len(last_paths) > 1 and any(p in miss_after for p in last_paths):
-                ok = apply_multi_field_answer(state, template_obj, last_paths, user_msg)
+            if len(pending_last_paths) > 1:
+                ok = apply_multi_field_answer(state, template_obj, pending_last_paths, user_msg)
                 if ok:
                     auto_fill(state["facts"])
-            else:
-                last_path = last_paths[0]
+            elif len(pending_last_paths) == 1:
+                last_path = pending_last_paths[0]
                 if last_path in miss_after:
                     ok = apply_single_field_answer(state, template_obj, last_path, user_msg)
                     if ok:
@@ -98,9 +99,16 @@ def brain_step(
 
     # Grouping
     if next_path in GROUPS:
-        paths = GROUPS[next_path]
-        state.setdefault("meta", {})["last_question_paths"] = paths
-        return {"type": "ASK", "question": GROUP_QUESTIONS.get(next_path, "Donne les infos"), "paths": paths}
+        group_paths = GROUPS[next_path]
+        paths = [p for p in group_paths if p in miss]
+        if len(paths) > 1:
+            state.setdefault("meta", {})["last_question_paths"] = paths
+            return {"type": "ASK", "question": GROUP_QUESTIONS.get(next_path, "Donne les infos"), "paths": paths}
+        if len(paths) == 1:
+            single = paths[0]
+            state.setdefault("meta", {})["last_question_paths"] = [single]
+            q = next_question_for_missing(single)
+            return {"type": "ASK", "question": q, "paths": [single]}
 
     # Single
     state.setdefault("meta", {})["last_question_paths"] = [next_path]

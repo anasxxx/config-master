@@ -1,16 +1,15 @@
-# agent.py
+﻿# agent.py
 import json
 from pathlib import Path
 from datetime import datetime
 import re
 import copy
+import unicodedata
 from jsonschema import Draft202012Validator
 from agents.auto_fill_rules import auto_fill
 from agents.brain import brain_step
 from tools import call_tool
 from agents.schema_validator import format_schema_error
-from agents.prompts import is_explanation_request
-from agents.llm_chat import chat_explain
 from agents.validation_agent import (
     load_template,
     build_required_paths,
@@ -61,7 +60,7 @@ def save_json(path: Path, data):
 
 
 # -------------------- Utils --------------------
-SMALLTALK = {"ok", "okay", "merci", "thx", "cool", "parfait", "bien", "daccord", "d'accord", "👍", "✅"}
+SMALLTALK = {"ok", "okay", "merci", "thx", "cool", "parfait", "bien", "daccord", "d'accord", "ðŸ‘", "âœ…"}
 
 
 def slugify(s: str) -> str:
@@ -72,12 +71,21 @@ def slugify(s: str) -> str:
     return s or "client"
 
 
+def norm_text(s: str) -> str:
+    t = (s or "").strip().lower()
+    t = unicodedata.normalize("NFKD", t)
+    t = "".join(ch for ch in t if not unicodedata.combining(ch))
+    t = t.replace("’", "'")
+    t = re.sub(r"\s+", " ", t)
+    return t
+
+
 def parse_client_and_action(msg: str):
-    m = msg.lower()
+    m = norm_text(msg)
     action = "other"
-    if any(w in m for w in ["ajouter", "add", "creer", "créer", "nouveau", "nv", "new"]):
+    if any(w in m for w in ["ajouter", "add", "creer", "nouveau", "nouvelle", "nv", "new", "create"]):
         action = "add"
-    if any(w in m for w in ["modifier", "modify", "update", "mettre a jour", "mettre à jour", "changer"]):
+    if any(w in m for w in ["modifier", "modify", "update", "mettre a jour", "changer"]):
         action = "modify"
 
     client = "client"
@@ -86,7 +94,7 @@ def parse_client_and_action(msg: str):
     bank_patterns = [
         r"(?i)\b(?:banque|bank)\s+nomm\S*\s+([A-Za-z0-9\-_']{2,})\b",
         r"(?i)\b(?:banque|bank)\s+sous\s+nom\s+([A-Za-z0-9\-_']{2,})\b",
-        r"(?i)\b(?:banque|bank)\s+s['’]?appelle\s+([A-Za-z0-9\-_']{2,})\b",
+        r"(?i)\b(?:banque|bank)\s+s['â€™]?appelle\s+([A-Za-z0-9\-_']{2,})\b",
         r"(?i)\b(?:banque|bank)\s+sera\s+([A-Za-z0-9\-_']{2,})\b",
         r"(?i)\b(?:banque|bank)\s+([A-Za-z0-9\-_']{2,})\b",
     ]
@@ -107,7 +115,7 @@ def parse_client_and_action(msg: str):
 
 
 def classify(msg: str) -> str:
-    m = msg.lower().strip()
+    m = norm_text(msg)
     if m in {"exit", "quit", "bye"}:
         return "EXIT"
     if m in SMALLTALK or m in {"bonjour", "salut", "hello", "hi", "hey"}:
@@ -124,13 +132,17 @@ def classify(msg: str) -> str:
             "ajouter",
             "add",
             "creer",
-            "créer",
+            "create",
             "nouveau",
+            "nouvelle",
             "modifier",
             "modify",
             "update",
             "mettre a jour",
-            "mettre à jour",
+            "souhaitons creer",
+            "souhaite creer",
+            "creer une banque",
+            "nouvelle banque",
         ]
     ):
         return "CREATE"
@@ -161,7 +173,7 @@ def new_goal_state(goal_id: int, client: str, client_n: int, action: str, goal_t
         "goal": goal_text,
         "facts": copy.deepcopy(template_obj),
 
-        # ✅ NEW (A2)
+        # âœ… NEW (A2)
         "provenance": {},
 
         "history": [],
@@ -172,7 +184,7 @@ def new_goal_state(goal_id: int, client: str, client_n: int, action: str, goal_t
 def list_goals(index: dict, template_obj: dict, req_path: list):
     goals = index.get("goals", [])
     if not goals:
-        print("Agent> tu n'as encore aucune demande enregistrée.\n")
+        print("Agent> tu n'as encore aucune demande enregistrÃ©e.\n")
         return
 
     print("Agent> voici tous les dossiers:\n")
@@ -215,8 +227,10 @@ def run_goal(index: dict, goal_id: int, template_obj: dict, req_paths: list,vali
     state = load_json(state_path, {})
     
     if not state:
-        print("AGENT> Erreur: état introuvable.\n")
+        print("AGENT> Erreur: Ã©tat introuvable.\n")
         return
+    _normalize_numeric_fields_in_facts(state.get("facts", {}))
+    save_json(state_path, state)
     logger.info(f"Run goal | id={goal_id}")
     def auto_fill_tool(facts: dict):
         state["facts"] = facts
@@ -232,11 +246,11 @@ def run_goal(index: dict, goal_id: int, template_obj: dict, req_paths: list,vali
         )
 
     if state.get("done") is True:
-        print("AGENT> Cette demande est déjà terminée. Dis-moi ce que tu veux faire maintenant.\n")
+        print("AGENT> Cette demande est dÃ©jÃ  terminÃ©e. Dis-moi ce que tu veux faire maintenant.\n")
         return
 
-    print("\nAGENT> D’accord. On complète le formulaire ensemble.")
-    print("AGENT> (Tu peux taper 'exit' pour arrêter, ou 'continue' plus tard.)\n")
+    print("\nAGENT> Dâ€™accord. On complÃ¨te le formulaire ensemble.")
+    print("AGENT> (Tu peux taper 'exit' pour arrÃªter, ou 'continue' plus tard.)\n")
 
     while not state.get("done"):
         decision = brain_step(
@@ -260,9 +274,9 @@ def run_goal(index: dict, goal_id: int, template_obj: dict, req_paths: list,vali
             
             is_valid,err = validate_facts(validator,state["facts"])
             if not is_valid:
-                print(f"AGENT> ⚠ Donnée invalide: {err}")
+                print(f"AGENT> âš  DonnÃ©e invalide: {err}")
             logger.info(f"Goal completed | id={goal_id}")
-            print("AGENT> Merci, c’est complet\n")
+            print("AGENT> Merci, câ€™est complet\n")
             return "DONE"
 
         q = decision["question"]
@@ -273,7 +287,7 @@ def run_goal(index: dict, goal_id: int, template_obj: dict, req_paths: list,vali
             save_json(state_path, state)
             is_valid, err = validate_facts(validator, state["facts"])
             if not is_valid:
-                print(f"AGENT> ⚠ Donnée invalide: {err}")
+                print(f"AGENT> âš  DonnÃ©e invalide: {err}")
             print("AGENT> au revoir. Tu pourras reprendre en disant 'continue'.\n")
             return "EXIT_APP"
 
@@ -281,24 +295,15 @@ def run_goal(index: dict, goal_id: int, template_obj: dict, req_paths: list,vali
             save_json(state_path, state)
             is_valid, err = validate_facts(validator, state["facts"])
             if not is_valid:
-                print(f"AGENT> ⚠ Donnée invalide: {err}")
+                print(f"AGENT> âš  DonnÃ©e invalide: {err}")
             print("AGENT> OK. On met en pause. Dis 'continue' pour reprendre.\n")
             return "PAUSE"
 
         if not user_msg:
-            print("AGENT> Je n’ai pas reçu ta réponse. Tu peux préciser ?\n")
-            continue
-        
-        if is_explanation_request(user_msg):
-            answer = chat_explain(user_msg)
-            print(f"AGENT> {answer}\n")
-            # après l’explication, on continue le formulaire normalement
-            continue
-
-        if user_msg.lower().strip() in SMALLTALK:
-            print("Agent> ok tu peux repondre avec la valeur demandée.\n")
+            print("AGENT> Je nâ€™ai pas reÃ§u ta rÃ©ponse. Tu peux prÃ©ciser ?\n")
             continue
         previous_state = copy.deepcopy(state)
+        before_facts = json.dumps(state.get("facts", {}), ensure_ascii=False, sort_keys=True)
         state["history"].append({"agent": q, "user": user_msg})
 
         _ = brain_step(
@@ -308,20 +313,71 @@ def run_goal(index: dict, goal_id: int, template_obj: dict, req_paths: list,vali
             user_msg=user_msg,
             apply_user_message_to_facts=apply_user_message_to_facts_tool,
             apply_single_field_answer=apply_single_field_answer,
-            apply_multi_field_answer=apply_multi_field_answer,  
+            apply_multi_field_answer=apply_multi_field_answer,
             missing_paths=missing_paths,
             next_question_for_missing=next_question_for_missing,
             auto_fill=auto_fill_tool,
         )
 
-        
+        _normalize_numeric_fields_in_facts(state.get("facts", {}))
         is_valid, err = validate_facts(validator, state["facts"])
         if not is_valid:
-            print(f"AGENT> ⚠ Donnée invalide: {err}")
-            state=previous_state
-            print("AGENT> La valeur a été refusée. Merci de corriger.\n")
+            print(f"AGENT> âš  DonnÃ©e invalide: {err}")
+            state = previous_state
+            print("AGENT> La valeur a Ã©tÃ© refusÃ©e. Merci de corriger.\n")
             continue
-        save_json(state_path,state)
+
+        after_facts = json.dumps(state.get("facts", {}), ensure_ascii=False, sort_keys=True)
+        extracted_anything = before_facts != after_facts
+
+        if user_msg.lower().strip() in SMALLTALK and not extracted_anything:
+            print("Agent> ok tu peux repondre avec la valeur demandÃ©e.\n")
+            save_json(state_path, state)
+            continue
+
+        save_json(state_path, state)
+        continue
+
+        
+def _normalize_numeric_fields_in_facts(facts: dict):
+    if not isinstance(facts, dict):
+        return
+
+    fee_keys = {"registration_fee", "periodic_fee", "replacement_fee", "pin_recalculation_fee"}
+
+    def rec(node, parent_key=""):
+        if isinstance(node, dict):
+            for k, v in list(node.items()):
+                if isinstance(v, str):
+                    s = v.strip().replace(" ", "").replace(",", ".")
+                    if s:
+                        if k in fee_keys or k.endswith("_amount"):
+                            try:
+                                node[k] = float(s)
+                                continue
+                            except Exception:
+                                node[k] = None
+                                continue
+                        if k.endswith("_count"):
+                            try:
+                                node[k] = int(float(s))
+                                continue
+                            except Exception:
+                                node[k] = None
+                                continue
+                if k == "bin" and isinstance(v, str):
+                    vv = v.strip()
+                    if vv and not re.fullmatch(r"\d{6,8}", vv):
+                        node[k] = None
+                        continue
+                rec(v, k)
+        elif isinstance(node, list):
+            for item in node:
+                rec(item, parent_key)
+
+    rec(facts)
+
+
 def validate_facts(validator, facts: dict):
     errors = sorted(validator.iter_errors(facts), key=lambda e: list(e.path))
     if not errors:
@@ -444,12 +500,12 @@ def modify_goal_folder(index: dict, target_folder: str, template_obj: dict):
         field = input("CHAMP> ").strip()
         if field.lower() in {"stop", "exit", "quit"}:
             save_json(state_path, state)
-            print("AGENT> OK. TerminÃ©.\n")
+            print("AGENT> OK. TerminÃƒÂ©.\n")
             break
 
         path = aliases.get(field.lower())
         if not path:
-            print("AGENT> Merci. Choisis un champ de la liste proposée.\n")
+            print("AGENT> Merci. Choisis un champ de la liste proposÃ©e.\n")
             continue
         new_val = input("VALEUR> ").strip()
 
@@ -457,7 +513,7 @@ def modify_goal_folder(index: dict, target_folder: str, template_obj: dict):
         if ok:
             auto_fill(state["facts"])
             save_json(state_path, state)
-            print("AGENT> Merci, c'est bien mis Ã  jour.\n")
+            print("AGENT> Merci, c'est bien mis ÃƒÂ  jour.\n")
         else:
             print("AGENT> Je n'ai pas pu valider cette valeur. Peux-tu la reformuler ?\n")
 
@@ -471,8 +527,8 @@ def main():
     validator=Draft202012Validator(schema_obj)
     req_paths = build_required_paths(template_obj)
 
-    print(" Bonjour. Décris ce que tu veux faire.")
-    print("Tu peux dire: 'créer', 'modifier', 'continue' ou 'liste'. Tape 'exit' pour quitter.\n")
+    print(" Bonjour. DÃ©cris ce que tu veux faire.")
+    print("Tu peux dire: 'crÃ©er', 'modifier', 'continue' ou 'liste'. Tape 'exit' pour quitter.\n")
 
     while True:
         msg = input("CLIENT> ").strip()
@@ -485,7 +541,7 @@ def main():
         index = load_json(INDEX_FILE, {"last_id": 0, "goals": []})
 
         if intent == "SMALLTALK":
-            print("AGENT> OK. Dis-moi ce que tu veux faire ensuite.\n")
+            print("AGENT> Dis-moi une action: creer, modifier, continue ou liste.\n")
             continue
 
         if intent == "LIST":
@@ -506,7 +562,7 @@ def main():
                 gid = find_last_not_done(index)
 
             if gid is None:
-                print("AGENT> Je n’ai rien en cours. Dis-moi ce que tu veux faire maintenant.\n")
+                print("AGENT> Je nâ€™ai rien en cours. Dis-moi ce que tu veux faire maintenant.\n")
                 continue
 
             match = next((g for g in index.get("goals", []) if int(g["goal_id"]) == gid), None)
@@ -519,13 +575,13 @@ def main():
             miss = missing_paths(state.get("facts", {}), template_obj, req_paths)
 
             if not miss:
-                print("Agent> toutes les données sont complètes.\n")
+                print("Agent> toutes les donnÃ©es sont complÃ¨tes.\n")
             else:
                 print("Agent> il manque encore:")
                 print(humain_missing_list(miss))
                 print("")
 
-            print("AGENT> OK, je reprends là où on s’est arrêté.\n")
+            print("AGENT> OK, je reprends lÃ  oÃ¹ on sâ€™est arrÃªtÃ©.\n")
             status = run_goal(index, gid, template_obj, req_paths,validator)
             if status == "EXIT_APP":
                 break
@@ -566,7 +622,7 @@ def main():
                 field = input("CHAMP> ").strip()
                 if field.lower() in {"stop", "exit", "quit"}:
                     save_json(state_path, state)
-                    print("AGENT> OK. Terminé.\n")
+                    print("AGENT> OK. TerminÃ©.\n")
                     break
 
                 path = aliases.get(field.lower(), field)
@@ -576,37 +632,37 @@ def main():
                 if ok:
                     auto_fill(state["facts"])
                     save_json(state_path, state)
-                    print("AGENT> Mis à jour dans le même state.json.\n")
+                    print("AGENT> Mis Ã  jour dans le mÃªme state.json.\n")
                 else:
-                    print("AGENT> Valeur refusée.\n")
+                    print("AGENT> Valeur refusÃ©e.\n")
 
             continue
 
         if intent == "UNKNOWN":
-            print("AGENT> Dis-moi si tu veux ajouter/modifier et quoi exactement.\n")
+            print("AGENT> Action non reconnue. Utilise: creer, modifier, continue ou liste.\n")
             continue
 
         if intent == "CREATE":
-            if msg.lower().strip() in {"creer", "créer", "ajouter", "add", "nouveau", "new", "nv"}:
-                print("AGENT> OK. Décris la banque en une phrase (nom + pays + devise si possible).")
+            if msg.lower().strip() in {"creer", "crÃ©er", "ajouter", "add", "nouveau", "new", "nv"}:
+                print("AGENT> OK. DÃ©cris la banque en une phrase (nom + pays + devise si possible).")
                 msg = input("CLIENT> ").strip()
                 if not msg:
-                    print("AGENT> D’accord. Recommence quand tu veux.\n")
+                    print("AGENT> Dâ€™accord. Recommence quand tu veux.\n")
                     continue
 
             identity = extract_bank_identity_from_text(msg, template_obj)
             existing = find_existing_goal_by_bank_identity(index, identity)
             if existing:
                 folder = existing.get("folder")
-                print(f"AGENT> Ce fichier existe déjà: '{folder}' (même nom, même code et même pays).")
+                print(f"AGENT> Ce fichier existe dÃ©jÃ : '{folder}' (mÃªme nom, mÃªme code et mÃªme pays).")
                 ans = input("AGENT> Est-ce que vous voulez le modifier ? (oui/non)\nCLIENT> ").strip().lower()
                 if ans in {"oui", "o", "yes", "y"}:
                     print("AGENT> Vous pouvez modifier: nom banque, pays, devise, code banque, ressources, nom agence, code agence, ville, code ville, region, code region.\n")
                     modify_goal_folder(index, folder, template_obj)
                     continue
-                print("AGENT> D'accord, je crée un nouveau fichier.\n")
+                print("AGENT> D'accord, je crÃ©e un nouveau fichier.\n")
 
-            print("AGENT> D’accord. On commence.\n")
+            print("AGENT> Dâ€™accord. On commence.\n")
             gid = create_goal(index, msg, template_obj)
 
             index = load_json(INDEX_FILE, {"last_id": 0, "goals": []})
@@ -618,3 +674,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

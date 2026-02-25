@@ -47,7 +47,11 @@ def validate_format(path: str, value: Any) -> Tuple[bool, str]:
 
 
 def validate_value(path: str, value: Any, template_value: Any) -> Tuple[bool, str]:
-    expected_type = infer_expected_type(template_value)
+    # Force strict types for numeric fields even if template value is null.
+    if path.endswith("_amount") or path.endswith("_count") or path.startswith("cards.0.fees."):
+        expected_type = (int, float, type(None))
+    else:
+        expected_type = infer_expected_type(template_value)
 
     if not isinstance(value, expected_type):
         return False, f"type mismatch expected {expected_type} got {type(value)}"

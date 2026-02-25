@@ -1,5 +1,5 @@
 {
-  "last_id": 135,
+  "last_id": 153,
   "goals": [
     {
       "goal_id": 1,
@@ -945,6 +945,132 @@
       "client_n": 6,
       "action": "add",
       "folder": "meryem_006_add"
+    },
+    {
+      "goal_id": 136,
+      "client": "paiement",
+      "client_n": 1,
+      "action": "add",
+      "folder": "paiement_001_add"
+    },
+    {
+      "goal_id": 137,
+      "client": "paiement",
+      "client_n": 2,
+      "action": "add",
+      "folder": "paiement_002_add"
+    },
+    {
+      "goal_id": 138,
+      "client": "client",
+      "client_n": 127,
+      "action": "add",
+      "folder": "client_127_add"
+    },
+    {
+      "goal_id": 139,
+      "client": "atlas",
+      "client_n": 1,
+      "action": "add",
+      "folder": "atlas_001_add"
+    },
+    {
+      "goal_id": 140,
+      "client": "atlas",
+      "client_n": 2,
+      "action": "add",
+      "folder": "atlas_002_add"
+    },
+    {
+      "goal_id": 141,
+      "client": "client",
+      "client_n": 128,
+      "action": "other",
+      "folder": "client_128_other"
+    },
+    {
+      "goal_id": 142,
+      "client": "le",
+      "client_n": 1,
+      "action": "add",
+      "folder": "le_001_add"
+    },
+    {
+      "goal_id": 143,
+      "client": "novabank",
+      "client_n": 1,
+      "action": "add",
+      "folder": "novabank_001_add"
+    },
+    {
+      "goal_id": 144,
+      "client": "le",
+      "client_n": 2,
+      "action": "add",
+      "folder": "le_002_add"
+    },
+    {
+      "goal_id": 145,
+      "client": "le",
+      "client_n": 3,
+      "action": "add",
+      "folder": "le_003_add"
+    },
+    {
+      "goal_id": 146,
+      "client": "au",
+      "client_n": 1,
+      "action": "add",
+      "folder": "au_001_add"
+    },
+    {
+      "goal_id": 147,
+      "client": "des",
+      "client_n": 1,
+      "action": "add",
+      "folder": "des_001_add"
+    },
+    {
+      "goal_id": 148,
+      "client": "maroc",
+      "client_n": 1,
+      "action": "add",
+      "folder": "maroc_001_add"
+    },
+    {
+      "goal_id": 149,
+      "client": "des",
+      "client_n": 2,
+      "action": "add",
+      "folder": "des_002_add"
+    },
+    {
+      "goal_id": 150,
+      "client": "novabank",
+      "client_n": 2,
+      "action": "add",
+      "folder": "novabank_002_add"
+    },
+    {
+      "goal_id": 151,
+      "client": "les",
+      "client_n": 1,
+      "action": "add",
+      "folder": "les_001_add"
+    },
+    {
+      "goal_id": 152,
+      "client": "au",
+      "client_n": 2,
+      "action": "add",
+      "folder": "au_002_add"
+    },
+    {
+      "goal_id": 153,
+      "client": "au",
+      "client_n": 3,
+      "action": "add",
+      "folder": "au_003_add"
     }
   ]
 }

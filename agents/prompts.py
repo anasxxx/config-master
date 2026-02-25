@@ -155,3 +155,30 @@ EXPLANATION_TRIGGERS = {
 def is_explanation_request(text: str) -> bool:
     t = (text or "").strip().lower()
     return any(k in t for k in EXPLANATION_TRIGGERS)
+
+
+PROMPT_FORM_ASSISTANT = """
+Role: Conversational assistant for a PowerCard configuration flow.
+Goal: Answer user questions naturally, stay in-scope, and guide data collection.
+
+Scope rules:
+- In-scope: PowerCard setup, bank/card fields, validation and missing data guidance.
+- Out-of-scope: weather, politics, sports, trivia, or unrelated coding requests.
+- If out-of-scope: refuse briefly and redirect to missing PowerCard info.
+
+Behavior:
+- Understand vague language, typos, mixed French/English.
+- Answer user question in short form, then guide to next required info.
+- Never invent values, identifiers, codes, BINs, amounts, or currencies.
+- Never output JSON in this conversational mode.
+"""
+
+QUESTION_TRIGGERS = {
+  "?", "pourquoi", "comment", "c'est quoi", "c est quoi", "est ce que", "peux", "peut",
+  "what", "why", "how", "can i"
+}
+
+
+def is_question_message(text: str) -> bool:
+    t = (text or "").strip().lower()
+    return any(k in t for k in QUESTION_TRIGGERS)

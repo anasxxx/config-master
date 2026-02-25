@@ -1,0 +1,164 @@
+{
+  "meta": {
+    "goal_id": 119,
+    "client": "client",
+    "client_n": 113,
+    "action": "add",
+    "created_at": "2026-02-24T13:47:56",
+    "last_question_paths": [
+      "bank.name"
+    ]
+  },
+  "goal": "je veux creer une bank sous nom hps au france avec code banque 15289 agence merui de code 78966 au ville casablanca 001",
+  "facts": {
+    "bank": {
+      "name": null,
+      "country": "France",
+      "currency": "EUR",
+      "bank_code": "15289",
+      "resources": [],
+      "agencies": [
+        {
+          "agency_name": "MERUI DE",
+          "agency_code": null,
+          "city": "Casablanca",
+          "city_code": null,
+          "region": null,
+          "region_code": null
+        }
+      ],
+      "country_alpha2": "FR"
+    },
+    "cards": [
+      {
+        "card_info": {
+          "bin": null,
+          "plastic_type": null,
+          "card_description": null,
+          "product_type": null,
+          "product_code": null,
+          "pvk_index": null,
+          "service_code": null,
+          "network": null,
+          "expiration": null,
+          "renewal_option": null,
+          "pre_expiration": null
+        },
+        "card_range": {
+          "note": ""
+        },
+        "fees": {
+          "fee_description": null,
+          "billing_event": null,
+          "grace_period": null,
+          "billing_period": null,
+          "registration_fee": null,
+          "periodic_fee": null,
+          "replacement_fee": null,
+          "pin_recalculation_fee": null
+        },
+        "services": {
+          "enabled": []
+        },
+        "limits": {
+          "selected_limit_types": [],
+          "by_type": {
+            "DEFAULT": {
+              "domestic": {
+                "daily_amount": null,
+                "daily_count": null,
+                "weekly_amount": null,
+                "weekly_count": null,
+                "monthly_amount": null,
+                "monthly_count": null
+              },
+              "international": {
+                "daily_amount": null,
+                "daily_count": null,
+                "weekly_amount": null,
+                "weekly_count": null,
+                "monthly_amount": null,
+                "monthly_count": null
+              },
+              "total": {
+                "daily_amount": null,
+                "daily_count": null,
+                "weekly_amount": null,
+                "weekly_count": null,
+                "monthly_amount": null,
+                "monthly_count": null
+              },
+              "per_transaction": {
+                "min_amount": null,
+                "max_amount": null
+              }
+            }
+          }
+        }
+      }
+    ],
+    "options": {
+      "resources_examples": [
+        "MCD_MDS",
+        "MCD_CIS",
+        "UPI",
+        "HOST_BANK",
+        "SID",
+        "VISA_BASE1",
+        "VISA_SMS"
+      ],
+      "services": [
+        "Retrait",
+        "Cash Advance",
+        "Transferts",
+        "Consultation Solde",
+        "Changement PIN",
+        "Envoi d'argent",
+        "Original",
+        "Achats",
+        "E-commerce",
+        "Quasi-Cash",
+        "Mini-Relevé",
+        "Remboursements",
+        "Paiement Factures",
+        "Authentification",
+        "Cashback"
+      ],
+      "limit_types": [
+        "Retrait",
+        "Purchase",
+        "CASH_advance",
+        "Quasi-cash",
+        "E-commerce"
+      ]
+    }
+  },
+  "provenance": {
+    "bank.bank_code": {
+      "source": "regex",
+      "confidence": 1.0,
+      "timestamp": "2026-02-24T13:48:06",
+      "evidence": "je veux creer une bank sous nom hps au france avec code banque 15289 agence merui de code 78966 au ville casablanca 001"
+    },
+    "bank.country": {
+      "source": "regex",
+      "confidence": 1.0,
+      "timestamp": "2026-02-24T13:48:06",
+      "evidence": "je veux creer une bank sous nom hps au france avec code banque 15289 agence merui de code 78966 au ville casablanca 001"
+    },
+    "bank.agencies.0.agency_name": {
+      "source": "regex",
+      "confidence": 1.0,
+      "timestamp": "2026-02-24T13:48:06",
+      "evidence": "je veux creer une bank sous nom hps au france avec code banque 15289 agence merui de code 78966 au ville casablanca 001"
+    },
+    "bank.agencies.0.city": {
+      "source": "regex",
+      "confidence": 1.0,
+      "timestamp": "2026-02-24T13:48:06",
+      "evidence": "je veux creer une bank sous nom hps au france avec code banque 15289 agence merui de code 78966 au ville casablanca 001"
+    }
+  },
+  "history": [],
+  "done": false
+}
