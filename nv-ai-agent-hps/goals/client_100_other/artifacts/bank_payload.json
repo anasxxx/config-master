@@ -1,0 +1,97 @@
+{
+  "pBusinessDate": "2026-02-25 13:11:39",
+  "pBankCode": "345",
+  "pBankWording": "saham",
+  "pCountryCode": "Maroc",
+  "pCurrencyCode": "MAD",
+  "p_action_flag": "1",
+  "cardProducts": [
+    {
+      "info": {
+        "bankCode": "345",
+        "description": "carte classic",
+        "bin": "335599",
+        "plasticType": "PVC",
+        "productType": "DEBIT , CREDIT",
+        "productCode": "PRD007",
+        "trancheMin": "",
+        "trancheMax": "",
+        "indexPvk": "1",
+        "serviceCode": "101",
+        "network": "VISA",
+        "expiration": "36",
+        "renew": "AUTO",
+        "priorExp": "30"
+      },
+      "fees": {
+        "bankCode": "345",
+        "description": "frais hhh",
+        "cardFeesCode": "PRD007",
+        "cardFeesBillingEvt": "ISSUANCE ,RENEWAL",
+        "cardFeesGracePeriod": 30.0,
+        "cardFeesBillingPeriod": "YEARLY",
+        "subscriptionAmount": 50.0,
+        "feesAmountFirst": 10.0,
+        "damagedReplacementFees": 25.0,
+        "pinReplacementFees": 5.0
+      },
+      "services": {
+        "bankCode": "345",
+        "productCode": "PRD007",
+        "authentication": "1"
+      },
+      "limits": [
+        {
+          "bankCode": "345",
+          "productCode": "LPRD007",
+          "limitsId": "10",
+          "dailyDomAmnt": "5000",
+          "dailyDomNbr": "",
+          "dailyIntAmnt": "2000",
+          "dailyIntNbr": "",
+          "dailyTotalAmnt": "",
+          "dailyTotalNbr": "",
+          "minAmountPerTransaction": "",
+          "maxAmountPerTransaction": "",
+          "weeklyDomAmnt": "20000",
+          "weeklyDomNbr": "",
+          "weeklyIntAmnt": "10000",
+          "weeklyIntNbr": "",
+          "weeklyTotalAmnt": "",
+          "weeklyTotalNbr": "",
+          "monthlyDomAmnt": "80000",
+          "monthlyDomNbr": "",
+          "monthlyIntAmnt": "40000",
+          "monthlyIntNbr": "",
+          "monthlyTotalAmnt": "",
+          "monthlyTotalNbr": ""
+        }
+      ]
+    }
+  ],
+  "branches": [
+    {
+      "bankCode": "345",
+      "branchCode": "777",
+      "branchWording": "agece al tahrir",
+      "regionCode": "12",
+      "regionWording": "rabat",
+      "cityCode": "004",
+      "cityWording": "rabat"
+    }
+  ],
+  "ressources": [
+    {
+      "bankCode": "345",
+      "resourceWording": "accounts"
+    },
+    {
+      "bankCode": "345",
+      "resourceWording": "cards"
+    },
+    {
+      "bankCode": "345",
+      "resourceWording": "transactions"
+    }
+  ]
+}

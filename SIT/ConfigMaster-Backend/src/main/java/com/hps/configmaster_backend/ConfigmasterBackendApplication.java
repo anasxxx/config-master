@@ -53,7 +53,11 @@ public class ConfigmasterBackendApplication {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**") // Autoriser toutes les routes
-                .allowedOrigins("http://localhost:4200,https://10.110.120.34:9442/ConfigMasterFront") // Autoriser le frontend 4200
+                .allowedOrigins(
+                        "http://localhost:4200",
+                        "http://127.0.0.1:4200",
+                        "https://10.110.120.34:9442"
+                ) // Autoriser le frontend 4200
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS") // Autoriser les méthodes HTTP
                         .allowCredentials(true);
             }

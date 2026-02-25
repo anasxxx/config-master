@@ -1,0 +1,263 @@
+{
+  "meta": {
+    "goal_id": 100,
+    "client": "client",
+    "client_n": 97,
+    "action": "other",
+    "created_at": "2026-02-25T10:09:04",
+    "last_question_path": "cards.0.fees.pin_recalculation_fee",
+    "last_question_paths": [
+      "cards.0.fees.pin_recalculation_fee"
+    ]
+  },
+  "goal": "saham bank située au Maroc",
+  "facts": {
+    "bank": {
+      "name": "saham",
+      "country": "Maroc",
+      "currency": "MAD",
+      "bank_code": "234",
+      "resources": [
+        "accounts",
+        "cards",
+        "transactions"
+      ],
+      "agencies": [
+        {
+          "agency_name": "agence literal",
+          "agency_code": "123",
+          "city": "RABAT",
+          "city_code": "13",
+          "region": "RABAT",
+          "region_code": "45"
+        }
+      ],
+      "country_alpha2": "MA"
+    },
+    "cards": [
+      {
+        "card_info": {
+          "bin": "274598",
+          "plastic_type": "PVC",
+          "card_description": "carte classique",
+          "product_type": "DEBIT",
+          "product_code": "PRD005",
+          "pvk_index": "1",
+          "service_code": "101",
+          "network": "VISA",
+          "expiration": "36",
+          "renewal_option": "AUTO",
+          "pre_expiration": "30"
+        },
+        "card_range": {
+          "note": "note hhh"
+        },
+        "fees": {
+          "fee_description": "frais hhhh",
+          "billing_event": "ISSUANCE, RENEWAL",
+          "grace_period": "27",
+          "billing_period": "YEARLY",
+          "registration_fee": "45",
+          "periodic_fee": "9",
+          "replacement_fee": "25",
+          "pin_recalculation_fee": "5"
+        },
+        "services": {
+          "enabled": [
+            "3DS",
+            "TOKENIZATION"
+          ]
+        },
+        "limits": {
+          "selected_limit_types": [],
+          "by_type": {
+            "DEFAULT": {
+              "domestic": {
+                "daily_amount": "5000",
+                "daily_count": null,
+                "weekly_amount": "20000",
+                "weekly_count": null,
+                "monthly_amount": "80000",
+                "monthly_count": null
+              },
+              "international": {
+                "daily_amount": "5000",
+                "daily_count": null,
+                "weekly_amount": "20000",
+                "weekly_count": null,
+                "monthly_amount": "80000",
+                "monthly_count": null
+              },
+              "total": {
+                "daily_amount": null,
+                "daily_count": null,
+                "weekly_amount": null,
+                "weekly_count": null,
+                "monthly_amount": null,
+                "monthly_count": null
+              },
+              "per_transaction": {
+                "min_amount": null,
+                "max_amount": null
+              }
+            }
+          }
+        }
+      }
+    ],
+    "options": {
+      "resources_examples": [
+        "MCD_MDS",
+        "MCD_CIS",
+        "UPI",
+        "HOST_BANK",
+        "SID",
+        "VISA_BASE1",
+        "VISA_SMS"
+      ],
+      "services": [
+        "Retrait",
+        "Cash Advance",
+        "Transferts",
+        "Consultation Solde",
+        "Changement PIN",
+        "Envoi d'argent",
+        "Original",
+        "Achats",
+        "E-commerce",
+        "Quasi-Cash",
+        "Mini-Relevé",
+        "Remboursements",
+        "Paiement Factures",
+        "Authentification",
+        "Cashback"
+      ],
+      "limit_types": [
+        "Retrait",
+        "Purchase",
+        "CASH_advance",
+        "Quasi-cash",
+        "E-commerce"
+      ]
+    }
+  },
+  "history": [
+    {
+      "agent": "Quel est le nom de la banque ?",
+      "user": "saham"
+    },
+    {
+      "agent": "Quel est le code de la banque (bank code) ?",
+      "user": "234"
+    },
+    {
+      "agent": "Quelles ressources veux-tu activer ? (ex: accounts, cards, transactions) Donne une liste séparée par virgules.",
+      "user": "accounts, cards, transactions"
+    },
+    {
+      "agent": "Nom de l’agence + code (ex: Agence Centre, 555)",
+      "user": "agence literal , 123"
+    },
+    {
+      "agent": "Ville + code ville (ex: Casablanca, 001)",
+      "user": "RABAT, 13"
+    },
+    {
+      "agent": "Région + code région (ex: Grand Casablanca, 10)",
+      "user": "RABAT,45"
+    },
+    {
+      "agent": "BIN + réseau (ex: 445555, VISA)",
+      "user": "274598,VISA"
+    },
+    {
+      "agent": "Type de carte (plastique) (ex: PVC)",
+      "user": "PVC"
+    },
+    {
+      "agent": "Nom/description de la carte (ex: Carte Classic)",
+      "user": "carte classique"
+    },
+    {
+      "agent": "Type de carte (ex: DEBIT ou CREDIT)",
+      "user": "DEBIT"
+    },
+    {
+      "agent": "Code du produit carte (ex: PRD001)",
+      "user": "PRD005"
+    },
+    {
+      "agent": "Paramètre sécurité PIN (PVK index). Si tu ne sais pas, mets 1",
+      "user": "1"
+    },
+    {
+      "agent": "Code service de la carte. Si tu ne sais pas, mets 101",
+      "user": "101"
+    },
+    {
+      "agent": "Durée de validité de la carte (ex: 36 mois)",
+      "user": "36"
+    },
+    {
+      "agent": "Renouvellement automatique ? (ex: AUTO ou MANUAL)",
+      "user": "AUTO"
+    },
+    {
+      "agent": "Délai avant expiration pour lancer le renouvellement (ex: 30 jours)",
+      "user": "30"
+    },
+    {
+      "agent": "Quels services veux-tu activer pour la carte ? (liste séparée par virgules) (ex: 3DS, TOKENIZATION)",
+      "user": "3DS,TOKENIZATION"
+    },
+    {
+      "agent": "Plafonds NATIONAUX (montant par jour, semaine, mois) ex: 5000, 20000, 80000",
+      "user": "5000, 20000, 80000"
+    },
+    {
+      "agent": "Plafonds INTERNATIONAUX (montant par jour, semaine, mois) ex: 2000, 10000, 40000",
+      "user": "5000, 20000, 80000"
+    },
+    {
+      "agent": "Peux-tu préciser note ?",
+      "user": "note hhh"
+    },
+    {
+      "agent": "Quelle est la description des frais ?",
+      "user": "frais hhhh"
+    },
+    {
+      "agent": "Quel est l’événement de facturation ? (ex: ISSUANCE, RENEWAL)",
+      "user": "ISSUANCE, RENEWAL"
+    },
+    {
+      "agent": "Quelle est la période de grâce ? (en jours, ex: 30)",
+      "user": "27"
+    },
+    {
+      "agent": "Quelle est la période de facturation ? (ex: MONTHLY, YEARLY)",
+      "user": "YEARLY"
+    },
+    {
+      "agent": "Quels sont les frais d’inscription ? (ex: 50)",
+      "user": "45"
+    },
+    {
+      "agent": "Quels sont les frais périodiques ? (ex: 10)",
+      "user": "9"
+    },
+    {
+      "agent": "Quels sont les frais de remplacement ? (ex: 25)",
+      "user": "25"
+    },
+    {
+      "agent": "Quels sont les frais de recalcul du PIN ? (ex: 5)",
+      "user": "5"
+    },
+    {
+      "agent": "DONE",
+      "user": "all fields filled"
+    }
+  ],
+  "done": true
+}

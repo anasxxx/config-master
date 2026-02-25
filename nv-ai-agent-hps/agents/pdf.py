@@ -29,9 +29,9 @@ HIDDEN_KEYS = {"meta", "options", "artifacts", "hps"}
 
 
 class JSONToPDFAgent:
-    TARGET_FOLDER = r"C:\Users\mahmo\PFE\config_master\nv-ai-agent-hps\goals"
-    OUTPUT_FOLDER = r"C:\Users\mahmo\PFE\Config_Master\nv-ai-agent-hps\pdfs"
-    LOGO_PATH     = r"C:\Users\mahmo\PFE\Config_Master\Logo-HPS.jpg"
+    TARGET_FOLDER = r"C:\Users\amahmoudi\Downloads\config-master-main\nv-ai-agent-hps\goals"
+    OUTPUT_FOLDER = r"C:\Users\amahmoudi\Downloads\config-master-main\nv-ai-agent-hps\pdfs"
+    LOGO_PATH     = r"C:\Users\amahmoudi\Downloads\config-master-main\Logo-HPS.jpg"
 
     def __init__(self, output_filename="HPS_Config_Report.pdf", json_path=None):
         os.makedirs(self.OUTPUT_FOLDER, exist_ok=True)
