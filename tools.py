@@ -17,12 +17,7 @@ def tool(name: str):
 def call_tool(name: str, **kwargs):
     if name not in TOOLS:
         raise ValueError(f"Tool '{name}' not found")
-    out = TOOLS[name](**kwargs)
-    if isinstance(out, dict) and out.get("changed") is True:
-        print(f"[TOOL CALL] {name}")
-    elif name != "autofill":
-        print(f"[TOOL CALL] {name}")
-    return out
+    return TOOLS[name](**kwargs)
 
 
 @tool("extract_fields")

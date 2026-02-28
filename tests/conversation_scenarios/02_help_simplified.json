@@ -1,0 +1,11 @@
+﻿{
+  "name": "mode_simplifie_help",
+  "llm_mode": "down",
+  "messages": [
+    "je comprends pas"
+  ],
+  "assertions": [
+    {"type": "intent_equals", "turn": 1, "value": "help_or_confusion"},
+    {"type": "step_equals", "turn": 1, "value": "collecting"}
+  ]
+}

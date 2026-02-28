@@ -6,16 +6,17 @@ def brain_step(
     *,
     state: Dict[str, Any],
     template_obj: Dict[str, Any],
-    req_paths: List[str],
+    req_paths: List[str],#chemain oblig
     user_msg: Optional[str],
+    dialog_state: Optional[Dict[str, Any]] = None,
     apply_user_message_to_facts,
     apply_single_field_answer,
     apply_multi_field_answer,
     missing_paths,
     next_question_for_missing,
+    next_question_advanced=None,
     auto_fill,
 ) -> Dict[str, Any]:
-
     IGNORE_PATTERNS = [
         r"^cards\.0\.limits\.selected_limit_types$",
         r"^cards\.0\.limits\.by_type\.DEFAULT\.(domestic|international|total)\.(daily|weekly|monthly)_count$",
@@ -67,11 +68,15 @@ def brain_step(
     }
 
     if user_msg:
-        # ✅ A2: on passe state (pas facts)
-        apply_user_message_to_facts(state, template_obj, user_msg)
-        auto_fill(state["facts"])
-
         last_paths = state.get("meta", {}).get("last_question_paths") or []
+        ds = dialog_state or {}
+        in_collecting_targeted = bool(last_paths) and ds.get("step") == "collecting"
+
+        if not in_collecting_targeted:
+            # ✅ A2: on passe state (pas facts)
+            apply_user_message_to_facts(state, template_obj, user_msg)
+            auto_fill(state["facts"])
+
         if last_paths:
             miss_after = missing_paths(state["facts"], template_obj, req_paths)
             miss_after = [p for p in miss_after if not _is_ignored(p)]
@@ -93,6 +98,18 @@ def brain_step(
     miss = [p for p in miss if not _is_ignored(p)]
     if not miss:
         return {"type": "DONE"}
+
+    if callable(next_question_advanced):
+        adv = next_question_advanced(miss, dialog_state or {}, next_question_for_missing)
+        if isinstance(adv, dict):
+            adv_paths = adv.get("paths") or []
+            adv_q = adv.get("question") or ""
+            if adv_paths and adv_q:
+                state.setdefault("meta", {})["last_question_paths"] = adv_paths
+                out = {"type": "ASK", "question": adv_q, "paths": adv_paths}
+                if adv.get("menu") is not None:
+                    out["menu"] = adv.get("menu")
+                return out
 
     # Question suivante
     next_path = miss[0]

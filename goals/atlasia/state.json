@@ -1,0 +1,558 @@
+{
+  "meta": {
+    "goal_id": 172,
+    "client": "atlasia",
+    "client_n": 1,
+    "action": "add",
+    "created_at": "2026-02-28T21:44:17",
+    "last_extraction": {
+      "used_llm": true,
+      "used_fallback_rules": false,
+      "llm_attempts": 1,
+      "llm_final_status": "LLM_OK"
+    },
+    "last_question_paths": [
+      "cards.0.fees.fee_description"
+    ],
+    "menu_selected_paths": []
+  },
+  "goal": "ajouter la banque atlasia au maroc code bank 12589",
+  "facts": {
+    "bank": {
+      "name": {
+        "value": "ATLASIA",
+        "source": "llm",
+        "confidence": 0.9,
+        "updated_at": "2026-02-28T21:44:30",
+        "evidence": "ajouter la banque atlasia au maroc code bank 12589"
+      },
+      "country": {
+        "value": "Maroc",
+        "source": "llm",
+        "confidence": 0.9,
+        "updated_at": "2026-02-28T21:44:30",
+        "evidence": "ajouter la banque atlasia au maroc code bank 12589"
+      },
+      "currency": {
+        "value": "MAD",
+        "source": "autofill",
+        "confidence": 1.0,
+        "updated_at": "2026-02-28T21:44:30"
+      },
+      "bank_code": {
+        "value": "12589",
+        "source": "llm",
+        "confidence": 1.0,
+        "updated_at": "2026-02-28T21:45:50",
+        "evidence": "12589"
+      },
+      "resources": {
+        "value": [
+          "MCD_MDS",
+          "UPI",
+          "SID"
+        ],
+        "source": "llm",
+        "confidence": 1.0,
+        "updated_at": "2026-02-28T21:46:18",
+        "evidence": "MCD_MDS, UPI, SID"
+      },
+      "agencies": [
+        {
+          "agency_name": {
+            "value": "kdjdu",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-02-28T21:45:01",
+            "evidence": "kdjdu,rabat,0025"
+          },
+          "agency_code": {
+            "value": "0025",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-02-28T21:45:01",
+            "evidence": "kdjdu,rabat,0025"
+          },
+          "city": {
+            "value": "Rabat",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-02-28T21:45:01",
+            "evidence": "kdjdu,rabat,0025"
+          },
+          "city_code": {
+            "value": "125",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-02-28T21:46:38",
+            "evidence": "125"
+          },
+          "region": {
+            "value": "Rabat",
+            "source": "llm",
+            "confidence": 0.9,
+            "updated_at": "2026-02-28T21:46:50",
+            "evidence": "rabat"
+          },
+          "region_code": {
+            "value": "121",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-02-28T21:47:00",
+            "evidence": "121"
+          }
+        }
+      ],
+      "country_alpha2": {
+        "value": "MA",
+        "source": "autofill",
+        "confidence": 1.0,
+        "updated_at": "2026-02-28T21:44:30"
+      }
+    },
+    "cards": [
+      {
+        "card_info": {
+          "bin": {
+            "value": "12345678",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-02-28T21:47:10",
+            "evidence": "12345678"
+          },
+          "plastic_type": {
+            "value": "PVC",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-02-28T21:45:41",
+            "evidence": "visa debit pvc"
+          },
+          "card_description": {
+            "value": "classique",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-02-28T21:47:22",
+            "evidence": "classique"
+          },
+          "product_type": {
+            "value": "DEBIT",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-02-28T21:45:41",
+            "evidence": "visa debit pvc"
+          },
+          "product_code": {
+            "value": "prd001",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-02-28T21:47:36",
+            "evidence": "prd001"
+          },
+          "pvk_index": {
+            "value": "1",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-02-28T21:47:44",
+            "evidence": "1"
+          },
+          "service_code": {
+            "value": "101",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-02-28T21:47:54",
+            "evidence": "101"
+          },
+          "network": {
+            "value": "VISA",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-02-28T21:45:41",
+            "evidence": "visa debit pvc"
+          },
+          "expiration": {
+            "value": "36",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-02-28T21:48:03",
+            "evidence": "36"
+          },
+          "renewal_option": {
+            "value": "auto",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-02-28T21:48:14",
+            "evidence": "auto"
+          },
+          "pre_expiration": {
+            "value": "je veux modifier",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-02-28T21:48:39",
+            "evidence": "je veux modifier"
+          }
+        },
+        "card_range": {
+          "note": {
+            "value": "je veux supprimer",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-02-28T21:48:53",
+            "evidence": "je veux supprimer"
+          }
+        },
+        "fees": {
+          "fee_description": null,
+          "billing_event": null,
+          "grace_period": null,
+          "billing_period": null,
+          "registration_fee": null,
+          "periodic_fee": null,
+          "replacement_fee": null,
+          "pin_recalculation_fee": null
+        },
+        "services": {
+          "enabled": []
+        },
+        "limits": {
+          "selected_limit_types": [],
+          "by_type": {
+            "DEFAULT": {
+              "domestic": {
+                "daily_amount": null,
+                "daily_count": null,
+                "weekly_amount": null,
+                "weekly_count": null,
+                "monthly_amount": null,
+                "monthly_count": null
+              },
+              "international": {
+                "daily_amount": null,
+                "daily_count": null,
+                "weekly_amount": null,
+                "weekly_count": null,
+                "monthly_amount": null,
+                "monthly_count": null
+              },
+              "total": {
+                "daily_amount": null,
+                "daily_count": null,
+                "weekly_amount": null,
+                "weekly_count": null,
+                "monthly_amount": null,
+                "monthly_count": null
+              },
+              "per_transaction": {
+                "min_amount": null,
+                "max_amount": null
+              }
+            }
+          }
+        }
+      }
+    ],
+    "options": {
+      "resources_examples": [
+        "MCD_MDS",
+        "MCD_CIS",
+        "UPI",
+        "HOST_BANK",
+        "SID",
+        "VISA_BASE1",
+        "VISA_SMS"
+      ],
+      "services": [
+        "Retrait",
+        "Cash Advance",
+        "Transferts",
+        "Consultation Solde",
+        "Changement PIN",
+        "Envoi d'argent",
+        "Original",
+        "Achats",
+        "E-commerce",
+        "Quasi-Cash",
+        "Mini-Relevé",
+        "Remboursements",
+        "Paiement Factures",
+        "Authentification",
+        "Cashback"
+      ],
+      "limit_types": [
+        "Retrait",
+        "Purchase",
+        "CASH_advance",
+        "Quasi-cash",
+        "E-commerce"
+      ]
+    }
+  },
+  "provenance": {
+    "bank.name": {
+      "source": "llm",
+      "confidence": 0.9,
+      "timestamp": "2026-02-28T21:44:30",
+      "evidence": "ajouter la banque atlasia au maroc code bank 12589"
+    },
+    "bank.country": {
+      "source": "llm",
+      "confidence": 0.9,
+      "timestamp": "2026-02-28T21:44:30",
+      "evidence": "ajouter la banque atlasia au maroc code bank 12589"
+    },
+    "bank.agencies.0.agency_name": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-28T21:45:01",
+      "evidence": "kdjdu,rabat,0025"
+    },
+    "bank.agencies.0.city": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-28T21:45:01",
+      "evidence": "kdjdu,rabat,0025"
+    },
+    "bank.agencies.0.agency_code": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-28T21:45:01",
+      "evidence": "kdjdu,rabat,0025"
+    },
+    "cards.0.card_info.network": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-28T21:45:41",
+      "evidence": "visa debit pvc"
+    },
+    "cards.0.card_info.product_type": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-28T21:45:41",
+      "evidence": "visa debit pvc"
+    },
+    "cards.0.card_info.plastic_type": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-28T21:45:41",
+      "evidence": "visa debit pvc"
+    },
+    "bank.bank_code": {
+      "source": "llm",
+      "confidence": 1.0,
+      "timestamp": "2026-02-28T21:45:50",
+      "evidence": "12589"
+    },
+    "bank.resources": {
+      "source": "llm",
+      "confidence": 1.0,
+      "timestamp": "2026-02-28T21:46:18",
+      "evidence": "MCD_MDS, UPI, SID"
+    },
+    "bank.agencies.0.city_code": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-28T21:46:38",
+      "evidence": "125"
+    },
+    "bank.agencies.0.region": {
+      "source": "llm",
+      "confidence": 0.9,
+      "timestamp": "2026-02-28T21:46:50",
+      "evidence": "rabat"
+    },
+    "bank.agencies.0.region_code": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-28T21:47:00",
+      "evidence": "121"
+    },
+    "cards.0.card_info.bin": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-28T21:47:10",
+      "evidence": "12345678"
+    },
+    "cards.0.card_info.card_description": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-28T21:47:22",
+      "evidence": "classique"
+    },
+    "cards.0.card_info.product_code": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-28T21:47:36",
+      "evidence": "prd001"
+    },
+    "cards.0.card_info.pvk_index": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-28T21:47:44",
+      "evidence": "1"
+    },
+    "cards.0.card_info.service_code": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-28T21:47:54",
+      "evidence": "101"
+    },
+    "cards.0.card_info.expiration": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-28T21:48:03",
+      "evidence": "36"
+    },
+    "cards.0.card_info.renewal_option": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-28T21:48:14",
+      "evidence": "auto"
+    },
+    "cards.0.card_info.pre_expiration": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-28T21:48:39",
+      "evidence": "je veux modifier"
+    },
+    "cards.0.card_range.note": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-28T21:48:53",
+      "evidence": "je veux supprimer"
+    }
+  },
+  "dialog_state": {
+    "step": "paused",
+    "mode": "normal",
+    "last_intent": "delete",
+    "last_question": "Parfait. Quelle est la description des frais ?",
+    "last_question_paths": [
+      "cards.0.fees.fee_description"
+    ],
+    "missing_fields": [
+      "cards.0.fees.fee_description",
+      "cards.0.fees.billing_event",
+      "cards.0.fees.grace_period",
+      "cards.0.fees.billing_period",
+      "cards.0.fees.registration_fee",
+      "cards.0.fees.periodic_fee",
+      "cards.0.fees.replacement_fee",
+      "cards.0.fees.pin_recalculation_fee",
+      "cards.0.services.enabled",
+      "cards.0.limits.selected_limit_types",
+      "cards.0.limits.by_type.DEFAULT.domestic.daily_amount",
+      "cards.0.limits.by_type.DEFAULT.domestic.daily_count",
+      "cards.0.limits.by_type.DEFAULT.domestic.weekly_amount",
+      "cards.0.limits.by_type.DEFAULT.domestic.weekly_count",
+      "cards.0.limits.by_type.DEFAULT.domestic.monthly_amount",
+      "cards.0.limits.by_type.DEFAULT.domestic.monthly_count",
+      "cards.0.limits.by_type.DEFAULT.international.daily_amount",
+      "cards.0.limits.by_type.DEFAULT.international.daily_count",
+      "cards.0.limits.by_type.DEFAULT.international.weekly_amount",
+      "cards.0.limits.by_type.DEFAULT.international.weekly_count",
+      "cards.0.limits.by_type.DEFAULT.international.monthly_amount",
+      "cards.0.limits.by_type.DEFAULT.international.monthly_count",
+      "cards.0.limits.by_type.DEFAULT.total.daily_amount",
+      "cards.0.limits.by_type.DEFAULT.total.daily_count",
+      "cards.0.limits.by_type.DEFAULT.total.weekly_amount",
+      "cards.0.limits.by_type.DEFAULT.total.weekly_count",
+      "cards.0.limits.by_type.DEFAULT.total.monthly_amount",
+      "cards.0.limits.by_type.DEFAULT.total.monthly_count",
+      "cards.0.limits.by_type.DEFAULT.per_transaction.min_amount",
+      "cards.0.limits.by_type.DEFAULT.per_transaction.max_amount"
+    ],
+    "asked_fields": [
+      "bank.agencies.0.agency_name",
+      "bank.agencies.0.city",
+      "bank.agencies.0.agency_code",
+      "cards.0.card_info.network",
+      "cards.0.card_info.product_type",
+      "cards.0.card_info.plastic_type",
+      "bank.bank_code",
+      "bank.resources",
+      "bank.agencies.0.city_code",
+      "bank.agencies.0.region",
+      "bank.agencies.0.region_code",
+      "cards.0.card_info.bin",
+      "cards.0.card_info.card_description",
+      "cards.0.card_info.product_code",
+      "cards.0.card_info.pvk_index",
+      "cards.0.card_info.service_code",
+      "cards.0.card_info.expiration",
+      "cards.0.card_info.renewal_option",
+      "cards.0.card_info.pre_expiration",
+      "cards.0.card_range.note",
+      "cards.0.fees.fee_description"
+    ],
+    "pending_confirmations": [],
+    "nlu_fail_count": 0,
+    "last_user_message": "exit",
+    "active_menu": null
+  },
+  "history": [
+    {
+      "agent": "Donne: nom agence, ville, code agence.\nEx: Agence Centre, Casablanca, 0025",
+      "user": "kdjdu,rabat,0025"
+    },
+    {
+      "agent": "Donne: reseau, type carte, support.\nEx: VISA, DEBIT, PVC",
+      "user": "visa debit pvc"
+    },
+    {
+      "agent": "Parfait. Quel est le code de la banque (bank code) ? Je prends le code exact.",
+      "user": "12589"
+    },
+    {
+      "agent": "Top. Quelles ressources veux-tu activer ? (ex: accounts, cards, transactions) Donne une liste séparée par virgules. Tu peux répondre sous forme de liste, séparée par des virgules.\nChoisis les ressources (tu peux donner plusieurs choix: 1,3,5):\n1) MCD_MDS\n2) MCD_CIS\n3) UPI\n4) HOST_BANK\n5) SID\n6) VISA_BASE1\n7) VISA_SMS",
+      "user": "MCD_MDS, UPI, SID"
+    },
+    {
+      "agent": "Top. Quel est le code de la ville ? Je prends le code exact.",
+      "user": "125"
+    },
+    {
+      "agent": "Top. Quelle est la région ?",
+      "user": "rabat"
+    },
+    {
+      "agent": "Parfait. Quel est le code de la région ? Je prends le code exact.",
+      "user": "121"
+    },
+    {
+      "agent": "Parfait. Quel est le BIN de la carte ? (6 à 8 chiffres) Format attendu: 6 à 8 chiffres.",
+      "user": "12345678"
+    },
+    {
+      "agent": "Nom/description de la carte (ex: Carte Classic)",
+      "user": "classique"
+    },
+    {
+      "agent": "Parfait. Code du produit carte (ex: PRD001) Je prends le code exact.",
+      "user": "prd001"
+    },
+    {
+      "agent": "Top. Paramètre sécurité PIN (PVK index). Si tu ne sais pas, mets 1 ?",
+      "user": "1"
+    },
+    {
+      "agent": "Super. Code service de la carte. Si tu ne sais pas, mets 101 ? Je prends le code exact.",
+      "user": "101"
+    },
+    {
+      "agent": "Super. Durée de validité de la carte (ex: 36 mois)",
+      "user": "36"
+    },
+    {
+      "agent": "Top. Renouvellement automatique ? (ex: AUTO ou MANUAL)",
+      "user": "auto"
+    },
+    {
+      "agent": "D'accord. Délai avant expiration pour lancer le renouvellement (ex: 30 jours)",
+      "user": "je veux modifier"
+    },
+    {
+      "agent": "Super. Peux-tu préciser note ?",
+      "user": "je veux supprimer"
+    }
+  ],
+  "done": false
+}

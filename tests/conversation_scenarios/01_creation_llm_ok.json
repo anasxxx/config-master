@@ -1,0 +1,21 @@
+﻿{
+  "name": "creation_phrase_longue_llm_ok",
+  "llm_mode": "mock",
+  "mock_llm_rules": [
+    {
+      "contains": "atlas",
+      "fields": {
+        "bank.name": {"value": "ATLAS BANK", "confidence": 0.95},
+        "bank.country": {"value": "Maroc", "confidence": 0.92}
+      }
+    }
+  ],
+  "messages": [
+    "Atlas bank au maroc"
+  ],
+  "source_paths": ["bank.name", "bank.country"],
+  "assertions": [
+    {"type": "used_fallback_rules", "turn": 1, "value": false},
+    {"type": "source_equals", "path": "bank.name", "value": "llm"}
+  ]
+}

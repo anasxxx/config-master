@@ -1,0 +1,684 @@
+{
+  "meta": {
+    "goal_id": 166,
+    "client": "client",
+    "client_n": 133,
+    "action": "add",
+    "created_at": "2026-02-28T17:42:31",
+    "last_extraction": {
+      "used_llm": true,
+      "used_fallback_rules": true,
+      "llm_attempts": 3,
+      "llm_final_status": "LLM_REJECTED_INVALID"
+    },
+    "last_question_paths": [
+      "cards.0.fees.fee_description"
+    ],
+    "menu_selected_paths": []
+  },
+  "goal": "Créer une banque appelée NovaBank au Maroc avec la devise MAD",
+  "facts": {
+    "bank": {
+      "name": {
+        "value": "NOVABANK",
+        "source": "llm",
+        "confidence": 0.9,
+        "updated_at": "2026-02-28T17:42:39",
+        "evidence": "Créer une banque appelée NovaBank au Maroc avec la devise MAD"
+      },
+      "country": {
+        "value": "Maroc",
+        "source": "llm",
+        "confidence": 0.9,
+        "updated_at": "2026-02-28T17:42:39",
+        "evidence": "Créer une banque appelée NovaBank au Maroc avec la devise MAD"
+      },
+      "currency": {
+        "value": "MAD",
+        "source": "llm",
+        "confidence": 0.8,
+        "updated_at": "2026-02-28T17:42:39",
+        "evidence": "Créer une banque appelée NovaBank au Maroc avec la devise MAD"
+      },
+      "bank_code": {
+        "value": "14896",
+        "source": "llm",
+        "confidence": 1.0,
+        "updated_at": "2026-02-28T17:45:35",
+        "evidence": "14896"
+      },
+      "resources": {
+        "value": [
+          "CARDS",
+          "TRANSACTIONS",
+          "ACCOUNTS"
+        ],
+        "source": "user",
+        "confidence": 1.0,
+        "updated_at": "2026-02-28T17:46:39",
+        "evidence": "accounts, cards,transactions"
+      },
+      "agencies": [
+        {
+          "agency_name": {
+            "value": "CENTRALE",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-02-28T17:43:46",
+            "evidence": "Agence Centrale, Casablanca, 0001"
+          },
+          "agency_code": {
+            "value": "0001",
+            "source": "llm",
+            "confidence": 1.0,
+            "updated_at": "2026-02-28T17:43:51",
+            "evidence": "Agence Centrale, Casablanca, 0001"
+          },
+          "city": {
+            "value": "Centrale",
+            "source": "rules",
+            "confidence": 0.75,
+            "updated_at": "2026-02-28T17:43:46",
+            "evidence": "Agence Centrale, Casablanca, 0001"
+          },
+          "city_code": {
+            "value": "0001",
+            "source": "llm",
+            "confidence": 1.0,
+            "updated_at": "2026-02-28T17:47:41",
+            "evidence": "001"
+          },
+          "region": {
+            "value": "Casablanca",
+            "source": "llm",
+            "confidence": 0.9,
+            "updated_at": "2026-02-28T17:49:21",
+            "evidence": "casablanca avec code 001"
+          },
+          "region_code": {
+            "value": "001",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-02-28T17:50:01",
+            "evidence": "001"
+          }
+        }
+      ]
+    },
+    "cards": [
+      {
+        "card_info": {
+          "bin": {
+            "value": "14896325",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-02-28T17:52:10",
+            "evidence": "14896325"
+          },
+          "plastic_type": {
+            "value": "PVC",
+            "source": "llm",
+            "confidence": 0.95,
+            "updated_at": "2026-02-28T17:44:26",
+            "evidence": "visa credit pvc"
+          },
+          "card_description": {
+            "value": "bank classique",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-02-28T17:54:02",
+            "evidence": "bank classique"
+          },
+          "product_type": {
+            "value": "CREDIT",
+            "source": "llm",
+            "confidence": 0.9,
+            "updated_at": "2026-02-28T17:44:31",
+            "evidence": "visa credit pvc"
+          },
+          "product_code": {
+            "value": "rty745",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-02-28T17:55:07",
+            "evidence": "rty745"
+          },
+          "pvk_index": {
+            "value": "1",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-02-28T17:56:12",
+            "evidence": "1"
+          },
+          "service_code": {
+            "value": "101",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-02-28T17:59:07",
+            "evidence": "101"
+          },
+          "network": {
+            "value": "MASTERCARD",
+            "source": "menu",
+            "confidence": 1.0,
+            "updated_at": "2026-02-28T17:59:59",
+            "evidence": "MASTERCARD"
+          },
+          "expiration": {
+            "value": "36",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-02-28T18:24:54",
+            "evidence": "36"
+          },
+          "renewal_option": {
+            "value": "manuelle",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-02-28T18:26:00",
+            "evidence": "manuelle"
+          },
+          "pre_expiration": {
+            "value": "30",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-02-28T18:27:34",
+            "evidence": "30"
+          }
+        },
+        "card_range": {
+          "note": {
+            "value": "j ai pas de note",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-02-28T18:28:32",
+            "evidence": "j ai pas de note"
+          }
+        },
+        "fees": {
+          "fee_description": null,
+          "billing_event": null,
+          "grace_period": null,
+          "billing_period": null,
+          "registration_fee": null,
+          "periodic_fee": null,
+          "replacement_fee": null,
+          "pin_recalculation_fee": null
+        },
+        "services": {
+          "enabled": [
+            {
+              "value": "Retrait",
+              "source": "llm",
+              "confidence": 0.95,
+              "updated_at": "2026-02-28T17:49:58",
+              "evidence": "001"
+            }
+          ]
+        },
+        "limits": {
+          "selected_limit_types": [],
+          "by_type": {
+            "DEFAULT": {
+              "domestic": {
+                "daily_amount": null,
+                "daily_count": null,
+                "weekly_amount": null,
+                "weekly_count": null,
+                "monthly_amount": null,
+                "monthly_count": null
+              },
+              "international": {
+                "daily_amount": null,
+                "daily_count": null,
+                "weekly_amount": null,
+                "weekly_count": null,
+                "monthly_amount": null,
+                "monthly_count": null
+              },
+              "total": {
+                "daily_amount": null,
+                "daily_count": null,
+                "weekly_amount": null,
+                "weekly_count": null,
+                "monthly_amount": null,
+                "monthly_count": null
+              },
+              "per_transaction": {
+                "min_amount": null,
+                "max_amount": null
+              }
+            }
+          }
+        }
+      }
+    ],
+    "options": {
+      "resources_examples": [
+        "MCD_MDS",
+        "MCD_CIS",
+        "UPI",
+        "HOST_BANK",
+        "SID",
+        "VISA_BASE1",
+        "VISA_SMS"
+      ],
+      "services": [
+        "Retrait",
+        "Cash Advance",
+        "Transferts",
+        "Consultation Solde",
+        "Changement PIN",
+        "Envoi d'argent",
+        "Original",
+        "Achats",
+        "E-commerce",
+        "Quasi-Cash",
+        "Mini-Relevé",
+        "Remboursements",
+        "Paiement Factures",
+        "Authentification",
+        "Cashback"
+      ],
+      "limit_types": [
+        "Retrait",
+        "Purchase",
+        "CASH_advance",
+        "Quasi-cash",
+        "E-commerce"
+      ]
+    }
+  },
+  "provenance": {
+    "bank.name": {
+      "source": "llm",
+      "confidence": 0.9,
+      "timestamp": "2026-02-28T17:42:39",
+      "evidence": "Créer une banque appelée NovaBank au Maroc avec la devise MAD"
+    },
+    "bank.country": {
+      "source": "llm",
+      "confidence": 0.9,
+      "timestamp": "2026-02-28T17:42:39",
+      "evidence": "Créer une banque appelée NovaBank au Maroc avec la devise MAD"
+    },
+    "bank.currency": {
+      "source": "llm",
+      "confidence": 0.8,
+      "timestamp": "2026-02-28T17:42:39",
+      "evidence": "Créer une banque appelée NovaBank au Maroc avec la devise MAD"
+    },
+    "bank.agencies.0.agency_name": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-28T17:43:46",
+      "evidence": "Agence Centrale, Casablanca, 0001"
+    },
+    "bank.agencies.0.city": {
+      "source": "rules",
+      "confidence": 0.75,
+      "timestamp": "2026-02-28T17:43:46",
+      "evidence": "Agence Centrale, Casablanca, 0001"
+    },
+    "bank.agencies.0.agency_code": {
+      "source": "llm",
+      "confidence": 1.0,
+      "timestamp": "2026-02-28T17:43:51",
+      "evidence": "Agence Centrale, Casablanca, 0001"
+    },
+    "cards.0.card_info.plastic_type": {
+      "source": "llm",
+      "confidence": 0.95,
+      "timestamp": "2026-02-28T17:44:26",
+      "evidence": "visa credit pvc"
+    },
+    "cards.0.card_info.product_type": {
+      "source": "llm",
+      "confidence": 0.9,
+      "timestamp": "2026-02-28T17:44:31",
+      "evidence": "visa credit pvc"
+    },
+    "bank.bank_code": {
+      "source": "llm",
+      "confidence": 1.0,
+      "timestamp": "2026-02-28T17:45:35",
+      "evidence": "14896"
+    },
+    "bank.resources": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-28T17:46:39",
+      "evidence": "accounts, cards,transactions"
+    },
+    "bank.agencies.0.city_code": {
+      "source": "llm",
+      "confidence": 1.0,
+      "timestamp": "2026-02-28T17:47:41",
+      "evidence": "001"
+    },
+    "bank.agencies.0.region": {
+      "source": "llm",
+      "confidence": 0.9,
+      "timestamp": "2026-02-28T17:49:21",
+      "evidence": "casablanca avec code 001"
+    },
+    "cards.0.services.enabled.0": {
+      "source": "llm",
+      "confidence": 0.95,
+      "timestamp": "2026-02-28T17:49:58",
+      "evidence": "001"
+    },
+    "bank.agencies.0.region_code": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-28T17:50:01",
+      "evidence": "001"
+    },
+    "cards.0.card_info.bin": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-28T17:52:10",
+      "evidence": "14896325"
+    },
+    "cards.0.card_info.card_description": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-28T17:54:02",
+      "evidence": "bank classique"
+    },
+    "cards.0.card_info.product_code": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-28T17:55:07",
+      "evidence": "rty745"
+    },
+    "cards.0.card_info.pvk_index": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-28T17:56:12",
+      "evidence": "1"
+    },
+    "cards.0.card_info.service_code": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-28T17:59:07",
+      "evidence": "101"
+    },
+    "cards.0.card_info.network": {
+      "source": "menu",
+      "confidence": 1.0,
+      "timestamp": "2026-02-28T17:59:59",
+      "evidence": "MASTERCARD"
+    },
+    "cards.0.card_info.expiration": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-28T18:24:54",
+      "evidence": "36"
+    },
+    "cards.0.card_info.renewal_option": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-28T18:26:00",
+      "evidence": "manuelle"
+    },
+    "cards.0.card_info.pre_expiration": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-28T18:27:34",
+      "evidence": "30"
+    },
+    "cards.0.card_range.note": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-28T18:28:32",
+      "evidence": "j ai pas de note"
+    }
+  },
+  "dialog_state": {
+    "step": "paused",
+    "mode": "normal",
+    "last_intent": "unknown",
+    "last_question": "Je reformule: Parfait. Quelle est la description des frais ?",
+    "last_question_paths": [
+      "cards.0.fees.fee_description"
+    ],
+    "missing_fields": [
+      "cards.0.fees.fee_description",
+      "cards.0.fees.billing_event",
+      "cards.0.fees.grace_period",
+      "cards.0.fees.billing_period",
+      "cards.0.fees.registration_fee",
+      "cards.0.fees.periodic_fee",
+      "cards.0.fees.replacement_fee",
+      "cards.0.fees.pin_recalculation_fee",
+      "cards.0.limits.selected_limit_types",
+      "cards.0.limits.by_type.DEFAULT.domestic.daily_amount",
+      "cards.0.limits.by_type.DEFAULT.domestic.daily_count",
+      "cards.0.limits.by_type.DEFAULT.domestic.weekly_amount",
+      "cards.0.limits.by_type.DEFAULT.domestic.weekly_count",
+      "cards.0.limits.by_type.DEFAULT.domestic.monthly_amount",
+      "cards.0.limits.by_type.DEFAULT.domestic.monthly_count",
+      "cards.0.limits.by_type.DEFAULT.international.daily_amount",
+      "cards.0.limits.by_type.DEFAULT.international.daily_count",
+      "cards.0.limits.by_type.DEFAULT.international.weekly_amount",
+      "cards.0.limits.by_type.DEFAULT.international.weekly_count",
+      "cards.0.limits.by_type.DEFAULT.international.monthly_amount",
+      "cards.0.limits.by_type.DEFAULT.international.monthly_count",
+      "cards.0.limits.by_type.DEFAULT.total.daily_amount",
+      "cards.0.limits.by_type.DEFAULT.total.daily_count",
+      "cards.0.limits.by_type.DEFAULT.total.weekly_amount",
+      "cards.0.limits.by_type.DEFAULT.total.weekly_count",
+      "cards.0.limits.by_type.DEFAULT.total.monthly_amount",
+      "cards.0.limits.by_type.DEFAULT.total.monthly_count",
+      "cards.0.limits.by_type.DEFAULT.per_transaction.min_amount",
+      "cards.0.limits.by_type.DEFAULT.per_transaction.max_amount"
+    ],
+    "asked_fields": [
+      "bank.agencies.0.agency_name",
+      "bank.agencies.0.city",
+      "bank.agencies.0.agency_code",
+      "cards.0.card_info.network",
+      "cards.0.card_info.product_type",
+      "cards.0.card_info.plastic_type",
+      "bank.bank_code",
+      "bank.resources",
+      "bank.agencies.0.city_code",
+      "bank.agencies.0.region",
+      "bank.agencies.0.region_code",
+      "cards.0.card_info.bin",
+      "cards.0.card_info.card_description",
+      "cards.0.card_info.product_code",
+      "cards.0.card_info.pvk_index",
+      "cards.0.card_info.service_code",
+      "cards.0.card_info.expiration",
+      "cards.0.card_info.renewal_option",
+      "cards.0.card_info.pre_expiration",
+      "cards.0.card_range.note",
+      "cards.0.fees.fee_description"
+    ],
+    "pending_confirmations": [],
+    "nlu_fail_count": 0,
+    "last_user_message": "exit",
+    "active_menu": null
+  },
+  "history": [
+    {
+      "agent": "Donne l'agence principale: nom, ville, code agence.\nEx: Agence Centre, Casablanca, 0025",
+      "user": "Agence Centrale, Casablanca, 0001"
+    },
+    {
+      "agent": "Precise le profil carte: reseau, type, support.\nEx: VISA, DEBIT, PVC",
+      "user": "visa credit pvc"
+    },
+    {
+      "agent": "Parfait. Quel est le code de la banque (bank code) ? Je prends le code exact.",
+      "user": "14896"
+    },
+    {
+      "agent": "Top. Quelles ressources veux-tu activer ? (ex: accounts, cards, transactions) Donne une liste séparée par virgules. Tu peux répondre sous forme de liste, séparée par des virgules.",
+      "user": "accounts, cards,transactions"
+    },
+    {
+      "agent": "Top. Quel est le code de la ville ? Je prends le code exact.",
+      "user": "001"
+    },
+    {
+      "agent": "Top. Quelle est la région ?",
+      "user": "casablanca avec code 001"
+    },
+    {
+      "agent": "Parfait. Quel est le code de la région ? Je prends le code exact.",
+      "user": "001"
+    },
+    {
+      "agent": "Parfait. Quel est le BIN de la carte ? (6 à 8 chiffres) Format attendu: 6 à 8 chiffres.",
+      "user": "br152896"
+    },
+    {
+      "agent": "Je reformule: Parfait. Quel est le BIN de la carte ? (6 à 8 chiffres) Format attendu: 6 à 8 chiffres.",
+      "user": "14896325"
+    },
+    {
+      "agent": "Nom/description de la carte (ex: Carte Classic)",
+      "user": "bank classique"
+    },
+    {
+      "agent": "Parfait. Code du produit carte (ex: PRD001) Je prends le code exact.",
+      "user": "rty745"
+    },
+    {
+      "agent": "Top. Paramètre sécurité PIN (PVK index). Si tu ne sais pas, mets 1 ?",
+      "user": "1"
+    },
+    {
+      "agent": "Super. Code service de la carte. Si tu ne sais pas, mets 101 ? Je prends le code exact.",
+      "user": "101"
+    },
+    {
+      "agent": "Quel est le réseau de la carte ? (ex: VISA, MASTERCARD) Valeurs courantes: VISA ou MASTERCARD.\nChoisis le reseau: 1) VISA | 2) MASTERCARD | 3) VISA",
+      "user": "MASTERCARD"
+    },
+    {
+      "agent": "Super. Durée de validité de la carte (ex: 36 mois)",
+      "user": "36"
+    },
+    {
+      "agent": "Top. Renouvellement automatique ? (ex: AUTO ou MANUAL)",
+      "user": "manuelle"
+    },
+    {
+      "agent": "D'accord. Délai avant expiration pour lancer le renouvellement (ex: 30 jours)",
+      "user": "30"
+    },
+    {
+      "agent": "Je reformule: Super. Peux-tu préciser note ?",
+      "user": "j ai pas de note"
+    },
+    {
+      "agent": "Parfait. Quelle est la description des frais ?",
+      "user": "j'ai pas compris"
+    },
+    {
+      "agent": "Je reformule: Parfait. Quelle est la description des frais ?",
+      "user": "j' ai pas de description"
+    },
+    {
+      "agent": "Je reformule: Parfait. Quelle est la description des frais ?",
+      "user": "jjjjj"
+    }
+  ],
+  "done": false,
+  "conflicts": [
+    {
+      "path": "bank.name",
+      "old_value": "NOVABANK",
+      "new_value": "CENTRALE",
+      "old_source": "llm",
+      "new_source": "llm",
+      "reason": "llm_differs",
+      "evidence": "Agence Centrale, Casablanca, 0001",
+      "created_at": "2026-02-28T17:43:22"
+    },
+    {
+      "path": "bank.name",
+      "old_value": "NOVABANK",
+      "new_value": "CENTRALE",
+      "old_source": "llm",
+      "new_source": "llm",
+      "reason": "llm_differs",
+      "evidence": "Agence Centrale, Casablanca, 0001",
+      "created_at": "2026-02-28T17:43:46"
+    },
+    {
+      "path": "bank.name",
+      "old_value": "NOVABANK",
+      "new_value": "HPS",
+      "old_source": "llm",
+      "new_source": "llm",
+      "reason": "llm_differs",
+      "evidence": "14896",
+      "created_at": "2026-02-28T17:45:04"
+    },
+    {
+      "path": "bank.bank_code",
+      "old_value": "14896",
+      "new_value": "001",
+      "old_source": "llm",
+      "new_source": "user",
+      "reason": "user_differs",
+      "evidence": "casablanca avec code 001",
+      "created_at": "2026-02-28T17:49:15"
+    },
+    {
+      "path": "bank.name",
+      "old_value": "NOVABANK",
+      "new_value": "HPS",
+      "old_source": "llm",
+      "new_source": "llm",
+      "reason": "llm_differs",
+      "evidence": "br152896",
+      "created_at": "2026-02-28T17:51:11"
+    },
+    {
+      "path": "bank.name",
+      "old_value": "NOVABANK",
+      "new_value": "CLASSIQUE",
+      "old_source": "llm",
+      "new_source": "user",
+      "reason": "user_differs",
+      "evidence": "bank classique",
+      "created_at": "2026-02-28T17:53:58"
+    },
+    {
+      "path": "bank.name",
+      "old_value": "NOVABANK",
+      "new_value": "MASTERCARD",
+      "old_source": "llm",
+      "new_source": "llm",
+      "reason": "llm_differs",
+      "evidence": "MASTERCARD",
+      "created_at": "2026-02-28T17:59:33"
+    },
+    {
+      "path": "bank.name",
+      "old_value": "NOVABANK",
+      "new_value": "HPS",
+      "old_source": "llm",
+      "new_source": "llm",
+      "reason": "llm_differs",
+      "evidence": "MASTERCARD",
+      "created_at": "2026-02-28T17:59:43"
+    },
+    {
+      "path": "bank.name",
+      "old_value": "NOVABANK",
+      "new_value": "HPS",
+      "old_source": "llm",
+      "new_source": "llm",
+      "reason": "llm_differs",
+      "evidence": "36",
+      "created_at": "2026-02-28T18:24:35"
+    }
+  ]
+}

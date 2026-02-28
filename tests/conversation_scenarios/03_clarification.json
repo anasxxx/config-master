@@ -1,0 +1,10 @@
+﻿{
+  "name": "clarification_code_agence",
+  "llm_mode": "down",
+  "messages": [
+    "c'est quoi code agence ?"
+  ],
+  "assertions": [
+    {"type": "intent_equals", "turn": 1, "value": "clarification_request"}
+  ]
+}

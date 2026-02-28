@@ -1,0 +1,347 @@
+{
+  "meta": {
+    "goal_id": 162,
+    "client": "helios",
+    "client_n": 1,
+    "action": "add",
+    "created_at": "2026-02-26T12:31:45",
+    "last_question_paths": [
+      "bank.agencies.0.city_code"
+    ]
+  },
+  "goal": "Créer la banque Helios Bank en Suisse CH devise CHF bank code 77150. Agence principale Genève Centre code agence 0107. Activer Visa debit et credit en PVC, service code 201, PVK index 5, expiration 48 months, renewal AUTO, pre-expiration 60 days. Services 3DS + tokenization + SMS. Limites national et international : withdrawal 12000 CHF/day, purchase 45000 CHF/day. Frais replacement fee 25 CHF. Note range go-live wave 2.",
+  "facts": {
+    "bank": {
+      "name": "HELIOS BANK",
+      "country": "Suisse",
+      "currency": "CHF",
+      "bank_code": "77150",
+      "resources": [
+        "TRANSACTIONS"
+      ],
+      "agencies": [
+        {
+          "agency_name": "GEN",
+          "agency_code": "201",
+          "city": "Gen Ve",
+          "city_code": null,
+          "region": "GENÈVE",
+          "region_code": null
+        }
+      ]
+    },
+    "cards": [
+      {
+        "card_info": {
+          "bin": null,
+          "plastic_type": "PVC",
+          "card_description": null,
+          "product_type": "DEBIT",
+          "product_code": null,
+          "pvk_index": "5",
+          "service_code": "201",
+          "network": "VISA",
+          "expiration": "48 months",
+          "renewal_option": null,
+          "pre_expiration": null
+        },
+        "card_range": {
+          "note": "range go-live wave 2"
+        },
+        "fees": {
+          "fee_description": null,
+          "billing_event": null,
+          "grace_period": null,
+          "billing_period": null,
+          "registration_fee": null,
+          "periodic_fee": null,
+          "replacement_fee": 25.0,
+          "pin_recalculation_fee": null
+        },
+        "services": {
+          "enabled": [
+            "3DS",
+            "TOKENIZATION",
+            "SMS"
+          ]
+        },
+        "limits": {
+          "selected_limit_types": [
+            "Retrait",
+            "Purchase"
+          ],
+          "by_type": {
+            "DEFAULT": {
+              "domestic": {
+                "daily_amount": 45000.0,
+                "daily_count": null,
+                "weekly_amount": null,
+                "weekly_count": null,
+                "monthly_amount": null,
+                "monthly_count": null
+              },
+              "international": {
+                "daily_amount": 45000.0,
+                "daily_count": null,
+                "weekly_amount": null,
+                "weekly_count": null,
+                "monthly_amount": null,
+                "monthly_count": null
+              },
+              "total": {
+                "daily_amount": null,
+                "daily_count": null,
+                "weekly_amount": null,
+                "weekly_count": null,
+                "monthly_amount": null,
+                "monthly_count": null
+              },
+              "per_transaction": {
+                "min_amount": null,
+                "max_amount": null
+              }
+            }
+          }
+        }
+      },
+      {
+        "card_info": {
+          "bin": null,
+          "plastic_type": "PVC",
+          "card_description": null,
+          "product_type": "CREDIT",
+          "product_code": null,
+          "pvk_index": "5",
+          "service_code": "201",
+          "network": "VISA",
+          "expiration": "48 months",
+          "renewal_option": null,
+          "pre_expiration": null
+        },
+        "card_range": {
+          "note": "range go-live wave 2"
+        },
+        "fees": {
+          "fee_description": null,
+          "billing_event": null,
+          "grace_period": null,
+          "billing_period": null,
+          "registration_fee": null,
+          "periodic_fee": null,
+          "replacement_fee": 25.0,
+          "pin_recalculation_fee": null
+        },
+        "services": {
+          "enabled": [
+            "3DS",
+            "TOKENIZATION",
+            "SMS"
+          ]
+        },
+        "limits": {
+          "selected_limit_types": [
+            "Retrait",
+            "Purchase"
+          ],
+          "by_type": {
+            "DEFAULT": {
+              "domestic": {
+                "daily_amount": 45000.0,
+                "daily_count": null,
+                "weekly_amount": null,
+                "weekly_count": null,
+                "monthly_amount": null,
+                "monthly_count": null
+              },
+              "international": {
+                "daily_amount": 45000.0,
+                "daily_count": null,
+                "weekly_amount": null,
+                "weekly_count": null,
+                "monthly_amount": null,
+                "monthly_count": null
+              },
+              "total": {
+                "daily_amount": null,
+                "daily_count": null,
+                "weekly_amount": null,
+                "weekly_count": null,
+                "monthly_amount": null,
+                "monthly_count": null
+              },
+              "per_transaction": {
+                "min_amount": null,
+                "max_amount": null
+              }
+            }
+          }
+        }
+      }
+    ],
+    "options": {
+      "resources_examples": [
+        "MCD_MDS",
+        "MCD_CIS",
+        "UPI",
+        "HOST_BANK",
+        "SID",
+        "VISA_BASE1",
+        "VISA_SMS"
+      ],
+      "services": [
+        "Retrait",
+        "Cash Advance",
+        "Transferts",
+        "Consultation Solde",
+        "Changement PIN",
+        "Envoi d'argent",
+        "Original",
+        "Achats",
+        "E-commerce",
+        "Quasi-Cash",
+        "Mini-Relevé",
+        "Remboursements",
+        "Paiement Factures",
+        "Authentification",
+        "Cashback"
+      ],
+      "limit_types": [
+        "Retrait",
+        "Purchase",
+        "CASH_advance",
+        "Quasi-cash",
+        "E-commerce"
+      ]
+    }
+  },
+  "provenance": {
+    "bank.name": {
+      "source": "llm",
+      "confidence": 1.0,
+      "timestamp": "2026-02-26T12:32:02",
+      "evidence": "Créer la banque Helios Bank en Suisse CH devise CHF bank code 77150. Agence principale Genève Centre code agence 0107. Activer Visa debit et credit en PVC, service code 201, PVK index 5, expiration 48 months, renewal AUTO, pre-expiration 60 days. Services 3DS + tokenization + SMS. Limites national et international : withdrawal 12000 CHF/day, purchase 45000 CHF/day. Frais replacement fee 25 CHF. Note range go-live wave 2."
+    },
+    "bank.country": {
+      "source": "llm",
+      "confidence": 1.0,
+      "timestamp": "2026-02-26T12:32:02",
+      "evidence": "Créer la banque Helios Bank en Suisse CH devise CHF bank code 77150. Agence principale Genève Centre code agence 0107. Activer Visa debit et credit en PVC, service code 201, PVK index 5, expiration 48 months, renewal AUTO, pre-expiration 60 days. Services 3DS + tokenization + SMS. Limites national et international : withdrawal 12000 CHF/day, purchase 45000 CHF/day. Frais replacement fee 25 CHF. Note range go-live wave 2."
+    },
+    "bank.currency": {
+      "source": "llm",
+      "confidence": 1.0,
+      "timestamp": "2026-02-26T12:32:02",
+      "evidence": "Créer la banque Helios Bank en Suisse CH devise CHF bank code 77150. Agence principale Genève Centre code agence 0107. Activer Visa debit et credit en PVC, service code 201, PVK index 5, expiration 48 months, renewal AUTO, pre-expiration 60 days. Services 3DS + tokenization + SMS. Limites national et international : withdrawal 12000 CHF/day, purchase 45000 CHF/day. Frais replacement fee 25 CHF. Note range go-live wave 2."
+    },
+    "bank.bank_code": {
+      "source": "llm",
+      "confidence": 1.0,
+      "timestamp": "2026-02-26T12:32:02",
+      "evidence": "Créer la banque Helios Bank en Suisse CH devise CHF bank code 77150. Agence principale Genève Centre code agence 0107. Activer Visa debit et credit en PVC, service code 201, PVK index 5, expiration 48 months, renewal AUTO, pre-expiration 60 days. Services 3DS + tokenization + SMS. Limites national et international : withdrawal 12000 CHF/day, purchase 45000 CHF/day. Frais replacement fee 25 CHF. Note range go-live wave 2."
+    },
+    "bank.agencies.0.city": {
+      "source": "llm",
+      "confidence": 1.0,
+      "timestamp": "2026-02-26T12:32:02",
+      "evidence": "Créer la banque Helios Bank en Suisse CH devise CHF bank code 77150. Agence principale Genève Centre code agence 0107. Activer Visa debit et credit en PVC, service code 201, PVK index 5, expiration 48 months, renewal AUTO, pre-expiration 60 days. Services 3DS + tokenization + SMS. Limites national et international : withdrawal 12000 CHF/day, purchase 45000 CHF/day. Frais replacement fee 25 CHF. Note range go-live wave 2."
+    },
+    "bank.agencies.0.region": {
+      "source": "llm",
+      "confidence": 1.0,
+      "timestamp": "2026-02-26T12:32:02",
+      "evidence": "Créer la banque Helios Bank en Suisse CH devise CHF bank code 77150. Agence principale Genève Centre code agence 0107. Activer Visa debit et credit en PVC, service code 201, PVK index 5, expiration 48 months, renewal AUTO, pre-expiration 60 days. Services 3DS + tokenization + SMS. Limites national et international : withdrawal 12000 CHF/day, purchase 45000 CHF/day. Frais replacement fee 25 CHF. Note range go-live wave 2."
+    },
+    "cards.0.card_info.network": {
+      "source": "llm",
+      "confidence": 1.0,
+      "timestamp": "2026-02-26T12:32:02",
+      "evidence": "Créer la banque Helios Bank en Suisse CH devise CHF bank code 77150. Agence principale Genève Centre code agence 0107. Activer Visa debit et credit en PVC, service code 201, PVK index 5, expiration 48 months, renewal AUTO, pre-expiration 60 days. Services 3DS + tokenization + SMS. Limites national et international : withdrawal 12000 CHF/day, purchase 45000 CHF/day. Frais replacement fee 25 CHF. Note range go-live wave 2."
+    },
+    "cards.0.card_info.service_code": {
+      "source": "user",
+      "confidence": 0.95,
+      "timestamp": "2026-02-26T12:32:02",
+      "evidence": "Créer la banque Helios Bank en Suisse CH devise CHF bank code 77150. Agence principale Genève Centre code agence 0107. Activer Visa debit et credit en PVC, service code 201, PVK index 5, expiration 48 months, renewal AUTO, pre-expiration 60 days. Services 3DS + tokenization + SMS. Limites national et international : withdrawal 12000 CHF/day, purchase 45000 CHF/day. Frais replacement fee 25 CHF. Note range go-live wave 2."
+    },
+    "cards.0.card_info.pvk_index": {
+      "source": "user",
+      "confidence": 0.95,
+      "timestamp": "2026-02-26T12:32:02",
+      "evidence": "Créer la banque Helios Bank en Suisse CH devise CHF bank code 77150. Agence principale Genève Centre code agence 0107. Activer Visa debit et credit en PVC, service code 201, PVK index 5, expiration 48 months, renewal AUTO, pre-expiration 60 days. Services 3DS + tokenization + SMS. Limites national et international : withdrawal 12000 CHF/day, purchase 45000 CHF/day. Frais replacement fee 25 CHF. Note range go-live wave 2."
+    },
+    "cards.0.card_info.expiration": {
+      "source": "user",
+      "confidence": 0.95,
+      "timestamp": "2026-02-26T12:32:02",
+      "evidence": "Créer la banque Helios Bank en Suisse CH devise CHF bank code 77150. Agence principale Genève Centre code agence 0107. Activer Visa debit et credit en PVC, service code 201, PVK index 5, expiration 48 months, renewal AUTO, pre-expiration 60 days. Services 3DS + tokenization + SMS. Limites national et international : withdrawal 12000 CHF/day, purchase 45000 CHF/day. Frais replacement fee 25 CHF. Note range go-live wave 2."
+    },
+    "cards.0.card_range.note": {
+      "source": "user",
+      "confidence": 0.95,
+      "timestamp": "2026-02-26T12:32:02",
+      "evidence": "Créer la banque Helios Bank en Suisse CH devise CHF bank code 77150. Agence principale Genève Centre code agence 0107. Activer Visa debit et credit en PVC, service code 201, PVK index 5, expiration 48 months, renewal AUTO, pre-expiration 60 days. Services 3DS + tokenization + SMS. Limites national et international : withdrawal 12000 CHF/day, purchase 45000 CHF/day. Frais replacement fee 25 CHF. Note range go-live wave 2."
+    },
+    "bank.agencies.0.agency_name": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-26T12:32:02",
+      "evidence": "Créer la banque Helios Bank en Suisse CH devise CHF bank code 77150. Agence principale Genève Centre code agence 0107. Activer Visa debit et credit en PVC, service code 201, PVK index 5, expiration 48 months, renewal AUTO, pre-expiration 60 days. Services 3DS + tokenization + SMS. Limites national et international : withdrawal 12000 CHF/day, purchase 45000 CHF/day. Frais replacement fee 25 CHF. Note range go-live wave 2."
+    },
+    "bank.agencies.0.agency_code": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-26T12:32:02",
+      "evidence": "Créer la banque Helios Bank en Suisse CH devise CHF bank code 77150. Agence principale Genève Centre code agence 0107. Activer Visa debit et credit en PVC, service code 201, PVK index 5, expiration 48 months, renewal AUTO, pre-expiration 60 days. Services 3DS + tokenization + SMS. Limites national et international : withdrawal 12000 CHF/day, purchase 45000 CHF/day. Frais replacement fee 25 CHF. Note range go-live wave 2."
+    },
+    "bank.resources": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-26T12:32:02",
+      "evidence": "Créer la banque Helios Bank en Suisse CH devise CHF bank code 77150. Agence principale Genève Centre code agence 0107. Activer Visa debit et credit en PVC, service code 201, PVK index 5, expiration 48 months, renewal AUTO, pre-expiration 60 days. Services 3DS + tokenization + SMS. Limites national et international : withdrawal 12000 CHF/day, purchase 45000 CHF/day. Frais replacement fee 25 CHF. Note range go-live wave 2."
+    },
+    "cards.0.limits.by_type.DEFAULT.domestic.daily_amount": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-26T12:32:02",
+      "evidence": "Créer la banque Helios Bank en Suisse CH devise CHF bank code 77150. Agence principale Genève Centre code agence 0107. Activer Visa debit et credit en PVC, service code 201, PVK index 5, expiration 48 months, renewal AUTO, pre-expiration 60 days. Services 3DS + tokenization + SMS. Limites national et international : withdrawal 12000 CHF/day, purchase 45000 CHF/day. Frais replacement fee 25 CHF. Note range go-live wave 2."
+    },
+    "cards.0.fees.replacement_fee": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-26T12:32:02",
+      "evidence": "Créer la banque Helios Bank en Suisse CH devise CHF bank code 77150. Agence principale Genève Centre code agence 0107. Activer Visa debit et credit en PVC, service code 201, PVK index 5, expiration 48 months, renewal AUTO, pre-expiration 60 days. Services 3DS + tokenization + SMS. Limites national et international : withdrawal 12000 CHF/day, purchase 45000 CHF/day. Frais replacement fee 25 CHF. Note range go-live wave 2."
+    },
+    "cards.0.card_info.plastic_type": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-26T12:32:02",
+      "evidence": "Créer la banque Helios Bank en Suisse CH devise CHF bank code 77150. Agence principale Genève Centre code agence 0107. Activer Visa debit et credit en PVC, service code 201, PVK index 5, expiration 48 months, renewal AUTO, pre-expiration 60 days. Services 3DS + tokenization + SMS. Limites national et international : withdrawal 12000 CHF/day, purchase 45000 CHF/day. Frais replacement fee 25 CHF. Note range go-live wave 2."
+    },
+    "cards.0.card_info.product_type": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-26T12:32:02",
+      "evidence": "Créer la banque Helios Bank en Suisse CH devise CHF bank code 77150. Agence principale Genève Centre code agence 0107. Activer Visa debit et credit en PVC, service code 201, PVK index 5, expiration 48 months, renewal AUTO, pre-expiration 60 days. Services 3DS + tokenization + SMS. Limites national et international : withdrawal 12000 CHF/day, purchase 45000 CHF/day. Frais replacement fee 25 CHF. Note range go-live wave 2."
+    },
+    "cards.0.services.enabled": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-26T12:32:02",
+      "evidence": "Créer la banque Helios Bank en Suisse CH devise CHF bank code 77150. Agence principale Genève Centre code agence 0107. Activer Visa debit et credit en PVC, service code 201, PVK index 5, expiration 48 months, renewal AUTO, pre-expiration 60 days. Services 3DS + tokenization + SMS. Limites national et international : withdrawal 12000 CHF/day, purchase 45000 CHF/day. Frais replacement fee 25 CHF. Note range go-live wave 2."
+    },
+    "cards.0.limits.selected_limit_types": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-26T12:32:02",
+      "evidence": "Créer la banque Helios Bank en Suisse CH devise CHF bank code 77150. Agence principale Genève Centre code agence 0107. Activer Visa debit et credit en PVC, service code 201, PVK index 5, expiration 48 months, renewal AUTO, pre-expiration 60 days. Services 3DS + tokenization + SMS. Limites national et international : withdrawal 12000 CHF/day, purchase 45000 CHF/day. Frais replacement fee 25 CHF. Note range go-live wave 2."
+    },
+    "cards.0.limits.by_type.DEFAULT.international.daily_amount": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-26T12:32:02",
+      "evidence": "Créer la banque Helios Bank en Suisse CH devise CHF bank code 77150. Agence principale Genève Centre code agence 0107. Activer Visa debit et credit en PVC, service code 201, PVK index 5, expiration 48 months, renewal AUTO, pre-expiration 60 days. Services 3DS + tokenization + SMS. Limites national et international : withdrawal 12000 CHF/day, purchase 45000 CHF/day. Frais replacement fee 25 CHF. Note range go-live wave 2."
+    }
+  },
+  "history": [],
+  "done": false
+}

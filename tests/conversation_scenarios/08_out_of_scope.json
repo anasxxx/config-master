@@ -1,0 +1,10 @@
+﻿{
+  "name": "out_of_scope_meteo",
+  "llm_mode": "down",
+  "messages": [
+    "quelle est la meteo a paris ?"
+  ],
+  "assertions": [
+    {"type": "intent_equals", "turn": 1, "value": "out_of_scope"}
+  ]
+}

@@ -1,0 +1,237 @@
+{
+  "meta": {
+    "goal_id": 160,
+    "client": "en",
+    "client_n": 1,
+    "action": "add",
+    "created_at": "2026-02-26T11:26:32",
+    "last_question_paths": [
+      "bank.agencies.0.agency_code"
+    ]
+  },
+  "goal": "Créer BlueWave Bank en France devise EUR code banque 30022, agence Paris Opéra code agence 0009. Activer Visa credit en PVC avec SMS + tokenization. Transactions international uniquement, limite paiement 25000 EUR/jour et retrait 7000 EUR/jour.",
+  "facts": {
+    "bank": {
+      "name": "BLUEWAVE BANK",
+      "country": "France",
+      "currency": "EUR",
+      "bank_code": "30022",
+      "resources": [
+        "TRANSACTIONS"
+      ],
+      "agencies": [
+        {
+          "agency_name": "Opéra",
+          "agency_code": null,
+          "city": "Paris",
+          "city_code": null,
+          "region": null,
+          "region_code": null
+        }
+      ]
+    },
+    "cards": [
+      {
+        "card_info": {
+          "bin": null,
+          "plastic_type": "PVC",
+          "card_description": null,
+          "product_type": "CREDIT",
+          "product_code": null,
+          "pvk_index": null,
+          "service_code": null,
+          "network": "VISA",
+          "expiration": null,
+          "renewal_option": null,
+          "pre_expiration": null
+        },
+        "card_range": {
+          "note": ""
+        },
+        "fees": {
+          "fee_description": null,
+          "billing_event": null,
+          "grace_period": null,
+          "billing_period": null,
+          "registration_fee": null,
+          "periodic_fee": null,
+          "replacement_fee": null,
+          "pin_recalculation_fee": null
+        },
+        "services": {
+          "enabled": [
+            "TOKENIZATION",
+            "SMS"
+          ]
+        },
+        "limits": {
+          "selected_limit_types": [
+            "Retrait",
+            "Purchase"
+          ],
+          "by_type": {
+            "DEFAULT": {
+              "domestic": {
+                "daily_amount": 7000.0,
+                "daily_count": null,
+                "weekly_amount": null,
+                "weekly_count": null,
+                "monthly_amount": null,
+                "monthly_count": null
+              },
+              "international": {
+                "daily_amount": 25000.0,
+                "daily_count": null,
+                "weekly_amount": null,
+                "weekly_count": null,
+                "monthly_amount": null,
+                "monthly_count": null
+              },
+              "total": {
+                "daily_amount": 7000.0,
+                "daily_count": null,
+                "weekly_amount": null,
+                "weekly_count": null,
+                "monthly_amount": null,
+                "monthly_count": null
+              },
+              "per_transaction": {
+                "min_amount": null,
+                "max_amount": null
+              }
+            }
+          }
+        }
+      }
+    ],
+    "options": {
+      "resources_examples": [
+        "MCD_MDS",
+        "MCD_CIS",
+        "UPI",
+        "HOST_BANK",
+        "SID",
+        "VISA_BASE1",
+        "VISA_SMS"
+      ],
+      "services": [
+        "Retrait",
+        "Cash Advance",
+        "Transferts",
+        "Consultation Solde",
+        "Changement PIN",
+        "Envoi d'argent",
+        "Original",
+        "Achats",
+        "E-commerce",
+        "Quasi-Cash",
+        "Mini-Relevé",
+        "Remboursements",
+        "Paiement Factures",
+        "Authentification",
+        "Cashback"
+      ],
+      "limit_types": [
+        "Retrait",
+        "Purchase",
+        "CASH_advance",
+        "Quasi-cash",
+        "E-commerce"
+      ]
+    }
+  },
+  "provenance": {
+    "bank.name": {
+      "source": "llm",
+      "confidence": 1.0,
+      "timestamp": "2026-02-26T11:26:50",
+      "evidence": "Créer BlueWave Bank en France devise EUR code banque 30022, agence Paris Opéra code agence 0009. Activer Visa credit en PVC avec SMS + tokenization. Transactions international uniquement, limite paiement 25000 EUR/jour et retrait 7000 EUR/jour."
+    },
+    "bank.country": {
+      "source": "llm",
+      "confidence": 1.0,
+      "timestamp": "2026-02-26T11:26:50",
+      "evidence": "Créer BlueWave Bank en France devise EUR code banque 30022, agence Paris Opéra code agence 0009. Activer Visa credit en PVC avec SMS + tokenization. Transactions international uniquement, limite paiement 25000 EUR/jour et retrait 7000 EUR/jour."
+    },
+    "bank.currency": {
+      "source": "llm",
+      "confidence": 0.9,
+      "timestamp": "2026-02-26T11:26:50",
+      "evidence": "Créer BlueWave Bank en France devise EUR code banque 30022, agence Paris Opéra code agence 0009. Activer Visa credit en PVC avec SMS + tokenization. Transactions international uniquement, limite paiement 25000 EUR/jour et retrait 7000 EUR/jour."
+    },
+    "bank.bank_code": {
+      "source": "llm",
+      "confidence": 1.0,
+      "timestamp": "2026-02-26T11:26:50",
+      "evidence": "Créer BlueWave Bank en France devise EUR code banque 30022, agence Paris Opéra code agence 0009. Activer Visa credit en PVC avec SMS + tokenization. Transactions international uniquement, limite paiement 25000 EUR/jour et retrait 7000 EUR/jour."
+    },
+    "bank.agencies.0.agency_name": {
+      "source": "llm",
+      "confidence": 1.0,
+      "timestamp": "2026-02-26T11:26:50",
+      "evidence": "Créer BlueWave Bank en France devise EUR code banque 30022, agence Paris Opéra code agence 0009. Activer Visa credit en PVC avec SMS + tokenization. Transactions international uniquement, limite paiement 25000 EUR/jour et retrait 7000 EUR/jour."
+    },
+    "bank.agencies.0.city": {
+      "source": "llm",
+      "confidence": 1.0,
+      "timestamp": "2026-02-26T11:26:50",
+      "evidence": "Créer BlueWave Bank en France devise EUR code banque 30022, agence Paris Opéra code agence 0009. Activer Visa credit en PVC avec SMS + tokenization. Transactions international uniquement, limite paiement 25000 EUR/jour et retrait 7000 EUR/jour."
+    },
+    "cards.0.card_info.plastic_type": {
+      "source": "llm",
+      "confidence": 1.0,
+      "timestamp": "2026-02-26T11:26:50",
+      "evidence": "Créer BlueWave Bank en France devise EUR code banque 30022, agence Paris Opéra code agence 0009. Activer Visa credit en PVC avec SMS + tokenization. Transactions international uniquement, limite paiement 25000 EUR/jour et retrait 7000 EUR/jour."
+    },
+    "cards.0.card_info.product_type": {
+      "source": "llm",
+      "confidence": 1.0,
+      "timestamp": "2026-02-26T11:26:50",
+      "evidence": "Créer BlueWave Bank en France devise EUR code banque 30022, agence Paris Opéra code agence 0009. Activer Visa credit en PVC avec SMS + tokenization. Transactions international uniquement, limite paiement 25000 EUR/jour et retrait 7000 EUR/jour."
+    },
+    "cards.0.limits.by_type.DEFAULT.domestic.daily_amount": {
+      "source": "llm",
+      "confidence": 1.0,
+      "timestamp": "2026-02-26T11:26:50",
+      "evidence": "Créer BlueWave Bank en France devise EUR code banque 30022, agence Paris Opéra code agence 0009. Activer Visa credit en PVC avec SMS + tokenization. Transactions international uniquement, limite paiement 25000 EUR/jour et retrait 7000 EUR/jour."
+    },
+    "bank.resources": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-26T11:26:50",
+      "evidence": "Créer BlueWave Bank en France devise EUR code banque 30022, agence Paris Opéra code agence 0009. Activer Visa credit en PVC avec SMS + tokenization. Transactions international uniquement, limite paiement 25000 EUR/jour et retrait 7000 EUR/jour."
+    },
+    "cards.0.limits.by_type.DEFAULT.international.daily_amount": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-26T11:26:50",
+      "evidence": "Créer BlueWave Bank en France devise EUR code banque 30022, agence Paris Opéra code agence 0009. Activer Visa credit en PVC avec SMS + tokenization. Transactions international uniquement, limite paiement 25000 EUR/jour et retrait 7000 EUR/jour."
+    },
+    "cards.0.limits.by_type.DEFAULT.total.daily_amount": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-26T11:26:50",
+      "evidence": "Créer BlueWave Bank en France devise EUR code banque 30022, agence Paris Opéra code agence 0009. Activer Visa credit en PVC avec SMS + tokenization. Transactions international uniquement, limite paiement 25000 EUR/jour et retrait 7000 EUR/jour."
+    },
+    "cards.0.services.enabled": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-26T11:26:50",
+      "evidence": "Créer BlueWave Bank en France devise EUR code banque 30022, agence Paris Opéra code agence 0009. Activer Visa credit en PVC avec SMS + tokenization. Transactions international uniquement, limite paiement 25000 EUR/jour et retrait 7000 EUR/jour."
+    },
+    "cards.0.limits.selected_limit_types": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-26T11:26:50",
+      "evidence": "Créer BlueWave Bank en France devise EUR code banque 30022, agence Paris Opéra code agence 0009. Activer Visa credit en PVC avec SMS + tokenization. Transactions international uniquement, limite paiement 25000 EUR/jour et retrait 7000 EUR/jour."
+    },
+    "cards.0.card_info.network": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-26T11:26:50",
+      "evidence": "Créer BlueWave Bank en France devise EUR code banque 30022, agence Paris Opéra code agence 0009. Activer Visa credit en PVC avec SMS + tokenization. Transactions international uniquement, limite paiement 25000 EUR/jour et retrait 7000 EUR/jour."
+    }
+  },
+  "history": [],
+  "done": false
+}

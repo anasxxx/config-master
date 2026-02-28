@@ -1,6 +1,7 @@
 # agents/conversation_agent.py
 import re
 import copy
+import time
 from datetime import datetime
 from typing import Any, Dict, Optional, List, Tuple
 
@@ -30,11 +31,18 @@ _FALLBACK_COUNTRIES = {
     "spain": "Espagne",
 }
 
-from config import USE_LLM
+from config import USE_LLM, LLM_MIN_CONF, LLM_MAX_ATTEMPTS, LLM_RETRY_BACKOFF_S
 from security.sanitize import sanitize_text
-from agents.llm_extractor import extract_with_llm
+from agents.llm_extractor import extract_with_llm, extract_with_llm_status
 from agents.llm_gates import apply_llm_gates
 from agents.schema_validator import validate_value
+from agents.value_store import (
+    get_value as vs_get_value,
+    get_meta as vs_get_meta,
+    set_value as vs_set_value,
+    is_authoritative,
+    normalize_source,
+)
 
 
 # =========================================================
@@ -108,7 +116,7 @@ def set_provenance(state: dict, path: str, source: str, confidence: float = 1.0,
     confidence = max(0.0, min(1.0, confidence))
 
     payload = {
-        "source": source,
+        "source": normalize_source(source),
         "confidence": confidence,
         "timestamp": datetime.now().isoformat(timespec="seconds"),
     }
@@ -165,6 +173,8 @@ def normalize_country(x: str) -> str:
 
 
 def is_missing_value(v) -> bool:
+    if isinstance(v, dict) and "value" in v:
+        return is_missing_value(v.get("value"))
     if v is None:
         return True
     if isinstance(v, str) and v.strip() == "":
@@ -180,18 +190,7 @@ def is_missing_value(v) -> bool:
 # Path helpers
 # -------------------------
 def _get_by_path(obj, path: str):
-    cur = obj
-    for part in path.split("."):
-        if part.isdigit():
-            idx = int(part)
-            if not isinstance(cur, list) or idx >= len(cur):
-                return None
-            cur = cur[idx]
-        else:
-            if not isinstance(cur, dict) or part not in cur:
-                return None
-            cur = cur[part]
-    return cur
+    return vs_get_value(obj, path)
 
 
 def _ensure_list_index(lst: list, idx: int, template_item):
@@ -200,51 +199,7 @@ def _ensure_list_index(lst: list, idx: int, template_item):
 
 
 def set_by_path(obj, path: str, value, template_obj) -> bool:
-    parts = path.split(".")
-    cur = obj
-    tmpl = template_obj
-
-    for i, part in enumerate(parts):
-        last = (i == len(parts) - 1)
-
-        if part.isdigit():
-            idx = int(part)
-            if not isinstance(cur, list):
-                return False
-
-            tmpl_item = {}
-            if isinstance(tmpl, list) and len(tmpl) > 0:
-                tmpl_item = tmpl[0]
-            _ensure_list_index(cur, idx, tmpl_item)
-
-            if last:
-                cur[idx] = value
-                return True
-
-            cur = cur[idx]
-            tmpl = tmpl_item
-            continue
-
-        if not isinstance(cur, dict):
-            return False
-
-        if last:
-            cur[part] = value
-            return True
-
-        next_tmpl = tmpl.get(part) if isinstance(tmpl, dict) else {}
-        if part not in cur or cur[part] is None:
-            if isinstance(next_tmpl, list):
-                cur[part] = []
-            elif isinstance(next_tmpl, dict):
-                cur[part] = {}
-            else:
-                cur[part] = {}
-
-        cur = cur[part]
-        tmpl = next_tmpl
-
-    return False
+    return vs_set_value(obj, path, value, source="user", confidence=1.0)
 
 
 # -------------------------
@@ -305,6 +260,30 @@ def postprocess(path: str, value):
             return normalize_country(value)
         if path == "cards.0.card_info.network":
             return value.strip().upper()
+        if path == "cards.0.card_info.product_type":
+            v = value.strip().lower()
+            mapping = {
+                "debit": "DEBIT",
+                "débit": "DEBIT",
+                "credit": "CREDIT",
+                "crédit": "CREDIT",
+                "prepaid": "PREPAID",
+                "prépayée": "PREPAID",
+                "prepayee": "PREPAID",
+            }
+            return mapping.get(v, value.strip().upper())
+        if path == "cards.0.card_info.plastic_type":
+            v = value.strip().lower()
+            mapping = {
+                "pvc": "PVC",
+                "petg": "PETG",
+                "metal": "METAL",
+                "métal": "METAL",
+                "other": "OTHER",
+                "autre": "OTHER",
+                "plastic": "PVC",
+            }
+            return mapping.get(v, value.strip().upper())
         if path == "bank.bank_code":
             return value.strip().upper()
     return value
@@ -319,6 +298,15 @@ def validate_field_value(path: str, value) -> bool:
 
     if path == "cards.0.card_info.network":
         return s in {"VISA", "MASTERCARD"}
+
+    if path == "cards.0.card_info.product_type":
+        allowed = {"DEBIT", "CREDIT", "PREPAID"}
+        parts = [p.strip() for p in re.split(r"[,/]+", s) if p.strip()]
+        return bool(parts) and all(p in allowed for p in parts)
+
+    if path == "cards.0.card_info.plastic_type":
+        allowed = {"PVC", "PETG", "METAL", "OTHER"}
+        return s in allowed
 
     if "currency" in path:
         return bool(re.fullmatch(r"[A-Z]{3}", s))
@@ -378,21 +366,25 @@ def _safe_set_if_valid(
     evidence: Optional[str] = None,
 ) -> bool:
     facts = state["facts"]
+    source = normalize_source(source)
+    menu_paths = list((state.get("meta", {}) or {}).get("menu_selected_paths") or [])
+    if source == "user" and path in menu_paths:
+        source = "menu"
     value = _coerce_value_for_path(path, value)
 
     tmpl_value = _get_by_path(template_obj, path)
     ok, err = validate_value(path, value, tmpl_value)
     if not ok:
-        print(f"[SCHEMA VALIDATION ERROR] {path} -> {err}")
         return False
 
     if not validate_field_value(path, value):
-        print(f"[FIELD VALIDATION ERROR] {path} -> invalid value")
         return False
 
-    done = set_by_path(facts, path, value, template_obj)
+    done = vs_set_value(facts, path, value, source=source, confidence=confidence, evidence=evidence)
     if done:
         set_provenance(state, path, source=source, confidence=confidence, evidence=evidence)
+        if path in menu_paths:
+            state.setdefault("meta", {})["menu_selected_paths"] = [p for p in menu_paths if p != path]
     return done
 
 
@@ -544,6 +536,104 @@ def apply_multi_field_answer(state: dict, template_obj: dict, paths: list, user_
     llm_applied = _apply_targeted_llm_answer(state, template_obj, paths, txt)
     if llm_applied == len(paths):
         return True
+
+    path_set = set(paths)
+    agency_triplet = {
+        "bank.agencies.0.agency_name",
+        "bank.agencies.0.city",
+        "bank.agencies.0.agency_code",
+    }
+    if path_set == agency_triplet:
+        parts = [p.strip() for p in re.split(r"[,;/]+", txt) if p.strip()]
+        if len(parts) >= 3:
+            ordered = [
+                ("bank.agencies.0.agency_name", parts[0]),
+                ("bank.agencies.0.city", parts[1]),
+                ("bank.agencies.0.agency_code", parts[2]),
+            ]
+            ok_all = True
+            for path, raw in ordered:
+                tmpl_value = _get_by_path(template_obj, path)
+                v = postprocess(path, cast_value(raw, tmpl_value))
+                ok_one = _safe_set_if_valid(
+                    state, template_obj, path, v, source="user", confidence=1.0, evidence=user_text
+                )
+                if not ok_one:
+                    return False
+                ok_all = ok_all and ok_one
+            return bool(ok_all)
+        if len(parts) == 2 and re.fullmatch(r"[A-Za-z0-9\-_]{1,20}", parts[1]):
+            pairs = [
+                ("bank.agencies.0.agency_name", parts[0]),
+                ("bank.agencies.0.agency_code", parts[1]),
+            ]
+            ok_all = True
+            for path, raw in pairs:
+                tmpl_value = _get_by_path(template_obj, path)
+                v = postprocess(path, cast_value(raw, tmpl_value))
+                ok_one = _safe_set_if_valid(
+                    state, template_obj, path, v, source="user", confidence=1.0, evidence=user_text
+                )
+                if not ok_one:
+                    return False
+                ok_all = ok_all and ok_one
+            return bool(ok_all)
+
+    card_profile_triplet = {
+        "cards.0.card_info.network",
+        "cards.0.card_info.product_type",
+        "cards.0.card_info.plastic_type",
+    }
+    if path_set == card_profile_triplet:
+        network = None
+        if re.search(r"(?i)\bmaster\s*card\b|\bmastercard\b", txt):
+            network = "MASTERCARD"
+        elif re.search(r"(?i)\bvisa\b", txt):
+            network = "VISA"
+
+        products = []
+        if re.search(r"(?i)\bd[ée]bit\b", txt):
+            products.append("DEBIT")
+        if re.search(r"(?i)\bcr[ée]dit\b|\bcredit\b", txt):
+            products.append("CREDIT")
+        if re.search(r"(?i)\bprepaid\b|\bpr[ée]pay[ée]e?\b", txt):
+            products.append("PREPAID")
+        product = ", ".join(dict.fromkeys(products)) if products else None
+
+        plastic = None
+        if re.search(r"(?i)\bpvc\b|\bplastic\b", txt):
+            plastic = "PVC"
+        elif re.search(r"(?i)\bpetg\b", txt):
+            plastic = "PETG"
+        elif re.search(r"(?i)\bm[ée]tal\b|\bmetal\b", txt):
+            plastic = "METAL"
+        elif re.search(r"(?i)\bautre\b|\bother\b", txt):
+            plastic = "OTHER"
+
+        extracted = {
+            "cards.0.card_info.network": network,
+            "cards.0.card_info.product_type": product,
+            "cards.0.card_info.plastic_type": plastic,
+        }
+
+        applied = 0
+        for path in [
+            "cards.0.card_info.network",
+            "cards.0.card_info.product_type",
+            "cards.0.card_info.plastic_type",
+        ]:
+            raw = extracted.get(path)
+            if raw is None:
+                continue
+            tmpl_value = _get_by_path(template_obj, path)
+            v = postprocess(path, cast_value(raw, tmpl_value))
+            ok_one = _safe_set_if_valid(
+                state, template_obj, path, v, source="user", confidence=1.0, evidence=user_text
+            )
+            if ok_one:
+                applied += 1
+        if applied > 0:
+            return True
 
     # Special handling for pair "<label text> + <numeric/alnum code>" even in noisy sentences.
     if len(paths) == 2 and paths[1].endswith("_code"):
@@ -765,11 +855,18 @@ def _extract_bank_name(text: str):
 
 def _extract_bank_code(text: str) -> Optional[str]:
     m = re.search(
-        r"(?i)\b(?:bank[_\s-]*code|code\s*banque|bank\s*code|code\s*bank|bank_code)\s*(?:is|est)?\s*[:=]?\s*([0-9]{2,20})\b",
+        r"(?i)\b(?:bank[_\s-]*code|code\s*banq(?:ue|u?e?)|bank\s*code|code\s*bank|bank_code|code\s*baque|code\s+de\s+bank|code\s+de\s+banque)\s*(?:is|est|soit)?\s*[:=]?\s*([0-9]{2,20})\b",
         text,
     )
     if m:
         return m.group(1).strip()
+
+    m_de = re.search(
+        r"(?i)\b(?:son\s+)?code(?:\s+de)?\s*(?:bank|banque)\s*(?:is|est|soit)?\s*[:=]?\s*([0-9]{2,20})\b",
+        text,
+    )
+    if m_de:
+        return m_de.group(1).strip()
 
     # Common phrasing: "banque ... avec code 4896 ..."
     m2 = re.search(
@@ -1209,7 +1306,16 @@ def _same_value(a: Any, b: Any) -> bool:
     return a == b
 
 
-def _record_conflict(state: dict, path: str, old_value: Any, new_value: Any, source: str, evidence: str):
+def _record_conflict(
+    state: dict,
+    path: str,
+    old_value: Any,
+    new_value: Any,
+    old_source: str,
+    new_source: str,
+    reason: str,
+    evidence: str,
+):
     if "conflicts" not in state or not isinstance(state.get("conflicts"), list):
         state["conflicts"] = []
     state["conflicts"].append(
@@ -1217,9 +1323,11 @@ def _record_conflict(state: dict, path: str, old_value: Any, new_value: Any, sou
             "path": path,
             "old_value": old_value,
             "new_value": new_value,
-            "source": source,
+            "old_source": normalize_source(old_source),
+            "new_source": normalize_source(new_source),
+            "reason": reason,
             "evidence": evidence,
-            "timestamp": datetime.now().isoformat(timespec="seconds"),
+            "created_at": datetime.now().isoformat(timespec="seconds"),
         }
     )
 
@@ -1238,6 +1346,7 @@ def _try_set_candidate(
     facts = state["facts"]
     current = _get_by_path(facts, path)
     tmpl_value = _get_by_path(template_obj, path)
+    source = normalize_source(source)
 
     v = raw_value
     if not isinstance(raw_value, list):
@@ -1250,28 +1359,28 @@ def _try_set_candidate(
     if _same_value(current, v):
         return True
 
-    prov = state.get("provenance", {}).get(path, {})
-    existing_source = prov.get("source")
+    existing_meta = vs_get_meta(facts, path)
+    existing_source = normalize_source(existing_meta.get("source") or "")
+    if not existing_source:
+        prov = state.get("provenance", {}).get(path, {})
+        existing_source = normalize_source(str(prov.get("source") or ""))
+    if not existing_source:
+        existing_source = "rules"
 
-    # Conservative overwrite policy to keep conversation stable.
-    allow_overwrite = False
-    if source == "user":
-        allow_overwrite = explicit_mention or existing_source in {"llm", "regex"}
-    elif source == "regex":
-        allow_overwrite = explicit_mention and existing_source in {"llm", "regex"}
-    elif source == "llm":
-        allow_overwrite = explicit_mention and existing_source in {"llm", "regex"}
-
-    # Never let non-user extraction override explicit user value.
-    if existing_source == "user" and source != "user":
-        allow_overwrite = False
-
-    if not allow_overwrite:
-        if explicit_mention:
-            _record_conflict(state, path, current, v, source, evidence)
+    if not is_authoritative(existing_source, source) and normalize_source(existing_source) != normalize_source(source):
         return False
 
-    return _safe_set_if_valid(state, template_obj, path, v, source=source, confidence=confidence, evidence=evidence)
+    _record_conflict(
+        state,
+        path,
+        current,
+        v,
+        old_source=existing_source,
+        new_source=source,
+        reason=f"{source}_differs",
+        evidence=evidence,
+    )
+    return False
 
 
 def _auto_aliases_for_path(path: str) -> List[str]:
@@ -1401,6 +1510,112 @@ def apply_user_message_to_facts(state: dict, template_obj: dict, user_text: str)
 
     facts = state["facts"]
     allowed_fields = _get_allowed_fields(template_obj)
+    meta = state.setdefault("meta", {})
+    trace = {
+        "used_llm": False,
+        "used_fallback_rules": False,
+        "llm_attempts": 0,
+        "llm_final_status": "LLM_SKIPPED",
+    }
+
+    def _save_trace():
+        meta["last_extraction"] = trace
+
+    if USE_LLM:
+        redacted, _secrets = sanitize_text(txt)
+        attempts = max(1, int(LLM_MAX_ATTEMPTS or 1))
+        final_status = "LLM_DOWN"
+
+        for attempt in range(1, attempts + 1):
+            trace["used_llm"] = True
+            trace["llm_attempts"] = attempt
+
+            llm_status, llm_out = extract_with_llm_status(redacted, allowed_fields, current_facts=facts)
+            final_status = llm_status
+            if llm_status != "LLM_OK":
+                if attempt < attempts:
+                    time.sleep(LLM_RETRY_BACKOFF_S * (2 ** (attempt - 1)))
+                continue
+
+            clean = apply_llm_gates(llm_out, allowed_fields)
+            fields_meta = {}
+            if isinstance(llm_out, dict):
+                fm = llm_out.get("fields", {})
+                if isinstance(fm, dict):
+                    fields_meta = fm
+
+            if not clean:
+                final_status = "LLM_REJECTED_INVALID"
+                if attempt < attempts:
+                    time.sleep(LLM_RETRY_BACKOFF_S * (2 ** (attempt - 1)))
+                continue
+
+            applied_count = 0
+            for path, value in (clean or {}).items():
+                if path.startswith("options."):
+                    continue
+
+                explicit_mention = _path_explicitly_mentioned(txt, path)
+
+                if (path.endswith("_code") or path.endswith("bank_code")) and not explicit_mention:
+                    continue
+                if path == "bank.currency" and _extract_currency(txt) is None and not explicit_mention:
+                    continue
+                if path == "cards.0.card_info.plastic_type":
+                    plastic_mentioned = bool(re.search(r"(?i)\b(plastic|plastique|pvc|petg|recycled)\b", txt))
+                    if not plastic_mentioned and not explicit_mention:
+                        continue
+                if path.startswith("cards.0.fees."):
+                    fee_mentioned = bool(re.search(r"(?i)\b(fee|frais|issuance|registration|monthly|periodic|replacement|pin)\b", txt))
+                    if not fee_mentioned and not explicit_mention:
+                        continue
+                if path in {"bank.agencies.0.region", "bank.agencies.0.region_code"}:
+                    region_mentioned = bool(re.search(r"(?i)\b(region|rÃ©gion|region_code|code\s*region|code\s*rÃ©gion)\b", txt))
+                    if not region_mentioned:
+                        continue
+
+                conf = 1.0
+                try:
+                    conf = float((fields_meta.get(path) or {}).get("confidence", 1.0))
+                except Exception:
+                    conf = 1.0
+
+                required_conf = 0.90
+                if explicit_mention:
+                    required_conf = LLM_MIN_CONF
+
+                if conf < required_conf:
+                    continue
+
+                before = _get_by_path(state["facts"], path)
+                _try_set_candidate(
+                    state,
+                    template_obj,
+                    path,
+                    value,
+                    source="llm",
+                    confidence=conf,
+                    evidence=redacted,
+                    explicit_mention=explicit_mention,
+                )
+                after = _get_by_path(state["facts"], path)
+                if not is_missing_value(after) and not _same_value(before, after):
+                    applied_count += 1
+
+            if applied_count > 0:
+                trace["llm_final_status"] = "LLM_OK"
+                _save_trace()
+                return
+
+            final_status = "LLM_REJECTED_INVALID"
+            if attempt < attempts:
+                time.sleep(LLM_RETRY_BACKOFF_S * (2 ** (attempt - 1)))
+
+        trace["llm_final_status"] = final_status
+    else:
+        trace["llm_final_status"] = "LLM_SKIPPED"
+
+    trace["used_fallback_rules"] = True
 
     # 1) Deterministic label-based extraction (order-independent).
     labeled = _extract_labeled_fields(txt, allowed_fields, template_obj)
@@ -1416,8 +1631,8 @@ def apply_user_message_to_facts(state: dict, template_obj: dict, user_text: str)
             explicit_mention=True,
         )
 
-    # 2) LLM schema-driven
-    if USE_LLM:
+    # 2) LLM schema-driven (disabled here: handled above with strict retry/fallback)
+    if False and USE_LLM:
         redacted, _secrets = sanitize_text(txt)
         llm_out = extract_with_llm(redacted, allowed_fields, current_facts=facts)
 
@@ -1587,7 +1802,11 @@ def apply_user_message_to_facts(state: dict, template_obj: dict, user_text: str)
     if is_missing_value(city_now) and isinstance(agency_name_now, str) and agency_name_now.strip():
         tokens = re.findall(r"[A-Za-zÀ-ÿ\-]+", agency_name_now.strip())
         if tokens:
-            candidate_city = _clean_city_name(tokens[0])
+            first = tokens[0].lower()
+            if first in {"de", "du", "des", "la", "le", "les", "agence", "agency"}:
+                candidate_city = ""
+            else:
+                candidate_city = _clean_city_name(tokens[0])
             if candidate_city and not _is_known_country_name(candidate_city):
                 _try_set_candidate(
                     state,
@@ -1599,3 +1818,4 @@ def apply_user_message_to_facts(state: dict, template_obj: dict, user_text: str)
                     evidence=txt,
                     explicit_mention=False,
                 )
+    _save_trace()
