@@ -1,0 +1,38 @@
+{
+  "scenario": "menu_network_selection",
+  "status": "PARTIAL",
+  "turns": [
+    {
+      "turn": 1,
+      "user": "1",
+      "question": "Quel est le réseau de la carte ? (ex: VISA, MASTERCARD) Valeurs courantes: VISA ou MASTERCARD.\nChoisis le reseau: 1) VISA | 2) MASTERCARD | 3) VISA",
+      "question_paths": [
+        "cards.0.card_info.network"
+      ],
+      "intent": "unknown",
+      "changed_paths": [
+        "cards.0.card_info.network"
+      ],
+      "step": "collecting",
+      "last_extraction": {
+        "used_llm": true,
+        "used_fallback_rules": true,
+        "llm_attempts": 3,
+        "llm_final_status": "LLM_DOWN"
+      }
+    }
+  ],
+  "final_dialog_step": "collecting",
+  "final_mode": "normal",
+  "pending_confirmations": [],
+  "final_last_extraction": {
+    "used_llm": true,
+    "used_fallback_rules": true,
+    "llm_attempts": 3,
+    "llm_final_status": "LLM_DOWN"
+  },
+  "facts_sources": {
+    "cards.0.card_info.network": "menu"
+  },
+  "assertion_failures": []
+}

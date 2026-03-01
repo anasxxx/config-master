@@ -1,0 +1,181 @@
+{
+  "meta": {
+    "goal_id": 158,
+    "client": "les",
+    "client_n": 3,
+    "action": "add",
+    "created_at": "2026-02-26T10:48:49",
+    "last_question_paths": [
+      "bank.resources"
+    ]
+  },
+  "goal": "Créer une nouvelle banque nommée Zenith Trust Bank basée en Suisse avec la devise principale CHF et le code banque 77145, dont l’agence principale sera Genève Centre identifiée par le code 0105. Pour les cartes, activer uniquement le réseau Mastercard avec des produits credit et debit en plastique PVC, en incluant les services 3DS, alertes SMS et tokenization, et permettre les transactions en national et international avec des limites journalières de 10000 CHF pour les retraits et 40000 CHF pour les paiements. Le compte de règlement devra être en EUR chez BNP Paribas Paris, la langue par défaut sera français et le code pays CH.",
+  "facts": {
+    "bank": {
+      "name": "ZENITH TRUST BANK",
+      "country": "Suisse",
+      "currency": "CHF",
+      "bank_code": "77145",
+      "resources": [],
+      "agencies": [
+        {
+          "agency_name": "Genève Centre",
+          "agency_code": null,
+          "city": null,
+          "city_code": null,
+          "region": null,
+          "region_code": "0105"
+        }
+      ]
+    },
+    "cards": [
+      {
+        "card_info": {
+          "bin": null,
+          "plastic_type": null,
+          "card_description": null,
+          "product_type": null,
+          "product_code": null,
+          "pvk_index": null,
+          "service_code": null,
+          "network": "MASTERCARD",
+          "expiration": null,
+          "renewal_option": null,
+          "pre_expiration": null
+        },
+        "card_range": {
+          "note": ""
+        },
+        "fees": {
+          "fee_description": null,
+          "billing_event": null,
+          "grace_period": null,
+          "billing_period": null,
+          "registration_fee": null,
+          "periodic_fee": null,
+          "replacement_fee": null,
+          "pin_recalculation_fee": null
+        },
+        "services": {
+          "enabled": []
+        },
+        "limits": {
+          "selected_limit_types": [],
+          "by_type": {
+            "DEFAULT": {
+              "domestic": {
+                "daily_amount": null,
+                "daily_count": null,
+                "weekly_amount": null,
+                "weekly_count": null,
+                "monthly_amount": null,
+                "monthly_count": null
+              },
+              "international": {
+                "daily_amount": null,
+                "daily_count": null,
+                "weekly_amount": null,
+                "weekly_count": null,
+                "monthly_amount": null,
+                "monthly_count": null
+              },
+              "total": {
+                "daily_amount": null,
+                "daily_count": null,
+                "weekly_amount": null,
+                "weekly_count": null,
+                "monthly_amount": null,
+                "monthly_count": null
+              },
+              "per_transaction": {
+                "min_amount": null,
+                "max_amount": null
+              }
+            }
+          }
+        }
+      }
+    ],
+    "options": {
+      "resources_examples": [
+        "MCD_MDS",
+        "MCD_CIS",
+        "UPI",
+        "HOST_BANK",
+        "SID",
+        "VISA_BASE1",
+        "VISA_SMS"
+      ],
+      "services": [
+        "Retrait",
+        "Cash Advance",
+        "Transferts",
+        "Consultation Solde",
+        "Changement PIN",
+        "Envoi d'argent",
+        "Original",
+        "Achats",
+        "E-commerce",
+        "Quasi-Cash",
+        "Mini-Relevé",
+        "Remboursements",
+        "Paiement Factures",
+        "Authentification",
+        "Cashback"
+      ],
+      "limit_types": [
+        "Retrait",
+        "Purchase",
+        "CASH_advance",
+        "Quasi-cash",
+        "E-commerce"
+      ]
+    }
+  },
+  "provenance": {
+    "bank.name": {
+      "source": "llm",
+      "confidence": 1.0,
+      "timestamp": "2026-02-26T10:49:09",
+      "evidence": "Créer une nouvelle banque nommée Zenith Trust Bank basée en Suisse avec la devise principale CHF et le code banque 77145, dont l’agence principale sera Genève Centre identifiée par le code 0105. Pour les cartes, activer uniquement le réseau Mastercard avec des produits credit et debit en plastique PVC, en incluant les services 3DS, alertes SMS et tokenization, et permettre les transactions en national et international avec des limites journalières de 10000 CHF pour les retraits et 40000 CHF pour les paiements. Le compte de règlement devra être en EUR chez BNP Paribas Paris, la langue par défaut sera français et le code pays CH."
+    },
+    "bank.country": {
+      "source": "llm",
+      "confidence": 1.0,
+      "timestamp": "2026-02-26T10:49:09",
+      "evidence": "Créer une nouvelle banque nommée Zenith Trust Bank basée en Suisse avec la devise principale CHF et le code banque 77145, dont l’agence principale sera Genève Centre identifiée par le code 0105. Pour les cartes, activer uniquement le réseau Mastercard avec des produits credit et debit en plastique PVC, en incluant les services 3DS, alertes SMS et tokenization, et permettre les transactions en national et international avec des limites journalières de 10000 CHF pour les retraits et 40000 CHF pour les paiements. Le compte de règlement devra être en EUR chez BNP Paribas Paris, la langue par défaut sera français et le code pays CH."
+    },
+    "bank.currency": {
+      "source": "llm",
+      "confidence": 1.0,
+      "timestamp": "2026-02-26T10:49:09",
+      "evidence": "Créer une nouvelle banque nommée Zenith Trust Bank basée en Suisse avec la devise principale CHF et le code banque 77145, dont l’agence principale sera Genève Centre identifiée par le code 0105. Pour les cartes, activer uniquement le réseau Mastercard avec des produits credit et debit en plastique PVC, en incluant les services 3DS, alertes SMS et tokenization, et permettre les transactions en national et international avec des limites journalières de 10000 CHF pour les retraits et 40000 CHF pour les paiements. Le compte de règlement devra être en EUR chez BNP Paribas Paris, la langue par défaut sera français et le code pays CH."
+    },
+    "bank.bank_code": {
+      "source": "llm",
+      "confidence": 1.0,
+      "timestamp": "2026-02-26T10:49:09",
+      "evidence": "Créer une nouvelle banque nommée Zenith Trust Bank basée en Suisse avec la devise principale CHF et le code banque 77145, dont l’agence principale sera Genève Centre identifiée par le code 0105. Pour les cartes, activer uniquement le réseau Mastercard avec des produits credit et debit en plastique PVC, en incluant les services 3DS, alertes SMS et tokenization, et permettre les transactions en national et international avec des limites journalières de 10000 CHF pour les retraits et 40000 CHF pour les paiements. Le compte de règlement devra être en EUR chez BNP Paribas Paris, la langue par défaut sera français et le code pays CH."
+    },
+    "bank.agencies.0.agency_name": {
+      "source": "llm",
+      "confidence": 1.0,
+      "timestamp": "2026-02-26T10:49:09",
+      "evidence": "Créer une nouvelle banque nommée Zenith Trust Bank basée en Suisse avec la devise principale CHF et le code banque 77145, dont l’agence principale sera Genève Centre identifiée par le code 0105. Pour les cartes, activer uniquement le réseau Mastercard avec des produits credit et debit en plastique PVC, en incluant les services 3DS, alertes SMS et tokenization, et permettre les transactions en national et international avec des limites journalières de 10000 CHF pour les retraits et 40000 CHF pour les paiements. Le compte de règlement devra être en EUR chez BNP Paribas Paris, la langue par défaut sera français et le code pays CH."
+    },
+    "bank.agencies.0.region_code": {
+      "source": "llm",
+      "confidence": 1.0,
+      "timestamp": "2026-02-26T10:49:09",
+      "evidence": "Créer une nouvelle banque nommée Zenith Trust Bank basée en Suisse avec la devise principale CHF et le code banque 77145, dont l’agence principale sera Genève Centre identifiée par le code 0105. Pour les cartes, activer uniquement le réseau Mastercard avec des produits credit et debit en plastique PVC, en incluant les services 3DS, alertes SMS et tokenization, et permettre les transactions en national et international avec des limites journalières de 10000 CHF pour les retraits et 40000 CHF pour les paiements. Le compte de règlement devra être en EUR chez BNP Paribas Paris, la langue par défaut sera français et le code pays CH."
+    },
+    "cards.0.card_info.network": {
+      "source": "llm",
+      "confidence": 1.0,
+      "timestamp": "2026-02-26T10:49:09",
+      "evidence": "Créer une nouvelle banque nommée Zenith Trust Bank basée en Suisse avec la devise principale CHF et le code banque 77145, dont l’agence principale sera Genève Centre identifiée par le code 0105. Pour les cartes, activer uniquement le réseau Mastercard avec des produits credit et debit en plastique PVC, en incluant les services 3DS, alertes SMS et tokenization, et permettre les transactions en national et international avec des limites journalières de 10000 CHF pour les retraits et 40000 CHF pour les paiements. Le compte de règlement devra être en EUR chez BNP Paribas Paris, la langue par défaut sera français et le code pays CH."
+    }
+  },
+  "history": [],
+  "done": false
+}

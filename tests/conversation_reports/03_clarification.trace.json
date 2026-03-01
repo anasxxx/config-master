@@ -1,0 +1,27 @@
+{
+  "scenario": "clarification_code_agence",
+  "status": "PARTIAL",
+  "turns": [
+    {
+      "turn": 1,
+      "user": "c'est quoi code agence ?",
+      "question": "Donne l'identite banque: nom, pays, devise, code banque.\nEx: Atlas Bank, Maroc, MAD, 90001",
+      "question_paths": [
+        "bank.name",
+        "bank.country",
+        "bank.currency",
+        "bank.bank_code"
+      ],
+      "intent": "clarification_request",
+      "changed_paths": [],
+      "step": "collecting",
+      "last_extraction": {}
+    }
+  ],
+  "final_dialog_step": "collecting",
+  "final_mode": "normal",
+  "pending_confirmations": [],
+  "final_last_extraction": {},
+  "facts_sources": {},
+  "assertion_failures": []
+}

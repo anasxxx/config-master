@@ -1,0 +1,284 @@
+{
+  "meta": {
+    "goal_id": 163,
+    "client": "nord",
+    "client_n": 1,
+    "action": "add",
+    "created_at": "2026-02-28T17:25:03",
+    "last_extraction": {
+      "used_llm": true,
+      "used_fallback_rules": true,
+      "llm_attempts": 3,
+      "llm_final_status": "LLM_REJECTED_INVALID"
+    },
+    "last_question_paths": [
+      "cards.0.card_info.network",
+      "cards.0.card_info.product_type",
+      "cards.0.card_info.plastic_type"
+    ]
+  },
+  "goal": "creer une banque Nord Bank au Maroc devise MAD code 900125 agence Centre Casablanca code 0025",
+  "facts": {
+    "bank": {
+      "name": {
+        "value": "NORD BANK",
+        "source": "llm",
+        "confidence": 0.9,
+        "updated_at": "2026-02-28T17:25:16",
+        "evidence": "creer une banque Nord Bank au Maroc devise MAD code 900125 agence Centre Casablanca code 0025"
+      },
+      "country": {
+        "value": "Maroc",
+        "source": "llm",
+        "confidence": 0.9,
+        "updated_at": "2026-02-28T17:25:16",
+        "evidence": "creer une banque Nord Bank au Maroc devise MAD code 900125 agence Centre Casablanca code 0025"
+      },
+      "currency": {
+        "value": "MAD",
+        "source": "llm",
+        "confidence": 0.8,
+        "updated_at": "2026-02-28T17:25:16",
+        "evidence": "creer une banque Nord Bank au Maroc devise MAD code 900125 agence Centre Casablanca code 0025"
+      },
+      "bank_code": null,
+      "resources": [],
+      "agencies": [
+        {
+          "agency_name": {
+            "value": "Centre",
+            "source": "llm",
+            "confidence": 0.8,
+            "updated_at": "2026-02-28T17:25:16",
+            "evidence": "creer une banque Nord Bank au Maroc devise MAD code 900125 agence Centre Casablanca code 0025"
+          },
+          "agency_code": null,
+          "city": {
+            "value": "Centre",
+            "source": "rules",
+            "confidence": 0.75,
+            "updated_at": "2026-02-28T17:27:55",
+            "evidence": "j'ai pas compris"
+          },
+          "city_code": null,
+          "region": null,
+          "region_code": null
+        }
+      ]
+    },
+    "cards": [
+      {
+        "card_info": {
+          "bin": null,
+          "plastic_type": null,
+          "card_description": null,
+          "product_type": null,
+          "product_code": null,
+          "pvk_index": null,
+          "service_code": null,
+          "network": null,
+          "expiration": null,
+          "renewal_option": null,
+          "pre_expiration": null
+        },
+        "card_range": {
+          "note": ""
+        },
+        "fees": {
+          "fee_description": null,
+          "billing_event": null,
+          "grace_period": null,
+          "billing_period": null,
+          "registration_fee": null,
+          "periodic_fee": null,
+          "replacement_fee": null,
+          "pin_recalculation_fee": null
+        },
+        "services": {
+          "enabled": []
+        },
+        "limits": {
+          "selected_limit_types": [],
+          "by_type": {
+            "DEFAULT": {
+              "domestic": {
+                "daily_amount": null,
+                "daily_count": null,
+                "weekly_amount": null,
+                "weekly_count": null,
+                "monthly_amount": null,
+                "monthly_count": null
+              },
+              "international": {
+                "daily_amount": null,
+                "daily_count": null,
+                "weekly_amount": null,
+                "weekly_count": null,
+                "monthly_amount": null,
+                "monthly_count": null
+              },
+              "total": {
+                "daily_amount": null,
+                "daily_count": null,
+                "weekly_amount": null,
+                "weekly_count": null,
+                "monthly_amount": null,
+                "monthly_count": null
+              },
+              "per_transaction": {
+                "min_amount": null,
+                "max_amount": null
+              }
+            }
+          }
+        }
+      }
+    ],
+    "options": {
+      "resources_examples": [
+        "MCD_MDS",
+        "MCD_CIS",
+        "UPI",
+        "HOST_BANK",
+        "SID",
+        "VISA_BASE1",
+        "VISA_SMS"
+      ],
+      "services": [
+        "Retrait",
+        "Cash Advance",
+        "Transferts",
+        "Consultation Solde",
+        "Changement PIN",
+        "Envoi d'argent",
+        "Original",
+        "Achats",
+        "E-commerce",
+        "Quasi-Cash",
+        "Mini-Relevé",
+        "Remboursements",
+        "Paiement Factures",
+        "Authentification",
+        "Cashback"
+      ],
+      "limit_types": [
+        "Retrait",
+        "Purchase",
+        "CASH_advance",
+        "Quasi-cash",
+        "E-commerce"
+      ]
+    }
+  },
+  "provenance": {
+    "bank.name": {
+      "source": "llm",
+      "confidence": 0.9,
+      "timestamp": "2026-02-28T17:25:16",
+      "evidence": "creer une banque Nord Bank au Maroc devise MAD code 900125 agence Centre Casablanca code 0025"
+    },
+    "bank.country": {
+      "source": "llm",
+      "confidence": 0.9,
+      "timestamp": "2026-02-28T17:25:16",
+      "evidence": "creer une banque Nord Bank au Maroc devise MAD code 900125 agence Centre Casablanca code 0025"
+    },
+    "bank.currency": {
+      "source": "llm",
+      "confidence": 0.8,
+      "timestamp": "2026-02-28T17:25:16",
+      "evidence": "creer une banque Nord Bank au Maroc devise MAD code 900125 agence Centre Casablanca code 0025"
+    },
+    "bank.agencies.0.agency_name": {
+      "source": "llm",
+      "confidence": 0.8,
+      "timestamp": "2026-02-28T17:25:16",
+      "evidence": "creer une banque Nord Bank au Maroc devise MAD code 900125 agence Centre Casablanca code 0025"
+    },
+    "bank.agencies.0.city": {
+      "source": "rules",
+      "confidence": 0.75,
+      "timestamp": "2026-02-28T17:27:55",
+      "evidence": "j'ai pas compris"
+    }
+  },
+  "dialog_state": {
+    "step": "paused",
+    "mode": "normal",
+    "last_intent": "unknown",
+    "last_question": "Precise le profil carte: reseau, type, support.\nEx: VISA, DEBIT, PVC",
+    "last_question_paths": [
+      "cards.0.card_info.network",
+      "cards.0.card_info.product_type",
+      "cards.0.card_info.plastic_type"
+    ],
+    "missing_fields": [
+      "bank.bank_code",
+      "bank.resources",
+      "bank.agencies.0.agency_code",
+      "bank.agencies.0.city_code",
+      "bank.agencies.0.region",
+      "bank.agencies.0.region_code",
+      "cards.0.card_info.bin",
+      "cards.0.card_info.plastic_type",
+      "cards.0.card_info.card_description",
+      "cards.0.card_info.product_type",
+      "cards.0.card_info.product_code",
+      "cards.0.card_info.pvk_index",
+      "cards.0.card_info.service_code",
+      "cards.0.card_info.network",
+      "cards.0.card_info.expiration",
+      "cards.0.card_info.renewal_option",
+      "cards.0.card_info.pre_expiration",
+      "cards.0.card_range.note",
+      "cards.0.fees.fee_description",
+      "cards.0.fees.billing_event",
+      "cards.0.fees.grace_period",
+      "cards.0.fees.billing_period",
+      "cards.0.fees.registration_fee",
+      "cards.0.fees.periodic_fee",
+      "cards.0.fees.replacement_fee",
+      "cards.0.fees.pin_recalculation_fee",
+      "cards.0.services.enabled",
+      "cards.0.limits.selected_limit_types",
+      "cards.0.limits.by_type.DEFAULT.domestic.daily_amount",
+      "cards.0.limits.by_type.DEFAULT.domestic.daily_count",
+      "cards.0.limits.by_type.DEFAULT.domestic.weekly_amount",
+      "cards.0.limits.by_type.DEFAULT.domestic.weekly_count",
+      "cards.0.limits.by_type.DEFAULT.domestic.monthly_amount",
+      "cards.0.limits.by_type.DEFAULT.domestic.monthly_count",
+      "cards.0.limits.by_type.DEFAULT.international.daily_amount",
+      "cards.0.limits.by_type.DEFAULT.international.daily_count",
+      "cards.0.limits.by_type.DEFAULT.international.weekly_amount",
+      "cards.0.limits.by_type.DEFAULT.international.weekly_count",
+      "cards.0.limits.by_type.DEFAULT.international.monthly_amount",
+      "cards.0.limits.by_type.DEFAULT.international.monthly_count",
+      "cards.0.limits.by_type.DEFAULT.total.daily_amount",
+      "cards.0.limits.by_type.DEFAULT.total.daily_count",
+      "cards.0.limits.by_type.DEFAULT.total.weekly_amount",
+      "cards.0.limits.by_type.DEFAULT.total.weekly_count",
+      "cards.0.limits.by_type.DEFAULT.total.monthly_amount",
+      "cards.0.limits.by_type.DEFAULT.total.monthly_count",
+      "cards.0.limits.by_type.DEFAULT.per_transaction.min_amount",
+      "cards.0.limits.by_type.DEFAULT.per_transaction.max_amount"
+    ],
+    "asked_fields": [
+      "bank.agencies.0.city",
+      "bank.agencies.0.agency_code",
+      "cards.0.card_info.network",
+      "cards.0.card_info.product_type",
+      "cards.0.card_info.plastic_type"
+    ],
+    "pending_confirmations": [],
+    "nlu_fail_count": 0,
+    "last_user_message": "exit",
+    "active_menu": null
+  },
+  "history": [
+    {
+      "agent": "Donne l'agence principale: nom, ville, code agence.\nEx: Agence Centre, Casablanca, 0025",
+      "user": "j'ai pas compris"
+    }
+  ],
+  "done": false
+}

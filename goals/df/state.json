@@ -1,0 +1,216 @@
+{
+  "meta": {
+    "goal_id": 125,
+    "client": "client",
+    "client_n": 119,
+    "action": "add",
+    "created_at": "2026-02-24T15:03:14",
+    "last_question_paths": [
+      "bank.agencies.0.region",
+      "bank.agencies.0.region_code"
+    ]
+  },
+  "goal": "je veux ajouter une banque",
+  "facts": {
+    "bank": {
+      "name": "DF",
+      "country": "United States",
+      "currency": "USD",
+      "bank_code": "0000",
+      "resources": [
+        "card"
+      ],
+      "agencies": [
+        {
+          "agency_name": "01",
+          "agency_code": "0001",
+          "city": "casa",
+          "city_code": "001002",
+          "region": null,
+          "region_code": null
+        }
+      ],
+      "country_alpha2": "US"
+    },
+    "cards": [
+      {
+        "card_info": {
+          "bin": null,
+          "plastic_type": null,
+          "card_description": null,
+          "product_type": null,
+          "product_code": null,
+          "pvk_index": null,
+          "service_code": null,
+          "network": null,
+          "expiration": null,
+          "renewal_option": null,
+          "pre_expiration": null
+        },
+        "card_range": {
+          "note": ""
+        },
+        "fees": {
+          "fee_description": null,
+          "billing_event": null,
+          "grace_period": null,
+          "billing_period": null,
+          "registration_fee": null,
+          "periodic_fee": null,
+          "replacement_fee": null,
+          "pin_recalculation_fee": null
+        },
+        "services": {
+          "enabled": []
+        },
+        "limits": {
+          "selected_limit_types": [],
+          "by_type": {
+            "DEFAULT": {
+              "domestic": {
+                "daily_amount": null,
+                "daily_count": null,
+                "weekly_amount": null,
+                "weekly_count": null,
+                "monthly_amount": null,
+                "monthly_count": null
+              },
+              "international": {
+                "daily_amount": null,
+                "daily_count": null,
+                "weekly_amount": null,
+                "weekly_count": null,
+                "monthly_amount": null,
+                "monthly_count": null
+              },
+              "total": {
+                "daily_amount": null,
+                "daily_count": null,
+                "weekly_amount": null,
+                "weekly_count": null,
+                "monthly_amount": null,
+                "monthly_count": null
+              },
+              "per_transaction": {
+                "min_amount": null,
+                "max_amount": null
+              }
+            }
+          }
+        }
+      }
+    ],
+    "options": {
+      "resources_examples": [
+        "MCD_MDS",
+        "MCD_CIS",
+        "UPI",
+        "HOST_BANK",
+        "SID",
+        "VISA_BASE1",
+        "VISA_SMS"
+      ],
+      "services": [
+        "Retrait",
+        "Cash Advance",
+        "Transferts",
+        "Consultation Solde",
+        "Changement PIN",
+        "Envoi d'argent",
+        "Original",
+        "Achats",
+        "E-commerce",
+        "Quasi-Cash",
+        "Mini-Relevé",
+        "Remboursements",
+        "Paiement Factures",
+        "Authentification",
+        "Cashback"
+      ],
+      "limit_types": [
+        "Retrait",
+        "Purchase",
+        "CASH_advance",
+        "Quasi-cash",
+        "E-commerce"
+      ]
+    }
+  },
+  "provenance": {
+    "bank.name": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-24T15:04:48",
+      "evidence": "DF"
+    },
+    "bank.country": {
+      "source": "llm",
+      "confidence": 0.9,
+      "timestamp": "2026-02-24T15:05:13",
+      "evidence": "US"
+    },
+    "bank.bank_code": {
+      "source": "llm",
+      "confidence": 1.0,
+      "timestamp": "2026-02-24T15:05:13",
+      "evidence": "US"
+    },
+    "bank.resources": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-24T15:07:08",
+      "evidence": "card"
+    },
+    "bank.agencies.0.agency_name": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-24T15:09:00",
+      "evidence": "agence01"
+    },
+    "bank.agencies.0.agency_code": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-24T15:09:40",
+      "evidence": "0001"
+    },
+    "bank.agencies.0.city": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-24T15:11:09",
+      "evidence": "casa 001002"
+    },
+    "bank.agencies.0.city_code": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-24T15:11:09",
+      "evidence": "casa 001002"
+    }
+  },
+  "history": [
+    {
+      "agent": "Quel est le nom de la banque ?",
+      "user": "DF"
+    },
+    {
+      "agent": "Quel est le pays de la banque ? ",
+      "user": "US"
+    },
+    {
+      "agent": "Quelles ressources veux-tu activer ? (ex: accounts, cards, transactions) Donne une liste séparée par virgules.",
+      "user": "card"
+    },
+    {
+      "agent": "Nom de l’agence + code (ex: Agence Centre, 555)",
+      "user": "agence01"
+    },
+    {
+      "agent": "Quel est le code de cette agence ?",
+      "user": "0001"
+    },
+    {
+      "agent": "Ville + code ville (ex: Casablanca, 001)",
+      "user": "casa 001002"
+    }
+  ],
+  "done": false
+}

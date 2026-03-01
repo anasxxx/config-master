@@ -1,0 +1,27 @@
+{
+  "scenario": "mode_simplifie_help",
+  "status": "PARTIAL",
+  "turns": [
+    {
+      "turn": 1,
+      "user": "je comprends pas",
+      "question": "Donne l'identite banque: nom, pays, devise, code banque.\nEx: Atlas Bank, Maroc, MAD, 90001",
+      "question_paths": [
+        "bank.name",
+        "bank.country",
+        "bank.currency",
+        "bank.bank_code"
+      ],
+      "intent": "help_or_confusion",
+      "changed_paths": [],
+      "step": "collecting",
+      "last_extraction": {}
+    }
+  ],
+  "final_dialog_step": "collecting",
+  "final_mode": "simplified",
+  "pending_confirmations": [],
+  "final_last_extraction": {},
+  "facts_sources": {},
+  "assertion_failures": []
+}

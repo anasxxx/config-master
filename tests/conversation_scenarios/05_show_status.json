@@ -1,0 +1,12 @@
+﻿{
+  "name": "show_status_mid_flow",
+  "llm_mode": "down",
+  "messages": [
+    "ou on en est ?",
+    "Atlas Bank, Maroc, MAD, 90001"
+  ],
+  "assertions": [
+    {"type": "intent_equals", "turn": 1, "value": "show_status"},
+    {"type": "step_equals", "turn": 2, "value": "collecting"}
+  ]
+}
