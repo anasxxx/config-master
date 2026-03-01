@@ -1,5 +1,5 @@
 {
-  "last_id": 103,
+  "last_id": 108,
   "goals": [
     {
       "goal_id": 1,
@@ -721,6 +721,41 @@
       "client_n": 100,
       "action": "other",
       "folder": "client_100_other"
+    },
+    {
+      "goal_id": 104,
+      "client": "client",
+      "client_n": 101,
+      "action": "other",
+      "folder": "client_101_other"
+    },
+    {
+      "goal_id": 105,
+      "client": "client",
+      "client_n": 102,
+      "action": "other",
+      "folder": "client_102_other"
+    },
+    {
+      "goal_id": 106,
+      "client": "client",
+      "client_n": 103,
+      "action": "other",
+      "folder": "client_103_other"
+    },
+    {
+      "goal_id": 107,
+      "client": "client",
+      "client_n": 104,
+      "action": "other",
+      "folder": "client_104_other"
+    },
+    {
+      "goal_id": 108,
+      "client": "client",
+      "client_n": 105,
+      "action": "add",
+      "folder": "client_105_add"
     }
   ]
 }

@@ -1,0 +1,7 @@
+{
+  "status_code": 404,
+  "body": {
+    "message": "Banque non trouvée",
+    "status": 404
+  }
+}

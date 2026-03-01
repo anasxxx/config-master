@@ -1,0 +1,89 @@
+{
+  "meta": {
+    "goal_id": -1,
+    "client": "auto",
+    "client_n": 0,
+    "action": "other",
+    "created_at": "2026-02-26T00:18:03"
+  },
+  "goal": "automated smoke test",
+  "facts": {
+    "bank": {
+      "name": "CIH",
+      "country": "Maroc",
+      "country_alpha2": "MA",
+      "currency": "MAD",
+      "bank_code": "000345",
+      "resources": [
+        "accounts",
+        "cards",
+        "transactions"
+      ],
+      "agencies": [
+        {
+          "agency_name": "Agence Centre",
+          "agency_code": "555",
+          "city": "Casablanca",
+          "city_code": "001",
+          "region": "Grand Casablanca",
+          "region_code": "10"
+        }
+      ]
+    },
+    "cards": [
+      {
+        "card_info": {
+          "bin": "445555",
+          "plastic_type": "PVC",
+          "card_description": "Carte Classic",
+          "product_type": "DEBIT, CREDIT",
+          "product_code": "PRD001",
+          "pvk_index": "1",
+          "service_code": "101",
+          "network": "VISA",
+          "expiration": "36",
+          "renewal_option": "AUTO",
+          "pre_expiration": "30"
+        },
+        "card_range": {
+          "start_range": "",
+          "end_range": ""
+        },
+        "fees": {
+          "fee_description": "FRAIS",
+          "billing_event": "ISSUANCE, RENEWAL",
+          "grace_period": "30",
+          "billing_period": "YEARLY",
+          "registration_fee": "50",
+          "periodic_fee": "10",
+          "replacement_fee": "25",
+          "pin_recalculation_fee": "5"
+        },
+        "services": {
+          "enabled": [
+            "3DS",
+            "TOKENIZATION"
+          ]
+        },
+        "limits": {
+          "by_type": {
+            "DEFAULT": {
+              "domestic": {
+                "daily_amount": "5000",
+                "weekly_amount": "20000",
+                "monthly_amount": "80000"
+              },
+              "international": {
+                "daily_amount": "2000",
+                "weekly_amount": "10000",
+                "monthly_amount": "40000"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "history": [],
+  "done": true
+}

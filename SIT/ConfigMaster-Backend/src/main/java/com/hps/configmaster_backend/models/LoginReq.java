@@ -6,6 +6,9 @@ public class LoginReq {
     private String password;
     private String enve;
 
+    public LoginReq() {
+    }
+
     public LoginReq(String email, String password) {
         this.email = email;
         this.password = password;

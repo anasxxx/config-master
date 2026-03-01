@@ -1,6 +1,7 @@
 import argparse
 import json
 import os
+import re
 import unicodedata
 from datetime import datetime
 from pathlib import Path
@@ -60,6 +61,20 @@ LIMIT_ID_MAP = {
     "ecommerce": "9",
 }
 
+# Oracle package MAIN_BOARD_CONV_PARAM expects numeric codes
+# (country.country_code / currency_table.currency_code), not alpha codes.
+COUNTRY_CODE_MAP = {
+    "ma": "504",
+    "mar": "504",
+    "morocco": "504",
+    "maroc": "504",
+}
+
+CURRENCY_CODE_MAP = {
+    "mad": "504",
+    "504": "504",
+}
+
 
 def _load_json(path: Path) -> Dict[str, Any]:
     with open(path, "r", encoding="utf-8") as f:
@@ -82,7 +97,83 @@ def _normalize_text(value: str) -> str:
 def _to_str(value: Any) -> str:
     if value is None:
         return ""
-    return str(value)
+    s = str(value).strip()
+    s = re.sub(r"^(client|agent)\s*>\s*", "", s, flags=re.IGNORECASE)
+    return s
+
+
+def _to_single_char(value: Any, fallback: str = "") -> str:
+    s = _to_str(value).strip()
+    if not s:
+        return fallback
+
+    norm = _normalize_text(s)
+    renew_map = {
+        "auto": "M",
+        "automatic": "M",
+        "manuel": "N",
+        "manual": "N",
+        "yes": "Y",
+        "no": "N",
+    }
+    if norm in renew_map:
+        return renew_map[norm]
+
+    return s[0]
+
+
+def _normalize_product_code(value: Any) -> str:
+    s = _to_str(value).strip().upper()
+    if not s:
+        return ""
+
+    m = re.search(r"(\d{1,3})$", s)
+    if m:
+        return m.group(1).zfill(3)
+
+    return s[:3]
+
+
+def _normalize_billing_period(value: Any) -> str:
+    s = _to_str(value).strip()
+    if not s:
+        return ""
+    norm = _normalize_text(s)
+    mapping = {
+        "yearly": "1",
+        "annual": "1",
+        "monthly": "2",
+        "weekly": "3",
+        "daily": "4",
+    }
+    if norm in mapping:
+        return mapping[norm]
+    return "1"
+
+
+def _normalize_billing_event(value: Any) -> str:
+    s = _to_str(value).strip()
+    if not s:
+        return "1"
+    norm = _normalize_text(s)
+    mapping = {
+        "issuance": "1",
+        "renewal": "2",
+        "issuance, renewal": "1",
+        "renewal, issuance": "2",
+    }
+    if norm in mapping:
+        return mapping[norm]
+    return "1"
+
+
+def _to_amount_str(value: Any) -> str:
+    n = _to_number(value)
+    if n is None:
+        return ""
+    if float(n).is_integer():
+        return str(int(n))
+    return str(n)
 
 
 def _to_number(value: Any) -> Optional[float]:
@@ -97,6 +188,24 @@ def _to_number(value: Any) -> Optional[float]:
         return None
 
 
+def _resolve_country_code(bank: Dict[str, Any]) -> str:
+    raw = _to_str(bank.get("country_code") or bank.get("country_alpha2") or bank.get("country"))
+    if not raw:
+        return ""
+    if raw.isdigit():
+        return raw
+    return COUNTRY_CODE_MAP.get(_normalize_text(raw), raw.upper())
+
+
+def _resolve_currency_code(bank: Dict[str, Any]) -> str:
+    raw = _to_str(bank.get("currency_code") or bank.get("currency"))
+    if not raw:
+        return ""
+    if raw.isdigit():
+        return raw
+    return CURRENCY_CODE_MAP.get(_normalize_text(raw), raw.upper())
+
+
 def find_latest_state(goals_dir: Path) -> Optional[Path]:
     state_files = list(goals_dir.glob("**/state.json"))
     if not state_files:
@@ -108,15 +217,21 @@ def map_facts_to_bank_req(state: Dict[str, Any]) -> Dict[str, Any]:
     facts = state.get("facts", {})
     bank = facts.get("bank", {})
 
-    bank_code = _to_str(bank.get("bank_code"))
+    raw_bank_code = _to_str(bank.get("bank_code"))
+    bank_code = raw_bank_code
+    if raw_bank_code.isdigit() and len(raw_bank_code) < 6:
+        bank_code = raw_bank_code.zfill(6)
+
+    country_code = _resolve_country_code(bank)
+    currency_code = _resolve_currency_code(bank)
     business_date = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S")
 
     bank_req: Dict[str, Any] = {
         "pBusinessDate": business_date,
         "pBankCode": bank_code,
         "pBankWording": _to_str(bank.get("name")),
-        "pCountryCode": _to_str(bank.get("country")),
-        "pCurrencyCode": _to_str(bank.get("currency")),
+        "pCountryCode": country_code,
+        "pCurrencyCode": currency_code,
         "p_action_flag": "1",
         "cardProducts": [],
         "branches": [],
@@ -155,7 +270,7 @@ def map_facts_to_bank_req(state: Dict[str, Any]) -> Dict[str, Any]:
         services = card.get("services", {})
         limits = card.get("limits", {})
 
-        product_code = _to_str(card_info.get("product_code"))
+        product_code = _normalize_product_code(card_info.get("product_code"))
 
         info_module = {
             "bankCode": bank_code,
@@ -170,21 +285,21 @@ def map_facts_to_bank_req(state: Dict[str, Any]) -> Dict[str, Any]:
             "serviceCode": _to_str(card_info.get("service_code")),
             "network": _to_str(card_info.get("network")),
             "expiration": _to_str(card_info.get("expiration")),
-            "renew": _to_str(card_info.get("renewal_option")),
-            "priorExp": _to_str(card_info.get("pre_expiration")),
+            "renew": _to_single_char(card_info.get("renewal_option")),
+            "priorExp": _to_single_char(card_info.get("pre_expiration")),
         }
 
         fees_module = {
             "bankCode": bank_code,
             "description": _to_str(fees.get("fee_description")),
             "cardFeesCode": product_code,
-            "cardFeesBillingEvt": _to_str(fees.get("billing_event")),
-            "cardFeesGracePeriod": _to_number(fees.get("grace_period")),
-            "cardFeesBillingPeriod": _to_str(fees.get("billing_period")),
-            "subscriptionAmount": _to_number(fees.get("registration_fee")),
-            "feesAmountFirst": _to_number(fees.get("periodic_fee")),
-            "damagedReplacementFees": _to_number(fees.get("replacement_fee")),
-            "pinReplacementFees": _to_number(fees.get("pin_recalculation_fee")),
+            "cardFeesBillingEvt": _normalize_billing_event(fees.get("billing_event")),
+            "cardFeesGracePeriod": int(_to_number(fees.get("grace_period")) or 0),
+            "cardFeesBillingPeriod": _normalize_billing_period(fees.get("billing_period")),
+            "subscriptionAmount": _to_amount_str(fees.get("registration_fee")),
+            "feesAmountFirst": _to_amount_str(fees.get("periodic_fee")),
+            "damagedReplacementFees": _to_amount_str(fees.get("replacement_fee")),
+            "pinReplacementFees": _to_amount_str(fees.get("pin_recalculation_fee")),
         }
 
         # Services

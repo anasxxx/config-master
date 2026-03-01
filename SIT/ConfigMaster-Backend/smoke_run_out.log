@@ -1,0 +1,53 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------------< com.hps:configmaster_backend >--------------------
+[INFO] Building configmaster_backend 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] >>> spring-boot:3.2.2:run (default-cli) > test-compile @ configmaster_backend >>>
+[WARNING] The artifact org.hibernate:hibernate-core:jar:6.4.1.Final has been relocated to org.hibernate.orm:hibernate-core:jar:6.4.1.Final
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ configmaster_backend ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.11.0:compile (default-compile) @ configmaster_backend ---
+[INFO] Changes detected - recompiling the module! :source
+[INFO] Compiling 158 source files with javac [debug release 17] to target\classes
+[INFO] /C:/Users/amahmoudi/Downloads/config-master-main/SIT/ConfigMaster-Backend/src/main/java/com/hps/configmaster_backend/service/Imp/JWTService.java: C:\Users\amahmoudi\Downloads\config-master-main\SIT\ConfigMaster-Backend\src\main\java\com\hps\configmaster_backend\service\Imp\JWTService.java uses or overrides a deprecated API.
+[INFO] /C:/Users/amahmoudi/Downloads/config-master-main/SIT/ConfigMaster-Backend/src/main/java/com/hps/configmaster_backend/service/Imp/JWTService.java: Recompile with -Xlint:deprecation for details.
+[INFO] /C:/Users/amahmoudi/Downloads/config-master-main/SIT/ConfigMaster-Backend/src/main/java/com/hps/configmaster_backend/service/Imp/JWTService.java: Some input files use unchecked or unsafe operations.
+[INFO] /C:/Users/amahmoudi/Downloads/config-master-main/SIT/ConfigMaster-Backend/src/main/java/com/hps/configmaster_backend/service/Imp/JWTService.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ configmaster_backend ---
+[INFO] skip non existing resourceDirectory C:\Users\amahmoudi\Downloads\config-master-main\SIT\ConfigMaster-Backend\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.11.0:testCompile (default-testCompile) @ configmaster_backend ---
+[INFO] Changes detected - recompiling the module! :dependency
+[INFO] Compiling 1 source file with javac [debug release 17] to target\test-classes
+[INFO] 
+[INFO] <<< spring-boot:3.2.2:run (default-cli) < test-compile @ configmaster_backend <<<
+[INFO] 
+[INFO] 
+[INFO] --- spring-boot:3.2.2:run (default-cli) @ configmaster_backend ---
+[INFO] Attaching agents: []
+Java HotSpot(TM) 64-Bit Server VM warning: INFO: os::commit_memory(0x0000000720000000, 234881024, 0) failed; error='Le fichier de pagination est insuffisant pour terminer cette opération' (DOS error/errno=1455)
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 234881024 bytes for G1 virtual space
+# An error report file with more information is saved as:
+# C:\Users\amahmoudi\Downloads\config-master-main\SIT\ConfigMaster-Backend\hs_err_pid9424.log
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  46.674 s
+[INFO] Finished at: 2026-02-26T00:34:46Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.springframework.boot:spring-boot-maven-plugin:3.2.2:run (default-cli) on project configmaster_backend: Process terminated with exit code: 1 -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException

@@ -1,0 +1,7 @@
+{
+  "status_code": 500,
+  "body": {
+    "message": "Échec du traitement complet de la banque : Erreur lors de l'ajout des données temporaires",
+    "status": 500
+  }
+}

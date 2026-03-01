@@ -1,0 +1,97 @@
+{
+  "pBusinessDate": "2026-02-26 00:04:22",
+  "pBankCode": "000345",
+  "pBankWording": "CIH",
+  "pCountryCode": "MA",
+  "pCurrencyCode": "MAD",
+  "p_action_flag": "1",
+  "cardProducts": [
+    {
+      "info": {
+        "bankCode": "000345",
+        "description": "Carte Classic",
+        "bin": "445555",
+        "plasticType": "PVC",
+        "productType": "DEBIT, CREDIT",
+        "productCode": "PRD001",
+        "trancheMin": "",
+        "trancheMax": "",
+        "indexPvk": "1",
+        "serviceCode": "101",
+        "network": "VISA",
+        "expiration": "36",
+        "renew": "AUTO",
+        "priorExp": "30"
+      },
+      "fees": {
+        "bankCode": "000345",
+        "description": "FRAIS",
+        "cardFeesCode": "PRD001",
+        "cardFeesBillingEvt": "ISSUANCE, RENEWAL",
+        "cardFeesGracePeriod": 30.0,
+        "cardFeesBillingPeriod": "YEARLY",
+        "subscriptionAmount": 50.0,
+        "feesAmountFirst": 10.0,
+        "damagedReplacementFees": 25.0,
+        "pinReplacementFees": 5.0
+      },
+      "services": {
+        "bankCode": "000345",
+        "productCode": "PRD001",
+        "authentication": "1"
+      },
+      "limits": [
+        {
+          "bankCode": "000345",
+          "productCode": "LPRD001",
+          "limitsId": "10",
+          "dailyDomAmnt": "5000",
+          "dailyDomNbr": "",
+          "dailyIntAmnt": "5000",
+          "dailyIntNbr": "",
+          "dailyTotalAmnt": "",
+          "dailyTotalNbr": "",
+          "minAmountPerTransaction": "",
+          "maxAmountPerTransaction": "",
+          "weeklyDomAmnt": "20000",
+          "weeklyDomNbr": "",
+          "weeklyIntAmnt": "20000",
+          "weeklyIntNbr": "",
+          "weeklyTotalAmnt": "",
+          "weeklyTotalNbr": "",
+          "monthlyDomAmnt": "80000",
+          "monthlyDomNbr": "",
+          "monthlyIntAmnt": "80000",
+          "monthlyIntNbr": "",
+          "monthlyTotalAmnt": "",
+          "monthlyTotalNbr": ""
+        }
+      ]
+    }
+  ],
+  "branches": [
+    {
+      "bankCode": "000345",
+      "branchCode": "555",
+      "branchWording": "Agence Centre",
+      "regionCode": "10",
+      "regionWording": "Grand Casablanca",
+      "cityCode": "001",
+      "cityWording": "Casablanca"
+    }
+  ],
+  "ressources": [
+    {
+      "bankCode": "000345",
+      "resourceWording": "accounts"
+    },
+    {
+      "bankCode": "000345",
+      "resourceWording": "cards"
+    },
+    {
+      "bankCode": "000345",
+      "resourceWording": "transactions"
+    }
+  ]
+}

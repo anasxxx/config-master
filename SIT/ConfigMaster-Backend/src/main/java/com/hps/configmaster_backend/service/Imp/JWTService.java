@@ -4,10 +4,12 @@ package com.hps.configmaster_backend.service.Imp;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import java.nio.charset.StandardCharsets;
 
 import javax.crypto.SecretKey;
 
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.beans.factory.annotation.Value;
 
 
 import org.springframework.stereotype.Service;
@@ -25,7 +27,7 @@ import jakarta.servlet.http.HttpServletRequest;
 @Service
 public class JWTService {
 
-    private static final SecretKey SECRET_KEY = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+    private final SecretKey secretKey;
     private long accessTokenValidity = 60*60*1000;
 
     private final JwtParser jwtParser;
@@ -33,8 +35,9 @@ public class JWTService {
     private final String TOKEN_HEADER = "Authorization";
     private final String TOKEN_PREFIX = "Bearer ";
 
-    public JWTService(){
-        this.jwtParser = Jwts.parser().setSigningKey(SECRET_KEY);
+    public JWTService(@Value("${security.jwt.secret}") String jwtSecret){
+        this.secretKey = Keys.hmacShaKeyFor(jwtSecret.getBytes(StandardCharsets.UTF_8));
+        this.jwtParser = Jwts.parser().setSigningKey(secretKey);
     }
 
     public String createToken(User user) {
@@ -46,7 +49,7 @@ public class JWTService {
         return Jwts.builder()
                 .setClaims(claims)
                 .setExpiration(tokenValidity)
-                .signWith(SignatureAlgorithm.HS256, SECRET_KEY)
+            .signWith(SignatureAlgorithm.HS256, secretKey)
                 .compact();
     }
 

@@ -1,0 +1,49 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "run-backend-mvnw",
+			"type": "shell",
+			"command": "SIT\\ConfigMaster-Backend\\mvnw.cmd",
+			"args": [
+				"-f",
+				"SIT/ConfigMaster-Backend/pom.xml",
+				"spring-boot:run"
+			],
+			"isBackground": true
+		},
+		{
+			"label": "backend-run-wrapper",
+			"type": "shell",
+			"command": ".\\SIT\\ConfigMaster-Backend\\mvnw.cmd",
+			"args": [
+				"spring-boot:run"
+			],
+			"isBackground": true
+		},
+		{
+			"label": "smoke-test-bank-pipeline",
+			"type": "shell",
+			"command": ".venv\\Scripts\\python.exe",
+			"args": [
+				"nv-ai-agent-hps\\scripts\\smoke_test_bank_pipeline.py",
+				"--email",
+				"full@gmail.com",
+				"--password",
+				"full",
+				"--verify"
+			],
+			"isBackground": false
+		},
+		{
+			"label": "backend-run-cd",
+			"type": "shell",
+			"command": "cmd",
+			"args": [
+				"/c",
+				"cd /d C:\\Users\\amahmoudi\\Downloads\\config-master-main\\SIT\\ConfigMaster-Backend && mvnw.cmd spring-boot:run"
+			],
+			"isBackground": true
+		}
+	]
+}

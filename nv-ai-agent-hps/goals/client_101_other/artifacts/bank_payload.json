@@ -1,0 +1,97 @@
+{
+  "pBusinessDate": "2026-02-25 14:56:42",
+  "pBankCode": "CIHKNG",
+  "pBankWording": "CIH",
+  "pCountryCode": "MA",
+  "pCurrencyCode": "MAD",
+  "p_action_flag": "1",
+  "cardProducts": [
+    {
+      "info": {
+        "bankCode": "CIHKNG",
+        "description": "Carte Classic",
+        "bin": "445555",
+        "plasticType": "PVC",
+        "productType": "DEBIT, CREDIT",
+        "productCode": "PRD001",
+        "trancheMin": "",
+        "trancheMax": "",
+        "indexPvk": "1",
+        "serviceCode": "101",
+        "network": "VISA",
+        "expiration": "36",
+        "renew": "AUTO",
+        "priorExp": "30"
+      },
+      "fees": {
+        "bankCode": "CIHKNG",
+        "description": "tu veux une description hhhh",
+        "cardFeesCode": "PRD001",
+        "cardFeesBillingEvt": "ISSUANCE , RENEWAL",
+        "cardFeesGracePeriod": 30.0,
+        "cardFeesBillingPeriod": "YEARLY",
+        "subscriptionAmount": 50.0,
+        "feesAmountFirst": 10.0,
+        "damagedReplacementFees": 25.0,
+        "pinReplacementFees": 5.0
+      },
+      "services": {
+        "bankCode": "CIHKNG",
+        "productCode": "PRD001",
+        "authentication": "1"
+      },
+      "limits": [
+        {
+          "bankCode": "CIHKNG",
+          "productCode": "LPRD001",
+          "limitsId": "10",
+          "dailyDomAmnt": "5000",
+          "dailyDomNbr": "",
+          "dailyIntAmnt": "2000",
+          "dailyIntNbr": "",
+          "dailyTotalAmnt": "",
+          "dailyTotalNbr": "",
+          "minAmountPerTransaction": "",
+          "maxAmountPerTransaction": "",
+          "weeklyDomAmnt": "20000",
+          "weeklyDomNbr": "",
+          "weeklyIntAmnt": "10000",
+          "weeklyIntNbr": "",
+          "weeklyTotalAmnt": "",
+          "weeklyTotalNbr": "",
+          "monthlyDomAmnt": "80000",
+          "monthlyDomNbr": "",
+          "monthlyIntAmnt": "40000",
+          "monthlyIntNbr": "",
+          "monthlyTotalAmnt": "",
+          "monthlyTotalNbr": ""
+        }
+      ]
+    }
+  ],
+  "branches": [
+    {
+      "bankCode": "CIHKNG",
+      "branchCode": "555",
+      "branchWording": "Agence centre",
+      "regionCode": "10",
+      "regionWording": "Grand Casablanca",
+      "cityCode": "001",
+      "cityWording": "Casablanca"
+    }
+  ],
+  "ressources": [
+    {
+      "bankCode": "CIHKNG",
+      "resourceWording": "accounts"
+    },
+    {
+      "bankCode": "CIHKNG",
+      "resourceWording": "cards"
+    },
+    {
+      "bankCode": "CIHKNG",
+      "resourceWording": "transactions"
+    }
+  ]
+}

@@ -10,7 +10,6 @@ import java.util.Optional;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.SqlOutParameter;
 import org.springframework.jdbc.core.SqlParameter;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcCall;
@@ -124,8 +123,7 @@ public class BanqueServiceImp implements IBanqueService {
                 new SqlParameter("p_bank_wording", Types.VARCHAR),
                 new SqlParameter("p_currency_code", Types.CHAR),
                 new SqlParameter("p_country_code", Types.CHAR),
-                new SqlParameter("p_action_flag", Types.CHAR),
-                new SqlOutParameter("p_result", Types.INTEGER)
+                new SqlParameter("p_action_flag", Types.CHAR)
             );
 
         Timestamp timestamp = banqueM.getpBusinessDate() != null ?
@@ -139,8 +137,8 @@ public class BanqueServiceImp implements IBanqueService {
             .addValue("p_country_code", banqueM.getpCountryCode())
             .addValue("p_action_flag", banqueM.getP_action_flag());
 
-        Map<String, Object> result = jdbcCall.execute(params);
-        return result.get("p_result") != null ? (Integer) result.get("p_result") : -1;
+        Integer result = jdbcCall.executeFunction(Integer.class, params);
+        return result != null ? result : -1;
     }
     @Override
     public Integer processBank(BankReq banqueM) {
@@ -182,8 +180,7 @@ public class BanqueServiceImp implements IBanqueService {
                 new SqlParameter("p_bank_wording", Types.VARCHAR),
                 new SqlParameter("p_currency_code", Types.CHAR),
                 new SqlParameter("p_country_code", Types.CHAR),
-                new SqlParameter("p_action_flag", Types.CHAR),
-                new SqlOutParameter("p_result", Types.INTEGER)
+                new SqlParameter("p_action_flag", Types.CHAR)
             );
 
         MapSqlParameterSource params = new MapSqlParameterSource()
@@ -194,8 +191,8 @@ public class BanqueServiceImp implements IBanqueService {
             .addValue("p_country_code", bank.getCountryCode())
             .addValue("p_action_flag", 0);
 
-        Map<String, Object> result = jdbcCall.execute(params);
-        return result.get("p_result") != null ? (Integer) result.get("p_result") : -1;
+        Integer result = jdbcCall.executeFunction(Integer.class, params);
+        return result != null ? result : -1;
     }
 
     @Override
