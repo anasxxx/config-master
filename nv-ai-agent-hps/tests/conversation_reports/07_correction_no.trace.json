@@ -1,0 +1,68 @@
+{
+  "scenario": "correction_conflict_confirm_no",
+  "status": "PARTIAL",
+  "turns": [
+    {
+      "turn": 1,
+      "user": "non le code banque est 90003",
+      "question": "Donne l'identite banque: nom, pays, devise, code banque.\nEx: Atlas Bank, Maroc, MAD, 90001",
+      "question_paths": [
+        "bank.name",
+        "bank.country",
+        "bank.currency"
+      ],
+      "intent": "correction",
+      "changed_paths": [
+        "bank.name"
+      ],
+      "step": "confirming_conflict",
+      "last_extraction": {
+        "used_llm": true,
+        "used_fallback_rules": true,
+        "llm_attempts": 3,
+        "llm_final_status": "LLM_DOWN"
+      }
+    },
+    {
+      "turn": 2,
+      "user": "non",
+      "question": "Donne l'identite banque: nom, pays, devise, code banque.\nEx: Atlas Bank, Maroc, MAD, 90001",
+      "question_paths": [
+        "bank.country",
+        "bank.currency"
+      ],
+      "intent": "confirmation_no",
+      "changed_paths": [],
+      "step": "collecting",
+      "last_extraction": {
+        "used_llm": true,
+        "used_fallback_rules": true,
+        "llm_attempts": 3,
+        "llm_final_status": "LLM_DOWN"
+      }
+    }
+  ],
+  "final_dialog_step": "collecting",
+  "final_mode": "normal",
+  "pending_confirmations": [
+    {
+      "path": "bank.bank_code",
+      "old_value": "90001",
+      "new_value": "90003",
+      "old_source": "user",
+      "new_source": "user",
+      "reason": "user_correction",
+      "created_at": "2026-02-28T17:13:26"
+    }
+  ],
+  "final_last_extraction": {
+    "used_llm": true,
+    "used_fallback_rules": true,
+    "llm_attempts": 3,
+    "llm_final_status": "LLM_DOWN"
+  },
+  "facts_sources": {
+    "bank.bank_code": "user"
+  },
+  "assertion_failures": []
+}

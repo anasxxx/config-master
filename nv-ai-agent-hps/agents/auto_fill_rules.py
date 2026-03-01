@@ -1,7 +1,12 @@
 import csv
 from pathlib import Path
-import pycountry
-
+try:
+    import pycountry
+except Exception:
+    pycountry = None
+from agents.prompts import PROMPT_AUTOFILL
+from agents.value_store import get_value, set_value
+# PROMPT_AUTOFILL = spec. L’autofill reste code-only.
 BASE_DIR = Path(__file__).parent
 CSV_FILE = BASE_DIR / "data" / "country_currency.csv"
 
@@ -33,10 +38,14 @@ def resolve_country_alpha2(text: str) -> str | None:
 
     
     if len(q) == 2 and q.isalpha():
+        if pycountry is None:
+            return q.upper()
         c = pycountry.countries.get(alpha_2=q.upper())
         return c.alpha_2 if c else None
 
     try:
+        if pycountry is None:
+            return None
         res = pycountry.countries.search_fuzzy(q)
         return res[0].alpha_2 if res else None
     except Exception:
@@ -73,20 +82,20 @@ def auto_fill(facts: dict) -> None:
     if not isinstance(bank, dict):
         return
 
-    country = bank.get("country")
+    country = get_value(facts, "bank.country")
     if not country:
         return
 
     
-    if bank.get("currency"):
+    if get_value(facts, "bank.currency"):
         return
 
     
-    a2 = bank.get("country_alpha2")
+    a2 = get_value(facts, "bank.country_alpha2")
     if not a2:
         a2 = resolve_country_alpha2(country)
         if a2:
-            bank["country_alpha2"] = a2
+            set_value(facts, "bank.country_alpha2", a2, source="autofill", confidence=1.0)
 
     if not a2:
         return
@@ -99,5 +108,4 @@ def auto_fill(facts: dict) -> None:
         cur = ALPHA2_TO_CURRENCY_FALLBACK.get(a2.upper())
 
     if cur:
-        bank["currency"] = cur
-        print("AUTO_FILL ok")
+        set_value(facts, "bank.currency", cur, source="autofill", confidence=1.0)
