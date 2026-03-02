@@ -1,0 +1,292 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "configmaster_schema.json",
+  "title": "ConfigMaster Required Fields Schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["bank", "cards", "options"],
+  "properties": {
+    "bank": { "$ref": "#/$defs/bank" },
+    "cards": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/card" }
+    },
+    "options": { "$ref": "#/$defs/options" }
+  },
+  "$defs": {
+    "nullable_string": {
+      "anyOf": [
+        { "type": "string", "minLength": 1 },
+        { "type": "null" }
+      ]
+    },
+    "nullable_code": {
+      "anyOf": [
+        { "type": "string", "pattern": "^[A-Za-z0-9_\\-]{1,32}$" },
+        { "type": "null" }
+      ]
+    },
+    "nullable_currency": {
+      "anyOf": [
+        { "type": "string", "pattern": "^[A-Z]{3}$" },
+        { "type": "null" }
+      ]
+    },
+    "nullable_bin": {
+      "anyOf": [
+        { "type": "string", "pattern": "^\\d{6,8}$" },
+        { "type": "null" }
+      ]
+    },
+    "nullable_number_nonneg": {
+      "anyOf": [
+        { "type": "number", "minimum": 0 },
+        { "type": "null" }
+      ]
+    },
+    "nullable_int_nonneg": {
+      "anyOf": [
+        { "type": "integer", "minimum": 0 },
+        { "type": "null" }
+      ]
+    },
+
+    "bank": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "country", "currency", "bank_code", "resources", "agencies"],
+      "properties": {
+        "name": { "$ref": "#/$defs/nullable_string" },
+        "country": { "$ref": "#/$defs/nullable_string" },
+        "country_alpha2":{"anyOf":[{"type":"string","pattern":"^[A-Z]{2}$"},{"type":"null"}]},
+        "currency": { "$ref": "#/$defs/nullable_currency" },
+        "bank_code": { "$ref": "#/$defs/nullable_code" },
+        "resources": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+           
+        },
+        "agencies": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/agency" }
+        }
+      }
+    },
+
+    "agency": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "agency_name",
+        "agency_code",
+        "city",
+        "city_code",
+        "region",
+        "region_code"
+      ],
+      "properties": {
+        "agency_name": { "$ref": "#/$defs/nullable_string" },
+        "agency_code": { "$ref": "#/$defs/nullable_code" },
+        "city": { "$ref": "#/$defs/nullable_string" },
+        "city_code": { "$ref": "#/$defs/nullable_code" },
+        "region": { "$ref": "#/$defs/nullable_string" },
+        "region_code": { "$ref": "#/$defs/nullable_code" }
+      }
+    },
+
+    "card": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["card_info", "card_range", "fees", "services", "limits"],
+      "properties": {
+        "card_info": { "$ref": "#/$defs/card_info" },
+        "card_range": { "$ref": "#/$defs/card_range" },
+        "fees": { "$ref": "#/$defs/fees" },
+        "services": { "$ref": "#/$defs/services" },
+        "limits": { "$ref": "#/$defs/limits" }
+      }
+    },
+
+    "card_info": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "bin",
+        "plastic_type",
+        "card_description",
+        "product_type",
+        "product_code",
+        "pvk_index",
+        "service_code",
+        "network",
+        "expiration",
+        "renewal_option",
+        "pre_expiration"
+      ],
+      "properties": {
+        "bin": { "$ref": "#/$defs/nullable_bin" },
+        "plastic_type": { "$ref": "#/$defs/nullable_string" },
+        "card_description": { "$ref": "#/$defs/nullable_string" },
+        "product_type": { "$ref": "#/$defs/nullable_string" },
+        "product_code": { "$ref": "#/$defs/nullable_code" },
+        "pvk_index": { "$ref": "#/$defs/nullable_code" },
+        "service_code": { "$ref": "#/$defs/nullable_code" },
+        "network": { "$ref": "#/$defs/nullable_string" },
+        "expiration": { "$ref": "#/$defs/nullable_string" },
+        "renewal_option": { "$ref": "#/$defs/nullable_string" },
+        "pre_expiration": { "$ref": "#/$defs/nullable_string" }
+      }
+    },
+
+    "card_range": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["note"],
+      "properties": {
+        "note": { "type": "string" }
+      }
+    },
+
+    "fees": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "fee_description",
+        "billing_event",
+        "grace_period",
+        "billing_period",
+        "registration_fee",
+        "periodic_fee",
+        "replacement_fee",
+        "pin_recalculation_fee"
+      ],
+      "properties": {
+        "fee_description": { "$ref": "#/$defs/nullable_string" },
+        "billing_event": { "$ref": "#/$defs/nullable_string" },
+        "grace_period": { "$ref": "#/$defs/nullable_string" },
+        "billing_period": { "$ref": "#/$defs/nullable_string" },
+        "registration_fee": { "$ref": "#/$defs/nullable_number_nonneg" },
+        "periodic_fee": { "$ref": "#/$defs/nullable_number_nonneg" },
+        "replacement_fee": { "$ref": "#/$defs/nullable_number_nonneg" },
+        "pin_recalculation_fee": { "$ref": "#/$defs/nullable_number_nonneg" }
+      }
+    },
+
+    "services": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["enabled"],
+      "properties": {
+        "enabled": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+
+    "limits": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["selected_limit_types", "by_type"],
+      "properties": {
+        "selected_limit_types": {
+          "type": "array",
+          "items": {
+            "enum": ["Retrait", "Purchase", "CASH_advance", "Quasi-cash", "E-commerce"]
+          }
+        },
+        "by_type": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["DEFAULT"],
+          "properties": {
+            "DEFAULT": { "$ref": "#/$defs/limit_group" }
+          }
+        }
+      }
+    },
+
+    "limit_group": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["domestic", "international", "total", "per_transaction"],
+      "properties": {
+        "domestic": { "$ref": "#/$defs/limit_window" },
+        "international": { "$ref": "#/$defs/limit_window" },
+        "total": { "$ref": "#/$defs/limit_window" },
+        "per_transaction": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["min_amount", "max_amount"],
+          "properties": {
+            "min_amount": { "$ref": "#/$defs/nullable_number_nonneg" },
+            "max_amount": { "$ref": "#/$defs/nullable_number_nonneg" }
+          }
+        }
+      }
+    },
+
+    "limit_window": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "daily_amount",
+        "daily_count",
+        "weekly_amount",
+        "weekly_count",
+        "monthly_amount",
+        "monthly_count"
+      ],
+      "properties": {
+        "daily_amount": { "$ref": "#/$defs/nullable_number_nonneg" },
+        "daily_count": { "$ref": "#/$defs/nullable_int_nonneg" },
+        "weekly_amount": { "$ref": "#/$defs/nullable_number_nonneg" },
+        "weekly_count": { "$ref": "#/$defs/nullable_int_nonneg" },
+        "monthly_amount": { "$ref": "#/$defs/nullable_number_nonneg" },
+        "monthly_count": { "$ref": "#/$defs/nullable_int_nonneg" }
+      }
+    },
+
+    "options": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["resources_examples", "services", "limit_types"],
+      "properties": {
+        "resources_examples": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "services": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "Retrait",
+              "Cash Advance",
+              "Transferts",
+              "Consultation Solde",
+              "Changement PIN",
+              "Envoi d'argent",
+              "Original",
+              "Achats",
+              "E-commerce",
+              "Quasi-Cash",
+              "Mini-Relevé",
+              "Remboursements",
+              "Paiement Factures",
+              "Authentification",
+              "Cashback"
+            ]
+          }
+        },
+        "limit_types": {
+          "type": "array",
+          "items": {
+            "enum": ["Retrait", "Purchase", "CASH_advance", "Quasi-cash", "E-commerce"]
+          }
+        }
+      }
+    }
+  }
+}

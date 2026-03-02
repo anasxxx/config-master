@@ -11,11 +11,12 @@ from langchain_core.tools import tool
 from langchain_ollama import ChatOllama
 from langchain.agents import create_agent
 
-BASE_DIR = "C:/Users/mahmo/PFE/Config_Master/hps-ai-agent-main/app/dynamic_params"
-SQL_FILE = "C:/Users/mahmo/PFE/Config_Master/packages/PCRD_ST_BOARD_CONV_COM_040610.sql"
-OUTPUT_FILE = "C:/Users/mahmo/PFE/Config_Master/output_xml/bank_output.xml"
-temp_json_dir= "C:/Users/mahmo/PFE/Config_Master/hps-ai-agent-main/app/agents/temp_json_dir"
-temp_sql_dir= "C:/Users/mahmo/PFE/Config_Master/hps-ai-agent-main/app/agents/temp_sql_dir"
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+GOALS_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "goals"))
+SQL_FILE = os.path.join(PROJECT_ROOT, "packages", "PCRD_ST_BOARD_CONV_COM_040610.sql")
+OUTPUT_FILE = os.path.join(PROJECT_ROOT, "output_xml", "bank_output.xml")
+temp_json_dir = os.path.join(os.path.dirname(__file__), "temp_json_dir")
+temp_sql_dir = os.path.join(os.path.dirname(__file__), "temp_sql_dir")
 
 
 system_prompt = (
@@ -30,8 +31,7 @@ model= ChatOllama(model="llama3.2:3b",
 
 def _read_json_impl() -> Dict[str, Any]:
     """Read the most recently modified JSON file from the goals directory and its subdirectories and return its parsed content."""
-    goals_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'goals'))
-    json_files = glob.glob(os.path.join(goals_dir, '**', '*.json'), recursive=True)
+    json_files = glob.glob(os.path.join(GOALS_DIR, '**', '*.json'), recursive=True)
     if not json_files:
         return {}
     latest_json = max(json_files, key=os.path.getmtime)
@@ -41,22 +41,52 @@ def _read_json_impl() -> Dict[str, Any]:
 read_json = tool("extract json params")(_read_json_impl)
 
 
-def _read_sql_impl() -> Dict[str, Any]:
-    """Extract key/value parameters from the SQL file and return them as a dictionary."""
+def _read_sql_impl() -> List[Dict[str, str]]:
+    """Extract PL/SQL assignment parameters (:=) from the SQL file and return them in order."""
     with open(SQL_FILE, 'r', encoding='utf-8') as f:
         sql_content = f.read()
-    params = {}
-    lines = sql_content.split('\n')
-    for line in lines:
-        line = line.strip()
-        if line.startswith('--') or not line:
+
+    params: List[Dict[str, str]] = []
+    seen = set()
+    in_block_comment = False
+
+    for raw_line in sql_content.splitlines():
+        line = raw_line.strip()
+
+        if not line:
             continue
-        if '=' in line:
-            key_value = line.split('=', 1)
-            if len(key_value) == 2:
-                key = key_value[0].strip()
-                value = key_value[1].strip().rstrip(';,')
-                params[key] = value
+
+        if in_block_comment:
+            if '*/' in line:
+                in_block_comment = False
+            continue
+
+        if line.startswith('/*'):
+            if '*/' not in line:
+                in_block_comment = True
+            continue
+
+        if line.startswith('--'):
+            continue
+
+        line = re.sub(r'--.*$', '', raw_line).strip()
+        if ':=' not in line:
+            continue
+
+        match = re.match(r'^(?P<lhs>.+?)\s*:=\s*(?P<rhs>[^;]+)', line)
+        if not match:
+            continue
+
+        key = re.sub(r'\s+', ' ', match.group('lhs')).strip()
+        value = re.sub(r'\s+', ' ', match.group('rhs')).strip().rstrip(';')
+
+        if key and value:
+            dedup_key = (key, value)
+            if dedup_key in seen:
+                continue
+            seen.add(dedup_key)
+            params.append({"name": key, "value": value})
+
     return params
 
 read_sql = tool("extract sql params")(_read_sql_impl)
@@ -93,12 +123,12 @@ def _sql_to_xml_impl() -> str:
     """Convert extracted SQL parameters to XML, save in the temporary SQL directory, and return the XML path."""
     sql_data = _read_sql_impl()
     root = ET.Element("sql_parameters")
-    for key, value in sql_data.items():
+    for item in sql_data:
         param = ET.SubElement(root, "parameter")
         name = ET.SubElement(param, "name")
-        name.text = key
+        name.text = item["name"]
         val = ET.SubElement(param, "value")
-        val.text = value
+        val.text = item["value"]
     xml_str = minidom.parseString(ET.tostring(root)).toprettyxml(indent="  ")
     os.makedirs(temp_sql_dir, exist_ok=True)
     xml_file = os.path.join(temp_sql_dir, "sql_output.xml")

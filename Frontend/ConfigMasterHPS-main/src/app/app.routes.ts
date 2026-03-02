@@ -12,6 +12,7 @@ import { SideBarTestComponent } from './side-bar-test/side-bar-test.component';
 import { EditBankComponent } from './edit-bank/edit-bank.component';
 import { RenderMode } from '@angular/ssr';
 import { BackOfficeActivityComponent } from './back-office-activity/back-office-activity.component';
+import { AiAgentComponent } from './ai-agent/ai-agent.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -35,5 +36,6 @@ export const routes: Routes = [
   { path: 'addbank/step3', component: AddBankStep3Component },
   { path: 'side-bar-test', component: SideBarTestComponent },
   {path:'backOfficeActivity',component:BackOfficeActivityComponent},
+  { path: 'agent', component: AiAgentComponent },
   { path: '**', component: HomeScreenComponent }
 ];

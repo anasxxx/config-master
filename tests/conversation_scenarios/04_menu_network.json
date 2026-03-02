@@ -1,0 +1,32 @@
+﻿{
+  "name": "menu_network_selection",
+  "llm_mode": "down",
+  "seed_values": [
+    {"path": "bank.name", "value": "ATLAS BANK", "source": "user"},
+    {"path": "bank.country", "value": "Maroc", "source": "user"},
+    {"path": "bank.currency", "value": "MAD", "source": "user"},
+    {"path": "bank.bank_code", "value": "90001", "source": "user"},
+    {"path": "bank.resources", "value": ["ACCOUNTS"], "source": "user"},
+    {"path": "bank.agencies.0.agency_name", "value": "AGENCE CENTRE", "source": "user"},
+    {"path": "bank.agencies.0.city", "value": "Casablanca", "source": "user"},
+    {"path": "bank.agencies.0.agency_code", "value": "0025", "source": "user"},
+    {"path": "bank.agencies.0.city_code", "value": "001", "source": "user"},
+    {"path": "bank.agencies.0.region", "value": "Grand Casablanca", "source": "user"},
+    {"path": "bank.agencies.0.region_code", "value": "10", "source": "user"},
+    {"path": "cards.0.card_info.bin", "value": "445555", "source": "user"},
+    {"path": "cards.0.card_info.plastic_type", "value": "PVC", "source": "user"},
+    {"path": "cards.0.card_info.card_description", "value": "Carte Classic", "source": "user"},
+    {"path": "cards.0.card_info.product_type", "value": "DEBIT", "source": "user"},
+    {"path": "cards.0.card_info.product_code", "value": "PRD001", "source": "user"},
+    {"path": "cards.0.card_info.pvk_index", "value": 1, "source": "user"},
+    {"path": "cards.0.card_info.service_code", "value": "101", "source": "user"}
+  ],
+  "messages": [
+    "1"
+  ],
+  "source_paths": ["cards.0.card_info.network"],
+  "assertions": [
+    {"type": "question_contains", "turn": 1, "value": "Choisis"},
+    {"type": "source_equals", "path": "cards.0.card_info.network", "value": "menu"}
+  ]
+}

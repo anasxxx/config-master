@@ -1,0 +1,45 @@
+{
+  "scenario": "creation_phrase_longue_llm_ok",
+  "status": "PARTIAL",
+  "turns": [
+    {
+      "turn": 1,
+      "user": "Atlas bank au maroc",
+      "question": "Donne l'identite banque: nom, pays, devise, code banque.\nEx: Atlas Bank, Maroc, MAD, 90001",
+      "question_paths": [
+        "bank.name",
+        "bank.country",
+        "bank.currency",
+        "bank.bank_code"
+      ],
+      "intent": "unknown",
+      "changed_paths": [
+        "bank.name",
+        "bank.country",
+        "bank.currency",
+        "bank.bank_code"
+      ],
+      "step": "collecting",
+      "last_extraction": {
+        "used_llm": true,
+        "used_fallback_rules": false,
+        "llm_attempts": 1,
+        "llm_final_status": "LLM_OK"
+      }
+    }
+  ],
+  "final_dialog_step": "collecting",
+  "final_mode": "normal",
+  "pending_confirmations": [],
+  "final_last_extraction": {
+    "used_llm": true,
+    "used_fallback_rules": false,
+    "llm_attempts": 1,
+    "llm_final_status": "LLM_OK"
+  },
+  "facts_sources": {
+    "bank.name": "llm",
+    "bank.country": "llm"
+  },
+  "assertion_failures": []
+}

@@ -1,0 +1,27 @@
+{
+  "scenario": "out_of_scope_meteo",
+  "status": "PARTIAL",
+  "turns": [
+    {
+      "turn": 1,
+      "user": "quelle est la meteo a paris ?",
+      "question": "Donne l'identite banque: nom, pays, devise, code banque.\nEx: Atlas Bank, Maroc, MAD, 90001",
+      "question_paths": [
+        "bank.name",
+        "bank.country",
+        "bank.currency",
+        "bank.bank_code"
+      ],
+      "intent": "out_of_scope",
+      "changed_paths": [],
+      "step": "collecting",
+      "last_extraction": {}
+    }
+  ],
+  "final_dialog_step": "collecting",
+  "final_mode": "normal",
+  "pending_confirmations": [],
+  "final_last_extraction": {},
+  "facts_sources": {},
+  "assertion_failures": []
+}

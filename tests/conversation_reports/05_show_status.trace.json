@@ -1,0 +1,56 @@
+{
+  "scenario": "show_status_mid_flow",
+  "status": "PARTIAL",
+  "turns": [
+    {
+      "turn": 1,
+      "user": "ou on en est ?",
+      "question": "Donne l'identite banque: nom, pays, devise, code banque.\nEx: Atlas Bank, Maroc, MAD, 90001",
+      "question_paths": [
+        "bank.name",
+        "bank.country",
+        "bank.currency",
+        "bank.bank_code"
+      ],
+      "intent": "show_status",
+      "changed_paths": [],
+      "step": "collecting",
+      "last_extraction": {}
+    },
+    {
+      "turn": 2,
+      "user": "Atlas Bank, Maroc, MAD, 90001",
+      "question": "Je reformule: Donne l'identite banque: nom, pays, devise, code banque.\nEx: Atlas Bank, Maroc, MAD, 90001",
+      "question_paths": [
+        "bank.name",
+        "bank.country",
+        "bank.currency",
+        "bank.bank_code"
+      ],
+      "intent": "unknown",
+      "changed_paths": [
+        "bank.name",
+        "bank.country",
+        "bank.currency"
+      ],
+      "step": "collecting",
+      "last_extraction": {
+        "used_llm": true,
+        "used_fallback_rules": true,
+        "llm_attempts": 3,
+        "llm_final_status": "LLM_DOWN"
+      }
+    }
+  ],
+  "final_dialog_step": "collecting",
+  "final_mode": "normal",
+  "pending_confirmations": [],
+  "final_last_extraction": {
+    "used_llm": true,
+    "used_fallback_rules": true,
+    "llm_attempts": 3,
+    "llm_final_status": "LLM_DOWN"
+  },
+  "facts_sources": {},
+  "assertion_failures": []
+}

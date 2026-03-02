@@ -1,0 +1,238 @@
+{
+  "meta": {
+    "goal_id": 156,
+    "client": "le",
+    "client_n": 4,
+    "action": "add",
+    "created_at": "2026-02-26T10:12:25",
+    "last_question_paths": [
+      "bank.agencies.0.region",
+      "bank.agencies.0.region_code"
+    ]
+  },
+  "goal": "Créer une banque appelée Orion Digital Bank au Maroc avec la devise MAD et le code banque 90210, dont l’agence principale sera Casablanca Anfa avec le code 0007. Activer les cartes Visa et Mastercard en debit et prepaid avec support 3D Secure, tokenization et notifications SMS, utilisables en national et international avec des plafonds journaliers de 8000 MAD pour le retrait et 25000 MAD pour le paiement. Le settlement account sera en USD chez CitiBank New York, la langue du système doit être français et le code pays MA.",
+  "facts": {
+    "bank": {
+      "name": "BANQUE APPELÉE ORION DIGITAL BANK",
+      "country": "Maroc",
+      "currency": "MAD",
+      "bank_code": "90210",
+      "resources": [
+        "TRANSACTIONS"
+      ],
+      "agencies": [
+        {
+          "agency_name": "CASABLANCA ANFA",
+          "agency_code": "0007",
+          "city": "Casablanca",
+          "city_code": "1258",
+          "region": null,
+          "region_code": null
+        }
+      ]
+    },
+    "cards": [
+      {
+        "card_info": {
+          "bin": null,
+          "plastic_type": null,
+          "card_description": null,
+          "product_type": "Debit, Prepaid",
+          "product_code": null,
+          "pvk_index": null,
+          "service_code": null,
+          "network": null,
+          "expiration": null,
+          "renewal_option": null,
+          "pre_expiration": null
+        },
+        "card_range": {
+          "note": ""
+        },
+        "fees": {
+          "fee_description": null,
+          "billing_event": null,
+          "grace_period": null,
+          "billing_period": null,
+          "registration_fee": null,
+          "periodic_fee": null,
+          "replacement_fee": null,
+          "pin_recalculation_fee": null
+        },
+        "services": {
+          "enabled": [
+            "Authentification",
+            "Tokenization",
+            "SMS Notification"
+          ]
+        },
+        "limits": {
+          "selected_limit_types": [
+            "Retrait",
+            "Purchase"
+          ],
+          "by_type": {
+            "DEFAULT": {
+              "domestic": {
+                "daily_amount": 8000.0,
+                "daily_count": null,
+                "weekly_amount": null,
+                "weekly_count": null,
+                "monthly_amount": null,
+                "monthly_count": null
+              },
+              "international": {
+                "daily_amount": 25000.0,
+                "daily_count": null,
+                "weekly_amount": null,
+                "weekly_count": null,
+                "monthly_amount": null,
+                "monthly_count": null
+              },
+              "total": {
+                "daily_amount": null,
+                "daily_count": null,
+                "weekly_amount": null,
+                "weekly_count": null,
+                "monthly_amount": null,
+                "monthly_count": null
+              },
+              "per_transaction": {
+                "min_amount": null,
+                "max_amount": null
+              }
+            }
+          }
+        }
+      }
+    ],
+    "options": {
+      "resources_examples": [
+        "MCD_MDS",
+        "MCD_CIS",
+        "UPI",
+        "HOST_BANK",
+        "SID",
+        "VISA_BASE1",
+        "VISA_SMS"
+      ],
+      "services": [
+        "Retrait",
+        "Cash Advance",
+        "Transferts",
+        "Consultation Solde",
+        "Changement PIN",
+        "Envoi d'argent",
+        "Original",
+        "Achats",
+        "E-commerce",
+        "Quasi-Cash",
+        "Mini-Relevé",
+        "Remboursements",
+        "Paiement Factures",
+        "Authentification",
+        "Cashback"
+      ],
+      "limit_types": [
+        "Retrait",
+        "Purchase",
+        "CASH_advance",
+        "Quasi-cash",
+        "E-commerce"
+      ]
+    }
+  },
+  "provenance": {
+    "bank.name": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-26T10:12:32",
+      "evidence": "Créer une banque appelée Orion Digital Bank au Maroc avec la devise MAD et le code banque 90210, dont l’agence principale sera Casablanca Anfa avec le code 0007. Activer les cartes Visa et Mastercard en debit et prepaid avec support 3D Secure, tokenization et notifications SMS, utilisables en national et international avec des plafonds journaliers de 8000 MAD pour le retrait et 25000 MAD pour le paiement. Le settlement account sera en USD chez CitiBank New York, la langue du système doit être français et le code pays MA."
+    },
+    "bank.country": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-26T10:12:32",
+      "evidence": "Créer une banque appelée Orion Digital Bank au Maroc avec la devise MAD et le code banque 90210, dont l’agence principale sera Casablanca Anfa avec le code 0007. Activer les cartes Visa et Mastercard en debit et prepaid avec support 3D Secure, tokenization et notifications SMS, utilisables en national et international avec des plafonds journaliers de 8000 MAD pour le retrait et 25000 MAD pour le paiement. Le settlement account sera en USD chez CitiBank New York, la langue du système doit être français et le code pays MA."
+    },
+    "bank.bank_code": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-26T10:12:32",
+      "evidence": "Créer une banque appelée Orion Digital Bank au Maroc avec la devise MAD et le code banque 90210, dont l’agence principale sera Casablanca Anfa avec le code 0007. Activer les cartes Visa et Mastercard en debit et prepaid avec support 3D Secure, tokenization et notifications SMS, utilisables en national et international avec des plafonds journaliers de 8000 MAD pour le retrait et 25000 MAD pour le paiement. Le settlement account sera en USD chez CitiBank New York, la langue du système doit être français et le code pays MA."
+    },
+    "bank.currency": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-26T10:12:32",
+      "evidence": "Créer une banque appelée Orion Digital Bank au Maroc avec la devise MAD et le code banque 90210, dont l’agence principale sera Casablanca Anfa avec le code 0007. Activer les cartes Visa et Mastercard en debit et prepaid avec support 3D Secure, tokenization et notifications SMS, utilisables en national et international avec des plafonds journaliers de 8000 MAD pour le retrait et 25000 MAD pour le paiement. Le settlement account sera en USD chez CitiBank New York, la langue du système doit être français et le code pays MA."
+    },
+    "bank.agencies.0.agency_name": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-26T10:12:32",
+      "evidence": "Créer une banque appelée Orion Digital Bank au Maroc avec la devise MAD et le code banque 90210, dont l’agence principale sera Casablanca Anfa avec le code 0007. Activer les cartes Visa et Mastercard en debit et prepaid avec support 3D Secure, tokenization et notifications SMS, utilisables en national et international avec des plafonds journaliers de 8000 MAD pour le retrait et 25000 MAD pour le paiement. Le settlement account sera en USD chez CitiBank New York, la langue du système doit être français et le code pays MA."
+    },
+    "bank.agencies.0.agency_code": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-26T10:12:32",
+      "evidence": "Créer une banque appelée Orion Digital Bank au Maroc avec la devise MAD et le code banque 90210, dont l’agence principale sera Casablanca Anfa avec le code 0007. Activer les cartes Visa et Mastercard en debit et prepaid avec support 3D Secure, tokenization et notifications SMS, utilisables en national et international avec des plafonds journaliers de 8000 MAD pour le retrait et 25000 MAD pour le paiement. Le settlement account sera en USD chez CitiBank New York, la langue du système doit être français et le code pays MA."
+    },
+    "bank.resources": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-26T10:12:32",
+      "evidence": "Créer une banque appelée Orion Digital Bank au Maroc avec la devise MAD et le code banque 90210, dont l’agence principale sera Casablanca Anfa avec le code 0007. Activer les cartes Visa et Mastercard en debit et prepaid avec support 3D Secure, tokenization et notifications SMS, utilisables en national et international avec des plafonds journaliers de 8000 MAD pour le retrait et 25000 MAD pour le paiement. Le settlement account sera en USD chez CitiBank New York, la langue du système doit être français et le code pays MA."
+    },
+    "cards.0.limits.by_type.DEFAULT.domestic.daily_amount": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-26T10:12:32",
+      "evidence": "Créer une banque appelée Orion Digital Bank au Maroc avec la devise MAD et le code banque 90210, dont l’agence principale sera Casablanca Anfa avec le code 0007. Activer les cartes Visa et Mastercard en debit et prepaid avec support 3D Secure, tokenization et notifications SMS, utilisables en national et international avec des plafonds journaliers de 8000 MAD pour le retrait et 25000 MAD pour le paiement. Le settlement account sera en USD chez CitiBank New York, la langue du système doit être français et le code pays MA."
+    },
+    "cards.0.limits.by_type.DEFAULT.international.daily_amount": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-26T10:12:32",
+      "evidence": "Créer une banque appelée Orion Digital Bank au Maroc avec la devise MAD et le code banque 90210, dont l’agence principale sera Casablanca Anfa avec le code 0007. Activer les cartes Visa et Mastercard en debit et prepaid avec support 3D Secure, tokenization et notifications SMS, utilisables en national et international avec des plafonds journaliers de 8000 MAD pour le retrait et 25000 MAD pour le paiement. Le settlement account sera en USD chez CitiBank New York, la langue du système doit être français et le code pays MA."
+    },
+    "cards.0.card_info.product_type": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-26T10:12:32",
+      "evidence": "Créer une banque appelée Orion Digital Bank au Maroc avec la devise MAD et le code banque 90210, dont l’agence principale sera Casablanca Anfa avec le code 0007. Activer les cartes Visa et Mastercard en debit et prepaid avec support 3D Secure, tokenization et notifications SMS, utilisables en national et international avec des plafonds journaliers de 8000 MAD pour le retrait et 25000 MAD pour le paiement. Le settlement account sera en USD chez CitiBank New York, la langue du système doit être français et le code pays MA."
+    },
+    "cards.0.services.enabled": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-26T10:12:32",
+      "evidence": "Créer une banque appelée Orion Digital Bank au Maroc avec la devise MAD et le code banque 90210, dont l’agence principale sera Casablanca Anfa avec le code 0007. Activer les cartes Visa et Mastercard en debit et prepaid avec support 3D Secure, tokenization et notifications SMS, utilisables en national et international avec des plafonds journaliers de 8000 MAD pour le retrait et 25000 MAD pour le paiement. Le settlement account sera en USD chez CitiBank New York, la langue du système doit être français et le code pays MA."
+    },
+    "cards.0.limits.selected_limit_types": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-26T10:12:32",
+      "evidence": "Créer une banque appelée Orion Digital Bank au Maroc avec la devise MAD et le code banque 90210, dont l’agence principale sera Casablanca Anfa avec le code 0007. Activer les cartes Visa et Mastercard en debit et prepaid avec support 3D Secure, tokenization et notifications SMS, utilisables en national et international avec des plafonds journaliers de 8000 MAD pour le retrait et 25000 MAD pour le paiement. Le settlement account sera en USD chez CitiBank New York, la langue du système doit être français et le code pays MA."
+    },
+    "bank.agencies.0.city": {
+      "source": "regex",
+      "confidence": 0.75,
+      "timestamp": "2026-02-26T10:12:32",
+      "evidence": "Créer une banque appelée Orion Digital Bank au Maroc avec la devise MAD et le code banque 90210, dont l’agence principale sera Casablanca Anfa avec le code 0007. Activer les cartes Visa et Mastercard en debit et prepaid avec support 3D Secure, tokenization et notifications SMS, utilisables en national et international avec des plafonds journaliers de 8000 MAD pour le retrait et 25000 MAD pour le paiement. Le settlement account sera en USD chez CitiBank New York, la langue du système doit être français et le code pays MA."
+    },
+    "bank.agencies.0.city_code": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-26T10:14:07",
+      "evidence": "1258"
+    }
+  },
+  "history": [
+    {
+      "agent": "Top. Quel est le code de la ville ? Je prends le code exact.",
+      "user": "1258"
+    }
+  ],
+  "done": false
+}

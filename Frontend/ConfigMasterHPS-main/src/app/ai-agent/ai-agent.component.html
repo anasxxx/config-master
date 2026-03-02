@@ -1,0 +1,285 @@
+<div class="sidebar-container">
+  <!-- ═══ Platform Sidebar ═══ -->
+  <div class="sidebar" [class.expanded]="sidebarExpanded">
+    <button class="sidebar-toggle" (click)="toggleSidebar()">
+      <i class="bi" [ngClass]="sidebarExpanded ? 'bi-chevron-left' : 'bi-chevron-right'"></i>
+    </button>
+
+    <div class="d-flex flex-column h-100">
+      <!-- User info -->
+      <div class="p-3 mb-3 text-center">
+        <div class="user-avatar mb-2">{{ getUserInitials() }}</div>
+        <div class="text-white" *ngIf="sidebarExpanded">{{ username }}</div>
+      </div>
+
+      <!-- Navigation -->
+      <nav class="flex-grow-1">
+        <a class="nav-item d-block" routerLink="/dashboards" routerLinkActive="active">
+          <i class="bi bi-speedometer2 me-2"></i>
+          <span class="nav-text" *ngIf="sidebarExpanded">{{ 'nav.dashboard' | translate }}</span>
+        </a>
+        <a class="nav-item d-block" routerLink="/banks" routerLinkActive="active">
+          <i class="bi bi-bank2 me-2"></i>
+          <span class="nav-text" *ngIf="sidebarExpanded">{{ 'nav.banks' | translate }}</span>
+        </a>
+        <a class="nav-item d-block" routerLinkActive="active" (click)="toggleActivity()">
+          <i class="bi bi-activity me-2"></i>
+          <span class="nav-text" *ngIf="sidebarExpanded">{{ 'nav.activity' | translate }}</span>
+          <i class="bi" [ngClass]="activityExpanded ? 'bi-chevron-down' : 'bi-chevron-right'"
+             *ngIf="sidebarExpanded"></i>
+        </a>
+        <div *ngIf="activityExpanded" class="sub-nav">
+          <a class="nav-item d-block sub-item" routerLink="/activity" routerLinkActive="active">
+            <i class="bi bi-people me-2"></i>
+            <span class="nav-text" *ngIf="sidebarExpanded">{{ 'nav.front_office' | translate }}</span>
+          </a>
+          <a class="nav-item d-block sub-item" routerLink="/backOfficeActivity" routerLinkActive="active">
+            <i class="bi bi-briefcase me-2"></i>
+            <span class="nav-text" *ngIf="sidebarExpanded">{{ 'nav.back_office' | translate }}</span>
+          </a>
+        </div>
+        <a class="nav-item d-block active" routerLink="/agent" routerLinkActive="active">
+          <i class="bi bi-robot me-2"></i>
+          <span class="nav-text" *ngIf="sidebarExpanded">{{ 'nav.ai_agent' | translate }}</span>
+        </a>
+      </nav>
+
+      <!-- Logout -->
+      <div class="mt-auto p-3">
+        <button class="btn btn-light w-100" (click)="logout()">
+          <i class="bi bi-box-arrow-left me-2"></i>
+          <span *ngIf="sidebarExpanded">{{ 'nav.logout' | translate }}</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ Main Content ═══ -->
+  <div class="main-content" [ngClass]="{ 'sidebar-expanded': sidebarExpanded }">
+
+    <!-- Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <div class="d-flex align-items-center gap-3">
+        <button *ngIf="isMobile" class="mobile-toggle" (click)="toggleSidebar()">
+          <i class="bi bi-list"></i>
+        </button>
+        <h1 class="mb-0">
+          <i class="bi bi-robot me-2"></i>{{ 'agent.title' | translate }}
+        </h1>
+      </div>
+      <button class="btn btn-primary d-flex align-items-center gap-2" (click)="startNewGoal()">
+        <i class="bi bi-plus-lg"></i>
+        {{ 'agent.newGoal' | translate }}
+      </button>
+    </div>
+
+    <!-- ═══ Agent Layout: Goals Panel + Chat ═══ -->
+    <div class="agent-layout">
+
+      <!-- Left: Goals Panel -->
+      <div class="goals-panel">
+        <div class="panel-header">
+          <h3 class="fw-semibold mb-0">
+            <i class="bi bi-folder2-open me-2"></i>{{ 'agent.goals' | translate }}
+          </h3>
+          <span class="badge bg-primary">{{ goals.length }}</span>
+        </div>
+
+        <!-- Loading -->
+        <div *ngIf="isLoadingGoals" class="text-center py-4">
+          <div class="spinner-border text-primary spinner-border-sm" role="status"></div>
+          <div class="text-muted small mt-2">{{ 'agent.loading' | translate }}</div>
+        </div>
+
+        <!-- Goals list -->
+        <div *ngIf="!isLoadingGoals" class="goals-list">
+          <div *ngIf="goals.length === 0" class="text-center py-4 text-muted">
+            <i class="bi bi-inbox fs-1 d-block mb-2"></i>
+            {{ 'agent.noGoals' | translate }}
+          </div>
+
+          <div *ngFor="let goal of goals"
+               class="goal-card"
+               [class.active]="activeGoalId === goal.goal_id"
+               (click)="openGoal(goal)">
+            <div class="d-flex justify-content-between align-items-start">
+              <div class="goal-info">
+                <div class="goal-name">
+                  <i class="bi me-1" [ngClass]="getGoalStatusIcon(goal)"></i>
+                  {{ goal.folder }}
+                </div>
+                <div class="goal-meta">
+                  <span class="badge" [ngClass]="goal.done ? 'bg-success' : 'bg-warning text-dark'">
+                    {{ goal.done ? ('agent.complete' | translate) : ('agent.inProgress' | translate) }}
+                  </span>
+                  <span class="text-muted small ms-2" *ngIf="!goal.done">
+                    {{ goal.missing_count }} {{ 'agent.fieldsLeft' | translate }}
+                  </span>
+                </div>
+              </div>
+              <button class="btn btn-sm btn-outline-danger goal-delete"
+                      (click)="deleteGoal(goal, $event)"
+                      [title]="'common.delete' | translate">
+                <i class="bi bi-trash"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Chat Area -->
+      <div class="chat-panel">
+
+        <!-- No active goal -->
+        <div *ngIf="!activeGoalId && !showNewGoalInput" class="chat-empty">
+          <div class="empty-state">
+            <i class="bi bi-chat-dots fs-1 text-primary mb-3 d-block"></i>
+            <h4 class="fw-semibold">{{ 'agent.welcomeTitle' | translate }}</h4>
+            <p class="text-muted">{{ 'agent.welcomeDesc' | translate }}</p>
+            <button class="btn btn-primary" (click)="startNewGoal()">
+              <i class="bi bi-plus-lg me-2"></i>{{ 'agent.startConversation' | translate }}
+            </button>
+          </div>
+        </div>
+
+        <!-- Active chat or new goal -->
+        <div *ngIf="activeGoalId || showNewGoalInput" class="chat-active">
+
+          <!-- Progress bar -->
+          <div class="progress-section" *ngIf="progress">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <span class="text-muted small">
+                {{ 'agent.progress' | translate }}: {{ progress.filled_fields }}/{{ progress.total_fields }}
+              </span>
+              <span class="fw-semibold text-primary">{{ progress.completion_pct }}%</span>
+            </div>
+            <div class="progress" style="height: 8px;">
+              <div class="progress-bar"
+                   role="progressbar"
+                   [style.width.%]="progress.completion_pct"
+                   [ngClass]="{
+                     'bg-danger': progress.completion_pct < 30,
+                     'bg-warning': progress.completion_pct >= 30 && progress.completion_pct < 70,
+                     'bg-success': progress.completion_pct >= 70
+                   }">
+              </div>
+            </div>
+          </div>
+
+          <!-- Messages -->
+          <div class="chat-messages" #chatContainer>
+            <div *ngFor="let msg of messages"
+                 class="message"
+                 [ngClass]="'message-' + msg.role">
+
+              <!-- Agent message -->
+              <div *ngIf="msg.role === 'agent'" class="message-bubble agent-bubble">
+                <div class="message-avatar">
+                  <i class="bi bi-robot"></i>
+                </div>
+                <div class="message-content">
+                  <div class="message-text">{{ msg.text }}</div>
+                  <div class="message-meta" *ngIf="msg.paths && msg.paths.length">
+                    <span class="field-tag" *ngFor="let p of msg.paths">{{ p }}</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- User message -->
+              <div *ngIf="msg.role === 'user'" class="message-bubble user-bubble">
+                <div class="message-content">
+                  <div class="message-text">{{ msg.text }}</div>
+                </div>
+                <div class="message-avatar user-av">
+                  <i class="bi bi-person"></i>
+                </div>
+              </div>
+
+              <!-- System message -->
+              <div *ngIf="msg.role === 'system'" class="system-message">
+                <i class="bi bi-info-circle me-1"></i>{{ msg.text }}
+              </div>
+            </div>
+
+            <!-- Typing indicator -->
+            <div *ngIf="isTyping" class="message message-agent">
+              <div class="message-bubble agent-bubble">
+                <div class="message-avatar">
+                  <i class="bi bi-robot"></i>
+                </div>
+                <div class="message-content">
+                  <div class="typing-indicator">
+                    <span></span><span></span><span></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Completion actions -->
+          <div *ngIf="currentDecision?.type === 'DONE'" class="completion-actions">
+            <div class="d-flex gap-2 flex-wrap">
+              <button class="btn btn-success d-flex align-items-center gap-2"
+                      (click)="submitToBackend()"
+                      [disabled]="isSubmitting">
+                <i class="bi" [ngClass]="isSubmitting ? 'bi-hourglass-split' : 'bi-cloud-upload'"></i>
+                {{ isSubmitting ? ('agent.submitting' | translate) : ('agent.submit' | translate) }}
+              </button>
+              <button class="btn btn-outline-primary d-flex align-items-center gap-2"
+                      (click)="generatePdf()">
+                <i class="bi bi-file-pdf"></i>
+                {{ 'agent.generatePdf' | translate }}
+              </button>
+            </div>
+            <div *ngIf="submissionResult" class="mt-2">
+              <div *ngIf="submissionResult.success" class="alert alert-success py-2 mb-0">
+                <i class="bi bi-check-circle me-1"></i>{{ 'agent.submitSuccess' | translate }}
+              </div>
+              <div *ngIf="!submissionResult.success" class="alert alert-danger py-2 mb-0">
+                <i class="bi bi-exclamation-triangle me-1"></i>{{ submissionResult.error }}
+              </div>
+            </div>
+          </div>
+
+          <!-- Input area -->
+          <div class="chat-input-area">
+            <div class="input-wrapper" *ngIf="showNewGoalInput">
+              <input
+                type="text"
+                class="form-control"
+                [(ngModel)]="newGoalMessage"
+                [placeholder]="'agent.newGoalPlaceholder' | translate"
+                (keydown)="onKeyDown($event)"
+                [disabled]="isCreatingGoal"
+                #messageInput
+              />
+              <button class="btn btn-primary send-btn"
+                      (click)="createGoal()"
+                      [disabled]="!newGoalMessage.trim() || isCreatingGoal">
+                <i class="bi" [ngClass]="isCreatingGoal ? 'bi-hourglass-split' : 'bi-send-fill'"></i>
+              </button>
+            </div>
+
+            <div class="input-wrapper" *ngIf="!showNewGoalInput && activeGoalId && currentDecision?.type !== 'DONE'">
+              <input
+                type="text"
+                class="form-control"
+                [(ngModel)]="userInput"
+                [placeholder]="'agent.chatPlaceholder' | translate"
+                (keydown)="onKeyDown($event)"
+                [disabled]="isTyping"
+                #messageInput
+              />
+              <button class="btn btn-primary send-btn"
+                      (click)="sendMessage()"
+                      [disabled]="!userInput.trim() || isTyping">
+                <i class="bi" [ngClass]="isTyping ? 'bi-hourglass-split' : 'bi-send-fill'"></i>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

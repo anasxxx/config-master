@@ -1,0 +1,342 @@
+{
+  "meta": {
+    "goal_id": 167,
+    "client": "appeller",
+    "client_n": 1,
+    "action": "add",
+    "created_at": "2026-02-28T19:13:23",
+    "last_extraction": {
+      "used_llm": true,
+      "used_fallback_rules": false,
+      "llm_attempts": 1,
+      "llm_final_status": "LLM_OK"
+    },
+    "last_question_paths": [
+      "bank.agencies.0.city_code"
+    ]
+  },
+  "goal": "je veux ajoutter une nouvelle banque appeller maghrib bank au maroc avec bank code 1458 et resourses transactions",
+  "facts": {
+    "bank": {
+      "name": {
+        "value": "MAGHRIB BANK",
+        "source": "llm",
+        "confidence": 1.0,
+        "updated_at": "2026-02-28T19:13:34",
+        "evidence": "je veux ajoutter une nouvelle banque appeller maghrib bank au maroc avec bank code 1458 et resourses transactions"
+      },
+      "country": {
+        "value": "Maroc",
+        "source": "llm",
+        "confidence": 1.0,
+        "updated_at": "2026-02-28T19:13:34",
+        "evidence": "je veux ajoutter une nouvelle banque appeller maghrib bank au maroc avec bank code 1458 et resourses transactions"
+      },
+      "currency": {
+        "value": "MAD",
+        "source": "autofill",
+        "confidence": 1.0,
+        "updated_at": "2026-02-28T19:13:34"
+      },
+      "bank_code": {
+        "value": "1458",
+        "source": "llm",
+        "confidence": 1.0,
+        "updated_at": "2026-02-28T19:13:34",
+        "evidence": "je veux ajoutter une nouvelle banque appeller maghrib bank au maroc avec bank code 1458 et resourses transactions"
+      },
+      "resources": [
+        {
+          "value": "Transactions",
+          "source": "llm",
+          "confidence": 1.0,
+          "updated_at": "2026-02-28T19:13:34",
+          "evidence": "je veux ajoutter une nouvelle banque appeller maghrib bank au maroc avec bank code 1458 et resourses transactions"
+        }
+      ],
+      "agencies": [
+        {
+          "agency_name": {
+            "value": "DE LAMA",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-02-28T21:10:53",
+            "evidence": "agence de lama,0025"
+          },
+          "agency_code": {
+            "value": "0025",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-02-28T21:10:53",
+            "evidence": "agence de lama,0025"
+          },
+          "city": {
+            "value": "De",
+            "source": "rules",
+            "confidence": 0.75,
+            "updated_at": "2026-02-28T21:10:53",
+            "evidence": "agence de lama,0025"
+          },
+          "city_code": null,
+          "region": null,
+          "region_code": null
+        }
+      ],
+      "country_alpha2": {
+        "value": "MA",
+        "source": "autofill",
+        "confidence": 1.0,
+        "updated_at": "2026-02-28T19:13:34"
+      }
+    },
+    "cards": [
+      {
+        "card_info": {
+          "bin": null,
+          "plastic_type": {
+            "value": "PVC",
+            "source": "llm",
+            "confidence": 1.0,
+            "updated_at": "2026-02-28T21:11:33",
+            "evidence": "mastercard credit et debit , pvc"
+          },
+          "card_description": null,
+          "product_type": {
+            "value": "PVC",
+            "source": "llm",
+            "confidence": 1.0,
+            "updated_at": "2026-02-28T21:11:42",
+            "evidence": "mastercard credit et debit , pvc"
+          },
+          "product_code": null,
+          "pvk_index": null,
+          "service_code": null,
+          "network": null,
+          "expiration": null,
+          "renewal_option": null,
+          "pre_expiration": null
+        },
+        "card_range": {
+          "note": ""
+        },
+        "fees": {
+          "fee_description": null,
+          "billing_event": null,
+          "grace_period": null,
+          "billing_period": null,
+          "registration_fee": null,
+          "periodic_fee": null,
+          "replacement_fee": null,
+          "pin_recalculation_fee": null
+        },
+        "services": {
+          "enabled": []
+        },
+        "limits": {
+          "selected_limit_types": [],
+          "by_type": {
+            "DEFAULT": {
+              "domestic": {
+                "daily_amount": null,
+                "daily_count": null,
+                "weekly_amount": null,
+                "weekly_count": null,
+                "monthly_amount": null,
+                "monthly_count": null
+              },
+              "international": {
+                "daily_amount": null,
+                "daily_count": null,
+                "weekly_amount": null,
+                "weekly_count": null,
+                "monthly_amount": null,
+                "monthly_count": null
+              },
+              "total": {
+                "daily_amount": null,
+                "daily_count": null,
+                "weekly_amount": null,
+                "weekly_count": null,
+                "monthly_amount": null,
+                "monthly_count": null
+              },
+              "per_transaction": {
+                "min_amount": null,
+                "max_amount": null
+              }
+            }
+          }
+        }
+      }
+    ],
+    "options": {
+      "resources_examples": [
+        "MCD_MDS",
+        "MCD_CIS",
+        "UPI",
+        "HOST_BANK",
+        "SID",
+        "VISA_BASE1",
+        "VISA_SMS"
+      ],
+      "services": [
+        "Retrait",
+        "Cash Advance",
+        "Transferts",
+        "Consultation Solde",
+        "Changement PIN",
+        "Envoi d'argent",
+        "Original",
+        "Achats",
+        "E-commerce",
+        "Quasi-Cash",
+        "Mini-Relevé",
+        "Remboursements",
+        "Paiement Factures",
+        "Authentification",
+        "Cashback"
+      ],
+      "limit_types": [
+        "Retrait",
+        "Purchase",
+        "CASH_advance",
+        "Quasi-cash",
+        "E-commerce"
+      ]
+    }
+  },
+  "provenance": {
+    "bank.name": {
+      "source": "llm",
+      "confidence": 1.0,
+      "timestamp": "2026-02-28T19:13:34",
+      "evidence": "je veux ajoutter une nouvelle banque appeller maghrib bank au maroc avec bank code 1458 et resourses transactions"
+    },
+    "bank.country": {
+      "source": "llm",
+      "confidence": 1.0,
+      "timestamp": "2026-02-28T19:13:34",
+      "evidence": "je veux ajoutter une nouvelle banque appeller maghrib bank au maroc avec bank code 1458 et resourses transactions"
+    },
+    "bank.bank_code": {
+      "source": "llm",
+      "confidence": 1.0,
+      "timestamp": "2026-02-28T19:13:34",
+      "evidence": "je veux ajoutter une nouvelle banque appeller maghrib bank au maroc avec bank code 1458 et resourses transactions"
+    },
+    "bank.resources.0": {
+      "source": "llm",
+      "confidence": 1.0,
+      "timestamp": "2026-02-28T19:13:34",
+      "evidence": "je veux ajoutter une nouvelle banque appeller maghrib bank au maroc avec bank code 1458 et resourses transactions"
+    },
+    "bank.agencies.0.agency_name": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-28T21:10:53",
+      "evidence": "agence de lama,0025"
+    },
+    "bank.agencies.0.agency_code": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-02-28T21:10:53",
+      "evidence": "agence de lama,0025"
+    },
+    "bank.agencies.0.city": {
+      "source": "rules",
+      "confidence": 0.75,
+      "timestamp": "2026-02-28T21:10:53",
+      "evidence": "agence de lama,0025"
+    },
+    "cards.0.card_info.plastic_type": {
+      "source": "llm",
+      "confidence": 1.0,
+      "timestamp": "2026-02-28T21:11:33",
+      "evidence": "mastercard credit et debit , pvc"
+    },
+    "cards.0.card_info.product_type": {
+      "source": "llm",
+      "confidence": 1.0,
+      "timestamp": "2026-02-28T21:11:42",
+      "evidence": "mastercard credit et debit , pvc"
+    }
+  },
+  "dialog_state": {
+    "step": "paused",
+    "mode": "normal",
+    "last_intent": "unknown",
+    "last_question": "Top. Quel est le code de la ville ? Je prends le code exact.",
+    "last_question_paths": [
+      "bank.agencies.0.city_code"
+    ],
+    "missing_fields": [
+      "bank.agencies.0.city_code",
+      "bank.agencies.0.region",
+      "bank.agencies.0.region_code",
+      "cards.0.card_info.bin",
+      "cards.0.card_info.card_description",
+      "cards.0.card_info.product_code",
+      "cards.0.card_info.pvk_index",
+      "cards.0.card_info.service_code",
+      "cards.0.card_info.network",
+      "cards.0.card_info.expiration",
+      "cards.0.card_info.renewal_option",
+      "cards.0.card_info.pre_expiration",
+      "cards.0.card_range.note",
+      "cards.0.fees.fee_description",
+      "cards.0.fees.billing_event",
+      "cards.0.fees.grace_period",
+      "cards.0.fees.billing_period",
+      "cards.0.fees.registration_fee",
+      "cards.0.fees.periodic_fee",
+      "cards.0.fees.replacement_fee",
+      "cards.0.fees.pin_recalculation_fee",
+      "cards.0.services.enabled",
+      "cards.0.limits.selected_limit_types",
+      "cards.0.limits.by_type.DEFAULT.domestic.daily_amount",
+      "cards.0.limits.by_type.DEFAULT.domestic.daily_count",
+      "cards.0.limits.by_type.DEFAULT.domestic.weekly_amount",
+      "cards.0.limits.by_type.DEFAULT.domestic.weekly_count",
+      "cards.0.limits.by_type.DEFAULT.domestic.monthly_amount",
+      "cards.0.limits.by_type.DEFAULT.domestic.monthly_count",
+      "cards.0.limits.by_type.DEFAULT.international.daily_amount",
+      "cards.0.limits.by_type.DEFAULT.international.daily_count",
+      "cards.0.limits.by_type.DEFAULT.international.weekly_amount",
+      "cards.0.limits.by_type.DEFAULT.international.weekly_count",
+      "cards.0.limits.by_type.DEFAULT.international.monthly_amount",
+      "cards.0.limits.by_type.DEFAULT.international.monthly_count",
+      "cards.0.limits.by_type.DEFAULT.total.daily_amount",
+      "cards.0.limits.by_type.DEFAULT.total.daily_count",
+      "cards.0.limits.by_type.DEFAULT.total.weekly_amount",
+      "cards.0.limits.by_type.DEFAULT.total.weekly_count",
+      "cards.0.limits.by_type.DEFAULT.total.monthly_amount",
+      "cards.0.limits.by_type.DEFAULT.total.monthly_count",
+      "cards.0.limits.by_type.DEFAULT.per_transaction.min_amount",
+      "cards.0.limits.by_type.DEFAULT.per_transaction.max_amount"
+    ],
+    "asked_fields": [
+      "bank.agencies.0.agency_name",
+      "bank.agencies.0.city",
+      "bank.agencies.0.agency_code",
+      "cards.0.card_info.network",
+      "cards.0.card_info.product_type",
+      "cards.0.card_info.plastic_type",
+      "bank.agencies.0.city_code"
+    ],
+    "pending_confirmations": [],
+    "nlu_fail_count": 0,
+    "last_user_message": "exit",
+    "active_menu": null
+  },
+  "history": [
+    {
+      "agent": "Donne l'agence principale: nom, ville, code agence.\nEx: Agence Centre, Casablanca, 0025",
+      "user": "agence de lama,0025"
+    },
+    {
+      "agent": "Precise le profil carte: reseau, type, support.\nEx: VISA, DEBIT, PVC",
+      "user": "mastercard credit et debit , pvc"
+    }
+  ],
+  "done": false
+}
