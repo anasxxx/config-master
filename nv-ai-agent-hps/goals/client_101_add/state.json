@@ -1,0 +1,266 @@
+{
+  "meta": {
+    "goal_id": 104,
+    "client": "client",
+    "client_n": 101,
+    "action": "add",
+    "created_at": "2026-02-27T11:23:28",
+    "last_question_path": "cards.0.fees.pin_recalculation_fee",
+    "last_question_paths": [
+      "cards.0.fees.pin_recalculation_fee"
+    ]
+  },
+  "goal": "je veux créer une banque",
+  "facts": {
+    "bank": {
+      "name": "EST SAHAM",
+      "country": "Maroc",
+      "currency": "MAD",
+      "bank_code": "336644",
+      "resources": [
+        "jeveuxactiveraccounts",
+        "cards",
+        "transactions"
+      ],
+      "agencies": [
+        {
+          "agency_name": "Agence Centre",
+          "agency_code": "422",
+          "city": "Rabat",
+          "city_code": "002",
+          "region": "Rabat",
+          "region_code": "2"
+        }
+      ],
+      "country_alpha2": "MA"
+    },
+    "cards": [
+      {
+        "card_info": {
+          "bin": "552277",
+          "plastic_type": "PVC",
+          "card_description": "Carte spéciale",
+          "product_type": "DEBIT",
+          "product_code": "PRD005",
+          "pvk_index": "1",
+          "service_code": "101",
+          "network": "VISA",
+          "expiration": "36",
+          "renewal_option": "AUTO",
+          "pre_expiration": "28 jours"
+        },
+        "card_range": {
+          "note": "Saham est la meilleur banque du maroc"
+        },
+        "fees": {
+          "fee_description": "soyez responsable",
+          "billing_event": "RENEWAL",
+          "grace_period": "27",
+          "billing_period": "YEARLY",
+          "registration_fee": "45",
+          "periodic_fee": "10",
+          "replacement_fee": "20",
+          "pin_recalculation_fee": "5"
+        },
+        "services": {
+          "enabled": [
+            "TOKENIZATION"
+          ]
+        },
+        "limits": {
+          "selected_limit_types": [],
+          "by_type": {
+            "DEFAULT": {
+              "domestic": {
+                "daily_amount": "2000",
+                "daily_count": null,
+                "weekly_amount": "30000",
+                "weekly_count": null,
+                "monthly_amount": "70000",
+                "monthly_count": null
+              },
+              "international": {
+                "daily_amount": "1500",
+                "daily_count": null,
+                "weekly_amount": "10000",
+                "weekly_count": null,
+                "monthly_amount": "30000",
+                "monthly_count": null
+              },
+              "total": {
+                "daily_amount": null,
+                "daily_count": null,
+                "weekly_amount": null,
+                "weekly_count": null,
+                "monthly_amount": null,
+                "monthly_count": null
+              },
+              "per_transaction": {
+                "min_amount": null,
+                "max_amount": null
+              }
+            }
+          }
+        }
+      }
+    ],
+    "options": {
+      "resources_examples": [
+        "MCD_MDS",
+        "MCD_CIS",
+        "UPI",
+        "HOST_BANK",
+        "SID",
+        "VISA_BASE1",
+        "VISA_SMS"
+      ],
+      "services": [
+        "Retrait",
+        "Cash Advance",
+        "Transferts",
+        "Consultation Solde",
+        "Changement PIN",
+        "Envoi d'argent",
+        "Original",
+        "Achats",
+        "E-commerce",
+        "Quasi-Cash",
+        "Mini-Relevé",
+        "Remboursements",
+        "Paiement Factures",
+        "Authentification",
+        "Cashback"
+      ],
+      "limit_types": [
+        "Retrait",
+        "Purchase",
+        "CASH_advance",
+        "Quasi-cash",
+        "E-commerce"
+      ]
+    }
+  },
+  "history": [
+    {
+      "agent": "Quel est le nom de la banque ?",
+      "user": "le nom de la banque est Saham"
+    },
+    {
+      "agent": "Quel est le pays de la banque ? ",
+      "user": "Maroc"
+    },
+    {
+      "agent": "Quel est le code de la banque (bank code) ?",
+      "user": "336644"
+    },
+    {
+      "agent": "Quelles ressources veux-tu activer ? (ex: accounts, cards, transactions) Donne une liste séparée par virgules.",
+      "user": "je veux activer accounts, cards, transactions"
+    },
+    {
+      "agent": "Nom de l’agence + code (ex: Agence Centre, 555)",
+      "user": "Agence Centre , 422"
+    },
+    {
+      "agent": "Ville + code ville (ex: Casablanca, 001)",
+      "user": "Rabat, 002"
+    },
+    {
+      "agent": "Région + code région (ex: Grand Casablanca, 10)",
+      "user": "Rabat, 2"
+    },
+    {
+      "agent": "BIN + réseau (ex: 445555, VISA)",
+      "user": "552277, VISA"
+    },
+    {
+      "agent": "Type de carte (plastique) (ex: PVC)",
+      "user": "PVC"
+    },
+    {
+      "agent": "Nom/description de la carte (ex: Carte Classic)",
+      "user": "Carte spéciale"
+    },
+    {
+      "agent": "Type de carte (ex: DEBIT ou CREDIT)",
+      "user": "DEBIT"
+    },
+    {
+      "agent": "Code du produit carte (ex: PRD001)",
+      "user": "PRD005"
+    },
+    {
+      "agent": "Paramètre sécurité PIN (PVK index). Si tu ne sais pas, mets 1",
+      "user": "1"
+    },
+    {
+      "agent": "Code service de la carte. Si tu ne sais pas, mets 101",
+      "user": "101"
+    },
+    {
+      "agent": "Durée de validité de la carte (ex: 36 mois)",
+      "user": "36"
+    },
+    {
+      "agent": "Renouvellement automatique ? (ex: AUTO ou MANUAL)",
+      "user": "AUTO"
+    },
+    {
+      "agent": "Délai avant expiration pour lancer le renouvellement (ex: 30 jours)",
+      "user": "28 jours"
+    },
+    {
+      "agent": "Quels services veux-tu activer pour la carte ? (liste séparée par virgules) (ex: 3DS, TOKENIZATION)",
+      "user": "TOKENIZATION"
+    },
+    {
+      "agent": "Plafonds NATIONAUX (montant par jour, semaine, mois) ex: 5000, 20000, 80000",
+      "user": "2000, 30000, 70000"
+    },
+    {
+      "agent": "Plafonds INTERNATIONAUX (montant par jour, semaine, mois) ex: 2000, 10000, 40000",
+      "user": "1500, 10000, 30000"
+    },
+    {
+      "agent": "Peux-tu préciser note ?",
+      "user": "Saham est la meilleur banque du maroc"
+    },
+    {
+      "agent": "Quelle est la description des frais ?",
+      "user": "soyez responsable"
+    },
+    {
+      "agent": "Quel est l’événement de facturation ? (ex: ISSUANCE, RENEWAL)",
+      "user": "RENEWAL"
+    },
+    {
+      "agent": "Quelle est la période de grâce ? (en jours, ex: 30)",
+      "user": "27"
+    },
+    {
+      "agent": "Quelle est la période de facturation ? (ex: MONTHLY, YEARLY)",
+      "user": "YEARLY"
+    },
+    {
+      "agent": "Quels sont les frais d’inscription ? (ex: 50)",
+      "user": "45"
+    },
+    {
+      "agent": "Quels sont les frais périodiques ? (ex: 10)",
+      "user": "10"
+    },
+    {
+      "agent": "Quels sont les frais de remplacement ? (ex: 25)",
+      "user": "20"
+    },
+    {
+      "agent": "Quels sont les frais de recalcul du PIN ? (ex: 5)",
+      "user": "5"
+    },
+    {
+      "agent": "DONE",
+      "user": "all fields filled"
+    }
+  ],
+  "done": true
+}

@@ -1,5 +1,5 @@
 {
-  "last_id": 99,
+  "last_id": 109,
   "goals": [
     {
       "goal_id": 1,
@@ -301,13 +301,6 @@
       "client_n": 40,
       "action": "add",
       "folder": "client_040_add"
-    },
-    {
-      "goal_id": 44,
-      "client": "client",
-      "client_n": 41,
-      "action": "add",
-      "folder": "client_041_add"
     },
     {
       "goal_id": 45,
@@ -693,6 +686,69 @@
       "client_n": 96,
       "action": "other",
       "folder": "client_096_other"
+    },
+    {
+      "goal_id": 100,
+      "client": "client",
+      "client_n": 97,
+      "action": "other",
+      "folder": "client_097_other"
+    },
+    {
+      "goal_id": 101,
+      "client": "client",
+      "client_n": 98,
+      "action": "other",
+      "folder": "client_098_other"
+    },
+    {
+      "goal_id": 102,
+      "client": "client",
+      "client_n": 99,
+      "action": "add",
+      "folder": "client_099_add"
+    },
+    {
+      "goal_id": 104,
+      "client": "client",
+      "client_n": 101,
+      "action": "add",
+      "folder": "client_101_add"
+    },
+    {
+      "goal_id": 105,
+      "client": "client",
+      "client_n": 102,
+      "action": "other",
+      "folder": "client_102_other"
+    },
+    {
+      "goal_id": 106,
+      "client": "client",
+      "client_n": 103,
+      "action": "other",
+      "folder": "client_103_other"
+    },
+    {
+      "goal_id": 107,
+      "client": "client",
+      "client_n": 104,
+      "action": "add",
+      "folder": "client_104_add"
+    },
+    {
+      "goal_id": 108,
+      "client": "client",
+      "client_n": 105,
+      "action": "add",
+      "folder": "client_105_add"
+    },
+    {
+      "goal_id": 109,
+      "client": "client",
+      "client_n": 106,
+      "action": "other",
+      "folder": "client_106_other"
     }
   ]
 }

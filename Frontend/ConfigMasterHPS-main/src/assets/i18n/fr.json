@@ -54,7 +54,8 @@
     "activity": "Gestion d'activité",
     "logout": "Déconnexion",
     "front_office":"Activité Front Office",
-    "back_office":"Activité Back Office"
+    "back_office":"Activité Back Office",
+    "ai_agent":"Agent IA"
   },
   "home": {
     "welcome": "Bienvenue",
@@ -471,5 +472,36 @@
     "launching":"Lancement Campagne...",
     "hideResults":"Cacher Resultats",
     "showResults":"Afficher Resultats"
+  },
+  "agent": {
+    "title": "Agent IA",
+    "newGoal": "Nouvelle Configuration",
+    "goals": "Configurations",
+    "loading": "Chargement...",
+    "noGoals": "Aucune configuration. Commencez-en une nouvelle !",
+    "complete": "Termin\u00e9",
+    "inProgress": "En cours",
+    "fieldsLeft": "champs restants",
+    "welcomeTitle": "Agent IA ConfigMaster",
+    "welcomeDesc": "Je vais vous guider \u00e9tape par \u00e9tape dans le processus de configuration bancaire. D\u00e9marrez une nouvelle configuration ou continuez une existante.",
+    "startConversation": "D\u00e9marrer une Configuration",
+    "createPrompt": "D\u00e9crivez la banque que vous voulez configurer (nom, pays, devise...)",
+    "goalCreated": "Configuration cr\u00e9\u00e9e : {{folder}}",
+    "allComplete": "Tous les champs sont remplis ! Vous pouvez maintenant soumettre la configuration au backend ou g\u00e9n\u00e9rer un rapport PDF.",
+    "progress": "Progression",
+    "newGoalPlaceholder": "ex: Ajouter banque Alpha au Maroc en MAD...",
+    "chatPlaceholder": "Tapez votre r\u00e9ponse...",
+    "submit": "Soumettre au Backend",
+    "submitting": "Soumission...",
+    "submitSuccess": "Configuration soumise avec succ\u00e8s au backend !",
+    "submitError": "\u00c9chec de la soumission",
+    "generatePdf": "G\u00e9n\u00e9rer PDF",
+    "pdfGenerated": "Rapport PDF g\u00e9n\u00e9r\u00e9 avec succ\u00e8s.",
+    "pdfError": "\u00c9chec de la g\u00e9n\u00e9ration du PDF.",
+    "confirmDelete": "Supprimer la configuration {{folder}} ?",
+    "errorLoadGoals": "Impossible de se connecter \u00e0 l'Agent IA. V\u00e9rifiez que l'API agent est en cours d'ex\u00e9cution.",
+    "errorCreate": "Impossible de cr\u00e9er la configuration. Veuillez r\u00e9essayer.",
+    "errorLoad": "Impossible de charger les d\u00e9tails de la configuration.",
+    "errorChat": "Impossible de traiter votre message. Veuillez r\u00e9essayer."
   }
 }

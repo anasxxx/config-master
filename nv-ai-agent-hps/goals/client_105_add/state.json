@@ -1,0 +1,260 @@
+{
+  "meta": {
+    "goal_id": 108,
+    "client": "client",
+    "client_n": 105,
+    "action": "add",
+    "created_at": "2026-03-01T23:46:30",
+    "last_question_path": "cards.0.fees.pin_recalculation_fee",
+    "last_question_paths": [
+      "cards.0.fees.pin_recalculation_fee"
+    ]
+  },
+  "goal": "i want to add a bank named CDM ",
+  "facts": {
+    "bank": {
+      "name": "CDM",
+      "country": "Maroc",
+      "currency": "MAD",
+      "bank_code": "478965",
+      "resources": [
+        "cardsandtransactions"
+      ],
+      "agencies": [
+        {
+          "agency_name": "Agence bali",
+          "agency_code": "568",
+          "city": "casablanca",
+          "city_code": "001",
+          "region": "Grand Casablanca",
+          "region_code": "10"
+        }
+      ],
+      "country_alpha2": "MA"
+    },
+    "cards": [
+      {
+        "card_info": {
+          "bin": "445555",
+          "plastic_type": "pvc",
+          "card_description": "carte classic",
+          "product_type": "debit",
+          "product_code": "prd001",
+          "pvk_index": "1",
+          "service_code": "101",
+          "network": "VISA",
+          "expiration": "36",
+          "renewal_option": "auto",
+          "pre_expiration": "30"
+        },
+        "card_range": {
+          "note": "note hh"
+        },
+        "fees": {
+          "fee_description": "frais hh",
+          "billing_event": "renewal",
+          "grace_period": "30",
+          "billing_period": "yearly",
+          "registration_fee": "50",
+          "periodic_fee": "10",
+          "replacement_fee": "25",
+          "pin_recalculation_fee": "5"
+        },
+        "services": {
+          "enabled": [
+            "TOKENIZATION"
+          ]
+        },
+        "limits": {
+          "selected_limit_types": [],
+          "by_type": {
+            "DEFAULT": {
+              "domestic": {
+                "daily_amount": "5000",
+                "daily_count": null,
+                "weekly_amount": "20000",
+                "weekly_count": null,
+                "monthly_amount": "80000",
+                "monthly_count": null
+              },
+              "international": {
+                "daily_amount": "2000",
+                "daily_count": null,
+                "weekly_amount": "10000",
+                "weekly_count": null,
+                "monthly_amount": "40000",
+                "monthly_count": null
+              },
+              "total": {
+                "daily_amount": null,
+                "daily_count": null,
+                "weekly_amount": null,
+                "weekly_count": null,
+                "monthly_amount": null,
+                "monthly_count": null
+              },
+              "per_transaction": {
+                "min_amount": null,
+                "max_amount": null
+              }
+            }
+          }
+        }
+      }
+    ],
+    "options": {
+      "resources_examples": [
+        "MCD_MDS",
+        "MCD_CIS",
+        "UPI",
+        "HOST_BANK",
+        "SID",
+        "VISA_BASE1",
+        "VISA_SMS"
+      ],
+      "services": [
+        "Retrait",
+        "Cash Advance",
+        "Transferts",
+        "Consultation Solde",
+        "Changement PIN",
+        "Envoi d'argent",
+        "Original",
+        "Achats",
+        "E-commerce",
+        "Quasi-Cash",
+        "Mini-Relevé",
+        "Remboursements",
+        "Paiement Factures",
+        "Authentification",
+        "Cashback"
+      ],
+      "limit_types": [
+        "Retrait",
+        "Purchase",
+        "CASH_advance",
+        "Quasi-cash",
+        "E-commerce"
+      ]
+    }
+  },
+  "history": [
+    {
+      "agent": "bank.country",
+      "user": "CDM"
+    },
+    {
+      "agent": "bank.bank_code",
+      "user": "MOROCCO"
+    },
+    {
+      "agent": "bank.resources",
+      "user": "478965"
+    },
+    {
+      "agent": "bank.agencies.0.agency_name",
+      "user": "cards and transactions"
+    },
+    {
+      "agent": "bank.agencies.0.city",
+      "user": "Agence bali , 568"
+    },
+    {
+      "agent": "bank.agencies.0.region",
+      "user": "casablanca , 001"
+    },
+    {
+      "agent": "cards.0.card_info.bin",
+      "user": "Grand Casablanca, 10"
+    },
+    {
+      "agent": "cards.0.card_info.plastic_type",
+      "user": "445555, VISA"
+    },
+    {
+      "agent": "cards.0.card_info.card_description",
+      "user": "pvc"
+    },
+    {
+      "agent": "cards.0.card_info.product_type",
+      "user": "carte classic"
+    },
+    {
+      "agent": "cards.0.card_info.product_code",
+      "user": "debit"
+    },
+    {
+      "agent": "cards.0.card_info.pvk_index",
+      "user": "prd001"
+    },
+    {
+      "agent": "cards.0.card_info.service_code",
+      "user": "1"
+    },
+    {
+      "agent": "cards.0.card_info.expiration",
+      "user": "101"
+    },
+    {
+      "agent": "cards.0.card_info.renewal_option",
+      "user": "36"
+    },
+    {
+      "agent": "cards.0.card_info.pre_expiration",
+      "user": "auto"
+    },
+    {
+      "agent": "cards.0.services.enabled",
+      "user": "30"
+    },
+    {
+      "agent": "cards.0.limits.by_type.DEFAULT.domestic.daily_amount",
+      "user": "tokenization"
+    },
+    {
+      "agent": "cards.0.limits.by_type.DEFAULT.international.daily_amount",
+      "user": "5000, 20000, 80000"
+    },
+    {
+      "agent": "cards.0.card_range.note",
+      "user": "2000, 10000, 40000"
+    },
+    {
+      "agent": "cards.0.fees.fee_description",
+      "user": "note hh"
+    },
+    {
+      "agent": "cards.0.fees.billing_event",
+      "user": "frais hh"
+    },
+    {
+      "agent": "cards.0.fees.grace_period",
+      "user": "renewal"
+    },
+    {
+      "agent": "cards.0.fees.billing_period",
+      "user": "30"
+    },
+    {
+      "agent": "cards.0.fees.registration_fee",
+      "user": "yearly"
+    },
+    {
+      "agent": "cards.0.fees.periodic_fee",
+      "user": "50"
+    },
+    {
+      "agent": "cards.0.fees.replacement_fee",
+      "user": "10"
+    },
+    {
+      "agent": "cards.0.fees.pin_recalculation_fee",
+      "user": "25"
+    },
+    {
+      "agent": "cards.0.fees.pin_recalculation_fee",
+      "user": "5"
+    }
+  ],
+  "done": true
+}

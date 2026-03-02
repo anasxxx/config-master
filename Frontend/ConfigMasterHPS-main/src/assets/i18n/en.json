@@ -54,7 +54,8 @@
     "activity": "Activity Management",
     "logout": "Logout",
     "front_office":"Front Office Activity",    
-    "back_office":"Back Office Activity"     
+    "back_office":"Back Office Activity",
+    "ai_agent":"AI Agent"
   },
   "home": {
     "welcome": "Welcome",
@@ -496,5 +497,36 @@
     "launching":"Launching Campaign...",
     "hideResults":"Hide Results",
     "showResults":"Show Results"
+  },
+  "agent": {
+    "title": "AI Agent",
+    "newGoal": "New Configuration",
+    "goals": "Configurations",
+    "loading": "Loading...",
+    "noGoals": "No configurations yet. Start a new one!",
+    "complete": "Complete",
+    "inProgress": "In Progress",
+    "fieldsLeft": "fields left",
+    "welcomeTitle": "ConfigMaster AI Agent",
+    "welcomeDesc": "I will guide you through the bank configuration process step by step. Start a new configuration or continue an existing one.",
+    "startConversation": "Start New Configuration",
+    "createPrompt": "Describe the bank you want to configure (name, country, currency...)",
+    "goalCreated": "Configuration created: {{folder}}",
+    "allComplete": "All fields have been filled! You can now submit the configuration to the backend or generate a PDF report.",
+    "progress": "Progress",
+    "newGoalPlaceholder": "e.g. Add bank Alpha in Morocco with MAD currency...",
+    "chatPlaceholder": "Type your answer...",
+    "submit": "Submit to Backend",
+    "submitting": "Submitting...",
+    "submitSuccess": "Configuration submitted successfully to the backend!",
+    "submitError": "Submission failed",
+    "generatePdf": "Generate PDF",
+    "pdfGenerated": "PDF report generated successfully.",
+    "pdfError": "Failed to generate PDF.",
+    "confirmDelete": "Delete configuration {{folder}}?",
+    "errorLoadGoals": "Failed to connect to the AI Agent. Make sure the agent API is running.",
+    "errorCreate": "Failed to create configuration. Please try again.",
+    "errorLoad": "Failed to load configuration details.",
+    "errorChat": "Failed to process your message. Please try again."
   }
 }

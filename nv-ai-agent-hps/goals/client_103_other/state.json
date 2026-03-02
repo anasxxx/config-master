@@ -1,0 +1,256 @@
+{
+  "meta": {
+    "goal_id": 106,
+    "client": "client",
+    "client_n": 103,
+    "action": "other",
+    "created_at": "2026-03-01T15:07:50",
+    "last_question_path": "cards.0.fees.pin_recalculation_fee",
+    "last_question_paths": [
+      "cards.0.fees.pin_recalculation_fee"
+    ]
+  },
+  "goal": "CIH , Morocco , MAD ",
+  "facts": {
+    "bank": {
+      "name": "CIH",
+      "country": "Maroc",
+      "currency": "MAD",
+      "bank_code": "526634",
+      "resources": [
+        "transactions",
+        "cards"
+      ],
+      "agencies": [
+        {
+          "agency_name": "Agence centre",
+          "agency_code": "555",
+          "city": "Rabat",
+          "city_code": "002",
+          "region": "Rabat",
+          "region_code": "102"
+        }
+      ]
+    },
+    "cards": [
+      {
+        "card_info": {
+          "bin": "552266",
+          "plastic_type": "PVC",
+          "card_description": "carte spéciale",
+          "product_type": "credit",
+          "product_code": "PRD002",
+          "pvk_index": "1",
+          "service_code": "101",
+          "network": "VISA",
+          "expiration": "36",
+          "renewal_option": "auto",
+          "pre_expiration": "30"
+        },
+        "card_range": {
+          "note": "soyez responsable"
+        },
+        "fees": {
+          "fee_description": "frais couteux",
+          "billing_event": "renewal",
+          "grace_period": "27",
+          "billing_period": "yearly",
+          "registration_fee": "45",
+          "periodic_fee": "10",
+          "replacement_fee": "25",
+          "pin_recalculation_fee": "5"
+        },
+        "services": {
+          "enabled": [
+            "TOKENIZATION"
+          ]
+        },
+        "limits": {
+          "selected_limit_types": [],
+          "by_type": {
+            "DEFAULT": {
+              "domestic": {
+                "daily_amount": "5000",
+                "daily_count": null,
+                "weekly_amount": "20000",
+                "weekly_count": null,
+                "monthly_amount": "80000",
+                "monthly_count": null
+              },
+              "international": {
+                "daily_amount": "2000",
+                "daily_count": null,
+                "weekly_amount": "10000",
+                "weekly_count": null,
+                "monthly_amount": "40000",
+                "monthly_count": null
+              },
+              "total": {
+                "daily_amount": null,
+                "daily_count": null,
+                "weekly_amount": null,
+                "weekly_count": null,
+                "monthly_amount": null,
+                "monthly_count": null
+              },
+              "per_transaction": {
+                "min_amount": null,
+                "max_amount": null
+              }
+            }
+          }
+        }
+      }
+    ],
+    "options": {
+      "resources_examples": [
+        "MCD_MDS",
+        "MCD_CIS",
+        "UPI",
+        "HOST_BANK",
+        "SID",
+        "VISA_BASE1",
+        "VISA_SMS"
+      ],
+      "services": [
+        "Retrait",
+        "Cash Advance",
+        "Transferts",
+        "Consultation Solde",
+        "Changement PIN",
+        "Envoi d'argent",
+        "Original",
+        "Achats",
+        "E-commerce",
+        "Quasi-Cash",
+        "Mini-Relevé",
+        "Remboursements",
+        "Paiement Factures",
+        "Authentification",
+        "Cashback"
+      ],
+      "limit_types": [
+        "Retrait",
+        "Purchase",
+        "CASH_advance",
+        "Quasi-cash",
+        "E-commerce"
+      ]
+    }
+  },
+  "history": [
+    {
+      "agent": "bank.bank_code",
+      "user": "CIH"
+    },
+    {
+      "agent": "bank.resources",
+      "user": "526634"
+    },
+    {
+      "agent": "bank.agencies.0.agency_name",
+      "user": "transactions, cards"
+    },
+    {
+      "agent": "bank.agencies.0.city",
+      "user": "Agence centre, 555"
+    },
+    {
+      "agent": "bank.agencies.0.region",
+      "user": "Rabat , 002"
+    },
+    {
+      "agent": "cards.0.card_info.bin",
+      "user": "Rabat, 102"
+    },
+    {
+      "agent": "cards.0.card_info.plastic_type",
+      "user": "552266, VISA"
+    },
+    {
+      "agent": "cards.0.card_info.card_description",
+      "user": "PVC"
+    },
+    {
+      "agent": "cards.0.card_info.product_type",
+      "user": "carte spéciale"
+    },
+    {
+      "agent": "cards.0.card_info.product_code",
+      "user": "credit"
+    },
+    {
+      "agent": "cards.0.card_info.pvk_index",
+      "user": "PRD002"
+    },
+    {
+      "agent": "cards.0.card_info.service_code",
+      "user": "1"
+    },
+    {
+      "agent": "cards.0.card_info.expiration",
+      "user": "101"
+    },
+    {
+      "agent": "cards.0.card_info.renewal_option",
+      "user": "36"
+    },
+    {
+      "agent": "cards.0.card_info.pre_expiration",
+      "user": "auto"
+    },
+    {
+      "agent": "cards.0.services.enabled",
+      "user": "30"
+    },
+    {
+      "agent": "cards.0.limits.by_type.DEFAULT.domestic.daily_amount",
+      "user": "Tokenization"
+    },
+    {
+      "agent": "cards.0.limits.by_type.DEFAULT.international.daily_amount",
+      "user": "5000, 20000, 80000"
+    },
+    {
+      "agent": "cards.0.card_range.note",
+      "user": "2000, 10000, 40000"
+    },
+    {
+      "agent": "cards.0.fees.fee_description",
+      "user": "soyez responsable"
+    },
+    {
+      "agent": "cards.0.fees.billing_event",
+      "user": "frais couteux"
+    },
+    {
+      "agent": "cards.0.fees.grace_period",
+      "user": "renewal"
+    },
+    {
+      "agent": "cards.0.fees.billing_period",
+      "user": "27"
+    },
+    {
+      "agent": "cards.0.fees.registration_fee",
+      "user": "yearly"
+    },
+    {
+      "agent": "cards.0.fees.periodic_fee",
+      "user": "45"
+    },
+    {
+      "agent": "cards.0.fees.replacement_fee",
+      "user": "10"
+    },
+    {
+      "agent": "cards.0.fees.pin_recalculation_fee",
+      "user": "25"
+    },
+    {
+      "agent": "cards.0.fees.pin_recalculation_fee",
+      "user": "5"
+    }
+  ],
+  "done": true
+}

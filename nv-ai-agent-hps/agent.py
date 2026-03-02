@@ -4,6 +4,9 @@ from pathlib import Path
 from datetime import datetime
 import re
 import copy
+from dotenv import load_dotenv
+
+load_dotenv(override=True)
 from agents.pdf import JSONToPDFAgent
 from agents.auto_fill_rules import auto_fill
 from agents.brain import brain_step

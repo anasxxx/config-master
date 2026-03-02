@@ -58,6 +58,10 @@
     <span class="nav-text" *ngIf="sidebarExpanded">{{ "nav.back_office" | translate }}</span>     
   </a>   
 </div>
+<a class="nav-item d-block" routerLink="/agent" routerLinkActive="active">
+  <i class="bi bi-robot me-2"></i>
+  <span class="nav-text" *ngIf="sidebarExpanded">{{ "nav.ai_agent" | translate }}</span>
+</a>
 </nav>
 
       <!-- Logout -->
