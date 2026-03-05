@@ -24,7 +24,7 @@ import requests
 from agents.bank_pipeline import map_facts_to_bank_req, submit_bank_req, verify_bank
 
 # ── Test data (all fields required by the backend/PL/SQL) ──────────────────
-TEST_BANK_CODE = "TST"   # use a short, unique test code
+TEST_BANK_CODE = "TST"   # change this if you get code=-2 (duplicate key)
 
 MOCK_STATE = {
     "facts": {
@@ -132,6 +132,11 @@ def main():
     print(f"    productCode (limit)   = {card['limits'][0]['productCode']!r}  (want 4 chars)")
     print(f"    subscriptionAmount    = {card['fees']['subscriptionAmount']!r}  (want str)")
     print(f"    billingEvt            = {card['fees']['cardFeesBillingEvt']!r}  (want 1 char)")
+    print()
+
+    # ── Step 1b: print full payload for debugging ─────────────────────────
+    print("\n  Full payload:")
+    print(json.dumps(payload, indent=4, ensure_ascii=False))
     print()
 
     # ── Step 2: submit ────────────────────────────────────────────────────
