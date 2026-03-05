@@ -1,0 +1,628 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------------< com.hps:configmaster_backend >--------------------
+[INFO] Building configmaster_backend 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] >>> spring-boot:3.2.2:run (default-cli) > test-compile @ configmaster_backend >>>
+[WARNING] The artifact org.hibernate:hibernate-core:jar:6.4.1.Final has been relocated to org.hibernate.orm:hibernate-core:jar:6.4.1.Final
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ configmaster_backend ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.11.0:compile (default-compile) @ configmaster_backend ---
+[INFO] Changes detected - recompiling the module! :source
+[INFO] Compiling 158 source files with javac [debug release 17] to target\classes
+[INFO] /C:/Users/amahmoudi/Downloads/config-master-main/SIT/ConfigMaster-Backend/src/main/java/com/hps/configmaster_backend/service/Imp/JWTService.java: C:\Users\amahmoudi\Downloads\config-master-main\SIT\ConfigMaster-Backend\src\main\java\com\hps\configmaster_backend\service\Imp\JWTService.java uses or overrides a deprecated API.
+[INFO] /C:/Users/amahmoudi/Downloads/config-master-main/SIT/ConfigMaster-Backend/src/main/java/com/hps/configmaster_backend/service/Imp/JWTService.java: Recompile with -Xlint:deprecation for details.
+[INFO] /C:/Users/amahmoudi/Downloads/config-master-main/SIT/ConfigMaster-Backend/src/main/java/com/hps/configmaster_backend/service/Imp/JWTService.java: Some input files use unchecked or unsafe operations.
+[INFO] /C:/Users/amahmoudi/Downloads/config-master-main/SIT/ConfigMaster-Backend/src/main/java/com/hps/configmaster_backend/service/Imp/JWTService.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ configmaster_backend ---
+[INFO] skip non existing resourceDirectory C:\Users\amahmoudi\Downloads\config-master-main\SIT\ConfigMaster-Backend\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.11.0:testCompile (default-testCompile) @ configmaster_backend ---
+[INFO] Changes detected - recompiling the module! :dependency
+[INFO] Compiling 1 source file with javac [debug release 17] to target\test-classes
+[INFO] 
+[INFO] <<< spring-boot:3.2.2:run (default-cli) < test-compile @ configmaster_backend <<<
+[INFO] 
+[INFO] 
+[INFO] --- spring-boot:3.2.2:run (default-cli) @ configmaster_backend ---
+[INFO] Attaching agents: []
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.2)
+
+2026-03-03T03:28:12.538Z  INFO 31676 --- [configmaster_backend] [           main] c.h.c.ConfigmasterBackendApplication     : Starting ConfigmasterBackendApplication using Java 18.0.2.1 with PID 31676 (C:\Users\amahmoudi\Downloads\config-master-main\SIT\ConfigMaster-Backend\target\classes started by amahmoudi in C:\Users\amahmoudi\Downloads\config-master-main\SIT\ConfigMaster-Backend)
+2026-03-03T03:28:12.601Z  INFO 31676 --- [configmaster_backend] [           main] c.h.c.ConfigmasterBackendApplication     : No active profile set, falling back to 1 default profile: "default"
+2026-03-03T03:28:17.072Z  INFO 31676 --- [configmaster_backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-03T03:28:17.816Z  INFO 31676 --- [configmaster_backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 675 ms. Found 15 JPA repository interfaces.
+2026-03-03T03:28:19.720Z  INFO 31676 --- [configmaster_backend] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8084 (http)
+2026-03-03T03:28:19.766Z  INFO 31676 --- [configmaster_backend] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-03T03:28:19.768Z  INFO 31676 --- [configmaster_backend] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2026-03-03T03:28:19.973Z  INFO 31676 --- [configmaster_backend] [           main] o.a.c.c.C.[.[.[/configmaster_backend]    : Initializing Spring embedded WebApplicationContext
+2026-03-03T03:28:19.975Z  INFO 31676 --- [configmaster_backend] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 7020 ms
+2026-03-03T03:28:20.991Z  INFO 31676 --- [configmaster_backend] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-03-03T03:28:21.173Z  INFO 31676 --- [configmaster_backend] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.1.Final
+2026-03-03T03:28:21.306Z  INFO 31676 --- [configmaster_backend] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-03-03T03:28:22.097Z  INFO 31676 --- [configmaster_backend] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-03T03:28:22.198Z  INFO 31676 --- [configmaster_backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-03-03T03:28:23.078Z  INFO 31676 --- [configmaster_backend] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection oracle.jdbc.driver.T4CConnection@134d7ffa
+2026-03-03T03:28:23.083Z  INFO 31676 --- [configmaster_backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-03-03T03:28:23.558Z  WARN 31676 --- [configmaster_backend] [           main] org.hibernate.orm.deprecation            : HHH90000025: OracleDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-03T03:28:28.327Z  INFO 31676 --- [configmaster_backend] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-03T03:28:28.341Z  INFO 31676 --- [configmaster_backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-03T03:28:29.500Z  INFO 31676 --- [configmaster_backend] [           main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-03-03T03:28:31.863Z  WARN 31676 --- [configmaster_backend] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-03-03T03:28:34.364Z  INFO 31676 --- [configmaster_backend] [           main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@23ba044f, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@736b8ed4, org.springframework.security.web.context.SecurityContextHolderFilter@7a61020a, org.springframework.security.web.header.HeaderWriterFilter@88b9cf, org.springframework.web.filter.CorsFilter@7c556af2, org.springframework.security.web.authentication.logout.LogoutFilter@77889f63, com.hps.configmaster_backend.filter.JwtAuthorizationFilter@2ec99035, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1b35f06a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7fd4d278, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1b047ad, org.springframework.security.web.session.SessionManagementFilter@3d61b36a, org.springframework.security.web.access.ExceptionTranslationFilter@74055597, org.springframework.security.web.access.intercept.AuthorizationFilter@4169db10]
+2026-03-03T03:28:35.272Z  INFO 31676 --- [configmaster_backend] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8084 (http) with context path '/configmaster_backend'
+2026-03-03T03:28:35.308Z  INFO 31676 --- [configmaster_backend] [           main] c.h.c.ConfigmasterBackendApplication     : Started ConfigmasterBackendApplication in 24.4 seconds (process running for 26.874)
+2026-03-03T03:28:40.230Z  INFO 31676 --- [configmaster_backend] [nio-8084-exec-2] o.a.c.c.C.[.[.[/configmaster_backend]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-03T03:28:40.239Z  INFO 31676 --- [configmaster_backend] [nio-8084-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-03-03T03:28:40.244Z  INFO 31676 --- [configmaster_backend] [nio-8084-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/login
+? Aucun token trouvé, passage au filtre suivant.
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/login
+? Aucun token trouvé, passage au filtre suivant.
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/diag/clean-staging
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyODAzMn0.FONHkUS7xn36WsGx67NR8NWKJXg4IN6AIYGEt7dJNKo
+? Utilisateur authentifié : full@gmail.com
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/add
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyODAzMn0.FONHkUS7xn36WsGx67NR8NWKJXg4IN6AIYGEt7dJNKo
+? Utilisateur authentifié : full@gmail.com
+helloHibernate: select nb1_0.branch_code,nb1_0.bank_code,nb1_0.branch_wording,nb1_0.city_code,nb1_0.city_wording,nb1_0.region_code,nb1_0.region_wording from st_pre_branch nb1_0 where nb1_0.branch_code=?
+Hibernate: insert into st_pre_branch (bank_code,branch_wording,city_code,city_wording,region_code,region_wording,branch_code) values (?,?,?,?,?,?,?)
+Hibernate: select mr1_0.resource_wording,mr1_0.bank_code from st_pre_resources mr1_0 where mr1_0.resource_wording=?
+Hibernate: insert into st_pre_resources (bank_code,resource_wording) values (?,?)
+Hibernate: select mr1_0.resource_wording,mr1_0.bank_code from st_pre_resources mr1_0 where mr1_0.resource_wording=?
+Hibernate: insert into st_pre_resources (bank_code,resource_wording) values (?,?)
+Hibernate: select mr1_0.resource_wording,mr1_0.bank_code from st_pre_resources mr1_0 where mr1_0.resource_wording=?
+Hibernate: insert into st_pre_resources (bank_code,resource_wording) values (?,?)
+Hibernate: select mbrpp1_0.product_code,mbrpp1_0.bank_code,mbrpp1_0.bin,mbrpp1_0.description,mbrpp1_0.expiration,mbrpp1_0.index_pvk,mbrpp1_0.network,mbrpp1_0.plastic_type,mbrpp1_0.prior_exp,mbrpp1_0.product_type,mbrpp1_0.renew,mbrpp1_0.service_code,mbrpp1_0.tranche_max,mbrpp1_0.tranche_min from st_pre_bin_range_plastic_prod mbrpp1_0 where mbrpp1_0.product_code=?
+Hibernate: insert into st_pre_bin_range_plastic_prod (bank_code,bin,description,expiration,index_pvk,network,plastic_type,prior_exp,product_type,renew,service_code,tranche_max,tranche_min,product_code) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+Hibernate: select pmcf1_0.card_fees_code,pmcf1_0.bank_code,pmcf1_0.card_fees_billing_evt,pmcf1_0.card_fees_billing_period,pmcf1_0.card_fees_grace_period,pmcf1_0.damaged_replacement_fees,pmcf1_0.description,pmcf1_0.fees_amount_first,pmcf1_0.pin_replacement_fees,pmcf1_0.subscription_amount from st_pre_mig_card_fees pmcf1_0 where pmcf1_0.card_fees_code=?
+Hibernate: insert into st_pre_mig_card_fees (bank_code,card_fees_billing_evt,card_fees_billing_period,card_fees_grace_period,damaged_replacement_fees,description,fees_amount_first,pin_replacement_fees,subscription_amount,card_fees_code) values (?,?,?,?,?,?,?,?,?,?)
+Hibernate: select msp1_0.product_code,msp1_0.achat,msp1_0.advance,msp1_0.authentication,msp1_0.bank_code,msp1_0.billpayment,msp1_0.cashback,msp1_0.ecommerce,msp1_0.moneysend,msp1_0.original,msp1_0.pinchange,msp1_0.quasicash,msp1_0.refund,msp1_0.releve,msp1_0.retrait,msp1_0.solde,msp1_0.transfert from st_pre_service_prod msp1_0 where msp1_0.product_code=?
+Hibernate: insert into st_pre_service_prod (achat,advance,authentication,bank_code,billpayment,cashback,ecommerce,moneysend,original,pinchange,quasicash,refund,releve,retrait,solde,transfert,product_code) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+Hibernate: select mls1_0.limits_id,mls1_0.product_code,mls1_0.bank_code,mls1_0.daily_dom_amnt,mls1_0.daily_dom_nbr,mls1_0.daily_int_amnt,mls1_0.daily_int_nbr,mls1_0.daily_total_amnt,mls1_0.daily_total_nbr,mls1_0.max_amount_per_transaction,mls1_0.min_amount_per_transaction,mls1_0.monthly_dom_amnt,mls1_0.monthly_dom_nbr,mls1_0.monthly_int_amnt,mls1_0.monthly_int_nbr,mls1_0.monthly_total_amnt,mls1_0.monthly_total_nbr,mls1_0.weekly_dom_amnt,mls1_0.weekly_dom_nbr,mls1_0.weekly_int_amnt,mls1_0.weekly_int_nbr,mls1_0.weekly_total_amnt,mls1_0.weekly_total_nbr from st_pre_limit_stand mls1_0 where (mls1_0.limits_id,mls1_0.product_code) in ((?,?))
+Hibernate: insert into st_pre_limit_stand (bank_code,daily_dom_amnt,daily_dom_nbr,daily_int_amnt,daily_int_nbr,daily_total_amnt,daily_total_nbr,max_amount_per_transaction,min_amount_per_transaction,monthly_dom_amnt,monthly_dom_nbr,monthly_int_amnt,monthly_int_nbr,monthly_total_amnt,monthly_total_nbr,weekly_dom_amnt,weekly_dom_nbr,weekly_int_amnt,weekly_int_nbr,weekly_total_amnt,weekly_total_nbr,limits_id,product_code) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+  Resolved currency MAD -> 504
+  Resolved country MA -> 504
+=== PL/SQL CALL DEBUG ===
+  p_business_date = 2026-03-03 00:00:00.0
+  p_bank_code     = [12934]
+  p_bank_wording  = [CDM]
+  p_currency_code = [504]
+  p_country_code  = [504]
+  p_action_flag   = [1]
+  PL/SQL raw return = -2
+  PL/SQL final result = -2
+-2
+-2
+Hibernate: delete from st_pre_branch where branch_code=?
+Hibernate: delete from st_pre_resources where resource_wording=?
+Hibernate: delete from st_pre_resources where resource_wording=?
+Hibernate: delete from st_pre_resources where resource_wording=?
+Hibernate: delete from st_pre_bin_range_plastic_prod where product_code=?
+Hibernate: delete from st_pre_mig_card_fees where card_fees_code=?
+Hibernate: delete from st_pre_service_prod where product_code=?
+Hibernate: DELETE FROM st_pre_limit_stand WHERE TRIM(product_code) = TRIM(?) AND TRIM(limits_id) = TRIM(?)
+-2-2? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/diag/query
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyODAzMn0.FONHkUS7xn36WsGx67NR8NWKJXg4IN6AIYGEt7dJNKo
+? Utilisateur authentifié : full@gmail.com
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/diag/query
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyODAzMn0.FONHkUS7xn36WsGx67NR8NWKJXg4IN6AIYGEt7dJNKo
+? Utilisateur authentifié : full@gmail.com
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/diag/query
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyODAzMn0.FONHkUS7xn36WsGx67NR8NWKJXg4IN6AIYGEt7dJNKo
+? Utilisateur authentifié : full@gmail.com
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/diag/query
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyODAzMn0.FONHkUS7xn36WsGx67NR8NWKJXg4IN6AIYGEt7dJNKo
+? Utilisateur authentifié : full@gmail.com
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/diag/query
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyODAzMn0.FONHkUS7xn36WsGx67NR8NWKJXg4IN6AIYGEt7dJNKo
+? Utilisateur authentifié : full@gmail.com
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/diag/query
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyODAzMn0.FONHkUS7xn36WsGx67NR8NWKJXg4IN6AIYGEt7dJNKo
+? Utilisateur authentifié : full@gmail.com
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/diag/query
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyODAzMn0.FONHkUS7xn36WsGx67NR8NWKJXg4IN6AIYGEt7dJNKo
+? Utilisateur authentifié : full@gmail.com
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/getBank/12934
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyODAzMn0.FONHkUS7xn36WsGx67NR8NWKJXg4IN6AIYGEt7dJNKo
+? Utilisateur authentifié : full@gmail.com
+Hibernate: select b1_0.bank_code,b1_0.bank_name,b1_0.date_create,b1_0.category,b1_0.country_code,b1_0.bank_currency_code from bank b1_0 where b1_0.bank_code=?
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/
+? Aucun token trouvé, passage au filtre suivant.
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/
+? Aucun token trouvé, passage au filtre suivant.
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/getAll
+? Token reçu : undefined
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banksParam/currency
+? Token reçu : undefined
+? Erreur d'authentification : JWT strings must contain exactly 2 period characters. Found: 0
+? Erreur d'authentification : JWT strings must contain exactly 2 period characters. Found: 0
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banksParam/country
+? Token reçu : undefined
+? Erreur d'authentification : JWT strings must contain exactly 2 period characters. Found: 0
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/getAll
+? Token reçu : undefined
+? Erreur d'authentification : JWT strings must contain exactly 2 period characters. Found: 0
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banksParam/currency
+? Token reçu : undefined
+? Erreur d'authentification : JWT strings must contain exactly 2 period characters. Found: 0
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banksParam/country
+? Token reçu : undefined
+? Erreur d'authentification : JWT strings must contain exactly 2 period characters. Found: 0
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/add
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODQ2MzE3OH0.-5rXak6qEKtDotKMF1lh-I862wzP4pmMkK4KLvgtf4U
+? Erreur d'authentification : JWT signature does not match locally computed signature. JWT validity cannot be asserted and should not be trusted.
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/getBank/12378
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODQ2MzE3OH0.-5rXak6qEKtDotKMF1lh-I862wzP4pmMkK4KLvgtf4U
+? Erreur d'authentification : JWT signature does not match locally computed signature. JWT validity cannot be asserted and should not be trusted.
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/getAll
+? Token reçu : undefined
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banksParam/currency
+? Token reçu : undefined
+? Erreur d'authentification : JWT strings must contain exactly 2 period characters. Found: 0
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banksParam/country
+? Token reçu : undefined
+? Erreur d'authentification : JWT strings must contain exactly 2 period characters. Found: 0
+? Erreur d'authentification : JWT strings must contain exactly 2 period characters. Found: 0
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/getAll
+? Token reçu : undefined
+? Erreur d'authentification : JWT strings must contain exactly 2 period characters. Found: 0
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banksParam/country
+? Token reçu : undefined
+? Erreur d'authentification : JWT strings must contain exactly 2 period characters. Found: 0
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banksParam/currency
+? Token reçu : undefined
+? Erreur d'authentification : JWT strings must contain exactly 2 period characters. Found: 0
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banksParam/country
+? Token reçu : undefined
+? Erreur d'authentification : JWT strings must contain exactly 2 period characters. Found: 0
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banksParam/currency
+? Token reçu : undefined
+? Erreur d'authentification : JWT strings must contain exactly 2 period characters. Found: 0
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/getAll
+? Token reçu : undefined
+? Erreur d'authentification : JWT strings must contain exactly 2 period characters. Found: 0
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/login
+? Aucun token trouvé, passage au filtre suivant.
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/diag/clean-staging
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyODcxMX0.ySHGeroBPh-IYSS0Ltof92d1nrtuWSakc_YCpzrRtrw
+? Utilisateur authentifié : full@gmail.com
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/add
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyODcxMX0.ySHGeroBPh-IYSS0Ltof92d1nrtuWSakc_YCpzrRtrw
+? Utilisateur authentifié : full@gmail.com
+helloHibernate: select nb1_0.branch_code,nb1_0.bank_code,nb1_0.branch_wording,nb1_0.city_code,nb1_0.city_wording,nb1_0.region_code,nb1_0.region_wording from st_pre_branch nb1_0 where nb1_0.branch_code=?
+Hibernate: insert into st_pre_branch (bank_code,branch_wording,city_code,city_wording,region_code,region_wording,branch_code) values (?,?,?,?,?,?,?)
+Hibernate: select mr1_0.resource_wording,mr1_0.bank_code from st_pre_resources mr1_0 where mr1_0.resource_wording=?
+Hibernate: insert into st_pre_resources (bank_code,resource_wording) values (?,?)
+Hibernate: select mr1_0.resource_wording,mr1_0.bank_code from st_pre_resources mr1_0 where mr1_0.resource_wording=?
+Hibernate: insert into st_pre_resources (bank_code,resource_wording) values (?,?)
+Hibernate: select mr1_0.resource_wording,mr1_0.bank_code from st_pre_resources mr1_0 where mr1_0.resource_wording=?
+Hibernate: insert into st_pre_resources (bank_code,resource_wording) values (?,?)
+Hibernate: select mbrpp1_0.product_code,mbrpp1_0.bank_code,mbrpp1_0.bin,mbrpp1_0.description,mbrpp1_0.expiration,mbrpp1_0.index_pvk,mbrpp1_0.network,mbrpp1_0.plastic_type,mbrpp1_0.prior_exp,mbrpp1_0.product_type,mbrpp1_0.renew,mbrpp1_0.service_code,mbrpp1_0.tranche_max,mbrpp1_0.tranche_min from st_pre_bin_range_plastic_prod mbrpp1_0 where mbrpp1_0.product_code=?
+Hibernate: insert into st_pre_bin_range_plastic_prod (bank_code,bin,description,expiration,index_pvk,network,plastic_type,prior_exp,product_type,renew,service_code,tranche_max,tranche_min,product_code) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+Hibernate: select pmcf1_0.card_fees_code,pmcf1_0.bank_code,pmcf1_0.card_fees_billing_evt,pmcf1_0.card_fees_billing_period,pmcf1_0.card_fees_grace_period,pmcf1_0.damaged_replacement_fees,pmcf1_0.description,pmcf1_0.fees_amount_first,pmcf1_0.pin_replacement_fees,pmcf1_0.subscription_amount from st_pre_mig_card_fees pmcf1_0 where pmcf1_0.card_fees_code=?
+Hibernate: insert into st_pre_mig_card_fees (bank_code,card_fees_billing_evt,card_fees_billing_period,card_fees_grace_period,damaged_replacement_fees,description,fees_amount_first,pin_replacement_fees,subscription_amount,card_fees_code) values (?,?,?,?,?,?,?,?,?,?)
+Hibernate: select msp1_0.product_code,msp1_0.achat,msp1_0.advance,msp1_0.authentication,msp1_0.bank_code,msp1_0.billpayment,msp1_0.cashback,msp1_0.ecommerce,msp1_0.moneysend,msp1_0.original,msp1_0.pinchange,msp1_0.quasicash,msp1_0.refund,msp1_0.releve,msp1_0.retrait,msp1_0.solde,msp1_0.transfert from st_pre_service_prod msp1_0 where msp1_0.product_code=?
+Hibernate: insert into st_pre_service_prod (achat,advance,authentication,bank_code,billpayment,cashback,ecommerce,moneysend,original,pinchange,quasicash,refund,releve,retrait,solde,transfert,product_code) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+Hibernate: select mls1_0.limits_id,mls1_0.product_code,mls1_0.bank_code,mls1_0.daily_dom_amnt,mls1_0.daily_dom_nbr,mls1_0.daily_int_amnt,mls1_0.daily_int_nbr,mls1_0.daily_total_amnt,mls1_0.daily_total_nbr,mls1_0.max_amount_per_transaction,mls1_0.min_amount_per_transaction,mls1_0.monthly_dom_amnt,mls1_0.monthly_dom_nbr,mls1_0.monthly_int_amnt,mls1_0.monthly_int_nbr,mls1_0.monthly_total_amnt,mls1_0.monthly_total_nbr,mls1_0.weekly_dom_amnt,mls1_0.weekly_dom_nbr,mls1_0.weekly_int_amnt,mls1_0.weekly_int_nbr,mls1_0.weekly_total_amnt,mls1_0.weekly_total_nbr from st_pre_limit_stand mls1_0 where (mls1_0.limits_id,mls1_0.product_code) in ((?,?))
+Hibernate: insert into st_pre_limit_stand (bank_code,daily_dom_amnt,daily_dom_nbr,daily_int_amnt,daily_int_nbr,daily_total_amnt,daily_total_nbr,max_amount_per_transaction,min_amount_per_transaction,monthly_dom_amnt,monthly_dom_nbr,monthly_int_amnt,monthly_int_nbr,monthly_total_amnt,monthly_total_nbr,weekly_dom_amnt,weekly_dom_nbr,weekly_int_amnt,weekly_int_nbr,weekly_total_amnt,weekly_total_nbr,limits_id,product_code) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+  Resolved currency MAD -> 504
+  Resolved country MA -> 504
+=== PL/SQL CALL DEBUG ===
+  p_business_date = 2026-03-03 00:00:00.0
+  p_bank_code     = [12934]
+  p_bank_wording  = [CDM]
+  p_currency_code = [504]
+  p_country_code  = [504]
+  p_action_flag   = [1]
+  PL/SQL raw return = -2
+  PL/SQL final result = -2
+-2
+-2
+Hibernate: delete from st_pre_branch where branch_code=?
+Hibernate: delete from st_pre_resources where resource_wording=?
+Hibernate: delete from st_pre_resources where resource_wording=?
+Hibernate: delete from st_pre_resources where resource_wording=?
+Hibernate: delete from st_pre_bin_range_plastic_prod where product_code=?
+Hibernate: delete from st_pre_mig_card_fees where card_fees_code=?
+Hibernate: delete from st_pre_service_prod where product_code=?
+Hibernate: DELETE FROM st_pre_limit_stand WHERE TRIM(product_code) = TRIM(?) AND TRIM(limits_id) = TRIM(?)
+-2-2? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/diag/query
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyODcxMX0.ySHGeroBPh-IYSS0Ltof92d1nrtuWSakc_YCpzrRtrw
+? Utilisateur authentifié : full@gmail.com
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/diag/query
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyODcxMX0.ySHGeroBPh-IYSS0Ltof92d1nrtuWSakc_YCpzrRtrw
+? Utilisateur authentifié : full@gmail.com
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/diag/query
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyODcxMX0.ySHGeroBPh-IYSS0Ltof92d1nrtuWSakc_YCpzrRtrw
+? Utilisateur authentifié : full@gmail.com
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/diag/query
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyODcxMX0.ySHGeroBPh-IYSS0Ltof92d1nrtuWSakc_YCpzrRtrw
+? Utilisateur authentifié : full@gmail.com
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/diag/query
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyODcxMX0.ySHGeroBPh-IYSS0Ltof92d1nrtuWSakc_YCpzrRtrw
+? Utilisateur authentifié : full@gmail.com
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/diag/query
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyODcxMX0.ySHGeroBPh-IYSS0Ltof92d1nrtuWSakc_YCpzrRtrw
+? Utilisateur authentifié : full@gmail.com
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/diag/query
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyODcxMX0.ySHGeroBPh-IYSS0Ltof92d1nrtuWSakc_YCpzrRtrw
+? Utilisateur authentifié : full@gmail.com
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/getBank/12934
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyODcxMX0.ySHGeroBPh-IYSS0Ltof92d1nrtuWSakc_YCpzrRtrw
+? Utilisateur authentifié : full@gmail.com
+Hibernate: select b1_0.bank_code,b1_0.bank_name,b1_0.date_create,b1_0.category,b1_0.country_code,b1_0.bank_currency_code from bank b1_0 where b1_0.bank_code=?
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/login
+? Aucun token trouvé, passage au filtre suivant.
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/diag/query
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyODc3NH0.CIVSxC8x5o3iUsHqQzo9PYdG3PG0nzHQYKFp5v0o6wA
+? Utilisateur authentifié : full@gmail.com
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/diag/query
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyODc3NH0.CIVSxC8x5o3iUsHqQzo9PYdG3PG0nzHQYKFp5v0o6wA
+? Utilisateur authentifié : full@gmail.com
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/diag/query
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyODc3NH0.CIVSxC8x5o3iUsHqQzo9PYdG3PG0nzHQYKFp5v0o6wA
+? Utilisateur authentifié : full@gmail.com
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/diag/query
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyODc3NH0.CIVSxC8x5o3iUsHqQzo9PYdG3PG0nzHQYKFp5v0o6wA
+? Utilisateur authentifié : full@gmail.com
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/diag/query
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyODc3NH0.CIVSxC8x5o3iUsHqQzo9PYdG3PG0nzHQYKFp5v0o6wA
+? Utilisateur authentifié : full@gmail.com
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/diag/query
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyODc3NH0.CIVSxC8x5o3iUsHqQzo9PYdG3PG0nzHQYKFp5v0o6wA
+? Utilisateur authentifié : full@gmail.com
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/login
+? Aucun token trouvé, passage au filtre suivant.
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/diag/query
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyODgyNH0.9loAj4jfaCWkzzCqywJsXMy8BjKB4FsYZOgbshlpJnc
+? Utilisateur authentifié : full@gmail.com
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/diag/query
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyODgyNH0.9loAj4jfaCWkzzCqywJsXMy8BjKB4FsYZOgbshlpJnc
+? Utilisateur authentifié : full@gmail.com
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/diag/query
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyODgyNH0.9loAj4jfaCWkzzCqywJsXMy8BjKB4FsYZOgbshlpJnc
+? Utilisateur authentifié : full@gmail.com
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/diag/query
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyODgyNH0.9loAj4jfaCWkzzCqywJsXMy8BjKB4FsYZOgbshlpJnc
+? Utilisateur authentifié : full@gmail.com
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/diag/query
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyODgyNH0.9loAj4jfaCWkzzCqywJsXMy8BjKB4FsYZOgbshlpJnc
+? Utilisateur authentifié : full@gmail.com
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/diag/query
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyODgyNH0.9loAj4jfaCWkzzCqywJsXMy8BjKB4FsYZOgbshlpJnc
+? Utilisateur authentifié : full@gmail.com
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/diag/query
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyODgyNH0.9loAj4jfaCWkzzCqywJsXMy8BjKB4FsYZOgbshlpJnc
+? Utilisateur authentifié : full@gmail.com
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/diag/query
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyODgyNH0.9loAj4jfaCWkzzCqywJsXMy8BjKB4FsYZOgbshlpJnc
+? Utilisateur authentifié : full@gmail.com
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/diag/query
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyODgyNH0.9loAj4jfaCWkzzCqywJsXMy8BjKB4FsYZOgbshlpJnc
+? Utilisateur authentifié : full@gmail.com
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/diag/query
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyODgyNH0.9loAj4jfaCWkzzCqywJsXMy8BjKB4FsYZOgbshlpJnc
+? Utilisateur authentifié : full@gmail.com
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/diag/query
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyODgyNH0.9loAj4jfaCWkzzCqywJsXMy8BjKB4FsYZOgbshlpJnc
+? Utilisateur authentifié : full@gmail.com
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/login
+? Aucun token trouvé, passage au filtre suivant.
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/diag/query
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyODg2NX0.4mGLSvA8o3FH8rkrPRQHwnNDUDlpMebaEd3P1ESzRFg
+? Utilisateur authentifié : full@gmail.com
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/diag/query
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyODg2NX0.4mGLSvA8o3FH8rkrPRQHwnNDUDlpMebaEd3P1ESzRFg
+? Utilisateur authentifié : full@gmail.com
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/diag/query
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyODg2NX0.4mGLSvA8o3FH8rkrPRQHwnNDUDlpMebaEd3P1ESzRFg
+? Utilisateur authentifié : full@gmail.com
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/diag/query
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyODg2NX0.4mGLSvA8o3FH8rkrPRQHwnNDUDlpMebaEd3P1ESzRFg
+? Utilisateur authentifié : full@gmail.com
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/diag/query
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyODg2NX0.4mGLSvA8o3FH8rkrPRQHwnNDUDlpMebaEd3P1ESzRFg
+? Utilisateur authentifié : full@gmail.com
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/diag/query
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyODg2NX0.4mGLSvA8o3FH8rkrPRQHwnNDUDlpMebaEd3P1ESzRFg
+? Utilisateur authentifié : full@gmail.com
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/login
+? Aucun token trouvé, passage au filtre suivant.
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/diag/query
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyODkwNH0.f6_GoL73VDUZIArGJam0JTjLBmDyWIXQ-FvZrfaDuok
+? Utilisateur authentifié : full@gmail.com
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/diag/query
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyODkwNH0.f6_GoL73VDUZIArGJam0JTjLBmDyWIXQ-FvZrfaDuok
+? Utilisateur authentifié : full@gmail.com
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/diag/query
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyODkwNH0.f6_GoL73VDUZIArGJam0JTjLBmDyWIXQ-FvZrfaDuok
+? Utilisateur authentifié : full@gmail.com
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/login
+? Aucun token trouvé, passage au filtre suivant.
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/diag/query
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyODkzOH0.pEdad4yYOPqU5CN6WoExw7-9MDIc-RPcUnSqKx9Wnno
+? Utilisateur authentifié : full@gmail.com
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/diag/query
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyODkzOH0.pEdad4yYOPqU5CN6WoExw7-9MDIc-RPcUnSqKx9Wnno
+? Utilisateur authentifié : full@gmail.com
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/diag/query
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyODkzOH0.pEdad4yYOPqU5CN6WoExw7-9MDIc-RPcUnSqKx9Wnno
+? Utilisateur authentifié : full@gmail.com
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/login
+? Aucun token trouvé, passage au filtre suivant.
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/diag/query
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyODk5NH0.pmZKD6-FtiQuo7msxciaXd3HGDPWr4imMCYMslF8hEA
+? Utilisateur authentifié : full@gmail.com
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/diag/query
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyODk5NH0.pmZKD6-FtiQuo7msxciaXd3HGDPWr4imMCYMslF8hEA
+? Utilisateur authentifié : full@gmail.com
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/diag/query
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyODk5NH0.pmZKD6-FtiQuo7msxciaXd3HGDPWr4imMCYMslF8hEA
+? Utilisateur authentifié : full@gmail.com
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/diag/query
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyODk5NH0.pmZKD6-FtiQuo7msxciaXd3HGDPWr4imMCYMslF8hEA
+? Utilisateur authentifié : full@gmail.com
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/getAll
+? Token reçu : undefined
+? Erreur d'authentification : JWT strings must contain exactly 2 period characters. Found: 0
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banksParam/country
+? Token reçu : undefined
+? Erreur d'authentification : JWT strings must contain exactly 2 period characters. Found: 0
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banksParam/currency
+? Token reçu : undefined
+? Erreur d'authentification : JWT strings must contain exactly 2 period characters. Found: 0
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/getAll
+? Token reçu : undefined
+? Erreur d'authentification : JWT strings must contain exactly 2 period characters. Found: 0
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banksParam/currency
+? Token reçu : undefined
+? Erreur d'authentification : JWT strings must contain exactly 2 period characters. Found: 0
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banksParam/country
+? Token reçu : undefined
+? Erreur d'authentification : JWT strings must contain exactly 2 period characters. Found: 0
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/getAll
+? Token reçu : undefined
+? Erreur d'authentification : JWT strings must contain exactly 2 period characters. Found: 0
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/getAll
+? Token reçu : undefined
+? Erreur d'authentification : JWT strings must contain exactly 2 period characters. Found: 0
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banksParam/country
+? Token reçu : undefined
+? Erreur d'authentification : JWT strings must contain exactly 2 period characters. Found: 0
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banksParam/currency
+? Token reçu : undefined
+? Erreur d'authentification : JWT strings must contain exactly 2 period characters. Found: 0
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/login
+? Aucun token trouvé, passage au filtre suivant.
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/getAll
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyOTE4OH0.eOUoxD6oa3CKsc0ZvjS_vIJVkifWv6LRFHbVyJkSc4I
+? Utilisateur authentifié : full@gmail.com
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banksParam/currency
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyOTE4OH0.eOUoxD6oa3CKsc0ZvjS_vIJVkifWv6LRFHbVyJkSc4I
+? Utilisateur authentifié : full@gmail.com
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banksParam/country
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyOTE4OH0.eOUoxD6oa3CKsc0ZvjS_vIJVkifWv6LRFHbVyJkSc4I
+? Utilisateur authentifié : full@gmail.com
+Hibernate: select c1_0.currency_code,c1_0.currency_code_alpha,c1_0.currency_name from currency_table c1_0
+Hibernate: select c1_0.country_code,c1_0.abrv_wording,c1_0.wording from country c1_0
+Hibernate: select b1_0.bank_code,b1_0.bank_name,b1_0.date_create,b1_0.category,b1_0.country_code,b1_0.bank_currency_code from bank b1_0
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/delete/345
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyOTE4OH0.eOUoxD6oa3CKsc0ZvjS_vIJVkifWv6LRFHbVyJkSc4I
+? Utilisateur authentifié : full@gmail.com
+Hibernate: select b1_0.bank_code,b1_0.bank_name,b1_0.date_create,b1_0.category,b1_0.country_code,b1_0.bank_currency_code from bank b1_0 where b1_0.bank_code=?
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/delete/345
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyOTE4OH0.eOUoxD6oa3CKsc0ZvjS_vIJVkifWv6LRFHbVyJkSc4I
+? Utilisateur authentifié : full@gmail.com
+Hibernate: select b1_0.bank_code,b1_0.bank_name,b1_0.date_create,b1_0.category,b1_0.country_code,b1_0.bank_currency_code from bank b1_0 where b1_0.bank_code=?
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banksParam/country
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyOTE4OH0.eOUoxD6oa3CKsc0ZvjS_vIJVkifWv6LRFHbVyJkSc4I
+? Utilisateur authentifié : full@gmail.com
+Hibernate: select c1_0.country_code,c1_0.abrv_wording,c1_0.wording from country c1_0
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/getBank/345
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyOTE4OH0.eOUoxD6oa3CKsc0ZvjS_vIJVkifWv6LRFHbVyJkSc4I
+? Utilisateur authentifié : full@gmail.com
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banksParam/currency
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyOTE4OH0.eOUoxD6oa3CKsc0ZvjS_vIJVkifWv6LRFHbVyJkSc4I
+? Utilisateur authentifié : full@gmail.com
+Hibernate: select c1_0.currency_code,c1_0.currency_code_alpha,c1_0.currency_name from currency_table c1_0
+Hibernate: select b1_0.bank_code,b1_0.bank_name,b1_0.date_create,b1_0.category,b1_0.country_code,b1_0.bank_currency_code from bank b1_0 where b1_0.bank_code=?
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/getAll
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyOTE4OH0.eOUoxD6oa3CKsc0ZvjS_vIJVkifWv6LRFHbVyJkSc4I
+? Utilisateur authentifié : full@gmail.com
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banksParam/country
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyOTE4OH0.eOUoxD6oa3CKsc0ZvjS_vIJVkifWv6LRFHbVyJkSc4I
+? Utilisateur authentifié : full@gmail.com
+Hibernate: select c1_0.country_code,c1_0.abrv_wording,c1_0.wording from country c1_0
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banksParam/currency
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyOTE4OH0.eOUoxD6oa3CKsc0ZvjS_vIJVkifWv6LRFHbVyJkSc4I
+? Utilisateur authentifié : full@gmail.com
+Hibernate: select c1_0.currency_code,c1_0.currency_code_alpha,c1_0.currency_name from currency_table c1_0
+Hibernate: select b1_0.bank_code,b1_0.bank_name,b1_0.date_create,b1_0.category,b1_0.country_code,b1_0.bank_currency_code from bank b1_0
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banksParam/currency
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyOTE4OH0.eOUoxD6oa3CKsc0ZvjS_vIJVkifWv6LRFHbVyJkSc4I
+? Utilisateur authentifié : full@gmail.com
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banksParam/country
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyOTE4OH0.eOUoxD6oa3CKsc0ZvjS_vIJVkifWv6LRFHbVyJkSc4I
+? Utilisateur authentifié : full@gmail.com
+Hibernate: select c1_0.country_code,c1_0.abrv_wording,c1_0.wording from country c1_0
+Hibernate: select c1_0.currency_code,c1_0.currency_code_alpha,c1_0.currency_name from currency_table c1_0
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/getBank/FABZMB
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyOTE4OH0.eOUoxD6oa3CKsc0ZvjS_vIJVkifWv6LRFHbVyJkSc4I
+? Utilisateur authentifié : full@gmail.com
+Hibernate: select b1_0.bank_code,b1_0.bank_name,b1_0.date_create,b1_0.category,b1_0.country_code,b1_0.bank_currency_code from bank b1_0 where b1_0.bank_code=?
+Hibernate: select b1_0.bank_code,b1_0.branch_code,b1_0.branch_name,b1_0.city_code,b1_0.city_name,b1_0.region_code,b1_0.region_name from branch b1_0 where b1_0.bank_code=?
+Hibernate: select r1_0.acquirer_bank_code,r1_0.resource_id,r2_0.resource_id,r2_0.abrv_wording,r2_0.pris_bank_code,r2_0.node_id,r2_0.pris_connect_mode,r2_0.pris_processing_step,r2_0.resource_live,r2_0.resource_code,r2_0.wording from p7_bank_resource_param r1_0 left join resources r2_0 on r2_0.resource_id=r1_0.resource_id where r1_0.acquirer_bank_code=?
+Hibernate: select p1_0.bank_code,p1_0.product_code,p1_0.limits_indexes,p1_0.services_setup_index,cf1_0.bank_code,cf1_0.card_fees_code,cf1_0.card_fees_billing_evt,cf1_0.card_fees_billing_period,cf1_0.card_fees_grace_period,cf1_0.damaged_replacement_fees,cf1_0.description,cf1_0.fees_amount_first,cf1_0.pin_replacement_fees,cf1_0.subscription_amount,cr1_0.issuing_bank_code,cr1_0.product_code,cr1_0.issuer_bin,cr1_0.pvki,cr1_0.max_card_range,cr1_0.min_card_range,p1_0.wording,p1_0.validity_code_first,p1_0.network_code,p1_0.plastic_type,p1_0.prior_expiry_date,p1_0.product_type,p1_0.renewal_option,p1_0.service_code from card_product p1_0 left join card_fees cf1_0 on cf1_0.bank_code=p1_0.bank_code and cf1_0.card_fees_code=p1_0.product_code left join card_range cr1_0 on cr1_0.issuing_bank_code=p1_0.bank_code and cr1_0.product_code=p1_0.product_code where p1_0.bank_code=?
+Hibernate: select pss1_0.service_setup_index,pss1_0.bank_code,pss1_0.sequence_id,pss1_0.wording from p7_services_setup pss1_0 where (pss1_0.service_setup_index,pss1_0.bank_code) in ((?,?))
+2026-03-03T09:13:51.745Z ERROR 31676 --- [configmaster_backend] [nio-8084-exec-7] c.h.c.w.e.AppGlobalExceptionHandler      : Unhandled exception: 
+
+java.lang.NullPointerException: Cannot invoke "java.util.List.iterator()" because "limits" is null
+	at com.hps.configmaster_backend.controller.BankController.mapLimits(BankController.java:302) ~[classes/:na]
+	at com.hps.configmaster_backend.controller.BankController.mapCardProduct(BankController.java:263) ~[classes/:na]
+	at com.hps.configmaster_backend.controller.BankController.lambda$mapBankToResponse$1(BankController.java:168) ~[classes/:na]
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197) ~[na:na]
+	at java.base/java.util.Iterator.forEachRemaining(Iterator.java:133) ~[na:na]
+	at java.base/java.util.Spliterators$IteratorSpliterator.forEachRemaining(Spliterators.java:1845) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499) ~[na:na]
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:682) ~[na:na]
+	at com.hps.configmaster_backend.controller.BankController.mapBankToResponse(BankController.java:169) ~[classes/:na]
+	at com.hps.configmaster_backend.controller.BankController.getBankByCode(BankController.java:71) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:577) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:261) ~[spring-web-6.1.3.jar:6.1.3]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:189) ~[spring-web-6.1.3.jar:6.1.3]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.1.3.jar:6.1.3]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:917) ~[spring-webmvc-6.1.3.jar:6.1.3]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:829) ~[spring-webmvc-6.1.3.jar:6.1.3]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.1.3.jar:6.1.3]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.1.3.jar:6.1.3]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.3.jar:6.1.3]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.3.jar:6.1.3]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903) ~[spring-webmvc-6.1.3.jar:6.1.3]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564) ~[tomcat-embed-core-10.1.18.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.3.jar:6.1.3]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.18.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205) ~[tomcat-embed-core-10.1.18.jar:10.1.18]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.18.jar:10.1.18]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.18.jar:10.1.18]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.18.jar:10.1.18]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.18.jar:10.1.18]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:110) ~[spring-web-6.1.3.jar:6.1.3]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.18.jar:10.1.18]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.18.jar:10.1.18]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108) ~[spring-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231) ~[spring-security-web-6.2.1.jar:6.2.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365) ~[spring-security-web-6.2.1.jar:6.2.1]
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:100) ~[spring-security-web-6.2.1.jar:6.2.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.1.jar:6.2.1]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126) ~[spring-security-web-6.2.1.jar:6.2.1]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120) ~[spring-security-web-6.2.1.jar:6.2.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.1.jar:6.2.1]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:131) ~[spring-security-web-6.2.1.jar:6.2.1]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:85) ~[spring-security-web-6.2.1.jar:6.2.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.1.jar:6.2.1]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100) ~[spring-security-web-6.2.1.jar:6.2.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.1.jar:6.2.1]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179) ~[spring-security-web-6.2.1.jar:6.2.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.1.jar:6.2.1]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-6.2.1.jar:6.2.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.1.jar:6.2.1]
+	at com.hps.configmaster_backend.filter.JwtAuthorizationFilter.doFilterInternal(JwtAuthorizationFilter.java:80) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.1.jar:6.2.1]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.2.1.jar:6.2.1]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.2.1.jar:6.2.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.1.jar:6.2.1]
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-6.1.3.jar:6.1.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.1.jar:6.2.1]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.2.1.jar:6.2.1]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.2.1.jar:6.2.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.1.jar:6.2.1]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.2.1.jar:6.2.1]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.2.1.jar:6.2.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.1.jar:6.2.1]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.2.1.jar:6.2.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.1.jar:6.2.1]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.2.1.jar:6.2.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.1.jar:6.2.1]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.2.1.jar:6.2.1]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.2.1.jar:6.2.1]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.3.jar:6.1.3]
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:195) ~[spring-webmvc-6.1.3.jar:6.1.3]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.3.jar:6.1.3]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:225) ~[spring-security-config-6.2.1.jar:6.2.1]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352) ~[spring-web-6.1.3.jar:6.1.3]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268) ~[spring-web-6.1.3.jar:6.1.3]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.18.jar:10.1.18]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.18.jar:10.1.18]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.3.jar:6.1.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.3.jar:6.1.3]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.18.jar:10.1.18]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.18.jar:10.1.18]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.3.jar:6.1.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.3.jar:6.1.3]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.18.jar:10.1.18]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.18.jar:10.1.18]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.3.jar:6.1.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.3.jar:6.1.3]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.18.jar:10.1.18]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.18.jar:10.1.18]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.18.jar:10.1.18]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.18.jar:10.1.18]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.18.jar:10.1.18]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.18.jar:10.1.18]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.18.jar:10.1.18]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.18.jar:10.1.18]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:340) ~[tomcat-embed-core-10.1.18.jar:10.1.18]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391) ~[tomcat-embed-core-10.1.18.jar:10.1.18]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.18.jar:10.1.18]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896) ~[tomcat-embed-core-10.1.18.jar:10.1.18]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744) ~[tomcat-embed-core-10.1.18.jar:10.1.18]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.18.jar:10.1.18]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.18.jar:10.1.18]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.18.jar:10.1.18]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-10.1.18.jar:10.1.18]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/getAll
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyOTE4OH0.eOUoxD6oa3CKsc0ZvjS_vIJVkifWv6LRFHbVyJkSc4I
+? Utilisateur authentifié : full@gmail.com
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banksParam/country
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyOTE4OH0.eOUoxD6oa3CKsc0ZvjS_vIJVkifWv6LRFHbVyJkSc4I
+? Utilisateur authentifié : full@gmail.com
+Hibernate: select c1_0.country_code,c1_0.abrv_wording,c1_0.wording from country c1_0
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banksParam/currency
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyOTE4OH0.eOUoxD6oa3CKsc0ZvjS_vIJVkifWv6LRFHbVyJkSc4I
+? Utilisateur authentifié : full@gmail.com
+Hibernate: select c1_0.currency_code,c1_0.currency_code_alpha,c1_0.currency_name from currency_table c1_0
+Hibernate: select b1_0.bank_code,b1_0.bank_name,b1_0.date_create,b1_0.category,b1_0.country_code,b1_0.bank_currency_code from bank b1_0
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/getBank/HFCGWT
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyOTE4OH0.eOUoxD6oa3CKsc0ZvjS_vIJVkifWv6LRFHbVyJkSc4I
+? Utilisateur authentifié : full@gmail.com
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banksParam/currency
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyOTE4OH0.eOUoxD6oa3CKsc0ZvjS_vIJVkifWv6LRFHbVyJkSc4I
+? Utilisateur authentifié : full@gmail.com
+Hibernate: select c1_0.currency_code,c1_0.currency_code_alpha,c1_0.currency_name from currency_table c1_0
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banksParam/country
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODUyOTE4OH0.eOUoxD6oa3CKsc0ZvjS_vIJVkifWv6LRFHbVyJkSc4I
+? Utilisateur authentifié : full@gmail.com
+Hibernate: select c1_0.country_code,c1_0.abrv_wording,c1_0.wording from country c1_0
+Hibernate: select b1_0.bank_code,b1_0.bank_name,b1_0.date_create,b1_0.category,b1_0.country_code,b1_0.bank_currency_code from bank b1_0 where b1_0.bank_code=?
+Hibernate: select b1_0.bank_code,b1_0.branch_code,b1_0.branch_name,b1_0.city_code,b1_0.city_name,b1_0.region_code,b1_0.region_name from branch b1_0 where b1_0.bank_code=?
+Hibernate: select r1_0.acquirer_bank_code,r1_0.resource_id,r2_0.resource_id,r2_0.abrv_wording,r2_0.pris_bank_code,r2_0.node_id,r2_0.pris_connect_mode,r2_0.pris_processing_step,r2_0.resource_live,r2_0.resource_code,r2_0.wording from p7_bank_resource_param r1_0 left join resources r2_0 on r2_0.resource_id=r1_0.resource_id where r1_0.acquirer_bank_code=?
+Hibernate: select p1_0.bank_code,p1_0.product_code,p1_0.limits_indexes,p1_0.services_setup_index,cf1_0.bank_code,cf1_0.card_fees_code,cf1_0.card_fees_billing_evt,cf1_0.card_fees_billing_period,cf1_0.card_fees_grace_period,cf1_0.damaged_replacement_fees,cf1_0.description,cf1_0.fees_amount_first,cf1_0.pin_replacement_fees,cf1_0.subscription_amount,cr1_0.issuing_bank_code,cr1_0.product_code,cr1_0.issuer_bin,cr1_0.pvki,cr1_0.max_card_range,cr1_0.min_card_range,p1_0.wording,p1_0.validity_code_first,p1_0.network_code,p1_0.plastic_type,p1_0.prior_expiry_date,p1_0.product_type,p1_0.renewal_option,p1_0.service_code from card_product p1_0 left join card_fees cf1_0 on cf1_0.bank_code=p1_0.bank_code and cf1_0.card_fees_code=p1_0.product_code left join card_range cr1_0 on cr1_0.issuing_bank_code=p1_0.bank_code and cr1_0.product_code=p1_0.product_code where p1_0.bank_code=?
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  05:54 h
+[INFO] Finished at: 2026-03-03T09:21:42Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.springframework.boot:spring-boot-maven-plugin:3.2.2:run (default-cli) on project configmaster_backend: Process terminated with exit code: -1 -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException

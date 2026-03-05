@@ -286,6 +286,23 @@ def postprocess(path: str, value):
             return mapping.get(v, value.strip().upper())
         if path == "bank.bank_code":
             return value.strip().upper()
+        # For code-only paths asked as single fields, extract just the numeric part.
+        # e.g. user answers "Rabat, 10" when asked only for city_code → extract "10"
+        if path.endswith("city_code") or path.endswith("region_code"):
+            m = re.search(r"\d+", value)
+            if m:
+                return m.group(0)
+            return value.strip()
+        if path.endswith("agency_code"):
+            # agency_code is alphanumeric — grab the last token that looks like a code
+            tokens = re.findall(r"[A-Za-z0-9\-_]+", value)
+            if tokens:
+                # prefer the last purely-numeric token, else last token
+                for tok in reversed(tokens):
+                    if re.fullmatch(r"\d+", tok):
+                        return tok
+                return tokens[-1].strip()
+            return value.strip()
     return value
 
 
@@ -324,7 +341,12 @@ def _coerce_value_for_path(path: str, value):
     if value is None:
         return None
 
-    if path.startswith("cards.0.fees.") or path.endswith("_amount"):
+    _fees_string_fields = {
+        "cards.0.fees.fee_description",
+        "cards.0.fees.billing_event",
+        "cards.0.fees.billing_period",
+    }
+    if (path.startswith("cards.0.fees.") or path.endswith("_amount")) and path not in _fees_string_fields:
         if isinstance(value, (int, float)):
             return float(value)
         if isinstance(value, str):
@@ -840,9 +862,16 @@ def _extract_bank_name(text: str):
         if name:
             return name
 
+    # Handle "bank named X" / "banque nommée X"
+    m_named = re.search(r"(?i)\b(?:banque|bank)\s+named\s+([A-Za-z0-9À-ÿ\-_ ']{2,})", txt)
+    if m_named:
+        n_named = _clean_bank_name((m_named.group(1) or "").strip())
+        if n_named:
+            return n_named
+
     for m2 in re.finditer(r"(?i)\b(?:banque|bank)\s+([A-Za-z0-9\-_]{2,})\b", txt):
         candidate = _clean_bank_name((m2.group(1) or "").strip())
-        if candidate and not candidate.isdigit() and candidate.lower() not in {"code", "name", "nomm", "nomme", "nommee", "nommée", "sera", "est", "is", "will", "avec"}:
+        if candidate and not candidate.isdigit() and candidate.lower() not in {"code", "name", "named", "nomm", "nomme", "nommee", "nommée", "sera", "est", "is", "will", "avec", "called", "add", "create", "new", "nouvelle", "nouveau", "ajouter", "creer", "configurer"}:
             return candidate
 
     m3 = re.search(r"(?i)\bbank\s*name\s*(?:is|=|:)?\s*([A-Za-z0-9\-_]{2,})\b", txt)
@@ -1208,11 +1237,23 @@ def _extract_card_profile_fields(text: str) -> Dict[str, Any]:
 def _extract_services_enabled(text: str) -> List[str]:
     t = text or ""
     vals: List[str] = []
+    # Must recognise ALL 15 services from MENU_FIELDS options
     mapping = [
-        (r"(?i)\b3d\s*secure\b|\b3ds\b", "Authentification"),
-        (r"(?i)\btokeni[sz]ation\b", "Tokenization"),
-        (r"(?i)\bsms\s*(alert|notification)?\b", "SMS Notification"),
-        (r"(?i)\be-?commerce\b", "E-commerce"),
+        (r"(?i)\bretraits?\b|\bwithdrawals?\b|\batm\b", "Retrait"),
+        (r"(?i)\bachats?\b|\bpurchases?\b|\bpos\b", "Achats"),
+        (r"(?i)\bcash\s*advance\b|\bavance\b", "Cash Advance"),
+        (r"(?i)\be-?commerce\b|\bonline\b", "E-commerce"),
+        (r"(?i)\btransferts?\b|\btransfers?\b", "Transferts"),
+        (r"(?i)\bquasi[-\s]*cash\b", "Quasi-Cash"),
+        (r"(?i)\bconsultation\s*solde\b|\bsolde\b|\bbalance\b", "Consultation Solde"),
+        (r"(?i)\bmini[-\s]*relev[eé]\b|\brelev[eé]\b|\bstatement\b", "Mini-Relevé"),
+        (r"(?i)\bchangement\s*pin\b|\bpin\s*change\b", "Changement PIN"),
+        (r"(?i)\bremboursements?\b|\brefunds?\b", "Remboursements"),
+        (r"(?i)\benvoi\s*d.argent\b|\bmoney\s*send\b", "Envoi d'argent"),
+        (r"(?i)\bpaiement\s*factures?\b|\bbill\s*payment\b", "Paiement Factures"),
+        (r"(?i)\boriginal\b|\btokeni[sz]ation\b", "Original"),
+        (r"(?i)\bauthentification\b|\b3d\s*secure\b|\b3ds\b", "Authentification"),
+        (r"(?i)\bcashback\b", "Cashback"),
     ]
     for pat, name in mapping:
         if re.search(pat, t):

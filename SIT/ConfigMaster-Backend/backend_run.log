@@ -1,0 +1,85 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------------< com.hps:configmaster_backend >--------------------
+[INFO] Building configmaster_backend 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] >>> spring-boot:3.2.2:run (default-cli) > test-compile @ configmaster_backend >>>
+[WARNING] The artifact org.hibernate:hibernate-core:jar:6.4.1.Final has been relocated to org.hibernate.orm:hibernate-core:jar:6.4.1.Final
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ configmaster_backend ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.11.0:compile (default-compile) @ configmaster_backend ---
+[INFO] Changes detected - recompiling the module! :source
+[INFO] Compiling 158 source files with javac [debug release 17] to target\classes
+[INFO] /C:/Users/amahmoudi/Downloads/config-master-main/SIT/ConfigMaster-Backend/src/main/java/com/hps/configmaster_backend/service/Imp/JWTService.java: C:\Users\amahmoudi\Downloads\config-master-main\SIT\ConfigMaster-Backend\src\main\java\com\hps\configmaster_backend\service\Imp\JWTService.java uses or overrides a deprecated API.
+[INFO] /C:/Users/amahmoudi/Downloads/config-master-main/SIT/ConfigMaster-Backend/src/main/java/com/hps/configmaster_backend/service/Imp/JWTService.java: Recompile with -Xlint:deprecation for details.
+[INFO] /C:/Users/amahmoudi/Downloads/config-master-main/SIT/ConfigMaster-Backend/src/main/java/com/hps/configmaster_backend/service/Imp/JWTService.java: Some input files use unchecked or unsafe operations.
+[INFO] /C:/Users/amahmoudi/Downloads/config-master-main/SIT/ConfigMaster-Backend/src/main/java/com/hps/configmaster_backend/service/Imp/JWTService.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ configmaster_backend ---
+[INFO] skip non existing resourceDirectory C:\Users\amahmoudi\Downloads\config-master-main\SIT\ConfigMaster-Backend\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.11.0:testCompile (default-testCompile) @ configmaster_backend ---
+[INFO] Changes detected - recompiling the module! :dependency
+[INFO] Compiling 1 source file with javac [debug release 17] to target\test-classes
+[INFO] 
+[INFO] <<< spring-boot:3.2.2:run (default-cli) < test-compile @ configmaster_backend <<<
+[INFO] 
+[INFO] 
+[INFO] --- spring-boot:3.2.2:run (default-cli) @ configmaster_backend ---
+[INFO] Attaching agents: []
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.2)
+
+2026-03-03T00:55:40.764Z  INFO 25680 --- [configmaster_backend] [           main] c.h.c.ConfigmasterBackendApplication     : Starting ConfigmasterBackendApplication using Java 18.0.2.1 with PID 25680 (C:\Users\amahmoudi\Downloads\config-master-main\SIT\ConfigMaster-Backend\target\classes started by amahmoudi in C:\Users\amahmoudi\Downloads\config-master-main\SIT\ConfigMaster-Backend)
+2026-03-03T00:55:40.781Z  INFO 25680 --- [configmaster_backend] [           main] c.h.c.ConfigmasterBackendApplication     : No active profile set, falling back to 1 default profile: "default"
+2026-03-03T00:55:49.985Z  INFO 25680 --- [configmaster_backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-03T00:55:50.830Z  INFO 25680 --- [configmaster_backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 813 ms. Found 15 JPA repository interfaces.
+2026-03-03T00:55:58.807Z  INFO 25680 --- [configmaster_backend] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8084 (http)
+2026-03-03T00:55:58.910Z  INFO 25680 --- [configmaster_backend] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-03T00:55:58.911Z  INFO 25680 --- [configmaster_backend] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2026-03-03T00:56:03.368Z  INFO 25680 --- [configmaster_backend] [           main] o.a.c.c.C.[.[.[/configmaster_backend]    : Initializing Spring embedded WebApplicationContext
+2026-03-03T00:56:03.372Z  INFO 25680 --- [configmaster_backend] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 22252 ms
+2026-03-03T00:56:05.839Z  INFO 25680 --- [configmaster_backend] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-03-03T00:56:06.639Z  INFO 25680 --- [configmaster_backend] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.1.Final
+2026-03-03T00:56:06.898Z  INFO 25680 --- [configmaster_backend] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-03-03T00:56:09.959Z  INFO 25680 --- [configmaster_backend] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-03T00:56:10.311Z  INFO 25680 --- [configmaster_backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-03-03T00:56:12.402Z  INFO 25680 --- [configmaster_backend] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection oracle.jdbc.driver.T4CConnection@2e349cf2
+2026-03-03T00:56:12.429Z  INFO 25680 --- [configmaster_backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-03-03T00:56:14.811Z  WARN 25680 --- [configmaster_backend] [           main] org.hibernate.orm.deprecation            : HHH90000025: OracleDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-03T00:56:26.184Z  INFO 25680 --- [configmaster_backend] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-03T00:56:26.361Z  INFO 25680 --- [configmaster_backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-03T00:56:29.465Z  INFO 25680 --- [configmaster_backend] [           main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-03-03T00:56:35.204Z  WARN 25680 --- [configmaster_backend] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-03-03T00:56:39.537Z  INFO 25680 --- [configmaster_backend] [           main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@163697a8, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@13021796, org.springframework.security.web.context.SecurityContextHolderFilter@6626137e, org.springframework.security.web.header.HeaderWriterFilter@38dd3252, org.springframework.web.filter.CorsFilter@7f64f070, org.springframework.security.web.authentication.logout.LogoutFilter@3a0773, com.hps.configmaster_backend.filter.JwtAuthorizationFilter@34414ffc, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@685271b1, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6236d83a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@78d0baeb, org.springframework.security.web.session.SessionManagementFilter@6448679f, org.springframework.security.web.access.ExceptionTranslationFilter@2ca57c02, org.springframework.security.web.access.intercept.AuthorizationFilter@4135b7f9]
+2026-03-03T00:56:43.854Z  INFO 25680 --- [configmaster_backend] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8084 (http) with context path '/configmaster_backend'
+2026-03-03T00:56:43.903Z  INFO 25680 --- [configmaster_backend] [           main] c.h.c.ConfigmasterBackendApplication     : Started ConfigmasterBackendApplication in 65.286 seconds (process running for 69.107)
+2026-03-03T01:00:41.207Z  INFO 25680 --- [configmaster_backend] [nio-8084-exec-3] o.a.c.c.C.[.[.[/configmaster_backend]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-03T01:00:41.208Z  INFO 25680 --- [configmaster_backend] [nio-8084-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-03-03T01:00:41.211Z  INFO 25680 --- [configmaster_backend] [nio-8084-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/login
+? Aucun token trouvé, passage au filtre suivant.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  26:30 min
+[INFO] Finished at: 2026-03-03T01:20:39Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.springframework.boot:spring-boot-maven-plugin:3.2.2:run (default-cli) on project configmaster_backend: Process terminated with exit code: -1 -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException

@@ -9,6 +9,8 @@ from typing import Any, Dict, List, Optional
 import requests
 from dotenv import load_dotenv
 
+from agents.value_store import unwrap_facts
+
 load_dotenv(override=True)
 
 try:
@@ -74,6 +76,51 @@ LIMIT_ID_MAP = {
     "ecommerce": "9",
 }
 
+# ── PL/SQL network name mapping (PCRD_ST_BOARD_CONV_ISS_PAR LOAD_CARD_TYPE) ──
+# PL/SQL checks TRIM(network) against exact strings; unknown → PRIVATIVE (00)
+NETWORK_MAP = {
+    "visa": "VISA",
+    "mastercard": "MCRD",
+    "mcrd": "MCRD",
+    "amex": "AMEX",
+    "american express": "AMEX",
+    "diners": "DINERS",
+    "europay": "EUROPAY",
+    "gimn": "GIMN",
+    "tag-yup": "TAG-YUP",
+    "privative": "PRIVATIVE",
+    # common aliases
+    "mc": "MCRD",
+    "mci": "MCRD",
+    "vis": "VISA",
+    "upi": "UPI",
+    "unionpay": "UPI",
+}
+
+# ── PL/SQL resource_wording exact constants (RELOAD_RESOURCES_PARAM) ──
+# Only these 7 values trigger actual resource creation. Anything else is ignored.
+VALID_RESOURCE_WORDINGS = {
+    "VISA_BASE1", "VISA_SMS", "SID", "HOST_BANK",
+    "MCD_MDS", "MCD_CIS", "UPI",
+}
+
+RESOURCE_WORDING_MAP = {
+    "visa": "VISA_BASE1",
+    "visa_base1": "VISA_BASE1",
+    "visa base1": "VISA_BASE1",
+    "visa_sms": "VISA_SMS",
+    "visa sms": "VISA_SMS",
+    "sid": "SID",
+    "host": "HOST_BANK",
+    "host_bank": "HOST_BANK",
+    "host bank": "HOST_BANK",
+    "mastercard": "MCD_MDS",
+    "mcd_mds": "MCD_MDS",
+    "mcd_cis": "MCD_CIS",
+    "upi": "UPI",
+    "unionpay": "UPI",
+}
+
 
 def _load_json(path: Path) -> Dict[str, Any]:
     with open(path, "r", encoding="utf-8") as f:
@@ -97,6 +144,11 @@ def _to_str(value: Any) -> str:
     if value is None:
         return ""
     return str(value)
+
+
+def _clip(value: Any, max_len: int) -> str:
+    """Convert value to string and enforce backend max length."""
+    return _to_str(value)[:max_len]
 
 
 def _to_number(value: Any) -> Optional[float]:
@@ -182,7 +234,7 @@ def find_latest_state(goals_dir: Path) -> Optional[Path]:
 
 
 def map_facts_to_bank_req(state: Dict[str, Any]) -> Dict[str, Any]:
-    facts = state.get("facts", {})
+    facts = unwrap_facts(state.get("facts", {}))
     bank = facts.get("bank", {})
 
     bank_code = _to_str(bank.get("bank_code"))
@@ -194,8 +246,8 @@ def map_facts_to_bank_req(state: Dict[str, Any]) -> Dict[str, Any]:
 
     bank_req: Dict[str, Any] = {
         "pBusinessDate": business_date,
-        "pBankCode": bank_code[:10],
-        "pBankWording": _to_str(bank.get("name")),
+        "pBankCode": bank_code[:6],
+        "pBankWording": _clip(bank.get("name"), 40),
         "pCountryCode": country_code,
         "pCurrencyCode": currency_code,
         "p_action_flag": "1",
@@ -209,24 +261,28 @@ def map_facts_to_bank_req(state: Dict[str, Any]) -> Dict[str, Any]:
     for agency in agencies:
         bank_req["branches"].append(
             {
-                "bankCode": bank_code,
-                "branchCode": _to_str(agency.get("agency_code")),
-                "branchWording": _to_str(agency.get("agency_name")),
-                "regionCode": _to_str(agency.get("region_code")),
-                "regionWording": _to_str(agency.get("region")),
-                "cityCode": _to_str(agency.get("city_code")),
-                "cityWording": _to_str(agency.get("city")),
+                "bankCode": bank_code[:6],
+                "branchCode": _clip(agency.get("agency_code"), 6),
+                "branchWording": _clip(agency.get("agency_name"), 20),
+                "regionCode": _clip(agency.get("region_code"), 3),
+                "regionWording": _clip(agency.get("region"), 20),
+                "cityCode": _clip(agency.get("city_code"), 5),
+                "cityWording": _clip(agency.get("city"), 20),
             }
         )
 
-    # Resources
+    # Resources — PL/SQL only recognizes specific constants
     for resource in bank.get("resources", []) or []:
-        bank_req["ressources"].append(
-            {
-                "bankCode": bank_code,
-                "resourceWording": _to_str(resource),
-            }
-        )
+        raw_wording = _to_str(resource).strip()
+        # Try to map to a valid PL/SQL resource wording
+        mapped = RESOURCE_WORDING_MAP.get(raw_wording.lower(), raw_wording.upper())
+        if mapped in VALID_RESOURCE_WORDINGS:
+            bank_req["ressources"].append(
+                {
+                    "bankCode": bank_code[:6],
+                    "resourceWording": mapped,
+                }
+            )
 
     # Cards
     for card in facts.get("cards", []) or []:
@@ -237,6 +293,7 @@ def map_facts_to_bank_req(state: Dict[str, Any]) -> Dict[str, Any]:
         limits = card.get("limits", {})
 
         product_code = _to_str(card_info.get("product_code"))
+        product_code_3 = product_code[:3].ljust(3, "0") if product_code else "000"
 
         # expiration max 2 chars, renew / priorExp max 1 char
         expiration_raw = _to_str(card_info.get("expiration"))[:2]
@@ -244,54 +301,76 @@ def map_facts_to_bank_req(state: Dict[str, Any]) -> Dict[str, Any]:
         prior_exp_raw = _to_str(card_info.get("pre_expiration"))[:1]
 
         info_module = {
-            "bankCode": bank_code,
-            "description": _to_str(card_info.get("card_description")),
-            "bin": _to_str(card_info.get("bin")),
-            "plasticType": _to_str(card_info.get("plastic_type")),
-            "productType": _to_str(card_info.get("product_type")),
-            "productCode": product_code[:20] if product_code else "",
-            "trancheMin": _to_str(card_range.get("start_range")),
-            "trancheMax": _to_str(card_range.get("end_range")),
-            "indexPvk": _to_str(card_info.get("pvk_index")),
-            "serviceCode": _to_str(card_info.get("service_code")),
-            "network": _to_str(card_info.get("network")),
+            "bankCode": bank_code[:6],
+            "description": _clip(card_info.get("card_description"), 50),
+            "bin": _clip(card_info.get("bin"), 20),
+            "plasticType": _clip(card_info.get("plastic_type"), 20),
+            "productType": _clip(card_info.get("product_type"), 20),
+            "productCode": product_code_3,
+            "trancheMin": _clip(card_range.get("start_range"), 20),
+            "trancheMax": _clip(card_range.get("end_range"), 20),
+            "indexPvk": _clip(card_info.get("pvk_index"), 20),
+            "serviceCode": _clip(card_info.get("service_code"), 20),
+            "network": NETWORK_MAP.get(
+                _to_str(card_info.get("network")).strip().lower(), "VISA"
+            ),
             "expiration": expiration_raw,
             "renew": renew_raw,
             "priorExp": prior_exp_raw,
         }
 
         # cardFeesCode: exactly 3 chars – take first 3 of product_code
-        fees_code = (product_code or "")[:3].ljust(3, "0")
-        # billing event / period: exactly 1 char each
-        billing_evt = _to_str(fees.get("billing_event"))[:1] or "1"
-        billing_period = _to_str(fees.get("billing_period"))[:1] or "M"
+        fees_code = product_code_3
+
+        # billing event: CHAR(1) — CK_CARD_FEES_06: M=Membership,U=Usage,G=Group,R=Renewal,A=Activation
+        VALID_BILLING_EVT = {"M", "U", "G", "R", "A"}
+        billing_evt_raw = _to_str(fees.get("billing_event")).strip().upper()[:1]
+        billing_evt = billing_evt_raw if billing_evt_raw in VALID_BILLING_EVT else "M"
+
+        # billing period: CHAR(1) — CK_CARD_FEES_08: R,M,Q,S,Y=Yearly,O=Once,2-9=N-years
+        VALID_BILLING_PERIOD = {"R", "M", "Q", "S", "Y", "O", "2", "3", "4", "5", "6", "7", "8", "9"}
+        BILLING_PERIOD_MAP = {
+            "annual": "Y", "yearly": "Y", "year": "Y", "a": "Y", "y": "Y",
+            "monthly": "M", "month": "M", "m": "M",
+            "quarterly": "Q", "quarter": "Q", "q": "Q",
+            "semi-annual": "S", "semiannual": "S", "semi": "S", "s": "S",
+            "once": "O", "one-time": "O", "o": "O",
+            "renewal": "R", "renew": "R", "r": "R",
+        }
+        billing_period_raw = _to_str(fees.get("billing_period")).strip().lower()
+        if billing_period_raw.upper() in VALID_BILLING_PERIOD:
+            billing_period = billing_period_raw.upper()
+        else:
+            billing_period = BILLING_PERIOD_MAP.get(billing_period_raw, "Y")
 
         fees_module = {
-            "bankCode": bank_code,
-            "description": _to_str(fees.get("fee_description")),
+            "bankCode": bank_code[:6],
+            "description": _clip(fees.get("fee_description"), 30),
             "cardFeesCode": fees_code,
             "cardFeesBillingEvt": billing_evt,
-            "cardFeesGracePeriod": _to_number(fees.get("grace_period")) or 0,
+            "cardFeesGracePeriod": int(_to_number(fees.get("grace_period")) or 0),
             "cardFeesBillingPeriod": billing_period,
-            "subscriptionAmount": float(_to_number_str(fees.get("registration_fee"), "0")),
-            "feesAmountFirst": float(_to_number_str(fees.get("periodic_fee"), "0")),
-            "damagedReplacementFees": float(_to_number_str(fees.get("replacement_fee"), "0")),
-            "pinReplacementFees": float(_to_number_str(fees.get("pin_recalculation_fee"), "0")),
+            "subscriptionAmount": _to_number(fees.get("registration_fee")) or 0,
+            "feesAmountFirst": _to_number(fees.get("periodic_fee")) or 0,
+            "damagedReplacementFees": _to_number(fees.get("replacement_fee")) or 0,
+            "pinReplacementFees": _to_number(fees.get("pin_recalculation_fee")) or 0,
         }
 
-        # Services – ALL 15 flags must be present; default "0", enabled → "1"
+        # Services — PL/SQL checks IS NOT NULL: null=disabled, "1"=enabled
         _ALL_SERVICE_KEYS = [
             "retrait", "achat", "advance", "ecommerce", "transfert",
             "quasicash", "solde", "releve", "pinchange", "refund",
             "moneysend", "billpayment", "original", "authentication", "cashback",
         ]
         enabled_services = services.get("enabled", []) or []
-        service_flags: Dict[str, str] = {
-            "bankCode": bank_code,
-            "productCode": product_code,
+        service_flags: Dict[str, Any] = {
+            "bankCode": bank_code[:6],
+            "productCode": product_code_3,
         }
+        # Start with all flags as None (null → disabled in PL/SQL)
         for svc_key in _ALL_SERVICE_KEYS:
-            service_flags[svc_key] = "0"
+            service_flags[svc_key] = None
+        # Set enabled services to "1"
         for raw in enabled_services:
             norm = _normalize_text(_to_str(raw))
             key = SERVICE_MAP.get(norm)
@@ -305,11 +384,11 @@ def map_facts_to_bank_req(state: Dict[str, Any]) -> Dict[str, Any]:
             for limit_key, limit_data in by_type.items():
                 limit_id = LIMIT_ID_MAP.get(_normalize_text(str(limit_key)), "10")
                 limit_modules.append(
-                    _build_limit_module(bank_code, product_code, limit_id, limit_data)
+                    _build_limit_module(bank_code[:6], product_code_3, limit_id, limit_data)
                 )
         else:
             limit_modules.append(
-                _build_limit_module(bank_code, product_code, "10", {})
+                _build_limit_module(bank_code[:6], product_code_3, "10", {})
             )
 
         bank_req["cardProducts"].append(
@@ -342,33 +421,49 @@ def _build_limit_module(
     # productCode must be exactly 4 chars (e.g. "LABC")
     pc = f"L{product_code}" if product_code else "L000"
     pc = pc[:4].ljust(4, "0")
-    # limitsId must be exactly 3 chars, zero-padded
-    lid = _pad(_to_str(limit_id), 3)
+    # limitsId: raw value (e.g. "1", "2", "10") — PL/SQL compares TRIM'd CHAR(3)
+    lid = _to_str(limit_id)
+
+    # --- Helper: only include period fields that have real values ------
+    # PL/SQL uses IS NULL checks to pick the right period combination
+    # (monthly-only, weekly-only, weekly+monthly, daily-only, etc.)
+    # Sending "0" would make the column non-NULL and break the logic.
+    def _amt(val):
+        """Return numeric-string or None (→ DB NULL)."""
+        n = _to_number(val)
+        return _to_number_str(val) if n and n > 0 else None
+
+    def _nbr(val):
+        """Return 3-char padded count or None (→ DB NULL)."""
+        n = _to_number(val)
+        if n and n > 0:
+            return _pad(_to_str(int(n)), 3)
+        return None
 
     return {
         "bankCode": bank_code,
         "productCode": pc,
         "limitsId": lid,
-        "dailyDomAmnt": _to_number_str(domestic.get("daily_amount")),
-        "dailyDomNbr": _pad(_to_str(domestic.get("daily_count") or "0"), 3),
-        "dailyIntAmnt": _to_number_str(international.get("daily_amount")),
-        "dailyIntNbr": _pad(_to_str(international.get("daily_count") or "0"), 3),
-        "dailyTotalAmnt": _to_number_str(total.get("daily_amount")),
-        "dailyTotalNbr": _pad(_to_str(total.get("daily_count") or "0"), 3),
+        "dailyDomAmnt": _amt(domestic.get("daily_amount")),
+        "dailyDomNbr": _nbr(domestic.get("daily_count")),
+        "dailyIntAmnt": _amt(international.get("daily_amount")),
+        "dailyIntNbr": _nbr(international.get("daily_count")),
+        "dailyTotalAmnt": _amt(total.get("daily_amount")),
+        "dailyTotalNbr": _nbr(total.get("daily_count")),
         "minAmountPerTransaction": _to_number_str(per_tx.get("min_amount")),
         "maxAmountPerTransaction": _to_number_str(per_tx.get("max_amount")),
-        "weeklyDomAmnt": _to_number_str(domestic.get("weekly_amount")),
-        "weeklyDomNbr": _pad(_to_str(domestic.get("weekly_count") or "0"), 3),
-        "weeklyIntAmnt": _to_number_str(international.get("weekly_amount")),
-        "weeklyIntNbr": _pad(_to_str(international.get("weekly_count") or "0"), 3),
-        "weeklyTotalAmnt": _to_number_str(total.get("weekly_amount")),
-        "weeklyTotalNbr": _pad(_to_str(total.get("weekly_count") or "0"), 3),
-        "monthlyDomAmnt": _to_number_str(domestic.get("monthly_amount")),
-        "monthlyDomNbr": _pad(_to_str(domestic.get("monthly_count") or "0"), 3),
-        "monthlyIntAmnt": _to_number_str(international.get("monthly_amount")),
-        "monthlyIntNbr": _pad(_to_str(international.get("monthly_count") or "0"), 3),
-        "monthlyTotalAmnt": _to_number_str(total.get("monthly_amount")),
-        "monthlyTotalNbr": _pad(_to_str(total.get("monthly_count") or "0"), 3),
+        "weeklyDomAmnt": _amt(domestic.get("weekly_amount")),
+        "weeklyDomNbr": _nbr(domestic.get("weekly_count")),
+        "weeklyIntAmnt": _amt(international.get("weekly_amount")),
+        "weeklyIntNbr": _nbr(international.get("weekly_count")),
+        "weeklyTotalAmnt": _amt(total.get("weekly_amount")),
+        "weeklyTotalNbr": _nbr(total.get("weekly_count")),
+        "monthlyDomAmnt": _amt(domestic.get("monthly_amount")),
+        "monthlyDomNbr": _nbr(domestic.get("monthly_count")),
+        "monthlyIntAmnt": _amt(international.get("monthly_amount")),
+        "monthlyIntNbr": _nbr(international.get("monthly_count")),
+        "monthlyTotalAmnt": _amt(total.get("monthly_amount")),
+        "monthlyTotalNbr": _nbr(total.get("monthly_count")),
     }
 
 

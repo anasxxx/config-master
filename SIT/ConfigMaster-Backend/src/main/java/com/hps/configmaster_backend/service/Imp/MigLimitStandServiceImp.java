@@ -27,11 +27,11 @@ public class MigLimitStandServiceImp  implements MigLimitStandServiceI {
 	@Override
 	@Transactional
 	
-	public void deletMigLimitStand(String limitId) {
+	public void deletMigLimitStand(String productCode, String limitId) {
 
 
 		
-	    migLimitStandRepositry.deleteByTrimmedId(limitId);
+	    migLimitStandRepositry.deleteByProductCodeAndLimitId(productCode, limitId);
 	}
 
 

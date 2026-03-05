@@ -1,0 +1,730 @@
+{
+  "meta": {
+    "goal_id": 115,
+    "client": "client",
+    "client_n": 111,
+    "action": "add",
+    "created_at": "2026-03-03T08:56:54",
+    "last_extraction": {
+      "used_llm": true,
+      "used_fallback_rules": true,
+      "llm_attempts": 3,
+      "llm_final_status": "LLM_DOWN"
+    },
+    "last_question_paths": [
+      "cards.0.limits.by_type.DEFAULT.international.daily_amount",
+      "cards.0.limits.by_type.DEFAULT.international.weekly_amount",
+      "cards.0.limits.by_type.DEFAULT.international.monthly_amount"
+    ]
+  },
+  "goal": "Add bank Agricole in morroco with MAD ",
+  "facts": {
+    "bank": {
+      "name": {
+        "value": "ADD BANK",
+        "source": "user",
+        "confidence": 1.0,
+        "updated_at": "2026-03-03T08:56:57",
+        "evidence": "Add bank Agricole in morroco with MAD"
+      },
+      "country": {
+        "value": "Maroc",
+        "source": "user",
+        "confidence": 1.0,
+        "updated_at": "2026-03-03T08:57:22",
+        "evidence": "Morocco"
+      },
+      "currency": {
+        "value": "MAD",
+        "source": "user",
+        "confidence": 1.0,
+        "updated_at": "2026-03-03T08:56:57",
+        "evidence": "Add bank Agricole in morroco with MAD"
+      },
+      "bank_code": {
+        "value": "12378",
+        "source": "user",
+        "confidence": 1.0,
+        "updated_at": "2026-03-03T08:57:57",
+        "evidence": "12378"
+      },
+      "resources": {
+        "value": [
+          "CARDS",
+          "TRANSACTIONS",
+          "ACCOUNTS"
+        ],
+        "source": "user",
+        "confidence": 1.0,
+        "updated_at": "2026-03-03T08:58:18",
+        "evidence": "Accounts , cards , transactions"
+      },
+      "agencies": [
+        {
+          "agency_name": {
+            "value": "NOUASSAR",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-03T08:58:39",
+            "evidence": "Agence nouassar , 222"
+          },
+          "agency_code": {
+            "value": "222",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-03T08:58:39",
+            "evidence": "Agence nouassar , 222"
+          },
+          "city": {
+            "value": "Morroco",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-03T08:56:58",
+            "evidence": "Add bank Agricole in morroco with MAD"
+          },
+          "city_code": {
+            "value": "10",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-03T08:58:48",
+            "evidence": "10"
+          },
+          "region": {
+            "value": "Grand Casablanca",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-03T08:59:09",
+            "evidence": "Grand Casablanca , 10"
+          },
+          "region_code": {
+            "value": "10",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-03T08:59:09",
+            "evidence": "Grand Casablanca , 10"
+          }
+        }
+      ]
+    },
+    "cards": [
+      {
+        "card_info": {
+          "bin": {
+            "value": "117766",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-03T08:59:36",
+            "evidence": "117766"
+          },
+          "plastic_type": {
+            "value": "PVC",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-03T08:59:59",
+            "evidence": "plastic"
+          },
+          "card_description": {
+            "value": "DEBIT",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-03T09:00:09",
+            "evidence": "DEBIT"
+          },
+          "product_type": {
+            "value": "DEBIT",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-03T09:00:09",
+            "evidence": "DEBIT"
+          },
+          "product_code": {
+            "value": "PRD123",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-03T09:00:21",
+            "evidence": "PRD123"
+          },
+          "pvk_index": {
+            "value": "1",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-03T09:00:30",
+            "evidence": "1"
+          },
+          "service_code": {
+            "value": "101",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-03T09:00:37",
+            "evidence": "101"
+          },
+          "network": {
+            "value": "VISA",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-03T08:59:23",
+            "evidence": "339977, VISA"
+          },
+          "expiration": {
+            "value": "36",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-03T09:00:49",
+            "evidence": "36"
+          },
+          "renewal_option": {
+            "value": "oui",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-03T09:00:56",
+            "evidence": "oui"
+          },
+          "pre_expiration": {
+            "value": "24",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-03T09:01:05",
+            "evidence": "24"
+          }
+        },
+        "card_range": {
+          "note": {
+            "value": "note",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-03T09:01:14",
+            "evidence": "note"
+          }
+        },
+        "fees": {
+          "fee_description": {
+            "value": "frais",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-03T09:01:21",
+            "evidence": "frais"
+          },
+          "billing_event": {
+            "value": "Tokenization",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-03T09:03:09",
+            "evidence": "Tokenization"
+          },
+          "grace_period": {
+            "value": 30.0,
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-03T09:03:16",
+            "evidence": "30"
+          },
+          "billing_period": {
+            "value": "YEARLY",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-03T09:03:30",
+            "evidence": "YEARLY"
+          },
+          "registration_fee": {
+            "value": 50.0,
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-03T09:03:42",
+            "evidence": "50"
+          },
+          "periodic_fee": {
+            "value": 30.0,
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-03T09:03:50",
+            "evidence": "30"
+          },
+          "replacement_fee": {
+            "value": 10.0,
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-03T09:04:00",
+            "evidence": "10"
+          },
+          "pin_recalculation_fee": {
+            "value": 4.0,
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-03T09:04:06",
+            "evidence": "4"
+          }
+        },
+        "services": {
+          "enabled": {
+            "value": [
+              "Tokenization"
+            ],
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-03T09:03:09",
+            "evidence": "Tokenization"
+          }
+        },
+        "limits": {
+          "selected_limit_types": [],
+          "by_type": {
+            "DEFAULT": {
+              "domestic": {
+                "daily_amount": {
+                  "value": 5000.0,
+                  "source": "user",
+                  "confidence": 1.0,
+                  "updated_at": "2026-03-03T09:04:18",
+                  "evidence": "5000, 20000, 80000"
+                },
+                "daily_count": null,
+                "weekly_amount": {
+                  "value": 20000.0,
+                  "source": "user",
+                  "confidence": 1.0,
+                  "updated_at": "2026-03-03T09:04:18",
+                  "evidence": "5000, 20000, 80000"
+                },
+                "weekly_count": null,
+                "monthly_amount": {
+                  "value": 80000.0,
+                  "source": "user",
+                  "confidence": 1.0,
+                  "updated_at": "2026-03-03T09:04:18",
+                  "evidence": "5000, 20000, 80000"
+                },
+                "monthly_count": null
+              },
+              "international": {
+                "daily_amount": {
+                  "value": 5000.0,
+                  "source": "user",
+                  "confidence": 1.0,
+                  "updated_at": "2026-03-03T09:04:24",
+                  "evidence": "5000, 20000, 80000"
+                },
+                "daily_count": null,
+                "weekly_amount": {
+                  "value": 20000.0,
+                  "source": "user",
+                  "confidence": 1.0,
+                  "updated_at": "2026-03-03T09:04:24",
+                  "evidence": "5000, 20000, 80000"
+                },
+                "weekly_count": null,
+                "monthly_amount": {
+                  "value": 80000.0,
+                  "source": "user",
+                  "confidence": 1.0,
+                  "updated_at": "2026-03-03T09:04:24",
+                  "evidence": "5000, 20000, 80000"
+                },
+                "monthly_count": null
+              },
+              "total": {
+                "daily_amount": null,
+                "daily_count": null,
+                "weekly_amount": null,
+                "weekly_count": null,
+                "monthly_amount": null,
+                "monthly_count": null
+              },
+              "per_transaction": {
+                "min_amount": null,
+                "max_amount": null
+              }
+            }
+          }
+        }
+      }
+    ],
+    "options": {
+      "resources_examples": [
+        "MCD_MDS",
+        "MCD_CIS",
+        "UPI",
+        "HOST_BANK",
+        "SID",
+        "VISA_BASE1",
+        "VISA_SMS"
+      ],
+      "services": [
+        "Retrait",
+        "Cash Advance",
+        "Transferts",
+        "Consultation Solde",
+        "Changement PIN",
+        "Envoi d'argent",
+        "Original",
+        "Achats",
+        "E-commerce",
+        "Quasi-Cash",
+        "Mini-Relevé",
+        "Remboursements",
+        "Paiement Factures",
+        "Authentification",
+        "Cashback"
+      ],
+      "limit_types": [
+        "Retrait",
+        "Purchase",
+        "CASH_advance",
+        "Quasi-cash",
+        "E-commerce"
+      ]
+    }
+  },
+  "history": [
+    {
+      "agent": "",
+      "user": "moorocco"
+    },
+    {
+      "agent": "",
+      "user": "Morocco"
+    },
+    {
+      "agent": "",
+      "user": "CA123"
+    },
+    {
+      "agent": "",
+      "user": "12378"
+    },
+    {
+      "agent": "",
+      "user": "Accounts , cards , transactions"
+    },
+    {
+      "agent": "",
+      "user": "Agence nouassar , 222"
+    },
+    {
+      "agent": "",
+      "user": "10"
+    },
+    {
+      "agent": "",
+      "user": "Grand Casablanca , 10"
+    },
+    {
+      "agent": "",
+      "user": "339977, VISA"
+    },
+    {
+      "agent": "",
+      "user": "117766"
+    },
+    {
+      "agent": "",
+      "user": "plastique"
+    },
+    {
+      "agent": "",
+      "user": "plastic"
+    },
+    {
+      "agent": "",
+      "user": "DEBIT"
+    },
+    {
+      "agent": "",
+      "user": "PRD123"
+    },
+    {
+      "agent": "",
+      "user": "1"
+    },
+    {
+      "agent": "",
+      "user": "101"
+    },
+    {
+      "agent": "",
+      "user": "36"
+    },
+    {
+      "agent": "",
+      "user": "oui"
+    },
+    {
+      "agent": "",
+      "user": "24"
+    },
+    {
+      "agent": "",
+      "user": "note"
+    },
+    {
+      "agent": "",
+      "user": "frais"
+    },
+    {
+      "agent": "",
+      "user": "Tokenization"
+    },
+    {
+      "agent": "",
+      "user": "30"
+    },
+    {
+      "agent": "",
+      "user": "YEARLY"
+    },
+    {
+      "agent": "",
+      "user": "50"
+    },
+    {
+      "agent": "",
+      "user": "30"
+    },
+    {
+      "agent": "",
+      "user": "10"
+    },
+    {
+      "agent": "",
+      "user": "4"
+    },
+    {
+      "agent": "",
+      "user": "5000, 20000, 80000"
+    },
+    {
+      "agent": "",
+      "user": "5000, 20000, 80000"
+    }
+  ],
+  "done": true,
+  "provenance": {
+    "bank.name": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T08:56:57",
+      "evidence": "Add bank Agricole in morroco with MAD"
+    },
+    "bank.currency": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T08:56:57",
+      "evidence": "Add bank Agricole in morroco with MAD"
+    },
+    "bank.agencies.0.city": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T08:56:58",
+      "evidence": "Add bank Agricole in morroco with MAD"
+    },
+    "bank.country": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T08:57:22",
+      "evidence": "Morocco"
+    },
+    "bank.bank_code": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T08:57:57",
+      "evidence": "12378"
+    },
+    "bank.resources": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T08:58:18",
+      "evidence": "Accounts , cards , transactions"
+    },
+    "bank.agencies.0.agency_name": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T08:58:39",
+      "evidence": "Agence nouassar , 222"
+    },
+    "bank.agencies.0.agency_code": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T08:58:39",
+      "evidence": "Agence nouassar , 222"
+    },
+    "bank.agencies.0.city_code": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T08:58:48",
+      "evidence": "10"
+    },
+    "bank.agencies.0.region": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T08:59:09",
+      "evidence": "Grand Casablanca , 10"
+    },
+    "bank.agencies.0.region_code": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T08:59:09",
+      "evidence": "Grand Casablanca , 10"
+    },
+    "cards.0.card_info.network": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T08:59:23",
+      "evidence": "339977, VISA"
+    },
+    "cards.0.card_info.bin": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T08:59:36",
+      "evidence": "117766"
+    },
+    "cards.0.card_info.plastic_type": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T08:59:59",
+      "evidence": "plastic"
+    },
+    "cards.0.card_info.product_type": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T09:00:09",
+      "evidence": "DEBIT"
+    },
+    "cards.0.card_info.card_description": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T09:00:09",
+      "evidence": "DEBIT"
+    },
+    "cards.0.card_info.product_code": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T09:00:21",
+      "evidence": "PRD123"
+    },
+    "cards.0.card_info.pvk_index": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T09:00:30",
+      "evidence": "1"
+    },
+    "cards.0.card_info.service_code": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T09:00:37",
+      "evidence": "101"
+    },
+    "cards.0.card_info.expiration": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T09:00:49",
+      "evidence": "36"
+    },
+    "cards.0.card_info.renewal_option": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T09:00:56",
+      "evidence": "oui"
+    },
+    "cards.0.card_info.pre_expiration": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T09:01:05",
+      "evidence": "24"
+    },
+    "cards.0.card_range.note": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T09:01:14",
+      "evidence": "note"
+    },
+    "cards.0.fees.fee_description": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T09:01:21",
+      "evidence": "frais"
+    },
+    "cards.0.services.enabled": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T09:03:09",
+      "evidence": "Tokenization"
+    },
+    "cards.0.fees.billing_event": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T09:03:09",
+      "evidence": "Tokenization"
+    },
+    "cards.0.fees.grace_period": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T09:03:16",
+      "evidence": "30"
+    },
+    "cards.0.fees.billing_period": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T09:03:30",
+      "evidence": "YEARLY"
+    },
+    "cards.0.fees.registration_fee": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T09:03:42",
+      "evidence": "50"
+    },
+    "cards.0.fees.periodic_fee": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T09:03:50",
+      "evidence": "30"
+    },
+    "cards.0.fees.replacement_fee": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T09:04:00",
+      "evidence": "10"
+    },
+    "cards.0.fees.pin_recalculation_fee": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T09:04:06",
+      "evidence": "4"
+    },
+    "cards.0.limits.by_type.DEFAULT.domestic.daily_amount": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T09:04:18",
+      "evidence": "5000, 20000, 80000"
+    },
+    "cards.0.limits.by_type.DEFAULT.domestic.weekly_amount": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T09:04:18",
+      "evidence": "5000, 20000, 80000"
+    },
+    "cards.0.limits.by_type.DEFAULT.domestic.monthly_amount": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T09:04:18",
+      "evidence": "5000, 20000, 80000"
+    },
+    "cards.0.limits.by_type.DEFAULT.international.daily_amount": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T09:04:24",
+      "evidence": "5000, 20000, 80000"
+    },
+    "cards.0.limits.by_type.DEFAULT.international.weekly_amount": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T09:04:24",
+      "evidence": "5000, 20000, 80000"
+    },
+    "cards.0.limits.by_type.DEFAULT.international.monthly_amount": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T09:04:24",
+      "evidence": "5000, 20000, 80000"
+    }
+  }
+}

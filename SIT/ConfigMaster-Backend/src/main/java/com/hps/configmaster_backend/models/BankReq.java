@@ -14,11 +14,11 @@ public class BankReq {
     private Date pBusinessDate;         // Date de l'opération
 
     @NotNull(message = "Le code de la banque est obligatoire")
-    @Size(min = 1, max = 10, message = "Le code de la banque doit avoir entre 1 et 10 caractères")
+    @Size(min = 1, max = 6, message = "Le code de la banque doit avoir entre 1 et 6 caractères (BANK.BANK_CODE=CHAR(6))")
     private String pBankCode;           // Code de la banque
 
     @NotNull(message = "Le libellé de la banque est obligatoire")
-    @Size(min = 1, max = 100, message = "Le libellé de la banque doit avoir entre 1 et 100 caractères")
+    @Size(min = 1, max = 40, message = "Le libellé de la banque doit avoir entre 1 et 40 caractères (BANK.BANK_NAME=VARCHAR2(40))")
     private String pBankWording;        // Libellé de la banque
 
     @NotNull(message = "Le code de la devise est obligatoire")
@@ -26,8 +26,8 @@ public class BankReq {
     private String pCurrencyCode;       // Code de la devise
 
     @NotNull(message = "Le code du pays est obligatoire")
-    @Size(min = 2, max = 2, message = "Le code du pays doit être composé de 2 caractères")
-    private String pCountryCode;        // Code du pays
+    @Size(min = 2, max = 3, message = "Le code du pays doit être composé de 2 ou 3 caractères")
+    private String pCountryCode;        // Code du pays (alpha-2 e.g. MA or numeric e.g. 504)
 
     @NotNull(message = "Le flag pour première opération est obligatoire")
     private String p_action_flag;          // Flag pour première opération ('Y' ou 'N')

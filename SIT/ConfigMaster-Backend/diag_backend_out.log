@@ -1,1 +1,91 @@
-[INFO] Scanning for projects...
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.2)
+
+2026-03-02T14:48:43.477Z  INFO 41476 --- [configmaster_backend] [           main] c.h.c.ConfigmasterBackendApplication     : Starting ConfigmasterBackendApplication v0.0.1-SNAPSHOT using Java 18.0.2.1 with PID 41476 (C:\Users\amahmoudi\Downloads\config-master-main\SIT\ConfigMaster-Backend\target\configmaster_backend-0.0.1-SNAPSHOT.jar started by amahmoudi in C:\Users\amahmoudi\Downloads\config-master-main)
+2026-03-02T14:48:43.550Z  INFO 41476 --- [configmaster_backend] [           main] c.h.c.ConfigmasterBackendApplication     : No active profile set, falling back to 1 default profile: "default"
+2026-03-02T14:48:53.495Z  INFO 41476 --- [configmaster_backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-02T14:48:54.879Z  INFO 41476 --- [configmaster_backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1351 ms. Found 15 JPA repository interfaces.
+2026-03-02T14:49:02.979Z  INFO 41476 --- [configmaster_backend] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8084 (http)
+2026-03-02T14:49:03.054Z  INFO 41476 --- [configmaster_backend] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-02T14:49:03.059Z  INFO 41476 --- [configmaster_backend] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2026-03-02T14:49:03.220Z  INFO 41476 --- [configmaster_backend] [           main] o.a.c.c.C.[.[.[/configmaster_backend]    : Initializing Spring embedded WebApplicationContext
+2026-03-02T14:49:03.225Z  INFO 41476 --- [configmaster_backend] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 18072 ms
+2026-03-02T14:49:07.237Z  INFO 41476 --- [configmaster_backend] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-03-02T14:49:07.816Z  INFO 41476 --- [configmaster_backend] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.1.Final
+2026-03-02T14:49:08.098Z  INFO 41476 --- [configmaster_backend] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-03-02T14:49:12.315Z  INFO 41476 --- [configmaster_backend] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-02T14:49:12.619Z  INFO 41476 --- [configmaster_backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-03-02T14:49:14.326Z  INFO 41476 --- [configmaster_backend] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection oracle.jdbc.driver.T4CConnection@627bcd7e
+2026-03-02T14:49:14.475Z  INFO 41476 --- [configmaster_backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-03-02T14:49:16.027Z  WARN 41476 --- [configmaster_backend] [           main] org.hibernate.orm.deprecation            : HHH90000025: OracleDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-02T14:49:24.761Z  INFO 41476 --- [configmaster_backend] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-02T14:49:24.783Z  INFO 41476 --- [configmaster_backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-02T14:49:26.845Z  INFO 41476 --- [configmaster_backend] [           main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-03-02T14:49:30.868Z  WARN 41476 --- [configmaster_backend] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-03-02T14:49:34.944Z  INFO 41476 --- [configmaster_backend] [           main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@69231217, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7356f0e0, org.springframework.security.web.context.SecurityContextHolderFilter@41cc3795, org.springframework.security.web.header.HeaderWriterFilter@5bf9c995, org.springframework.web.filter.CorsFilter@7fdef973, org.springframework.security.web.authentication.logout.LogoutFilter@44496e0c, com.hps.configmaster_backend.filter.JwtAuthorizationFilter@3e900e1a, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@791d785c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1a2b5f27, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@123a0b95, org.springframework.security.web.session.SessionManagementFilter@58decd96, org.springframework.security.web.access.ExceptionTranslationFilter@24d02ed9, org.springframework.security.web.access.intercept.AuthorizationFilter@729fc36a]
+2026-03-02T14:49:36.975Z  INFO 41476 --- [configmaster_backend] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8084 (http) with context path '/configmaster_backend'
+2026-03-02T14:49:37.001Z  INFO 41476 --- [configmaster_backend] [           main] c.h.c.ConfigmasterBackendApplication     : Started ConfigmasterBackendApplication in 57.7 seconds (process running for 64.287)
+2026-03-02T14:52:42.299Z  INFO 41476 --- [configmaster_backend] [nio-8084-exec-3] o.a.c.c.C.[.[.[/configmaster_backend]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-02T14:52:42.302Z  INFO 41476 --- [configmaster_backend] [nio-8084-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-03-02T14:52:42.309Z  INFO 41476 --- [configmaster_backend] [nio-8084-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/add
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODQ1NTAwMX0.Bk4QA3bJU5nkqyJomY01O9ki-km0pKovPyL-_-f7CxM
+? Erreur d'authentification : JWT signature does not match locally computed signature. JWT validity cannot be asserted and should not be trusted.
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/getBank/12934
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODQ1NTAwMX0.Bk4QA3bJU5nkqyJomY01O9ki-km0pKovPyL-_-f7CxM
+? Erreur d'authentification : JWT signature does not match locally computed signature. JWT validity cannot be asserted and should not be trusted.
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/login
+? Aucun token trouvé, passage au filtre suivant.
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/add
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODQ1NTAwMX0.Bk4QA3bJU5nkqyJomY01O9ki-km0pKovPyL-_-f7CxM
+? Erreur d'authentification : JWT signature does not match locally computed signature. JWT validity cannot be asserted and should not be trusted.
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/getBank/12934
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODQ1NTAwMX0.Bk4QA3bJU5nkqyJomY01O9ki-km0pKovPyL-_-f7CxM
+? Erreur d'authentification : JWT signature does not match locally computed signature. JWT validity cannot be asserted and should not be trusted.
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/getAll
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODQ2MzE3OH0.-5rXak6qEKtDotKMF1lh-I862wzP4pmMkK4KLvgtf4U
+? Utilisateur authentifié : full@gmail.com
+Hibernate: select b1_0.bank_code,b1_0.bank_name,b1_0.date_create,b1_0.category,b1_0.country_code,b1_0.bank_currency_code from bank b1_0
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/auth/login
+? Aucun token trouvé, passage au filtre suivant.
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/login
+? Aucun token trouvé, passage au filtre suivant.
+? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/add
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODQ2MzE3OH0.-5rXak6qEKtDotKMF1lh-I862wzP4pmMkK4KLvgtf4U
+? Utilisateur authentifié : full@gmail.com
+helloHibernate: select nb1_0.branch_code,nb1_0.bank_code,nb1_0.branch_wording,nb1_0.city_code,nb1_0.city_wording,nb1_0.region_code,nb1_0.region_wording from st_pre_branch nb1_0 where nb1_0.branch_code=?
+Hibernate: insert into st_pre_branch (bank_code,branch_wording,city_code,city_wording,region_code,region_wording,branch_code) values (?,?,?,?,?,?,?)
+Hibernate: select mr1_0.resource_wording,mr1_0.bank_code from st_pre_resources mr1_0 where mr1_0.resource_wording=?
+Hibernate: insert into st_pre_resources (bank_code,resource_wording) values (?,?)
+Hibernate: select mr1_0.resource_wording,mr1_0.bank_code from st_pre_resources mr1_0 where mr1_0.resource_wording=?
+Hibernate: insert into st_pre_resources (bank_code,resource_wording) values (?,?)
+Hibernate: select mr1_0.resource_wording,mr1_0.bank_code from st_pre_resources mr1_0 where mr1_0.resource_wording=?
+Hibernate: insert into st_pre_resources (bank_code,resource_wording) values (?,?)
+Hibernate: select mbrpp1_0.product_code,mbrpp1_0.bank_code,mbrpp1_0.bin,mbrpp1_0.description,mbrpp1_0.expiration,mbrpp1_0.index_pvk,mbrpp1_0.network,mbrpp1_0.plastic_type,mbrpp1_0.prior_exp,mbrpp1_0.product_type,mbrpp1_0.renew,mbrpp1_0.service_code,mbrpp1_0.tranche_max,mbrpp1_0.tranche_min from st_pre_bin_range_plastic_prod mbrpp1_0 where mbrpp1_0.product_code=?
+Hibernate: insert into st_pre_bin_range_plastic_prod (bank_code,bin,description,expiration,index_pvk,network,plastic_type,prior_exp,product_type,renew,service_code,tranche_max,tranche_min,product_code) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+Hibernate: select pmcf1_0.card_fees_code,pmcf1_0.bank_code,pmcf1_0.card_fees_billing_evt,pmcf1_0.card_fees_billing_period,pmcf1_0.card_fees_grace_period,pmcf1_0.damaged_replacement_fees,pmcf1_0.description,pmcf1_0.fees_amount_first,pmcf1_0.pin_replacement_fees,pmcf1_0.subscription_amount from st_pre_mig_card_fees pmcf1_0 where pmcf1_0.card_fees_code=?
+Hibernate: insert into st_pre_mig_card_fees (bank_code,card_fees_billing_evt,card_fees_billing_period,card_fees_grace_period,damaged_replacement_fees,description,fees_amount_first,pin_replacement_fees,subscription_amount,card_fees_code) values (?,?,?,?,?,?,?,?,?,?)
+Hibernate: select msp1_0.product_code,msp1_0.achat,msp1_0.advance,msp1_0.authentication,msp1_0.bank_code,msp1_0.billpayment,msp1_0.cashback,msp1_0.ecommerce,msp1_0.moneysend,msp1_0.original,msp1_0.pinchange,msp1_0.quasicash,msp1_0.refund,msp1_0.releve,msp1_0.retrait,msp1_0.solde,msp1_0.transfert from st_pre_service_prod msp1_0 where msp1_0.product_code=?
+Hibernate: insert into st_pre_service_prod (achat,advance,authentication,bank_code,billpayment,cashback,ecommerce,moneysend,original,pinchange,quasicash,refund,releve,retrait,solde,transfert,product_code) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+Hibernate: select mls1_0.limits_id,mls1_0.product_code,mls1_0.bank_code,mls1_0.daily_dom_amnt,mls1_0.daily_dom_nbr,mls1_0.daily_int_amnt,mls1_0.daily_int_nbr,mls1_0.daily_total_amnt,mls1_0.daily_total_nbr,mls1_0.max_amount_per_transaction,mls1_0.min_amount_per_transaction,mls1_0.monthly_dom_amnt,mls1_0.monthly_dom_nbr,mls1_0.monthly_int_amnt,mls1_0.monthly_int_nbr,mls1_0.monthly_total_amnt,mls1_0.monthly_total_nbr,mls1_0.weekly_dom_amnt,mls1_0.weekly_dom_nbr,mls1_0.weekly_int_amnt,mls1_0.weekly_int_nbr,mls1_0.weekly_total_amnt,mls1_0.weekly_total_nbr from st_pre_limit_stand mls1_0 where (mls1_0.limits_id,mls1_0.product_code) in ((?,?))
+Hibernate: insert into st_pre_limit_stand (bank_code,daily_dom_amnt,daily_dom_nbr,daily_int_amnt,daily_int_nbr,daily_total_amnt,daily_total_nbr,max_amount_per_transaction,min_amount_per_transaction,monthly_dom_amnt,monthly_dom_nbr,monthly_int_amnt,monthly_int_nbr,monthly_total_amnt,monthly_total_nbr,weekly_dom_amnt,weekly_dom_nbr,weekly_int_amnt,weekly_int_nbr,weekly_total_amnt,weekly_total_nbr,limits_id,product_code) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+-1
+-1
+Hibernate: delete from st_pre_branch where branch_code=?
+Hibernate: delete from st_pre_resources where resource_wording=?
+Hibernate: delete from st_pre_resources where resource_wording=?
+Hibernate: delete from st_pre_resources where resource_wording=?
+Hibernate: delete from st_pre_bin_range_plastic_prod where product_code=?
+Hibernate: delete from st_pre_mig_card_fees where card_fees_code=?
+Hibernate: delete from st_pre_service_prod where product_code=?
+Hibernate: DELETE FROM st_pre_limit_stand WHERE limits_id = RPAD(?, 3, ' ')
+-1-1? [JwtAuthorizationFilter] Filtre JWT activé pour la requête : /configmaster_backend/v1/api/banks/getBank/12934
+? Token reçu : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmdWxsQGdtYWlsLmNvbSIsImV4cCI6MTk4ODQ2MzE3OH0.-5rXak6qEKtDotKMF1lh-I862wzP4pmMkK4KLvgtf4U
+? Utilisateur authentifié : full@gmail.com
+Hibernate: select b1_0.bank_code,b1_0.bank_name,b1_0.date_create,b1_0.category,b1_0.country_code,b1_0.bank_currency_code from bank b1_0 where b1_0.bank_code=?

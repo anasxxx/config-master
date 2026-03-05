@@ -42,6 +42,8 @@ IS
                                                     )
         RETURN PLS_INTEGER;
 END PCRD_ST_CONV_CLEAN;
+/
+
 CREATE OR REPLACE EDITIONABLE PACKAGE BODY "POWERCARD"."PCRD_ST_CONV_CLEAN" 
 IS
     FUNCTION MAIN_AUT_CLEAN (p_bank_code   IN   BANK.bank_code%TYPE,
@@ -718,3 +720,4 @@ IS
 
 
 END PCRD_ST_CONV_CLEAN;
+/

@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConfigMaster>
+
+  <!-- ============================================================
+       LÉGENDE
+       [OBLIGATOIRE] = Champ requis, le traitement échoue si absent
+       [OPTIONNEL]   = Champ optionnel, valeur par défaut appliquée
+       [AUTO]        = Calculé automatiquement, ne pas demander
+       [ENUM]        = Valeur choisie parmi une liste prédéfinie
+  ============================================================ -->
+
+  <!-- ============================================================
+       SECTION 2 — INFORMATIONS BANCAIRES
+  ============================================================ -->
+  <bank>
+    <bank_name required="true"  type="VARCHAR2(100)"
+               comment="Nom complet de la banque. Ex: Sahara Bank"/>
+
+    <bank_code  required="true"  type="CHAR(10)"
+               comment="Code unique alphanumerique 1-10 car. Ex: SAH01. Tronqué si > 10."/>
+
+    <country    required="true"  type="ISO-alpha2"
+               comment="Nom du pays converti en code ISO 2 lettres. Ex: Maroc → MA"/>
+
+    <currency   required="true"  type="CHAR(3)"
+               comment="Code devise ISO 4217 en majuscules. Ex: MAD, EUR, USD"/>
+  </bank>
+
+  <!-- ============================================================
+       SECTION 3 — AGENCES (BRANCHES)
+       Au moins une agence requise. Répéter <branch> si plusieurs.
+  ============================================================ -->
+  <branches>
+    <branch>
+      <branch_wording required="true" type="VARCHAR2(20)"
+                      comment="Nom de l'agence. Ex: Agence Maarif"/>
+
+      <branch_code    required="true" type="VARCHAR2(20)"
+                      comment="Code unique de l'agence. Ex: AG001"/>
+
+      <region_wording required="true" type="VARCHAR2(20)"
+                      comment="Nom de la région. Ex: Casablanca-Settat"/>
+
+      <region_code    required="true" type="VARCHAR2(20)"
+                      comment="Code de la région. Ex: CS"/>
+
+      <city_wording   required="true" type="VARCHAR2(20)"
+                      comment="Nom de la ville. Ex: Casablanca"/>
+
+      <city_code      required="true" type="VARCHAR2(20)"
+                      comment="Code de la ville. Ex: CASA"/>
+    </branch>
+  </branches>
+
+  <!-- ============================================================
+       SECTION 4 — RESSOURCES
+       Répéter <resource> pour chaque ressource à activer.
+  ============================================================ -->
+  <resources>
+    <resource>
+      <resource_wording required="true" type="VARCHAR2(20)" enum="true"
+                        allowed-values="VISA_BASE1,VISA_SMS,MCD_MDS,MCD_CIS,UPI,HOST_BANK,SID"
+                        comment="Identifiant de la ressource réseau à activer."/>
+    </resource>
+  </resources>
+
+  <!-- ============================================================
+       SECTION 5 — INFORMATIONS CARTE (CARD INFO)
+       Répéter <product> pour chaque produit carte.
+  ============================================================ -->
+  <products>
+    <product>
+
+      <!-- — Info carte — -->
+      <product_code    required="true" type="CHAR(3)"
+                       comment="Exactement 3 car. alphanumeriques. Ex: VCL, MCD. Tronqué si > 3."/>
+
+      <description     required="true" type="VARCHAR2(50)"
+                       comment="Description du produit. Ex: Visa Classic Internationale"/>
+
+      <bin             required="true" type="VARCHAR2(20)"
+                       comment="Bank Identification Number, 6-8 chiffres. Ex: 445566"/>
+
+      <plastic_type    required="true" type="VARCHAR2(20)"
+                       comment="Type de plastique. Ex: STD, PREMIUM"/>
+
+      <product_type    required="true" type="VARCHAR2(20)"
+                       comment="Type produit réseau. Ex: CL (Classic), GD (Gold), PT (Platinum)"/>
+
+      <network         required="true" type="VARCHAR2(20)" enum="true"
+                       allowed-values="VISA,MCRD,EUROPAY,AMEX,TAG-YUP,DINERS,UPI,GIMN,JCB,PRIVATIVE"
+                       comment="Mot-clé exact reconnu par PL/SQL. Toute autre valeur laisse network_code vide.
+                                VISA→01 | MCRD→02 | EUROPAY→03 | AMEX→04 | TAG-YUP→07
+                                DINERS→08 | UPI→20 | GIMN→21 | JCB→22 | PRIVATIVE→00"/>
+
+      <service_code    required="true" type="VARCHAR2(20)"
+                       comment="Code service ISO. Ex: 101, 201. 1er char: 1/5/7 exclut certains traitements EMV."/>
+
+      <index_pvk       required="true" type="VARCHAR2(20)"
+                       comment="Index clé PVK. Ex: 01, A1"/>
+
+      <expiration      required="true" type="CHAR(2)"
+                       comment="Durée validité en années (1-2 chiffres). Ex: 05 (5 ans)"/>
+
+      <renewal_option  required="true" type="CHAR(1)" enum="true"
+                       allowed-values="Y,N"
+                       comment="Y = renouvellement auto | N = pas de renouvellement"/>
+
+      <pre_expiration  required="true" type="CHAR(1)"
+                       comment="Mois avant expiration pour notifier. Ex: 3"/>
+
+      <!-- BUG-1 CRITIQUE: tranche_min/tranche_max absents du schéma agent — ranges jamais créés -->
+      <tranche_min     required="true" type="VARCHAR2(20)" bug="BUG-1"
+                       comment="Début plage PAN. Ex: 4455660000000000. ABSENT du schéma agent actuel."/>
+
+      <tranche_max     required="true" type="VARCHAR2(20)" bug="BUG-1"
+                       comment="Fin plage PAN. Ex: 4455669999999999. ABSENT du schéma agent actuel."/>
+
+      <!-- ========================================================
+           SECTION 6 — FRAIS (FEES)
+      ======================================================== -->
+      <fees>
+        <!-- AUTO: card_fees_code = product_code[:3], ne pas demander à l'utilisateur -->
+        <card_fees_code auto="true" type="CHAR(3)"
+                        comment="Calculé automatiquement: product_code[:3]."/>
+
+        <description              optional="true"  type="VARCHAR2(30)"
+                                  comment="Description du frais. Ex: Frais Visa Classic"/>
+
+        <!-- BUG-4 HAUT: Montants doivent être String avec @Digits(18,3), pas float JSON -->
+        <card_fees_billing_evt    required="true"  type="CHAR(1)" enum="true"
+                                  allowed-values="1,2,3"
+                                  comment="1=A la creation | 2=Periodique | 3=Autre evenement"/>
+
+        <card_fees_billing_period required="true"  type="CHAR(1)" enum="true"
+                                  allowed-values="M,A,T,S"
+                                  comment="M=Mensuel | A=Annuel | T=Trimestriel | S=Semestriel"/>
+
+        <grace_period             optional="true"  type="INTEGER" range="0-365" bug="BUG-7"
+                                  comment="Jours de grace. Collecté mais PL/SQL met NULL en dur — sans effet."/>
+
+        <subscription_amount      required="true"  type="VARCHAR2" format="decimal" bug="BUG-4"
+                                  comment="Frais inscription initial en String. Ex: 150.000"/>
+
+        <fees_amount_first        required="true"  type="VARCHAR2" format="decimal" bug="BUG-4"
+                                  comment="Cotisation periodique. Copié par PL/SQL vers fees_amount_renew et subsequent_renewal_fees."/>
+
+        <damaged_replacement_fees optional="true"  type="VARCHAR2" format="decimal"
+                                  comment="Remplacement carte endommagée. Copié vers 6 autres types de remplacement."/>
+
+        <pin_replacement_fees     optional="true"  type="VARCHAR2" format="decimal"
+                                  comment="Frais remplacement PIN. Ex: 25.000"/>
+      </fees>
+
+      <!-- ========================================================
+           SECTION 7 — SERVICES
+           Valeur "1" = activé | NULL = désactivé
+           BUG-2 CRITIQUE: Ne jamais envoyer "0" — PL/SQL vérifie IS NOT NULL.
+      ======================================================== -->
+      <services bug="BUG-2"
+                comment="Envoyer 1 pour activer, NULL pour désactiver. Ne jamais envoyer 0.">
+        <retrait       processing_code="01" type="CHAR(1)" allowed-values="1,NULL" comment="Retrait espèces ATM"/>
+        <achat         processing_code="00" type="CHAR(1)" allowed-values="1,NULL" comment="Paiement POS"/>
+        <advance       processing_code="17" type="CHAR(1)" allowed-values="1,NULL" comment="Avance de trésorerie"/>
+        <ecommerce     processing_code="50" type="CHAR(1)" allowed-values="1,NULL" comment="Achats en ligne"/>
+        <transfert     processing_code="26" type="CHAR(1)" allowed-values="1,NULL" comment="Transferts de fonds"/>
+        <quasicash     processing_code="18" type="CHAR(1)" allowed-values="1,NULL" comment="Quasi-Cash"/>
+        <solde         processing_code="31" type="CHAR(1)" allowed-values="1,NULL" comment="Consultation de solde"/>
+        <releve        processing_code="38" type="CHAR(1)" allowed-values="1,NULL" comment="Mini-relevé de compte"/>
+        <pinchange     processing_code="92" type="CHAR(1)" allowed-values="1,NULL" comment="Changement PIN"/>
+        <refund        processing_code="20" type="CHAR(1)" allowed-values="1,NULL" comment="Remboursements"/>
+        <moneysend     processing_code="28" type="CHAR(1)" allowed-values="1,NULL" comment="Envoi argent P2P"/>
+        <billpayment   processing_code="56" type="CHAR(1)" allowed-values="1,NULL" comment="Paiement de factures"/>
+        <original      processing_code="90" type="CHAR(1)" allowed-values="1,NULL" comment="Credit original / Tokenisation"/>
+        <authentication processing_code="59" type="CHAR(1)" allowed-values="1,NULL" comment="Authentification 3D-Secure"/>
+        <cashback      processing_code="09" type="CHAR(1)" allowed-values="1,NULL" comment="Cashback sur achat"/>
+      </services>
+
+      <!-- ========================================================
+           SECTION 8 — LIMITES TRANSACTIONNELLES
+           Répéter <limit> pour chaque type de limite.
+           BUG-3 CRITIQUE: Envoyer NULL (pas "0") pour désactiver.
+           product_code AUTO: "L" + product_code[:3]
+           limits_id AUTO: padé à 3 car. ex "001"
+      ======================================================== -->
+      <limits bug="BUG-3"
+              comment="NULL pour périodes non souhaitées. Ne jamais envoyer 0 — casse la logique D/W/M.">
+
+        <!-- Répéter <limit> pour: Retrait(1), Purchase(2), CashAdvance(3), QuasiCash(4), Ecommerce(9), Default(10) -->
+        <limit>
+          <limits_id auto="true" type="INTEGER"
+                     allowed-values="1=Retrait,2=Purchase,3=CashAdvance,4=QuasiCash,9=Ecommerce,10=Default"
+                     comment="Padé à 3 car. ex: 001. Calculé automatiquement."/>
+
+          <!-- Période JOURNALIÈRE -->
+          <daily_dom_amnt   optional="true" type="VARCHAR2(20)" comment="Montant max domestique/jour. Ex: 50000"/>
+          <daily_dom_nbr    optional="true" type="CHAR(3)"      comment="Nb max transactions dom./jour. Ex: 010"/>
+          <daily_int_amnt   optional="true" type="VARCHAR2(20)" comment="Montant max international/jour"/>
+          <daily_int_nbr    optional="true" type="CHAR(3)"      comment="Nb max transactions int./jour"/>
+          <daily_total_amnt optional="true" type="VARCHAR2(20)" comment="Montant max total/jour — contrôle activation période D"/>
+          <daily_total_nbr  optional="true" type="CHAR(3)"      comment="Nb max transactions total/jour"/>
+
+          <!-- Période HEBDOMADAIRE -->
+          <weekly_dom_amnt   optional="true" type="VARCHAR2(20)" comment="Montant max domestique/semaine"/>
+          <weekly_dom_nbr    optional="true" type="CHAR(3)"      comment="Nb max transactions dom./semaine"/>
+          <weekly_int_amnt   optional="true" type="VARCHAR2(20)" comment="Montant max international/semaine"/>
+          <weekly_int_nbr    optional="true" type="CHAR(3)"      comment="Nb max transactions int./semaine"/>
+          <weekly_total_amnt optional="true" type="VARCHAR2(20)" comment="Montant max total/semaine — contrôle activation période W"/>
+          <weekly_total_nbr  optional="true" type="CHAR(3)"      comment="Nb max transactions total/semaine"/>
+
+          <!-- Période MENSUELLE -->
+          <monthly_dom_amnt   optional="true" type="VARCHAR2(20)" comment="Montant max domestique/mois"/>
+          <monthly_dom_nbr    optional="true" type="CHAR(3)"      comment="Nb max transactions dom./mois"/>
+          <monthly_int_amnt   optional="true" type="VARCHAR2(20)" comment="Montant max international/mois"/>
+          <monthly_int_nbr    optional="true" type="CHAR(3)"      comment="Nb max transactions int./mois"/>
+          <monthly_total_amnt optional="true" type="VARCHAR2(20)" comment="Montant max total/mois — contrôle activation période M"/>
+          <monthly_total_nbr  optional="true" type="CHAR(3)"      comment="Nb max transactions total/mois"/>
+
+          <!-- Par Transaction -->
+          <min_amount_per_transaction optional="true" type="VARCHAR2(20)" default="0"
+                                      comment="Montant minimum par transaction. Ex: 50"/>
+          <max_amount_per_transaction optional="true" type="VARCHAR2(20)" default="0"
+                                      comment="Montant maximum par transaction. Ex: 5000"/>
+        </limit>
+
+      </limits>
+
+    </product>
+  </products>
+
+  <!-- ============================================================
+       SECTION 10 — BUGS IDENTIFIÉS
+  ============================================================ -->
+  <bugs>
+    <bug id="BUG-1" severity="CRITIQUE">
+      tranche_min / tranche_max absents du schéma agent. Les plages de cartes ne sont jamais créées.
+    </bug>
+    <bug id="BUG-2" severity="CRITIQUE">
+      Services envoyés comme "0" au lieu de NULL. PL/SQL vérifie IS NOT NULL — tous les services sont activés par erreur.
+    </bug>
+    <bug id="BUG-3" severity="CRITIQUE">
+      Limites envoyées comme "0" au lieu de NULL. La logique de période (D/W/M) est cassée.
+    </bug>
+    <bug id="BUG-4" severity="HAUT">
+      Montants de frais envoyés comme float JSON. Le Java DTO attend des String avec validation @Digits(18,3).
+    </bug>
+    <bug id="BUG-5" severity="HAUT">
+      product_code: schéma agent permet 32 car., DTO 20 car., mais colonne DB est VARCHAR2(3).
+    </bug>
+    <bug id="BUG-6" severity="MOYEN">
+      network: texte libre accepté mais PL/SQL attend des mots-clés exacts (VISA, MCRD, etc.).
+    </bug>
+    <bug id="BUG-7" severity="BAS">
+      grace_period: collecté mais PL/SQL le met à NULL en dur — sans aucun effet.
+    </bug>
+  </bugs>
+
+</ConfigMaster>

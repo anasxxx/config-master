@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import org.springframework.jdbc.core.JdbcTemplate;
 import java.util.*;
 import java.util.stream.*;
 
@@ -20,6 +21,9 @@ public class BankController {
 
     @Autowired
     private IBanqueService banqueService;
+
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
 
     @PostMapping("/add")
     public ResponseEntity<?> addBank(@Valid @RequestBody BankReq banqueM, BindingResult bindingResult) {
@@ -32,7 +36,7 @@ public class BankController {
         	System.out.print(result);
             if (result != 0) {
             	System.out.print(result);
-                return buildError("Erreur lors du traitement de la banque", HttpStatus.BAD_REQUEST);
+				return buildError("Erreur lors du traitement de la banque (code=" + result + ")", HttpStatus.BAD_REQUEST);
             }
 
             return ResponseEntity.status(HttpStatus.CREATED).body(banqueM);
@@ -49,7 +53,7 @@ public class BankController {
          try {
              Integer result = banqueService.processBank(banqueM);
              if (result != 0) {
-                 return buildError("Erreur lors du traitement de la banque", HttpStatus.BAD_REQUEST);
+				 return buildError("Erreur lors du traitement de la banque (code=" + result + ")", HttpStatus.BAD_REQUEST);
              }
 
              return ResponseEntity.status(HttpStatus.CREATED).body(banqueM);
@@ -385,6 +389,177 @@ public class BankController {
 	    module.setMonthlyTotalNbr(limit.getWeeklyTotalNbr());
 	}
 
-    
+    @GetMapping("/diag")
+    public ResponseEntity<?> diagnostics() {
+        Map<String, Object> diag = new LinkedHashMap<>();
+
+        // 1) Package status
+        List<Map<String, Object>> pkgStatus = jdbcTemplate.queryForList(
+            "SELECT object_name, object_type, status FROM user_objects " +
+            "WHERE object_type IN ('PACKAGE','PACKAGE BODY') " +
+            "AND object_name IN ('PCRD_ST_BOARD_CONV_MAIN','PCRD_ST_CONV_CLEAN'," +
+            "'PCRD_ST_BOARD_CONV_COM','PCRD_ST_BOARD_CONV_ISS_PAR'," +
+            "'PCRD_ST_CONV_CATALOGUE','GLOBAL_VARS','DECLARATION_CST','PCRD_GENERAL_TOOLS') " +
+            "ORDER BY object_name, object_type");
+        diag.put("packages", pkgStatus);
+
+        // 2) Compilation errors
+        List<Map<String, Object>> compErrors = jdbcTemplate.queryForList(
+            "SELECT name, type, line, position, text FROM user_errors " +
+            "WHERE name IN ('PCRD_ST_BOARD_CONV_MAIN','PCRD_ST_CONV_CLEAN'," +
+            "'PCRD_ST_BOARD_CONV_COM','PCRD_ST_BOARD_CONV_ISS_PAR','PCRD_ST_CONV_CATALOGUE') " +
+            "ORDER BY name, type, sequence");
+        diag.put("compilationErrors", compErrors);
+
+        // 3) Staging table counts
+        Map<String, Integer> stagingCounts = new LinkedHashMap<>();
+        String[] tables = {"st_pre_branch","st_pre_resources","st_pre_bin_range_plastic_prod",
+                           "st_pre_mig_card_fees","st_pre_service_prod","st_pre_limit_stand"};
+        for (String tbl : tables) {
+            try {
+                Integer cnt = jdbcTemplate.queryForObject("SELECT COUNT(*) FROM " + tbl, Integer.class);
+                stagingCounts.put(tbl, cnt);
+            } catch (Exception e) {
+                stagingCounts.put(tbl, -1);
+            }
+        }
+        diag.put("stagingCounts", stagingCounts);
+
+        return ResponseEntity.ok(diag);
+    }
+
+    @PostMapping("/diag/recompile")
+    public ResponseEntity<?> recompilePackages() {
+        Map<String, Object> result = new LinkedHashMap<>();
+        String[] packages = {
+            "DECLARATION_CST", "GLOBAL_VARS", "PCRD_GENERAL_TOOLS",
+            "PCRD_ST_CONV_CLEAN", "PCRD_ST_CONV_CATALOGUE",
+            "PCRD_ST_BOARD_CONV_COM", "PCRD_ST_BOARD_CONV_ISS_PAR",
+            "PCRD_ST_BOARD_CONV_MAIN"
+        };
+        List<Map<String, String>> recompileResults = new java.util.ArrayList<>();
+        for (String pkg : packages) {
+            Map<String, String> entry = new LinkedHashMap<>();
+            entry.put("package", pkg);
+            try {
+                jdbcTemplate.execute("ALTER PACKAGE " + pkg + " COMPILE");
+                entry.put("spec", "OK");
+            } catch (Exception e) {
+                entry.put("spec", "FAIL: " + e.getMessage());
+            }
+            try {
+                jdbcTemplate.execute("ALTER PACKAGE " + pkg + " COMPILE BODY");
+                entry.put("body", "OK");
+            } catch (Exception e) {
+                entry.put("body", "FAIL: " + e.getMessage());
+            }
+            recompileResults.add(entry);
+        }
+        result.put("recompile", recompileResults);
+
+        // Check status after recompile
+        List<Map<String, Object>> pkgStatus = jdbcTemplate.queryForList(
+            "SELECT object_name, object_type, status FROM user_objects " +
+            "WHERE object_type IN ('PACKAGE','PACKAGE BODY') " +
+            "AND object_name IN ('PCRD_ST_BOARD_CONV_MAIN','PCRD_ST_CONV_CLEAN'," +
+            "'PCRD_ST_BOARD_CONV_COM','PCRD_ST_BOARD_CONV_ISS_PAR'," +
+            "'PCRD_ST_CONV_CATALOGUE','GLOBAL_VARS','DECLARATION_CST','PCRD_GENERAL_TOOLS') " +
+            "ORDER BY object_name, object_type");
+        result.put("packagesAfter", pkgStatus);
+
+        // Check compilation errors after
+        List<Map<String, Object>> compErrors = jdbcTemplate.queryForList(
+            "SELECT name, type, line, position, text FROM user_errors " +
+            "WHERE name IN ('PCRD_ST_BOARD_CONV_MAIN','PCRD_ST_CONV_CLEAN'," +
+            "'PCRD_ST_BOARD_CONV_COM','PCRD_ST_BOARD_CONV_ISS_PAR','PCRD_ST_CONV_CATALOGUE') " +
+            "ORDER BY name, type, sequence");
+        result.put("errorsAfter", compErrors);
+
+        return ResponseEntity.ok(result);
+    }
+
+    @PostMapping("/diag/clean-staging")
+    public ResponseEntity<?> cleanStagingTables() {
+        Map<String, Object> result = new LinkedHashMap<>();
+        String[] tables = {"st_pre_branch","st_pre_resources","st_pre_bin_range_plastic_prod",
+                           "st_pre_mig_card_fees","st_pre_service_prod","st_pre_limit_stand"};
+        for (String tbl : tables) {
+            try {
+                int rows = jdbcTemplate.update("DELETE FROM " + tbl);
+                result.put(tbl, "deleted " + rows + " rows");
+            } catch (Exception e) {
+                result.put(tbl, "FAIL: " + e.getMessage());
+            }
+        }
+        return ResponseEntity.ok(result);
+    }
+
+    @GetMapping("/diag/plsql-source")
+    public ResponseEntity<?> plsqlSource() {
+        Map<String, Object> result = new LinkedHashMap<>();
+
+        // Get MAIN function source
+        List<Map<String, Object>> mainSrc = jdbcTemplate.queryForList(
+            "SELECT line, text FROM user_source " +
+            "WHERE name = 'PCRD_ST_BOARD_CONV_MAIN' AND type = 'PACKAGE BODY' " +
+            "ORDER BY line");
+        StringBuilder sb = new StringBuilder();
+        for (Map<String, Object> row : mainSrc) {
+            sb.append(row.get("TEXT"));
+        }
+        result.put("PCRD_ST_BOARD_CONV_MAIN_BODY", sb.toString());
+
+        // Get COM body source
+        List<Map<String, Object>> comSrc = jdbcTemplate.queryForList(
+            "SELECT line, text FROM user_source " +
+            "WHERE name = 'PCRD_ST_BOARD_CONV_COM' AND type = 'PACKAGE BODY' " +
+            "ORDER BY line");
+        StringBuilder sb2 = new StringBuilder();
+        for (Map<String, Object> row : comSrc) {
+            sb2.append(row.get("TEXT"));
+        }
+        result.put("PCRD_ST_BOARD_CONV_COM_BODY", sb2.toString());
+
+        // Also get the DECLARATION_CST package spec for constant definitions
+        List<Map<String, Object>> declSrc = jdbcTemplate.queryForList(
+            "SELECT line, text FROM user_source " +
+            "WHERE name = 'DECLARATION_CST' AND type = 'PACKAGE' " +
+            "ORDER BY line");
+        StringBuilder sb3 = new StringBuilder();
+        for (Map<String, Object> row : declSrc) {
+            sb3.append(row.get("TEXT"));
+        }
+        result.put("DECLARATION_CST_SPEC", sb3.toString());
+
+        return ResponseEntity.ok(result);
+    }
+
+    @PostMapping("/diag/query")
+    public ResponseEntity<?> diagQuery(@RequestBody Map<String, String> body) {
+        String sql = body.get("sql");
+        if (sql == null || sql.isBlank()) {
+            return ResponseEntity.badRequest().body(Map.of("error", "Missing 'sql' field"));
+        }
+        try {
+            List<Map<String, Object>> rows = jdbcTemplate.queryForList(sql);
+            return ResponseEntity.ok(Map.of("rows", rows, "count", rows.size()));
+        } catch (Exception e) {
+            return ResponseEntity.ok(Map.of("error", e.getMessage()));
+        }
+    }
+
+    @PostMapping("/diag/execute")
+    public ResponseEntity<?> diagExecute(@RequestBody Map<String, String> body) {
+        String sql = body.get("sql");
+        if (sql == null || sql.isBlank()) {
+            return ResponseEntity.badRequest().body(Map.of("error", "Missing 'sql' field"));
+        }
+        try {
+            jdbcTemplate.execute(sql);
+            return ResponseEntity.ok(Map.of("result", "OK"));
+        } catch (Exception e) {
+            return ResponseEntity.ok(Map.of("error", e.getMessage()));
+        }
+    }
 
 }

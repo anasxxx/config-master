@@ -6,11 +6,11 @@ import jakarta.validation.constraints.Size;
 public class NewBranchModule {
 
     @NotNull(message = "Bank code cannot be null")
-    @Size(max = 50, message = "Bank code cannot exceed 50 characters")
+    @Size(max = 20, message = "Bank code cannot exceed 20 characters")
     private String bankCode;
 
     @NotNull(message = "Branch code cannot be null")
-    @Size(max = 20, message = "Branch code cannot exceed 20 characters")
+    @Size(max = 6, message = "Branch code cannot exceed 6 characters (BRANCH.BRANCH_CODE=CHAR(6))")
     private String branchCode;
 
     @NotNull(message = "Branch wording cannot be null")
@@ -18,7 +18,7 @@ public class NewBranchModule {
     private String branchWording;
 
     @NotNull(message = "Region code cannot be null")
-    @Size(max = 20, message = "Region code cannot exceed 20 characters")
+    @Size(max = 3, message = "Region code cannot exceed 3 characters (REGION_CODE=CHAR(3))")
     private String regionCode;
 
     @NotNull(message = "Region wording cannot be null")
@@ -26,7 +26,7 @@ public class NewBranchModule {
     private String regionWording;
 
     @NotNull(message = "City code cannot be null")
-    @Size(max = 20, message = "City code cannot exceed 20 characters")
+    @Size(max = 5, message = "City code cannot exceed 5 characters (CITY_CODE=CHAR(5))")
     private String cityCode;
 
     @NotNull(message = "City wording cannot be null")

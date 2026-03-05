@@ -21,29 +21,21 @@ public class PreMigCardFeesModule {
 
     @Min(0)
     @Max(365)
-    private Integer cardFeesGracePeriod; // Période de grâce en jours
+    private BigDecimal cardFeesGracePeriod; // Période de grâce en jours
 
     @NotNull
     @Size(min = 1, max = 1)
     private String cardFeesBillingPeriod; // Période de facturation
 
     @NotNull
-    @DecimalMin(value = "0.0", inclusive = false)
-    @Digits(integer = 18, fraction = 3)
-    private String subscriptionAmount; // Montant d'abonnement
+    private BigDecimal subscriptionAmount; // Montant d'abonnement
 
     @NotNull
-    @DecimalMin(value = "0.0", inclusive = false)
-    @Digits(integer = 18, fraction = 3)
-    private String feesAmountFirst; // Montant du premier frais
+    private BigDecimal feesAmountFirst; // Montant du premier frais
 
-    @DecimalMin(value = "0.0", inclusive = false)
-    @Digits(integer = 18, fraction = 3)
-    private String damagedReplacementFees; // Frais de remplacement carte endommagée
+    private BigDecimal damagedReplacementFees; // Frais de remplacement carte endommagée
 
-    @DecimalMin(value = "0.0", inclusive = false)
-    @Digits(integer = 18, fraction = 3)
-    private String pinReplacementFees; // Frais de remplacement du code PIN
+    private BigDecimal pinReplacementFees; // Frais de remplacement du code PIN
 
     // Getters et setters
 
@@ -79,11 +71,11 @@ public class PreMigCardFeesModule {
         this.cardFeesBillingEvt = cardFeesBillingEvt;
     }
 
-    public Integer getCardFeesGracePeriod() {
+    public BigDecimal getCardFeesGracePeriod() {
         return cardFeesGracePeriod;
     }
 
-    public void setCardFeesGracePeriod(Integer cardFeesGracePeriod) {
+    public void setCardFeesGracePeriod(BigDecimal cardFeesGracePeriod) {
         this.cardFeesGracePeriod = cardFeesGracePeriod;
     }
 
@@ -95,35 +87,35 @@ public class PreMigCardFeesModule {
         this.cardFeesBillingPeriod = cardFeesBillingPeriod;
     }
 
-	public String getSubscriptionAmount() {
+	public BigDecimal getSubscriptionAmount() {
 		return subscriptionAmount;
 	}
 
-	public void setSubscriptionAmount(String subscriptionAmount) {
+	public void setSubscriptionAmount(BigDecimal subscriptionAmount) {
 		this.subscriptionAmount = subscriptionAmount;
 	}
 
-	public String getFeesAmountFirst() {
+	public BigDecimal getFeesAmountFirst() {
 		return feesAmountFirst;
 	}
 
-	public void setFeesAmountFirst(String feesAmountFirst) {
+	public void setFeesAmountFirst(BigDecimal feesAmountFirst) {
 		this.feesAmountFirst = feesAmountFirst;
 	}
 
-	public String getDamagedReplacementFees() {
+	public BigDecimal getDamagedReplacementFees() {
 		return damagedReplacementFees;
 	}
 
-	public void setDamagedReplacementFees(String damagedReplacementFees) {
+	public void setDamagedReplacementFees(BigDecimal damagedReplacementFees) {
 		this.damagedReplacementFees = damagedReplacementFees;
 	}
 
-	public String getPinReplacementFees() {
+	public BigDecimal getPinReplacementFees() {
 		return pinReplacementFees;
 	}
 
-	public void setPinReplacementFees(String pinReplacementFees) {
+	public void setPinReplacementFees(BigDecimal pinReplacementFees) {
 		this.pinReplacementFees = pinReplacementFees;
 	}
 

@@ -1,0 +1,760 @@
+{
+  "meta": {
+    "goal_id": 117,
+    "client": "client",
+    "client_n": 113,
+    "action": "add",
+    "created_at": "2026-03-03T10:36:21",
+    "last_extraction": {
+      "used_llm": true,
+      "used_fallback_rules": true,
+      "llm_attempts": 3,
+      "llm_final_status": "LLM_DOWN"
+    },
+    "last_question_paths": [
+      "cards.0.limits.by_type.DEFAULT.international.daily_amount",
+      "cards.0.limits.by_type.DEFAULT.international.weekly_amount",
+      "cards.0.limits.by_type.DEFAULT.international.monthly_amount"
+    ]
+  },
+  "goal": "I want to add a bank named TESTBANK",
+  "facts": {
+    "bank": {
+      "name": {
+        "value": "I WANT TO ADD A BANK",
+        "source": "user",
+        "confidence": 1.0,
+        "updated_at": "2026-03-03T10:36:25",
+        "evidence": "I want to add a bank named TESTBANK"
+      },
+      "country": {
+        "value": "Maroc",
+        "source": "user",
+        "confidence": 1.0,
+        "updated_at": "2026-03-03T10:36:52",
+        "evidence": "Maroc"
+      },
+      "currency": {
+        "value": "MAD",
+        "source": "autofill",
+        "confidence": 1.0,
+        "updated_at": "2026-03-03T10:36:52"
+      },
+      "bank_code": {
+        "value": "88001",
+        "source": "user",
+        "confidence": 1.0,
+        "updated_at": "2026-03-03T10:37:19",
+        "evidence": "88001"
+      },
+      "resources": {
+        "value": [
+          "VISA_SMS"
+        ],
+        "source": "user",
+        "confidence": 1.0,
+        "updated_at": "2026-03-03T10:37:45",
+        "evidence": "VISA_SMS"
+      },
+      "agencies": [
+        {
+          "agency_name": {
+            "value": "RABAT",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-03T10:37:57",
+            "evidence": "Agence Rabat, 001"
+          },
+          "agency_code": {
+            "value": "001",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-03T10:37:57",
+            "evidence": "Agence Rabat, 001"
+          },
+          "city": {
+            "value": "Rabat",
+            "source": "rules",
+            "confidence": 0.75,
+            "updated_at": "2026-03-03T10:37:58",
+            "evidence": "Agence Rabat, 001"
+          },
+          "city_code": {
+            "value": "10",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-03T10:42:42",
+            "evidence": "10"
+          },
+          "region": {
+            "value": "Rabat Sale",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-03T10:43:25",
+            "evidence": "Rabat Sale, 10"
+          },
+          "region_code": {
+            "value": "10",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-03T10:43:25",
+            "evidence": "Rabat Sale, 10"
+          }
+        }
+      ],
+      "country_alpha2": {
+        "value": "MA",
+        "source": "autofill",
+        "confidence": 1.0,
+        "updated_at": "2026-03-03T10:36:52"
+      }
+    },
+    "cards": [
+      {
+        "card_info": {
+          "bin": {
+            "value": "456789",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-03T10:44:10",
+            "evidence": "456789"
+          },
+          "plastic_type": {
+            "value": "PVC",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-03T10:44:26",
+            "evidence": "PVC"
+          },
+          "card_description": {
+            "value": "Gold",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-03T10:44:37",
+            "evidence": "VISA GOLD"
+          },
+          "product_type": {
+            "value": "DEBIT",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-03T10:44:49",
+            "evidence": "DEBIT"
+          },
+          "product_code": {
+            "value": "VGD",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-03T10:45:05",
+            "evidence": "VGD"
+          },
+          "pvk_index": {
+            "value": "1",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-03T10:45:15",
+            "evidence": "1"
+          },
+          "service_code": {
+            "value": "101",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-03T10:45:22",
+            "evidence": "101"
+          },
+          "network": {
+            "value": "VISA",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-03T10:43:41",
+            "evidence": "456789, VISA"
+          },
+          "expiration": {
+            "value": "36",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-03T10:45:45",
+            "evidence": "36"
+          },
+          "renewal_option": {
+            "value": "1",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-03T10:45:50",
+            "evidence": "1"
+          },
+          "pre_expiration": {
+            "value": "3",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-03T10:46:19",
+            "evidence": "3"
+          }
+        },
+        "card_range": {
+          "note": {
+            "value": "NOTHING TO SAY",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-03T10:47:05",
+            "evidence": "NOTHING TO SAY"
+          }
+        },
+        "fees": {
+          "fee_description": {
+            "value": "Frais Gold",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-03T10:47:17",
+            "evidence": "Frais Gold"
+          },
+          "billing_event": {
+            "value": "M",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-03T10:48:22",
+            "evidence": "M"
+          },
+          "grace_period": {
+            "value": 0.0,
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-03T10:48:35",
+            "evidence": "0"
+          },
+          "billing_period": {
+            "value": "YEARLY",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-03T10:48:50",
+            "evidence": "YEARLY"
+          },
+          "registration_fee": {
+            "value": 200.0,
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-03T10:49:02",
+            "evidence": "200"
+          },
+          "periodic_fee": {
+            "value": 150.0,
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-03T10:49:20",
+            "evidence": "150"
+          },
+          "replacement_fee": {
+            "value": 50.0,
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-03T10:49:26",
+            "evidence": "50"
+          },
+          "pin_recalculation_fee": {
+            "value": 10.0,
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-03T10:49:41",
+            "evidence": "10"
+          }
+        },
+        "services": {
+          "enabled": {
+            "value": [
+              "E-commerce"
+            ],
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-03T10:50:00",
+            "evidence": "Retrait, Achats, E-commerce, Consultation Solde, Mini-Relevé, Changement PIN, Transferts, Cash Advance"
+          }
+        },
+        "limits": {
+          "selected_limit_types": {
+            "value": [
+              "Retrait",
+              "Purchase",
+              "CASH_advance",
+              "E-commerce"
+            ],
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-03T10:50:00",
+            "evidence": "Retrait, Achats, E-commerce, Consultation Solde, Mini-Relevé, Changement PIN, Transferts, Cash Advance"
+          },
+          "by_type": {
+            "DEFAULT": {
+              "domestic": {
+                "daily_amount": {
+                  "value": 5000.0,
+                  "source": "user",
+                  "confidence": 1.0,
+                  "updated_at": "2026-03-03T10:50:18",
+                  "evidence": "5000, 20000, 80000"
+                },
+                "daily_count": null,
+                "weekly_amount": {
+                  "value": 20000.0,
+                  "source": "user",
+                  "confidence": 1.0,
+                  "updated_at": "2026-03-03T10:50:18",
+                  "evidence": "5000, 20000, 80000"
+                },
+                "weekly_count": null,
+                "monthly_amount": {
+                  "value": 80000.0,
+                  "source": "user",
+                  "confidence": 1.0,
+                  "updated_at": "2026-03-03T10:50:18",
+                  "evidence": "5000, 20000, 80000"
+                },
+                "monthly_count": null
+              },
+              "international": {
+                "daily_amount": {
+                  "value": 2000.0,
+                  "source": "user",
+                  "confidence": 1.0,
+                  "updated_at": "2026-03-03T10:50:27",
+                  "evidence": "2000, 10000, 40000"
+                },
+                "daily_count": null,
+                "weekly_amount": {
+                  "value": 10000.0,
+                  "source": "user",
+                  "confidence": 1.0,
+                  "updated_at": "2026-03-03T10:50:27",
+                  "evidence": "2000, 10000, 40000"
+                },
+                "weekly_count": null,
+                "monthly_amount": {
+                  "value": 40000.0,
+                  "source": "user",
+                  "confidence": 1.0,
+                  "updated_at": "2026-03-03T10:50:27",
+                  "evidence": "2000, 10000, 40000"
+                },
+                "monthly_count": null
+              },
+              "total": {
+                "daily_amount": null,
+                "daily_count": null,
+                "weekly_amount": null,
+                "weekly_count": null,
+                "monthly_amount": null,
+                "monthly_count": null
+              },
+              "per_transaction": {
+                "min_amount": null,
+                "max_amount": null
+              }
+            }
+          }
+        }
+      }
+    ],
+    "options": {
+      "resources_examples": [
+        "MCD_MDS",
+        "MCD_CIS",
+        "UPI",
+        "HOST_BANK",
+        "SID",
+        "VISA_BASE1",
+        "VISA_SMS"
+      ],
+      "services": [
+        "Retrait",
+        "Cash Advance",
+        "Transferts",
+        "Consultation Solde",
+        "Changement PIN",
+        "Envoi d'argent",
+        "Original",
+        "Achats",
+        "E-commerce",
+        "Quasi-Cash",
+        "Mini-Relevé",
+        "Remboursements",
+        "Paiement Factures",
+        "Authentification",
+        "Cashback"
+      ],
+      "limit_types": [
+        "Retrait",
+        "Purchase",
+        "CASH_advance",
+        "Quasi-cash",
+        "E-commerce"
+      ]
+    }
+  },
+  "history": [
+    {
+      "agent": "",
+      "user": "TESTBANK"
+    },
+    {
+      "agent": "",
+      "user": "Maroc"
+    },
+    {
+      "agent": "",
+      "user": "88001"
+    },
+    {
+      "agent": "",
+      "user": "VISA_SMS"
+    },
+    {
+      "agent": "",
+      "user": "Agence Rabat, 001"
+    },
+    {
+      "agent": "",
+      "user": "Rabat, 10001"
+    },
+    {
+      "agent": "",
+      "user": "Rabat, 10001"
+    },
+    {
+      "agent": "",
+      "user": "Rabat, 100"
+    },
+    {
+      "agent": "",
+      "user": "Rabat, 10"
+    },
+    {
+      "agent": "",
+      "user": "10"
+    },
+    {
+      "agent": "",
+      "user": "Rabat Sale, 10"
+    },
+    {
+      "agent": "",
+      "user": "456789, VISA"
+    },
+    {
+      "agent": "",
+      "user": "456789"
+    },
+    {
+      "agent": "",
+      "user": "PVC"
+    },
+    {
+      "agent": "",
+      "user": "VISA GOLD"
+    },
+    {
+      "agent": "",
+      "user": "DEBIT"
+    },
+    {
+      "agent": "",
+      "user": "VGD"
+    },
+    {
+      "agent": "",
+      "user": "1"
+    },
+    {
+      "agent": "",
+      "user": "101"
+    },
+    {
+      "agent": "",
+      "user": "36"
+    },
+    {
+      "agent": "",
+      "user": "1"
+    },
+    {
+      "agent": "",
+      "user": "3"
+    },
+    {
+      "agent": "",
+      "user": "NOTHING TO SAY"
+    },
+    {
+      "agent": "",
+      "user": "Frais Gold"
+    },
+    {
+      "agent": "",
+      "user": "M"
+    },
+    {
+      "agent": "",
+      "user": "0"
+    },
+    {
+      "agent": "",
+      "user": "YEARLY"
+    },
+    {
+      "agent": "",
+      "user": "200"
+    },
+    {
+      "agent": "",
+      "user": "150"
+    },
+    {
+      "agent": "",
+      "user": "50"
+    },
+    {
+      "agent": "",
+      "user": "10"
+    },
+    {
+      "agent": "",
+      "user": "Retrait, Achats, E-commerce, Consultation Solde, Mini-Relevé, Changement PIN, Transferts, Cash Advance"
+    },
+    {
+      "agent": "",
+      "user": "5000, 20000, 80000"
+    },
+    {
+      "agent": "",
+      "user": "2000, 10000, 40000"
+    }
+  ],
+  "done": true,
+  "provenance": {
+    "bank.name": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T10:36:25",
+      "evidence": "I want to add a bank named TESTBANK"
+    },
+    "bank.country": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T10:36:52",
+      "evidence": "Maroc"
+    },
+    "bank.bank_code": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T10:37:19",
+      "evidence": "88001"
+    },
+    "bank.resources": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T10:37:45",
+      "evidence": "VISA_SMS"
+    },
+    "bank.agencies.0.agency_name": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T10:37:57",
+      "evidence": "Agence Rabat, 001"
+    },
+    "bank.agencies.0.agency_code": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T10:37:57",
+      "evidence": "Agence Rabat, 001"
+    },
+    "bank.agencies.0.city": {
+      "source": "rules",
+      "confidence": 0.75,
+      "timestamp": "2026-03-03T10:37:58",
+      "evidence": "Agence Rabat, 001"
+    },
+    "bank.agencies.0.city_code": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T10:42:42",
+      "evidence": "10"
+    },
+    "bank.agencies.0.region": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T10:43:25",
+      "evidence": "Rabat Sale, 10"
+    },
+    "bank.agencies.0.region_code": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T10:43:25",
+      "evidence": "Rabat Sale, 10"
+    },
+    "cards.0.card_info.network": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T10:43:41",
+      "evidence": "456789, VISA"
+    },
+    "cards.0.card_info.bin": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T10:44:10",
+      "evidence": "456789"
+    },
+    "cards.0.card_info.plastic_type": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T10:44:26",
+      "evidence": "PVC"
+    },
+    "cards.0.card_info.card_description": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T10:44:37",
+      "evidence": "VISA GOLD"
+    },
+    "cards.0.card_info.product_type": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T10:44:49",
+      "evidence": "DEBIT"
+    },
+    "cards.0.card_info.product_code": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T10:45:05",
+      "evidence": "VGD"
+    },
+    "cards.0.card_info.pvk_index": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T10:45:15",
+      "evidence": "1"
+    },
+    "cards.0.card_info.service_code": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T10:45:22",
+      "evidence": "101"
+    },
+    "cards.0.card_info.expiration": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T10:45:45",
+      "evidence": "36"
+    },
+    "cards.0.card_info.renewal_option": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T10:45:50",
+      "evidence": "1"
+    },
+    "cards.0.card_info.pre_expiration": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T10:46:19",
+      "evidence": "3"
+    },
+    "cards.0.card_range.note": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T10:47:05",
+      "evidence": "NOTHING TO SAY"
+    },
+    "cards.0.fees.fee_description": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T10:47:17",
+      "evidence": "Frais Gold"
+    },
+    "cards.0.fees.billing_event": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T10:48:22",
+      "evidence": "M"
+    },
+    "cards.0.fees.grace_period": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T10:48:35",
+      "evidence": "0"
+    },
+    "cards.0.fees.billing_period": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T10:48:50",
+      "evidence": "YEARLY"
+    },
+    "cards.0.fees.registration_fee": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T10:49:02",
+      "evidence": "200"
+    },
+    "cards.0.fees.periodic_fee": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T10:49:20",
+      "evidence": "150"
+    },
+    "cards.0.fees.replacement_fee": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T10:49:26",
+      "evidence": "50"
+    },
+    "cards.0.fees.pin_recalculation_fee": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T10:49:41",
+      "evidence": "10"
+    },
+    "cards.0.services.enabled": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T10:50:00",
+      "evidence": "Retrait, Achats, E-commerce, Consultation Solde, Mini-Relevé, Changement PIN, Transferts, Cash Advance"
+    },
+    "cards.0.limits.selected_limit_types": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T10:50:00",
+      "evidence": "Retrait, Achats, E-commerce, Consultation Solde, Mini-Relevé, Changement PIN, Transferts, Cash Advance"
+    },
+    "cards.0.limits.by_type.DEFAULT.domestic.daily_amount": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T10:50:18",
+      "evidence": "5000, 20000, 80000"
+    },
+    "cards.0.limits.by_type.DEFAULT.domestic.weekly_amount": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T10:50:18",
+      "evidence": "5000, 20000, 80000"
+    },
+    "cards.0.limits.by_type.DEFAULT.domestic.monthly_amount": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T10:50:18",
+      "evidence": "5000, 20000, 80000"
+    },
+    "cards.0.limits.by_type.DEFAULT.international.daily_amount": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T10:50:27",
+      "evidence": "2000, 10000, 40000"
+    },
+    "cards.0.limits.by_type.DEFAULT.international.weekly_amount": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T10:50:27",
+      "evidence": "2000, 10000, 40000"
+    },
+    "cards.0.limits.by_type.DEFAULT.international.monthly_amount": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-03T10:50:27",
+      "evidence": "2000, 10000, 40000"
+    }
+  }
+}

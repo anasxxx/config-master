@@ -216,7 +216,7 @@ def create_goal(req: CreateGoalReq):
     }
 
     # Extract initial info from the creation message
-    apply_user_message_to_facts(state["facts"], template_obj, req.message)
+    apply_user_message_to_facts(state, template_obj, req.message)
     auto_fill(state["facts"])
 
     _save_json(goal_dir / "state.json", state)

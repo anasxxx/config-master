@@ -143,9 +143,11 @@
     "card_range": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["note"],
+      "required": ["note", "tranche_min", "tranche_max"],
       "properties": {
-        "note": { "type": "string" }
+        "note": { "type": "string" },
+        "tranche_min": { "type": "string", "pattern": "^\\d{12,19}$" },
+        "tranche_max": { "type": "string", "pattern": "^\\d{12,19}$" }
       }
     },
 

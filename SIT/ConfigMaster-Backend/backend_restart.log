@@ -1,0 +1,9 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------------< com.hps:configmaster_backend >--------------------
+[INFO] Building configmaster_backend 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] >>> spring-boot:3.2.2:run (default-cli) > test-compile @ configmaster_backend >>>
+^CTerminer le programme de commandes (O/N)ÿ? Terminer le programme de commandes (O/N)ÿ? Terminer le programme de commandes (O/N)ÿ? Terminer le programme de commandes (O/N)ÿ? Terminer le programme de commandes (O/N)ÿ? Terminer le programme de commandes (O/N)ÿ? Terminer le programme de commandes (O/N)ÿ? 

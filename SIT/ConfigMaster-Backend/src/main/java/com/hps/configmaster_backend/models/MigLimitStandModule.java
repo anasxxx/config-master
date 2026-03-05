@@ -15,87 +15,71 @@ public class MigLimitStandModule {
     private String productCode;
 
     @NotNull(message = "Limits ID cannot be null")
-    @Size(min = 3, max = 3, message = "Limits ID must be 3 characters")
+    @Size(min = 1, max = 3, message = "Limits ID must be 1-3 characters")
     private String limitsId;
 
-    @NotNull(message = "Daily domestic amount cannot be null")
+    // --- Period fields are NULLABLE: PL/SQL uses IS NULL checks to determine
+    //     which period combination to apply (daily-only, weekly-only, monthly-only,
+    //     weekly+monthly, daily+weekly+monthly, etc.)
+
     @Size(max = 20, message = "Daily domestic amount cannot exceed 20 characters")
     private String dailyDomAmnt;
 
-    @NotNull(message = "Daily domestic number cannot be null")
-    @Size(min = 3, max = 3, message = "Daily domestic number must be 3 characters")
+    @Size(max = 3, message = "Daily domestic number must be max 3 characters")
     private String dailyDomNbr;
 
-    @NotNull(message = "Daily international amount cannot be null")
     @Size(max = 20, message = "Daily international amount cannot exceed 20 characters")
     private String dailyIntAmnt;
 
-    @NotNull(message = "Daily international number cannot be null")
-    @Size(min = 3, max = 3, message = "Daily international number must be 3 characters")
+    @Size(max = 3, message = "Daily international number must be max 3 characters")
     private String dailyIntNbr;
 
-    @NotNull(message = "Daily total amount cannot be null")
     @Size(max = 20, message = "Daily total amount cannot exceed 20 characters")
     private String dailyTotalAmnt;
 
-    @NotNull(message = "Daily total number cannot be null")
-    @Size(min = 3, max = 3, message = "Daily total number must be 3 characters")
+    @Size(max = 3, message = "Daily total number must be max 3 characters")
     private String dailyTotalNbr;
 
-    @NotNull(message = "Minimum amount per transaction cannot be null")
     @Size(max = 20, message = "Minimum amount per transaction cannot exceed 20 characters")
     private String minAmountPerTransaction;
 
-    @NotNull(message = "Maximum amount per transaction cannot be null")
     @Size(max = 20, message = "Maximum amount per transaction cannot exceed 20 characters")
     private String maxAmountPerTransaction;
 
-    @NotNull(message = "Weekly domestic amount cannot be null")
     @Size(max = 20, message = "Weekly domestic amount cannot exceed 20 characters")
     private String weeklyDomAmnt;
 
-    @NotNull(message = "Weekly domestic number cannot be null")
-    @Size(min = 3, max = 3, message = "Weekly domestic number must be 3 characters")
+    @Size(max = 3, message = "Weekly domestic number must be max 3 characters")
     private String weeklyDomNbr;
 
-    @NotNull(message = "Weekly international amount cannot be null")
     @Size(max = 20, message = "Weekly international amount cannot exceed 20 characters")
     private String weeklyIntAmnt;
 
-    @NotNull(message = "Weekly international number cannot be null")
-    @Size(min = 3, max = 3, message = "Weekly international number must be 3 characters")
+    @Size(max = 3, message = "Weekly international number must be max 3 characters")
     private String weeklyIntNbr;
 
-    @NotNull(message = "Weekly total amount cannot be null")
     @Size(max = 20, message = "Weekly total amount cannot exceed 20 characters")
     private String weeklyTotalAmnt;
 
-    @NotNull(message = "Weekly total number cannot be null")
-    @Size(min = 3, max = 3, message = "Weekly total number must be 3 characters")
+    @Size(max = 3, message = "Weekly total number must be max 3 characters")
     private String weeklyTotalNbr;
 
-    @NotNull(message = "Monthly domestic amount cannot be null")
     @Size(max = 20, message = "Monthly domestic amount cannot exceed 20 characters")
     private String monthlyDomAmnt;
 
-    @NotNull(message = "Monthly domestic number cannot be null")
-    @Size(min = 3, max = 3, message = "Monthly domestic number must be 3 characters")
+    @Size(max = 3, message = "Monthly domestic number must be max 3 characters")
     private String monthlyDomNbr;
 
-    @NotNull(message = "Monthly international amount cannot be null")
     @Size(max = 20, message = "Monthly international amount cannot exceed 20 characters")
     private String monthlyIntAmnt;
 
-    @NotNull(message = "Monthly international number cannot be null")
-    @Size(min = 3, max = 3, message = "Monthly international number must be 3 characters")
+    @Size(max = 3, message = "Monthly international number must be max 3 characters")
     private String monthlyIntNbr;
 
-    @NotNull(message = "Monthly total amount cannot be null")
     @Size(max = 20, message = "Monthly total amount cannot exceed 20 characters")
     private String monthlyTotalAmnt;
 
-    @NotNull(message = "Monthly total number cannot be null")
-    @Size(min = 3, max = 3, message = "Monthly total number must be 3 characters")
+    @Size(max = 3, message = "Monthly total number must be max 3 characters")
     private String monthlyTotalNbr;
 
     // Getters and Setters

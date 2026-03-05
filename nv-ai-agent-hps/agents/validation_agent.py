@@ -106,6 +106,9 @@ CUSTOM_QUESTIONS = {
     "cards.0.card_info.network": "Quel est le réseau de la carte ? (ex: VISA, MASTERCARD)",
     "cards.0.card_info.product": "Quel est le produit carte ? (ex: Classic, Gold...)",
     "cards.0.services.enabled": "Quels services veux-tu activer pour la carte ? (liste séparée par virgules) (ex: 3DS, TOKENIZATION)",
+    # Card PAN range
+    "cards.0.card_range.tranche_min": "Début de la plage PAN (tranche_min) ? (Ex: 4455660000000000)",
+    "cards.0.card_range.tranche_max": "Fin de la plage PAN (tranche_max) ? (Ex: 4455669999999999)",
 }
 
 

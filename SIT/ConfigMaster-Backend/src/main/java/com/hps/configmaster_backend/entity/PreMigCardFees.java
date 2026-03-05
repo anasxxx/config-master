@@ -4,6 +4,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "st_pre_mig_CARD_FEES")
@@ -23,22 +24,22 @@ public class PreMigCardFees {
     private String cardFeesBillingEvt;
 
     @Column(name = "card_fees_grace_period")
-    private Integer cardFeesGracePeriod;
+    private BigDecimal cardFeesGracePeriod;
 
     @Column(name = "card_fees_billing_period")
     private String cardFeesBillingPeriod;
 
     @Column(name = "subscription_amount")
-    private String subscriptionAmount;
+    private BigDecimal subscriptionAmount;
 
     @Column(name = "fees_amount_first")
-    private String feesAmountFirst;
+    private BigDecimal feesAmountFirst;
 
     @Column(name = "damaged_replacement_fees")
-    private String damagedReplacementFees;
+    private BigDecimal damagedReplacementFees;
 
     @Column(name = "pin_replacement_fees")
-    private String pinReplacementFees;
+    private BigDecimal pinReplacementFees;
 
     // Getters and Setters
 
@@ -74,11 +75,11 @@ public class PreMigCardFees {
         this.cardFeesBillingEvt = cardFeesBillingEvt;
     }
 
-    public Integer getCardFeesGracePeriod() {
+    public BigDecimal getCardFeesGracePeriod() {
         return cardFeesGracePeriod;
     }
 
-    public void setCardFeesGracePeriod(Integer cardFeesGracePeriod) {
+    public void setCardFeesGracePeriod(BigDecimal cardFeesGracePeriod) {
         this.cardFeesGracePeriod = cardFeesGracePeriod;
     }
 
@@ -90,35 +91,35 @@ public class PreMigCardFees {
         this.cardFeesBillingPeriod = cardFeesBillingPeriod;
     }
 
-	public String getSubscriptionAmount() {
+	public BigDecimal getSubscriptionAmount() {
 		return subscriptionAmount;
 	}
 
-	public void setSubscriptionAmount(String subscriptionAmount) {
+	public void setSubscriptionAmount(BigDecimal subscriptionAmount) {
 		this.subscriptionAmount = subscriptionAmount;
 	}
 
-	public String getFeesAmountFirst() {
+	public BigDecimal getFeesAmountFirst() {
 		return feesAmountFirst;
 	}
 
-	public void setFeesAmountFirst(String feesAmountFirst) {
+	public void setFeesAmountFirst(BigDecimal feesAmountFirst) {
 		this.feesAmountFirst = feesAmountFirst;
 	}
 
-	public String getDamagedReplacementFees() {
+	public BigDecimal getDamagedReplacementFees() {
 		return damagedReplacementFees;
 	}
 
-	public void setDamagedReplacementFees(String damagedReplacementFees) {
+	public void setDamagedReplacementFees(BigDecimal damagedReplacementFees) {
 		this.damagedReplacementFees = damagedReplacementFees;
 	}
 
-	public String getPinReplacementFees() {
+	public BigDecimal getPinReplacementFees() {
 		return pinReplacementFees;
 	}
 
-	public void setPinReplacementFees(String pinReplacementFees) {
+	public void setPinReplacementFees(BigDecimal pinReplacementFees) {
 		this.pinReplacementFees = pinReplacementFees;
 	}
 

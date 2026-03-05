@@ -35,12 +35,21 @@ public class MigLimitStandId implements Serializable {
     }
 
     // Getters and Setters
-    public String getBankCode() {
+    public String getProductCode() {
         return productCode;
     }
 
+    public void setProductCode(String productCode) {
+        this.productCode = productCode;
+    }
+
+    // Backward-compatible aliases used by existing service code
+    public String getBankCode() {
+        return getProductCode();
+    }
+
     public void setBankCode(String bankCode) {
-        this.productCode = bankCode;
+        setProductCode(bankCode);
     }
 
     public String getLimitsId() {

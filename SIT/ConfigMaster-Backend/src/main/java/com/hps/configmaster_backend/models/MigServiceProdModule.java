@@ -13,65 +13,22 @@ public class MigServiceProdModule {
     @Size(min = 3, max = 3, message = "Product code must be 3 characters")
     private String productCode;
 
-    @NotNull(message = "Retrait cannot be null")
-    @Size(min = 1, max = 1, message = "Retrait must be 1 character")
-    private String retrait;
-
-    @NotNull(message = "Achat cannot be null")
-    @Size(min = 1, max = 1, message = "Achat must be 1 character")
-    private String achat;
-
-    @NotNull(message = "Advance cannot be null")
-    @Size(min = 1, max = 1, message = "Advance must be 1 character")
-    private String advance;
-
-    @NotNull(message = "Ecommerce cannot be null")
-    @Size(min = 1, max = 1, message = "Ecommerce must be 1 character")
-    private String ecommerce;
-
-    @NotNull(message = "Transfert cannot be null")
-    @Size(min = 1, max = 1, message = "Transfert must be 1 character")
-    private String transfert;
-
-    @NotNull(message = "Quasicash cannot be null")
-    @Size(min = 1, max = 1, message = "Quasicash must be 1 character")
-    private String quasicash;
-
-    @NotNull(message = "Solde cannot be null")
-    @Size(min = 1, max = 1, message = "Solde must be 1 character")
-    private String solde;
-
-    @NotNull(message = "Releve cannot be null")
-    @Size(min = 1, max = 1, message = "Releve must be 1 character")
-    private String releve;
-
-    @NotNull(message = "Pinchange cannot be null")
-    @Size(min = 1, max = 1, message = "Pinchange must be 1 character")
-    private String pinchange;
-
-    @NotNull(message = "Refund cannot be null")
-    @Size(min = 1, max = 1, message = "Refund must be 1 character")
-    private String refund;
-
-    @NotNull(message = "Moneysend cannot be null")
-    @Size(min = 1, max = 1, message = "Moneysend must be 1 character")
-    private String moneysend;
-
-    @NotNull(message = "Billpayment cannot be null")
-    @Size(min = 1, max = 1, message = "Billpayment must be 1 character")
-    private String billpayment;
-
-    @NotNull(message = "Original cannot be null")
-    @Size(min = 1, max = 1, message = "Original must be 1 character")
-    private String original;
-
-    @NotNull(message = "Authentication cannot be null")
-    @Size(min = 1, max = 1, message = "Authentication must be 1 character")
-    private String authentication;
-
-    @NotNull(message = "Cashback cannot be null")
-    @Size(min = 1, max = 1, message = "Cashback must be 1 character")
-    private String cashback;
+    // Service flags: PL/SQL checks IS NOT NULL → null=disabled, "1"=enabled
+    @Size(max = 1) private String retrait;
+    @Size(max = 1) private String achat;
+    @Size(max = 1) private String advance;
+    @Size(max = 1) private String ecommerce;
+    @Size(max = 1) private String transfert;
+    @Size(max = 1) private String quasicash;
+    @Size(max = 1) private String solde;
+    @Size(max = 1) private String releve;
+    @Size(max = 1) private String pinchange;
+    @Size(max = 1) private String refund;
+    @Size(max = 1) private String moneysend;
+    @Size(max = 1) private String billpayment;
+    @Size(max = 1) private String original;
+    @Size(max = 1) private String authentication;
+    @Size(max = 1) private String cashback;
 
     // Getters and Setters
     public String getBankCode() {

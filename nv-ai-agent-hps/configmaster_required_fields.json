@@ -33,7 +33,9 @@
         "pre_expiration": null
       },
       "card_range": {
-        "note": ""
+        "note": "",
+        "tranche_min": null,
+        "tranche_max": null
       },
       "fees": {
         "fee_description": null,

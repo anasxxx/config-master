@@ -721,8 +721,20 @@ def _normalize_numeric_fields_in_facts(facts: dict):
     rec(facts)
 
 
+def _stringify_fees(facts: dict):
+    # Recursively convert fee amounts to strings for DB compatibility
+    if not facts or not isinstance(facts, dict):
+        return
+    cards = facts.get("cards", [])
+    for card in cards:
+        fees = card.get("fees", {})
+        for k in ["registration_fee", "periodic_fee", "replacement_fee", "pin_recalculation_fee"]:
+            if k in fees and fees[k] is not None:
+                fees[k] = str(fees[k])
+
 def validate_facts(validator, facts: dict):
     plain = vs_unwrap_facts(facts)
+    _stringify_fees(plain)
     errors = sorted(validator.iter_errors(plain), key=lambda e: list(e.path))
     if not errors:
         return True, None

@@ -27,7 +27,7 @@ public class MigBinRangePlasticProdModule {
     private String productType;
 
     @NotBlank(message = "Product code is required")
-    @Size(max = 20, message = "Product code must be at most 20 characters")
+	@Size(min = 3, max = 3, message = "Product code must be exactly 3 characters")
     private String productCode;
 
     @Size(max = 20, message = "Tranche min must be at most 20 characters")
