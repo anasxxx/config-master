@@ -103,8 +103,11 @@ CUSTOM_QUESTIONS = {
     "bank.agencies.0.region_code": "Quel est le code de la région ?",
     # Cards (index 0)
     "cards.0.card_info.bin": "Quel est le BIN de la carte ? (6 à 8 chiffres)",
-    "cards.0.card_info.network": "Quel est le réseau de la carte ? (ex: VISA, MASTERCARD)",
+    "cards.0.card_info.network": "Quel est le réseau de la carte ? (VISA, MCRD, AMEX, GIMN, EUROPAY, DINERS, TAG-YUP, PRIVATIVE)",
     "cards.0.card_info.product": "Quel est le produit carte ? (ex: Classic, Gold...)",
+    # Card range
+    "cards.0.card_range.start_range": "Quelle est la plage BIN de début (tranche min) ? (ex: 445555000000000)",
+    "cards.0.card_range.end_range": "Quelle est la plage BIN de fin (tranche max) ? (ex: 445555999999999)",
     "cards.0.services.enabled": "Quels services veux-tu activer pour la carte ? (liste séparée par virgules) (ex: 3DS, TOKENIZATION)",
     # Card PAN range
     "cards.0.card_range.tranche_min": "Début de la plage PAN (tranche_min) ? (Ex: 4455660000000000)",
@@ -117,15 +120,15 @@ CARD_INFO_QUESTIONS = {
     "cards.0.card_info.plastic_type": "Type de carte (plastique) (ex: PVC)",
     "cards.0.card_info.card_description": "Nom/description de la carte (ex: Carte Classic)",
     "cards.0.card_info.product_type": "Type de carte (ex: DEBIT ou CREDIT)",
-    "cards.0.card_info.product_code": "Code du produit carte (ex: PRD001)",
+    "cards.0.card_info.product_code": "Code du produit carte — exactement 3 caractères (ex: PRD, GLD, CLS)",
 
     # ✅ Simplification des termes techniques
     "cards.0.card_info.pvk_index": "Paramètre sécurité PIN (PVK index). Si tu ne sais pas, mets 1",
     "cards.0.card_info.service_code": "Code service de la carte. Si tu ne sais pas, mets 101",
 
     "cards.0.card_info.expiration": "Durée de validité de la carte (ex: 36 mois)",
-    "cards.0.card_info.renewal_option": "Renouvellement automatique ? (ex: AUTO ou MANUAL)",
-    "cards.0.card_info.pre_expiration": "Délai avant expiration pour lancer le renouvellement (ex: 30 jours)",
+    "cards.0.card_info.renewal_option": "Option de renouvellement ? 1 caractère : A=Automatique, M=Manuel (ex: A)",
+    "cards.0.card_info.pre_expiration": "Préavis avant expiration ? 1 chiffre = nombre de mois (ex: 3)",
 }
 
 HUMAN_LABELS = {
@@ -231,9 +234,9 @@ def _friendly_fees_question(path: str) -> str:
     field = path.split(".")[-1]
     mapping = {
         "fee_description": "Quelle est la description des frais ?",
-        "billing_event": "Quel est l’événement de facturation ? (ex: ISSUANCE, RENEWAL)",
+        "billing_event": "Quel est l’événement de facturation ? 1 caractère : A=Anniversaire, I=Émission, R=Renouvellement, C=Cycle (ex: A)",
         "grace_period": "Quelle est la période de grâce ? (en jours, ex: 30)",
-        "billing_period": "Quelle est la période de facturation ? (ex: MONTHLY, YEARLY)",
+        "billing_period": "Quelle est la période de facturation ? 1 caractère : M=Mensuel, Y=Annuel, Q=Trimestriel, W=Hebdo (ex: M)",
         "registration_fee": "Quels sont les frais d’inscription ? (ex: 50)",
         "periodic_fee": "Quels sont les frais périodiques ? (ex: 10)",
         "replacement_fee": "Quels sont les frais de remplacement ? (ex: 25)",
@@ -329,8 +332,7 @@ def next_question_for_missing(path: str) -> str:
         q = "Quel est le BIN ? (6 à 8 chiffres)"
         return _strip_examples(_humanize_question(path, q))
     if path.endswith(".network"):
-        q = "Quel est le réseau ? (VISA, MASTERCARD)"
-        return _strip_examples(_humanize_question(path, q))
+        return "Quel est le réseau ? (VISA, MCRD, AMEX, GIMN, EUROPAY, DINERS, TAG-YUP, PRIVATIVE)"
     if path.endswith(".resources") or path.endswith(".enabled"):
         q = "Donne la liste (séparée par virgules)."
         return _strip_examples(_humanize_question(path, q))

@@ -350,10 +350,10 @@ def map_facts_to_bank_req(state: Dict[str, Any]) -> Dict[str, Any]:
             "cardFeesBillingEvt": billing_evt,
             "cardFeesGracePeriod": int(_to_number(fees.get("grace_period")) or 0),
             "cardFeesBillingPeriod": billing_period,
-            "subscriptionAmount": _to_number(fees.get("registration_fee")) or 0,
-            "feesAmountFirst": _to_number(fees.get("periodic_fee")) or 0,
-            "damagedReplacementFees": _to_number(fees.get("replacement_fee")) or 0,
-            "pinReplacementFees": _to_number(fees.get("pin_recalculation_fee")) or 0,
+            "subscriptionAmount": _to_number_str(fees.get("registration_fee"), "0"),
+            "feesAmountFirst": _to_number_str(fees.get("periodic_fee"), "0"),
+            "damagedReplacementFees": _to_number_str(fees.get("replacement_fee"), "0"),
+            "pinReplacementFees": _to_number_str(fees.get("pin_recalculation_fee"), "0"),
         }
 
         # Services — PL/SQL checks IS NOT NULL: null=disabled, "1"=enabled
