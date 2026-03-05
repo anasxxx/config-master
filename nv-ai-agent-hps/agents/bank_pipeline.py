@@ -249,7 +249,7 @@ def map_facts_to_bank_req(state: Dict[str, Any]) -> Dict[str, Any]:
             "bin": _to_str(card_info.get("bin")),
             "plasticType": _to_str(card_info.get("plastic_type")),
             "productType": _to_str(card_info.get("product_type")),
-            "productCode": product_code[:20] if product_code else "",
+            "productCode": (product_code or "")[:3].ljust(3, "0"),
             "trancheMin": _to_str(card_range.get("start_range")),
             "trancheMax": _to_str(card_range.get("end_range")),
             "indexPvk": _to_str(card_info.get("pvk_index")),
@@ -273,10 +273,10 @@ def map_facts_to_bank_req(state: Dict[str, Any]) -> Dict[str, Any]:
             "cardFeesBillingEvt": billing_evt,
             "cardFeesGracePeriod": _to_number(fees.get("grace_period")) or 0,
             "cardFeesBillingPeriod": billing_period,
-            "subscriptionAmount": float(_to_number_str(fees.get("registration_fee"), "0")),
-            "feesAmountFirst": float(_to_number_str(fees.get("periodic_fee"), "0")),
-            "damagedReplacementFees": float(_to_number_str(fees.get("replacement_fee"), "0")),
-            "pinReplacementFees": float(_to_number_str(fees.get("pin_recalculation_fee"), "0")),
+            "subscriptionAmount": _to_number_str(fees.get("registration_fee"), "0"),
+            "feesAmountFirst": _to_number_str(fees.get("periodic_fee"), "0"),
+            "damagedReplacementFees": _to_number_str(fees.get("replacement_fee"), "0"),
+            "pinReplacementFees": _to_number_str(fees.get("pin_recalculation_fee"), "0"),
         }
 
         # Services – ALL 15 flags must be present; default "0", enabled → "1"
@@ -288,7 +288,7 @@ def map_facts_to_bank_req(state: Dict[str, Any]) -> Dict[str, Any]:
         enabled_services = services.get("enabled", []) or []
         service_flags: Dict[str, str] = {
             "bankCode": bank_code,
-            "productCode": product_code,
+            "productCode": (product_code or "")[:3].ljust(3, "0"),
         }
         for svc_key in _ALL_SERVICE_KEYS:
             service_flags[svc_key] = "0"
