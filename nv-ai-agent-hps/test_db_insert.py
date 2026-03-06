@@ -24,7 +24,7 @@ import requests
 from agents.bank_pipeline import map_facts_to_bank_req, submit_bank_req, verify_bank
 
 # ── Test data (all fields required by the backend/PL/SQL) ──────────────────
-TEST_BANK_CODE = "TST"   # change this if you get code=-2 (duplicate key)
+TEST_BANK_CODE = "ZZT"   # change this if you get code=-2 (duplicate key)
 
 MOCK_STATE = {
     "facts": {
