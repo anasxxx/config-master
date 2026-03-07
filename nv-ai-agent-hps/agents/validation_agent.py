@@ -234,7 +234,7 @@ def _friendly_fees_question(path: str) -> str:
     field = path.split(".")[-1]
     mapping = {
         "fee_description": "Quelle est la description des frais ?",
-        "billing_event": "Quel est l’événement de facturation ? 1 caractère : A=Anniversaire, I=Émission, R=Renouvellement, C=Cycle (ex: A)",
+        "billing_event": "Quel est l’événement de facturation ? 1 caractère : M=Membership, U=Usage, G=Group, R=Renewal, A=Activation (ex: M)",
         "grace_period": "Quelle est la période de grâce ? (en jours, ex: 30)",
         "billing_period": "Quelle est la période de facturation ? 1 caractère : M=Mensuel, Y=Annuel, Q=Trimestriel, W=Hebdo (ex: M)",
         "registration_fee": "Quels sont les frais d’inscription ? (ex: 50)",

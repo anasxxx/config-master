@@ -29,6 +29,7 @@ SERVICE_MAP = {
     "retrait": "retrait",
     "withdrawal": "retrait",
     "achat": "achat",
+    "achats": "achat",
     "purchase": "achat",
     "cash advance": "advance",
     "advance": "advance",
@@ -421,8 +422,8 @@ def _build_limit_module(
     # productCode must be exactly 4 chars (e.g. "LABC")
     pc = f"L{product_code}" if product_code else "L000"
     pc = pc[:4].ljust(4, "0")
-    # limitsId: raw value (e.g. "1", "2", "10") — PL/SQL compares TRIM'd CHAR(3)
-    lid = _to_str(limit_id)
+    # limitsId: must be exactly 3 chars — Java @Size(min=3,max=3), PL/SQL CHAR(3)
+    lid = _pad(_to_str(limit_id), 3)
 
     # --- Helper: only include period fields that have real values ------
     # PL/SQL uses IS NULL checks to pick the right period combination

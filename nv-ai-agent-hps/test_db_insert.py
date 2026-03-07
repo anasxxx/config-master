@@ -3,9 +3,9 @@ DB Insertion Test — verifies that a full bank payload is accepted by the
 Spring Boot backend AND actually stored in the database.
 
 Steps:
-  1. Build a complete test payload (using test bank code "TST")
-  2. POST it to /banks/add  → expects 200/201
-  3. GET  /banks/getBank/TST → expects bank to be found in DB
+  1. Build a complete test payload (using test bank code "ZZT")
+  2. POST it to /banks/add  → expects 201
+  3. GET  /banks/getBank/ZZT → expects bank to be found in DB
   4. Print PASS / FAIL with details
 
 Usage:
@@ -24,7 +24,7 @@ import requests
 from agents.bank_pipeline import map_facts_to_bank_req, submit_bank_req, verify_bank
 
 # ── Test data (all fields required by the backend/PL/SQL) ──────────────────
-TEST_BANK_CODE = "ZZT"   # change this if you get code=-2 (duplicate key)
+TEST_BANK_CODE = "ZZT"   # change this if you get duplicate key errors
 
 MOCK_STATE = {
     "facts": {
@@ -52,13 +52,13 @@ MOCK_STATE = {
                     "plastic_type": "PVC",
                     "card_description": "Carte Test",
                     "product_type": "DEBIT",
-                    "product_code": "TST",   # 3 chars — same as bank code
+                    "product_code": "TST",
                     "pvk_index": "1",
                     "service_code": "101",
-                    "network": "VISA",        # PL/SQL valid: VISA/MCRD/AMEX/GIMN/...
+                    "network": "VISA",
                     "expiration": "36",
-                    "renewal_option": "A",    # 1 char
-                    "pre_expiration": "3",    # 1 char
+                    "renewal_option": "A",
+                    "pre_expiration": "3",
                 },
                 "card_range": {
                     "start_range": "4455550000000000",
@@ -66,9 +66,9 @@ MOCK_STATE = {
                 },
                 "fees": {
                     "fee_description": "Frais Test",
-                    "billing_event": "A",     # 1 char
+                    "billing_event": "M",       # M=Membership (valid: M,U,G,R,A)
                     "grace_period": 30,
-                    "billing_period": "Y",    # 1 char
+                    "billing_period": "Y",       # Y=Yearly
                     "registration_fee": "50",
                     "periodic_fee": "10",
                     "replacement_fee": "25",
@@ -83,13 +83,31 @@ MOCK_STATE = {
                         "DEFAULT": {
                             "domestic": {
                                 "daily_amount": "5000",
+                                "daily_count": "100",
                                 "weekly_amount": "20000",
+                                "weekly_count": "500",
                                 "monthly_amount": "80000",
+                                "monthly_count": "2000",
                             },
                             "international": {
                                 "daily_amount": "2000",
+                                "daily_count": "50",
                                 "weekly_amount": "10000",
+                                "weekly_count": "200",
                                 "monthly_amount": "40000",
+                                "monthly_count": "1000",
+                            },
+                            "total": {
+                                "daily_amount": "7000",
+                                "daily_count": "150",
+                                "weekly_amount": "30000",
+                                "weekly_count": "700",
+                                "monthly_amount": "120000",
+                                "monthly_count": "3000",
+                            },
+                            "per_transaction": {
+                                "min_amount": "10",
+                                "max_amount": "50000",
                             },
                         }
                     },
@@ -98,6 +116,59 @@ MOCK_STATE = {
         ],
     }
 }
+
+
+DIAGNOSTIC_SQL = """
+-- ============================================================
+-- Run these queries in SQL Developer (F5) to diagnose code=-2
+-- ============================================================
+
+-- [1] Find the PL/SQL trace table (shows which function failed)
+SELECT '1-TRACE_TABLES' AS check_name, table_name AS result
+FROM user_tables
+WHERE table_name LIKE '%TRACE%'
+   OR table_name LIKE 'PCRD_LOG%'
+   OR table_name LIKE '%GENERAL_LOG%'
+
+UNION ALL
+
+-- [2] Count st_new_* tables (AUT_CONV_GLB_TEMP_ROLLBACK needs 80+)
+SELECT '2-ST_NEW_COUNT', TO_CHAR(COUNT(*)) || ' st_new_* tables'
+FROM user_tables WHERE table_name LIKE 'ST_NEW_%'
+
+UNION ALL
+
+-- [3] Count st_mig_* tables (AUT_CONV_PRODUCT_TEMP_ROLLBACK needs 10+)
+SELECT '3-ST_MIG_COUNT', TO_CHAR(COUNT(*)) || ' st_mig_* tables'
+FROM user_tables WHERE table_name LIKE 'ST_MIG_%'
+
+UNION ALL
+
+-- [4] Sequences for Sequence_ajustment (expect 9)
+SELECT '4-SEQUENCES', sequence_name
+FROM user_sequences WHERE sequence_name IN (
+  'CHARGEBACK_REASON_CODE_X','CARD_GEN_COUNTERS_X',
+  'PCRD_CARD_PROD_PARAM_X','P7_SERVICES_SETUP_X',
+  'P7_SERVICES_CRITERIA_X','AUTH_CTRL_VALUE_PARAM_X',
+  'ISS_POSTING_RULES_X','STOP_RENEWAL_CRITERIA_X',
+  'MER_EXCHANGE_MATRIX_X')
+
+UNION ALL
+
+-- [5] Tables for Sequence_ajustment (expect 9)
+SELECT '5-SEQ_TABLES', table_name
+FROM user_tables WHERE table_name IN (
+  'CHARGEBACK_REASON_CODE','CARD_GEN_COUNTERS',
+  'PCRD_CARD_PROD_PARAM','P7_SERVICES_SETUP',
+  'P7_SERVICES_CRITERIA','AUTH_CTRL_VALUE_PARAM',
+  'ISS_POSTING_RULES','STOP_RENEWAL_CRITERIA',
+  'MER_EXCHANGE_MATRIX')
+
+ORDER BY check_name, result;
+
+-- Then query the trace table found in [1]:
+-- SELECT * FROM <TRACE_TABLE> ORDER BY 1 DESC FETCH FIRST 20 ROWS ONLY;
+""".strip()
 
 
 def _check(label: str, cond: bool, detail: str = ""):
@@ -130,12 +201,14 @@ def main():
     print(f"    productCode (info)    = {card['info']['productCode']!r}  (want 3 chars)")
     print(f"    productCode (service) = {card['services']['productCode']!r}  (want 3 chars)")
     print(f"    productCode (limit)   = {card['limits'][0]['productCode']!r}  (want 4 chars)")
+    print(f"    limitsId              = {card['limits'][0]['limitsId']!r}  (want 3 chars)")
     print(f"    subscriptionAmount    = {card['fees']['subscriptionAmount']!r}  (want str)")
     print(f"    billingEvt            = {card['fees']['cardFeesBillingEvt']!r}  (want 1 char)")
+    print(f"    network               = {card['info']['network']!r}")
     print()
 
     # ── Step 1b: print full payload for debugging ─────────────────────────
-    print("\n  Full payload:")
+    print("  Full payload:")
     print(json.dumps(payload, indent=4, ensure_ascii=False))
     print()
 
@@ -151,15 +224,37 @@ def main():
 
     status_code = result["status_code"]
     body = result["body"]
+
+    # Backend returns 201 on success, 400 when PL/SQL returns non-zero
     ok_submit = _check(
-        f"POST /banks/add returned 2xx",
-        status_code in (200, 201),
+        "POST /banks/add returned 201 (created)",
+        status_code == 201,
         f"status={status_code}",
     )
+
     if not ok_submit:
         print(f"\n  Response body: {json.dumps(body, indent=4, ensure_ascii=False)}")
-        print("\n  => Payload was rejected by the backend (validation error or duplicate key).")
-        print("     Check the JSON above for field-level errors.")
+
+        if status_code == 400:
+            # Check if it's a validation error (field errors) vs PL/SQL error
+            if isinstance(body, dict) and "errors" in body:
+                print("\n  => VALIDATION ERROR — the payload has invalid fields:")
+                for field, msg in body.get("errors", {}).items():
+                    print(f"     {field}: {msg}")
+            else:
+                print("\n  => PL/SQL returned error code (likely -2).")
+                print("     This means the payload was accepted by Spring Boot,")
+                print("     inserted into temp tables, but PL/SQL MAIN_BOARD_CONV_PARAM failed.")
+                print("\n  To diagnose which PL/SQL function failed, run this SQL in SQL Developer:")
+                print("  " + "=" * 60)
+                for line in DIAGNOSTIC_SQL.split("\n"):
+                    print(f"  {line}")
+                print("  " + "=" * 60)
+        elif status_code == 500:
+            print("\n  => INTERNAL SERVER ERROR — check Spring Boot console logs.")
+        else:
+            print(f"\n  => Unexpected status {status_code}.")
+
         sys.exit(2)
 
     print(f"  Response: {json.dumps(body, indent=4, ensure_ascii=False)}")
