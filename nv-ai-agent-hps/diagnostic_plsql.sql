@@ -1,5 +1,5 @@
 -- ============================================================
--- DIAGNOSTIC v3: Investigate CENTER_CODE 21 collision
+-- DIAGNOSTIC v4: Investigate CENTER_CODE 21 collision
 --
 -- Run in SQL Developer with F5.
 -- ============================================================
@@ -18,9 +18,9 @@ BEGIN
     SELECT COUNT(*) INTO v_cnt FROM CENTER WHERE CENTER_CODE = TO_CHAR(v_seq);
     DBMS_OUTPUT.PUT_LINE('Center ' || v_seq || ' exists? ' || CASE WHEN v_cnt > 0 THEN 'YES' ELSE 'NO' END);
 
-    -- 3. Show ALL centers (code + name) to understand the data
+    -- 3. Show ALL centers (code + name), ordered by code as string
     DBMS_OUTPUT.PUT_LINE('--- ALL CENTERS ---');
-    FOR rec IN (SELECT CENTER_CODE, CENTER_NAME FROM CENTER ORDER BY TO_NUMBER(NVL(CENTER_CODE,0))) LOOP
+    FOR rec IN (SELECT CENTER_CODE, CENTER_NAME FROM CENTER ORDER BY CENTER_CODE) LOOP
         DBMS_OUTPUT.PUT_LINE('  code=[' || rec.CENTER_CODE || '] name=[' || rec.CENTER_NAME || ']');
     END LOOP;
 
