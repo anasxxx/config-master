@@ -87,7 +87,7 @@ MOCK_STATE = {
                                 "weekly_amount": "20000",
                                 "weekly_count": "500",
                                 "monthly_amount": "80000",
-                                "monthly_count": "2000",
+                                "monthly_count": "999",
                             },
                             "international": {
                                 "daily_amount": "2000",
@@ -95,7 +95,7 @@ MOCK_STATE = {
                                 "weekly_amount": "10000",
                                 "weekly_count": "200",
                                 "monthly_amount": "40000",
-                                "monthly_count": "1000",
+                                "monthly_count": "500",
                             },
                             "total": {
                                 "daily_amount": "7000",
@@ -103,7 +103,7 @@ MOCK_STATE = {
                                 "weekly_amount": "30000",
                                 "weekly_count": "700",
                                 "monthly_amount": "120000",
-                                "monthly_count": "3000",
+                                "monthly_count": "999",
                             },
                             "per_transaction": {
                                 "min_amount": "10",

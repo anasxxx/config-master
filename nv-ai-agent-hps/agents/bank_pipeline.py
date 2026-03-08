@@ -435,10 +435,11 @@ def _build_limit_module(
         return _to_number_str(val) if n and n > 0 else None
 
     def _nbr(val):
-        """Return 3-char padded count or None (→ DB NULL)."""
+        """Return 3-char padded count or None (→ DB NULL). Max 999 (CHAR(3))."""
         n = _to_number(val)
         if n and n > 0:
-            return _pad(_to_str(int(n)), 3)
+            capped = min(int(n), 999)
+            return _pad(_to_str(capped), 3)
         return None
 
     return {
