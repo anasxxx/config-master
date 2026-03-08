@@ -212,8 +212,24 @@ def main():
     print(json.dumps(payload, indent=4, ensure_ascii=False))
     print()
 
+    # ── Step 1c: cleanup previous run (flag='0') ──────────────────────────
+    print("[1c] Sending cleanup call (flag='0') to delete leftovers from previous runs...")
+    cleanup_payload = dict(payload)
+    cleanup_payload["p_action_flag"] = "0"
+    try:
+        cleanup_result = submit_bank_req(cleanup_payload, args.api_url, args.token)
+        c_status = cleanup_result["status_code"]
+        print(f"    Cleanup response: status={c_status}")
+        if c_status not in (200, 201):
+            print(f"    (Non-success is OK — means nothing to clean up)")
+    except requests.exceptions.ConnectionError as e:
+        print(f"  [FAIL]  Could not connect to {args.api_url}")
+        print(f"          Make sure the Spring Boot backend is running.")
+        sys.exit(1)
+    print()
+
     # ── Step 2: submit ────────────────────────────────────────────────────
-    print("[2] Submitting to backend...")
+    print("[2] Submitting to backend (flag='1' — create)...")
     try:
         result = submit_bank_req(payload, args.api_url, args.token)
     except requests.exceptions.ConnectionError as e:
