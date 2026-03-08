@@ -422,8 +422,10 @@ def _build_limit_module(
     # productCode must be exactly 4 chars (e.g. "LABC")
     pc = f"L{product_code}" if product_code else "L000"
     pc = pc[:4].ljust(4, "0")
-    # limitsId: must be exactly 3 chars — Java @Size(min=3,max=3), PL/SQL CHAR(3)
-    lid = _pad(_to_str(limit_id), 3)
+    # limitsId: 1-3 chars — Java @Size(min=1,max=3)
+    # PL/SQL compares TRIM(limits_id) against '1','2','3','4','9','10'
+    # so we must NOT zero-pad (e.g. '010' ≠ '10')
+    lid = _to_str(limit_id)
 
     # --- Helper: only include period fields that have real values ------
     # PL/SQL uses IS NULL checks to pick the right period combination
