@@ -14,6 +14,8 @@
 ==========================================================
 """
 
+import glob
+import os
 import sys
 
 try:
@@ -36,11 +38,71 @@ CURRENCY_ALPHA = "MAD"
 COUNTRY_ALPHA = "MA"
 
 
+def _find_oracle_client():
+    """Auto-detect Oracle client library path on Windows."""
+    candidates = [
+        os.environ.get("ORACLE_HOME", ""),
+        os.environ.get("TNS_ADMIN", ""),
+        r"C:\oracle\instantclient*",
+        r"C:\oracle\product\*\client*\bin",
+        r"C:\app\*\product\*\client*\bin",
+        r"C:\app\*\product\*\dbhome*\bin",
+        r"C:\oraclexe\*\bin",
+        r"C:\instantclient*",
+        # SQL Developer bundled JDK often sits near an instant client
+        os.path.join(os.environ.get("APPDATA", ""), "sqldeveloper", "**"),
+    ]
+    for pattern in candidates:
+        if not pattern:
+            continue
+        for path in glob.glob(pattern, recursive=False):
+            if os.path.isdir(path):
+                oci = os.path.join(path, "oci.dll")
+                if os.path.exists(oci):
+                    return path
+    # Check PATH
+    for d in os.environ.get("PATH", "").split(os.pathsep):
+        if os.path.exists(os.path.join(d, "oci.dll")):
+            return d
+    return None
+
+
 def connect():
     dsn = f"{DB_HOST}:{DB_PORT}/{DB_SERVICE}"
     print(f"Connecting to {dsn} as {DB_USER}...")
+
+    # Try thin mode first
+    try:
+        conn = oracledb.connect(user=DB_USER, password=DB_PASS, dsn=dsn)
+        print(f"  Connected (thin mode)! Oracle {conn.version}\n")
+        return conn
+    except oracledb.exceptions.NotSupportedError:
+        print("  Thin mode not supported, switching to thick mode...")
+
+    # Try thick mode — need Oracle Instant Client
+    client_dir = _find_oracle_client()
+    if client_dir:
+        print(f"  Found Oracle client: {client_dir}")
+    else:
+        print("  Oracle client not found automatically.")
+        print("  Trying system PATH...")
+
+    try:
+        if client_dir:
+            oracledb.init_oracle_client(lib_dir=client_dir)
+        else:
+            oracledb.init_oracle_client()
+    except Exception as e:
+        print(f"\n  ERROR: Cannot init Oracle thick client: {e}")
+        print("\n  FIX: Set ORACLE_HOME or install Oracle Instant Client:")
+        print("    1. Download from: https://www.oracle.com/database/technologies/instant-client/downloads.html")
+        print("    2. Extract to C:\\instantclient")
+        print("    3. Re-run this script")
+        print("\n  OR set: set ORACLE_HOME=C:\\path\\to\\oracle\\client")
+        sys.exit(1)
+
     conn = oracledb.connect(user=DB_USER, password=DB_PASS, dsn=dsn)
-    print(f"  Connected! Oracle {conn.version}\n")
+    print(f"  Connected (thick mode)! Oracle {conn.version}\n")
     return conn
 
 
