@@ -51,7 +51,7 @@ MOCK_STATE = {
                     "bin": "445555",
                     "plastic_type": "PVC",
                     "card_description": "Carte Test",
-                    "product_type": "DEBIT",
+                    "product_type": "DEBIT",  # bank_pipeline maps to "01" for NETWORK_CARD_TYPE CHAR(2)
                     "product_code": "TST",
                     "pvk_index": "1",
                     "service_code": "101",

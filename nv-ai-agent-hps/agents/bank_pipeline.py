@@ -105,6 +105,21 @@ VALID_RESOURCE_WORDINGS = {
     "MCD_MDS", "MCD_CIS", "UPI",
 }
 
+# ── PL/SQL product_type → NETWORK_CARD_TYPE mapping ────────────────────────
+# st_pre_bin_range_plastic_prod.product_type is assigned directly to
+# st_mig_CARD_TYPE.network_card_type which is CHAR(2).
+# Descriptive names must be converted to 2-char numeric codes.
+PRODUCT_TYPE_MAP = {
+    "debit": "01",
+    "db": "01",
+    "credit": "02",
+    "cr": "02",
+    "prepaid": "03",
+    "pp": "03",
+    "charge": "04",
+    "virtual": "05",
+}
+
 RESOURCE_WORDING_MAP = {
     "visa": "VISA_BASE1",
     "visa_base1": "VISA_BASE1",
@@ -301,12 +316,19 @@ def map_facts_to_bank_req(state: Dict[str, Any]) -> Dict[str, Any]:
         renew_raw = _to_str(card_info.get("renewal_option"))[:1]
         prior_exp_raw = _to_str(card_info.get("pre_expiration"))[:1]
 
+        # product_type → NETWORK_CARD_TYPE (CHAR(2)): map descriptive names to 2-char codes
+        raw_product_type = _to_str(card_info.get("product_type")).strip()
+        if len(raw_product_type) <= 2:
+            product_type_code = raw_product_type  # already a short code
+        else:
+            product_type_code = PRODUCT_TYPE_MAP.get(raw_product_type.lower(), "01")
+
         info_module = {
             "bankCode": bank_code[:6],
             "description": _clip(card_info.get("card_description"), 50),
             "bin": _clip(card_info.get("bin"), 20),
             "plasticType": _clip(card_info.get("plastic_type"), 20),
-            "productType": _clip(card_info.get("product_type"), 20),
+            "productType": product_type_code,
             "productCode": product_code_3,
             "trancheMin": _clip(card_range.get("start_range"), 20),
             "trancheMax": _clip(card_range.get("end_range"), 20),
