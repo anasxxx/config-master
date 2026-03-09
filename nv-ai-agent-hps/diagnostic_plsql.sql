@@ -1,45 +1,36 @@
 -- ============================================================
--- ONE-TIME FIX: Remove bank 101010 (NEPS) to free center 21
+-- ONE-TIME FIX: Move center 21 (NEPS) to code 24 (free slot)
+-- so LOAD_BANK_PARAMETERS can use code 21 for new banks.
 --
--- Uses the PL/SQL's own cleanup function (flag='0') which
--- handles all FK dependencies (BANK_NETWORK, etc.)
+-- This does NOT delete any bank data — just renumbers the center.
 --
 -- Run in SQL Developer with F5.
 -- ============================================================
 
-SET SERVEROUTPUT ON SIZE 1000000;
-DECLARE
-    v_result  PLS_INTEGER;
-    v_bank    BANK%ROWTYPE;
-BEGIN
-    -- Look up bank 101010's details
-    SELECT * INTO v_bank FROM BANK WHERE bank_code = '101010';
-    DBMS_OUTPUT.PUT_LINE('Bank: ' || v_bank.bank_code || ' / ' || v_bank.bank_name);
-    DBMS_OUTPUT.PUT_LINE('Currency: ' || v_bank.currency_code || ' Country: ' || v_bank.country_code);
+-- Step 1: Copy center 21 into a temp table
+CREATE TABLE tmp_center_21 AS SELECT * FROM CENTER WHERE CENTER_CODE = '21';
 
-    -- Call MAIN_BOARD_CONV_PARAM with flag='0' (full cascade cleanup)
-    v_result := pcrd_st_board_conv_main.MAIN_BOARD_CONV_PARAM(
-        SYSDATE,
-        '101010',
-        v_bank.bank_name,
-        v_bank.currency_code,
-        v_bank.country_code,
-        '0'
-    );
+-- Step 2: Change the code to 24 in the temp table
+UPDATE tmp_center_21 SET CENTER_CODE = '24';
 
-    IF v_result = 0 THEN
-        DBMS_OUTPUT.PUT_LINE('Cleanup OK! Center 21 should now be free.');
-        COMMIT;
-    ELSE
-        DBMS_OUTPUT.PUT_LINE('Cleanup returned: ' || v_result);
-        ROLLBACK;
-    END IF;
+-- Step 3: Insert the copy as center 24
+INSERT INTO CENTER SELECT * FROM tmp_center_21;
 
-    -- Verify center 21 is gone
-    DECLARE v_cnt PLS_INTEGER;
-    BEGIN
-        SELECT COUNT(*) INTO v_cnt FROM CENTER WHERE CENTER_CODE = '21';
-        DBMS_OUTPUT.PUT_LINE('Center 21 still exists? ' || CASE WHEN v_cnt > 0 THEN 'YES (problem!)' ELSE 'NO (good!)' END);
-    END;
-END;
-/
+-- Step 4: Point bank 101010 from center 21 to center 24
+UPDATE BANK SET center_code = '24' WHERE center_code = '21';
+
+-- Step 5: Delete the old center 21 (now has no FK references)
+DELETE FROM CENTER WHERE CENTER_CODE = '21';
+
+-- Step 6: Clean up temp table
+DROP TABLE tmp_center_21;
+
+-- Step 7: Commit
+COMMIT;
+
+-- Step 8: Verify
+SELECT 'Center 21 gone?' AS check1, COUNT(*) AS cnt FROM CENTER WHERE CENTER_CODE = '21'
+UNION ALL
+SELECT 'Center 24 exists?', COUNT(*) FROM CENTER WHERE CENTER_CODE = '24'
+UNION ALL
+SELECT 'Bank 101010 on 24?', COUNT(*) FROM BANK WHERE bank_code = '101010' AND center_code = '24';
