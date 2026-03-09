@@ -248,7 +248,7 @@ def map_facts_to_bank_req(state: Dict[str, Any]) -> Dict[str, Any]:
     bank_req: Dict[str, Any] = {
         "pBusinessDate": business_date,
         "pBankCode": bank_code[:6],
-        "pBankWording": _clip(bank.get("name"), 40),
+        "pBankWording": _clip(bank.get("name"), 15),  # PL/SQL uses this for ABREV_NAME (max 15)
         "pCountryCode": country_code,
         "pCurrencyCode": currency_code,
         "p_action_flag": "1",

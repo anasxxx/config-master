@@ -1,125 +1,104 @@
 -- ============================================================
--- DIAGNOSTIC v8: Drill into LOAD_BANK_PARAMETERS again
--- Center 21 should be free — find the REAL error now.
+-- DIAGNOSTIC v9: Full 8-step test with short bank name (max 15)
 --
 -- Run in SQL Developer with F5.
 -- ============================================================
 
+-- Clean up leftovers
+DELETE FROM st_pre_branch WHERE bank_code = 'ZZT';
+DELETE FROM st_pre_resources WHERE bank_code = 'ZZT';
+DELETE FROM st_pre_bin_range_plastic_prod WHERE bank_code = 'ZZT';
+DELETE FROM st_pre_mig_CARD_FEES WHERE bank_code = 'ZZT';
+DELETE FROM st_pre_service_PROD WHERE bank_code = 'ZZT';
+DELETE FROM st_pre_limit_stand WHERE bank_code = 'ZZT';
+DELETE FROM CENTER WHERE center_name = 'Banque Test';
+DELETE FROM BANK WHERE bank_code = 'ZZT';
+DELETE FROM BANK_ADDENDUM WHERE bank_code = 'ZZT';
+DELETE FROM PCARD_TASKS_EXEC_GROUP_BANK WHERE bank_code = 'ZZT';
+COMMIT;
+
+-- Insert test data
+INSERT INTO st_pre_branch (branch_code, bank_code, branch_wording, region_code, region_wording, city_code, city_wording)
+VALUES ('001', 'ZZT', 'Agence Test', '10', 'Grand Casablanca', '01', 'Casablanca');
+
+INSERT INTO st_pre_resources (bank_code, resource_wording)
+VALUES ('ZZT', 'MCD_MDS');
+
+INSERT INTO st_pre_bin_range_plastic_prod (bank_code, description, bin, plastic_type, product_type, product_code, tranche_min, tranche_max, index_pvk, service_code, network, expiration, renew, prior_exp)
+VALUES ('ZZT', 'Carte Test', '445555', 'PVC', 'DEBIT', 'TST', '4455550000000000', '4455559999999999', '1', '101', 'VISA', '36', 'A', '3');
+
+INSERT INTO st_pre_mig_CARD_FEES (bank_code, description, card_fees_code, card_fees_billing_evt, card_fees_grace_period, card_fees_billing_period, subscription_amount, fees_amount_first, damaged_replacement_fees, pin_replacement_fees)
+VALUES ('ZZT', 'Frais Test', 'TST', 'M', 30, 'Y', 50, 10, 25, 5);
+
+INSERT INTO st_pre_service_PROD (bank_code, product_code, retrait, achat, advance, ecommerce, transfert, quasicash, solde, releve, pinchange, refund, moneysend, billpayment, original, authentication, cashback)
+VALUES ('ZZT', 'TST', '1', '1', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+
+INSERT INTO st_pre_limit_stand (product_code, LIMITS_ID, BANK_CODE, DAILY_DOM_AMNT, DAILY_DOM_NBR, DAILY_INT_AMNT, DAILY_INT_NBR, DAILY_TOTAL_AMNT, DAILY_TOTAL_NBR, MIN_AMOUNT_PER_TRANSACTION, MAX_AMOUNT_PER_TRANSACTION, WEEKLY_DOM_AMNT, WEEKLY_DOM_NBR, WEEKLY_INT_AMNT, WEEKLY_INT_NBR, WEEKLY_TOTAL_AMNT, WEEKLY_TOTAL_NBR, MONTHLY_DOM_AMNT, MONTHLY_DOM_NBR, MONTHLY_INT_AMNT, MONTHLY_INT_NBR, MONTHLY_TOTAL_AMNT, MONTHLY_TOTAL_NBR)
+VALUES ('LTST', '10', 'ZZT', '5000', '100', '2000', '050', '7000', '150', '10', '50000', '20000', '500', '10000', '200', '30000', '700', '80000', '999', '40000', '500', '120000', '999');
+
+COMMIT;
+
+-- Run all 8 steps
 SET SERVEROUTPUT ON SIZE 1000000;
 DECLARE
-    v_result        PLS_INTEGER;
-    v_currency_rec  currency_table%ROWTYPE;
-    v_country_rec   country%ROWTYPE;
-    v_cur_alpha     currency_table.currency_code_alpha%TYPE;
-    v_cty_alpha     country.iso_country_alpha%TYPE;
-    v_count         PLS_INTEGER;
-    v_region_code   region.region_code%TYPE;
-    v_city_code     city.city_code%TYPE;
-    v_sequence_id   PLS_INTEGER;
+    v_result       PLS_INTEGER;
+    v_currency_rec currency_table%ROWTYPE;
+    v_country_rec  country%ROWTYPE;
+    v_cur_alpha    currency_table.currency_code_alpha%TYPE;
+    v_cty_alpha    country.iso_country_alpha%TYPE;
 BEGIN
-    -- Prerequisites
     v_result := PCRD_GET_PARAM_GENERAL_ROWS.GET_CURRENCY_TABLE('504', v_currency_rec);
     v_cur_alpha := v_currency_rec.currency_code_alpha;
+    DBMS_OUTPUT.PUT_LINE('1. GET_CURRENCY_TABLE => ' || v_result || '  [' || v_cur_alpha || ']');
+    IF v_result <> 0 THEN ROLLBACK; RETURN; END IF;
+
     v_result := PCRD_GET_PARAM_GENERAL_ROWS.GET_COUNTRY('504', v_country_rec);
     v_cty_alpha := v_country_rec.iso_country_alpha;
+    DBMS_OUTPUT.PUT_LINE('2. GET_COUNTRY => ' || v_result || '  [' || v_cty_alpha || ']');
+    IF v_result <> 0 THEN ROLLBACK; RETURN; END IF;
+
     v_result := pcrd_st_board_conv_com.Sequence_ajustment;
+    DBMS_OUTPUT.PUT_LINE('3. Sequence_ajustment => ' || v_result);
+    IF v_result <> 0 THEN ROLLBACK; RETURN; END IF;
     COMMIT;
-    v_result := PCRD_ST_CONV_CLEAN.AUT_CONV_GLB_TEMP_ROLLBACK('ZZT', 'Banque Test Insertion', '504');
-    v_result := PCRD_ST_CONV_CLEAN.AUT_CONV_PRODUCT_TEMP_ROLLBACK('ZZT', 'Banque Test Insertion', '504');
-    DBMS_OUTPUT.PUT_LINE('Prerequisites OK. cur=[' || v_cur_alpha || '] cty=[' || v_cty_alpha || ']');
 
-    -- Check center 21 status
-    SELECT COUNT(*) INTO v_count FROM CENTER WHERE CENTER_CODE = '21';
-    DBMS_OUTPUT.PUT_LINE('Center 21 exists BEFORE insert? ' || CASE WHEN v_count > 0 THEN 'YES!!' ELSE 'NO (good)' END);
+    v_result := PCRD_ST_CONV_CLEAN.AUT_CONV_GLB_TEMP_ROLLBACK('ZZT', 'Banque Test', '504');
+    DBMS_OUTPUT.PUT_LINE('4. AUT_CONV_GLB_TEMP_ROLLBACK => ' || v_result);
+    IF v_result <> 0 THEN ROLLBACK; RETURN; END IF;
 
-    -- 6a. REGION lookup
-    BEGIN
-        SELECT count(*) INTO v_count FROM region WHERE country_code = '504';
-        DBMS_OUTPUT.PUT_LINE('6a. REGION count for country 504 = ' || v_count);
-        IF v_count = 0 THEN
-            v_region_code := '001';
-            INSERT INTO REGION VALUES('504', v_region_code, 'DEFAULT', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 30, NULL, 'POWERCARD', NULL, NULL, NULL);
-            DBMS_OUTPUT.PUT_LINE('    Inserted new REGION 001');
-        ELSE
-            SELECT region_code INTO v_region_code FROM region WHERE country_code = '504' AND rownum = 1;
-            DBMS_OUTPUT.PUT_LINE('    Using existing region_code = [' || v_region_code || ']');
-        END IF;
-    EXCEPTION WHEN OTHERS THEN
-        DBMS_OUTPUT.PUT_LINE('6a. REGION FAILED: ' || SQLERRM);
-        ROLLBACK; RETURN;
-    END;
+    v_result := PCRD_ST_CONV_CLEAN.AUT_CONV_PRODUCT_TEMP_ROLLBACK('ZZT', 'Banque Test', '504');
+    DBMS_OUTPUT.PUT_LINE('5. AUT_CONV_PRODUCT_TEMP_ROLLBACK => ' || v_result);
+    IF v_result <> 0 THEN ROLLBACK; RETURN; END IF;
 
-    -- 6b. CITY lookup
-    BEGIN
-        SELECT count(*) INTO v_count FROM city WHERE region_code = v_region_code AND country_code = '504';
-        DBMS_OUTPUT.PUT_LINE('6b. CITY count for region ' || v_region_code || ' = ' || v_count);
-        IF v_count = 0 THEN
-            v_city_code := '00001';
-            INSERT INTO CITY VALUES('504', v_city_code, 'DEFAULT', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, v_region_code, 'GMT', NULL, NULL, NULL, NULL);
-            DBMS_OUTPUT.PUT_LINE('    Inserted new CITY 00001');
-        ELSE
-            SELECT city_code INTO v_city_code FROM city WHERE region_code = v_region_code AND country_code = '504' AND rownum = 1;
-            DBMS_OUTPUT.PUT_LINE('    Using existing city_code = [' || v_city_code || ']');
-        END IF;
-    EXCEPTION WHEN OTHERS THEN
-        DBMS_OUTPUT.PUT_LINE('6b. CITY FAILED: ' || SQLERRM);
-        ROLLBACK; RETURN;
-    END;
+    v_result := pcrd_st_board_conv_com.LOAD_BANK_PARAMETERS(
+        SYSDATE, 'ZZT', 'Banque Test', '504', v_cur_alpha, '504', v_cty_alpha);
+    DBMS_OUTPUT.PUT_LINE('6. LOAD_BANK_PARAMETERS => ' || v_result);
+    IF v_result <> 0 THEN DBMS_OUTPUT.PUT_LINE('   FAILED at step 6!'); ROLLBACK; RETURN; END IF;
 
-    -- 6c. CENTER insert
-    BEGIN
-        SELECT MAX(TO_NUMBER(NVL(CENTER_CODE, 0))) + 1 INTO v_sequence_id
-        FROM CENTER WHERE CENTER_CODE < '21';
-        DBMS_OUTPUT.PUT_LINE('6c. CENTER next sequence_id = ' || v_sequence_id);
+    v_result := pcrd_st_board_conv_com.LOAD_BANK_CONV_COM_PARAM(
+        SYSDATE, 'ZZT', 'Banque Test', '504', '504');
+    DBMS_OUTPUT.PUT_LINE('7. LOAD_BANK_CONV_COM_PARAM => ' || v_result);
+    IF v_result <> 0 THEN DBMS_OUTPUT.PUT_LINE('   FAILED at step 7!'); ROLLBACK; RETURN; END IF;
 
-        SELECT COUNT(*) INTO v_count FROM CENTER WHERE CENTER_CODE = TO_CHAR(v_sequence_id);
-        DBMS_OUTPUT.PUT_LINE('    Center ' || v_sequence_id || ' already exists? ' || CASE WHEN v_count > 0 THEN 'YES!!' ELSE 'NO (good)' END);
+    v_result := pcrd_st_board_conv_iss_par.LOAD_BANK_CONV_ISS_PARAM(
+        SYSDATE, 'ZZT', 'Banque Test', '504', v_cur_alpha, '504', v_cty_alpha);
+    DBMS_OUTPUT.PUT_LINE('8. LOAD_BANK_CONV_ISS_PARAM => ' || v_result);
+    IF v_result <> 0 THEN DBMS_OUTPUT.PUT_LINE('   FAILED at step 8!'); ROLLBACK; RETURN; END IF;
 
-        INSERT INTO CENTER
-        VALUES(v_sequence_id, 'L', 'Banque Test Insertion', '01', 'Y', '504', v_cty_alpha, '504', v_cur_alpha, 'SIAINT_BO', TO_DATE('2016-07-25 10:08:08', 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
-        DBMS_OUTPUT.PUT_LINE('    CENTER inserted OK');
-    EXCEPTION WHEN OTHERS THEN
-        DBMS_OUTPUT.PUT_LINE('6c. CENTER FAILED: ' || SQLERRM);
-        DBMS_OUTPUT.PUT_LINE('    sequence_id was: ' || v_sequence_id);
-        ROLLBACK; RETURN;
-    END;
-
-    -- 6d. BANK insert
-    BEGIN
-        INSERT INTO BANK
-        VALUES('ZZT', 'BU', v_sequence_id, 'Banque Test Insertion', 'Banque Test Insertion', 'Co-operative House', 'Huteau Lane', NULL, NULL, v_city_code, NULL, v_region_code, NULL, '504', NULL, NULL, NULL, NULL, NULL, EMPTY_CLOB(), 'P', 'N', 'N', 'Y', '000001', NULL, NULL, 0, TO_DATE('2003-02-24 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL, NULL, NULL, NULL, TO_DATE('2003-02-24 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), NULL, '504', 'O', 10, 'N', 10, 'N', 24, 'N', 11, 'N', 10, 'N', 10, 'N', NULL, 0, 'C', NULL, NULL, NULL, 'A', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'POWERCARD', SYSDATE, 'POWERCARD', SYSDATE);
-        DBMS_OUTPUT.PUT_LINE('6d. BANK inserted OK');
-    EXCEPTION WHEN OTHERS THEN
-        DBMS_OUTPUT.PUT_LINE('6d. BANK FAILED: ' || SQLERRM);
-        ROLLBACK; RETURN;
-    END;
-
-    -- 6e. BANK_ADDENDUM insert
-    BEGIN
-        INSERT INTO BANK_ADDENDUM
-        VALUES('ZZT', 'ZZT', 'N', NULL, NULL, NULL, 'N', NULL, '0000100000', NULL, 'N', NULL, NULL, NULL, 'G', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'N', 'N', 'N', 'Y', NULL, NULL, 'N', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'User02', TO_DATE('2016-07-25 10:09:07', 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL);
-        DBMS_OUTPUT.PUT_LINE('6e. BANK_ADDENDUM inserted OK');
-    EXCEPTION WHEN OTHERS THEN
-        DBMS_OUTPUT.PUT_LINE('6e. BANK_ADDENDUM FAILED: ' || SQLERRM);
-        ROLLBACK; RETURN;
-    END;
-
-    -- 6f. PCARD_TASKS_EXEC_GROUP_BANK insert
-    BEGIN
-        INSERT INTO PCARD_TASKS_EXEC_GROUP_BANK
-        VALUES('DFLGRP', 'ZZT', 'firstUser', TO_DATE('2024-02-28 16:15:37', 'YYYY-MM-DD HH24:MI:SS'), 'firstUser', TO_DATE('2024-02-28 17:16:38', 'YYYY-MM-DD HH24:MI:SS'));
-        DBMS_OUTPUT.PUT_LINE('6f. PCARD_TASKS_EXEC_GROUP_BANK inserted OK');
-    EXCEPTION WHEN OTHERS THEN
-        DBMS_OUTPUT.PUT_LINE('6f. PCARD_TASKS FAILED: ' || SQLERRM);
-        ROLLBACK; RETURN;
-    END;
-
-    DBMS_OUTPUT.PUT_LINE('=== ALL SUB-STEPS PASSED ===');
+    DBMS_OUTPUT.PUT_LINE('=== ALL 8 STEPS PASSED ===');
     ROLLBACK;
 
 EXCEPTION WHEN OTHERS THEN
-    DBMS_OUTPUT.PUT_LINE('UNEXPECTED: ' || SQLERRM);
-    DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+    DBMS_OUTPUT.PUT_LINE('EXCEPTION: ' || SQLERRM);
     ROLLBACK;
 END;
 /
+
+-- Clean up
+DELETE FROM st_pre_branch WHERE bank_code = 'ZZT';
+DELETE FROM st_pre_resources WHERE bank_code = 'ZZT';
+DELETE FROM st_pre_bin_range_plastic_prod WHERE bank_code = 'ZZT';
+DELETE FROM st_pre_mig_CARD_FEES WHERE bank_code = 'ZZT';
+DELETE FROM st_pre_service_PROD WHERE bank_code = 'ZZT';
+DELETE FROM st_pre_limit_stand WHERE bank_code = 'ZZT';
+COMMIT;

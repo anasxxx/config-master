@@ -29,7 +29,7 @@ TEST_BANK_CODE = "ZZT"   # change this if you get duplicate key errors
 MOCK_STATE = {
     "facts": {
         "bank": {
-            "name": "Banque Test Insertion",
+            "name": "Banque Test",  # max 15 chars (PL/SQL ABREV_NAME limit)
             "country": "Maroc",
             "currency": "MAD",
             "bank_code": TEST_BANK_CODE,
