@@ -1,26 +1,45 @@
 -- ============================================================
--- ONE-TIME FIX: Delete center 21 to unblock LOAD_BANK_PARAMETERS
+-- ONE-TIME FIX: Remove bank 101010 (NEPS) to free center 21
 --
--- The PL/SQL computes MAX(center_code < '21') + 1 = 21, but
--- center 21 (NEPS CENTER) already exists → PK collision.
+-- Uses the PL/SQL's own cleanup function (flag='0') which
+-- handles all FK dependencies (BANK_NETWORK, etc.)
 --
 -- Run in SQL Developer with F5.
 -- ============================================================
 
--- Step 1: Check if any BANK references center 21
-SELECT 'BANK referencing center 21' AS info, bank_code, bank_name
-FROM BANK WHERE center_code = '21';
+SET SERVEROUTPUT ON SIZE 1000000;
+DECLARE
+    v_result  PLS_INTEGER;
+    v_bank    BANK%ROWTYPE;
+BEGIN
+    -- Look up bank 101010's details
+    SELECT * INTO v_bank FROM BANK WHERE bank_code = '101010';
+    DBMS_OUTPUT.PUT_LINE('Bank: ' || v_bank.bank_code || ' / ' || v_bank.bank_name);
+    DBMS_OUTPUT.PUT_LINE('Currency: ' || v_bank.currency_code || ' Country: ' || v_bank.country_code);
 
--- Step 2: Delete center 21 (and its bank references if any)
--- Uncomment and run ONLY after checking Step 1 results:
+    -- Call MAIN_BOARD_CONV_PARAM with flag='0' (full cascade cleanup)
+    v_result := pcrd_st_board_conv_main.MAIN_BOARD_CONV_PARAM(
+        SYSDATE,
+        '101010',
+        v_bank.bank_name,
+        v_bank.currency_code,
+        v_bank.country_code,
+        '0'
+    );
 
--- If Step 1 returns a bank row, delete in this order:
--- DELETE FROM PCARD_TASKS_EXEC_GROUP_BANK WHERE bank_code = '<bank_code_from_step1>';
--- DELETE FROM BANK_ADDENDUM WHERE bank_code = '<bank_code_from_step1>';
--- DELETE FROM BANK WHERE bank_code = '<bank_code_from_step1>';
--- DELETE FROM CENTER WHERE CENTER_CODE = '21';
--- COMMIT;
+    IF v_result = 0 THEN
+        DBMS_OUTPUT.PUT_LINE('Cleanup OK! Center 21 should now be free.');
+        COMMIT;
+    ELSE
+        DBMS_OUTPUT.PUT_LINE('Cleanup returned: ' || v_result);
+        ROLLBACK;
+    END IF;
 
--- If Step 1 returns NO rows, just delete the center:
--- DELETE FROM CENTER WHERE CENTER_CODE = '21';
--- COMMIT;
+    -- Verify center 21 is gone
+    DECLARE v_cnt PLS_INTEGER;
+    BEGIN
+        SELECT COUNT(*) INTO v_cnt FROM CENTER WHERE CENTER_CODE = '21';
+        DBMS_OUTPUT.PUT_LINE('Center 21 still exists? ' || CASE WHEN v_cnt > 0 THEN 'YES (problem!)' ELSE 'NO (good!)' END);
+    END;
+END;
+/
