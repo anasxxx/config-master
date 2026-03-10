@@ -1,5 +1,5 @@
-PAN_RANGE_RE = re.compile(r"^\d{12,19}$")
 import re
+PAN_RANGE_RE = re.compile(r"^\d{12,19}$")
 from typing import Any, Tuple
 from agents.prompts import PROMPT_SCHEMA_VALIDATOR
 SCHEMA_SPEC = PROMPT_SCHEMA_VALIDATOR
