@@ -1,5 +1,5 @@
 -- ============================================================
--- DIAGNOSTIC v13 — FULL drill-down with correct signatures
+-- DIAGNOSTIC v14 — Full cleanup + inline error capture for 8i
 -- Copy-paste into SQL Developer, press F5
 -- ============================================================
 SET SERVEROUTPUT ON SIZE 1000000;
@@ -16,6 +16,7 @@ DECLARE
     v_country_alpha VARCHAR2(10);
 
     v_dummy         NUMBER;
+    v_cnt           NUMBER;
 BEGIN
 
     -- ============================================================
@@ -64,25 +65,33 @@ BEGIN
         v_ret := PCRD_ST_BOARD_CONV_MAIN.MAIN_BOARD_CONV_PARAM(
             SYSDATE, v_bank, v_wording, v_curr_num, v_country_num, '0');
         COMMIT;
-        DBMS_OUTPUT.PUT_LINE('[OK] Cleanup => ' || v_ret);
+        DBMS_OUTPUT.PUT_LINE('[OK] Cleanup (flag=0) => ' || v_ret);
     EXCEPTION WHEN OTHERS THEN
         DBMS_OUTPUT.PUT_LINE('[INFO] Cleanup error (OK): ' || SQLERRM);
         ROLLBACK;
     END;
 
-    -- Clean staging tables
-    BEGIN DELETE FROM st_pre_bin_range_plastic_prod WHERE bank_code = v_bank; EXCEPTION WHEN OTHERS THEN NULL; END;
-    BEGIN DELETE FROM st_pre_branch       WHERE bank_code = v_bank; EXCEPTION WHEN OTHERS THEN NULL; END;
-    BEGIN DELETE FROM st_pre_resources    WHERE bank_code = v_bank; EXCEPTION WHEN OTHERS THEN NULL; END;
-    BEGIN DELETE FROM st_pre_mig_card_fees WHERE bank_code = v_bank; EXCEPTION WHEN OTHERS THEN NULL; END;
-    BEGIN DELETE FROM st_pre_service_prod WHERE bank_code = v_bank; EXCEPTION WHEN OTHERS THEN NULL; END;
-    BEGIN DELETE FROM st_pre_limit_stand  WHERE bank_code = v_bank; EXCEPTION WHEN OTHERS THEN NULL; END;
+    -- *** CRITICAL FIX: Clean ALL rows from staging tables, not just bank ZZT ***
+    -- The PL/SQL cursors do NOT filter by bank_code, so leftover rows cause errors
+    BEGIN DELETE FROM st_pre_bin_range_plastic_prod; EXCEPTION WHEN OTHERS THEN NULL; END;
+    BEGIN DELETE FROM st_pre_branch;                 EXCEPTION WHEN OTHERS THEN NULL; END;
+    BEGIN DELETE FROM st_pre_resources;              EXCEPTION WHEN OTHERS THEN NULL; END;
+    BEGIN DELETE FROM st_pre_mig_card_fees;          EXCEPTION WHEN OTHERS THEN NULL; END;
+    BEGIN DELETE FROM st_pre_service_prod;           EXCEPTION WHEN OTHERS THEN NULL; END;
+    BEGIN DELETE FROM st_pre_limit_stand;            EXCEPTION WHEN OTHERS THEN NULL; END;
     COMMIT;
-    DBMS_OUTPUT.PUT_LINE('[OK] Staging tables cleaned');
+    DBMS_OUTPUT.PUT_LINE('[OK] ALL staging tables fully cleaned');
+
+    -- Verify tables are empty
+    SELECT COUNT(*) INTO v_cnt FROM st_pre_limit_stand;
+    DBMS_OUTPUT.PUT_LINE('[INFO] st_pre_limit_stand rows after clean: ' || v_cnt);
+    SELECT COUNT(*) INTO v_cnt FROM st_pre_bin_range_plastic_prod;
+    DBMS_OUTPUT.PUT_LINE('[INFO] st_pre_bin_range_plastic_prod rows after clean: ' || v_cnt);
+
     DBMS_OUTPUT.PUT_LINE('');
 
     -- ============================================================
-    -- STEP 2: INSERT staging data (product_type='01' not 'DEBIT')
+    -- STEP 2: INSERT staging data
     -- ============================================================
     DBMS_OUTPUT.PUT_LINE('--- INSERT STAGING DATA ---');
 
@@ -151,10 +160,10 @@ BEGIN
              monthly_dom_amnt, monthly_dom_nbr, monthly_int_amnt, monthly_int_nbr,
              monthly_total_amnt, monthly_total_nbr)
         VALUES (v_bank, 'LTST', '10',
-                5000, '100', 2000, '050', 7000, '150',
-                10, 50000,
-                80000, '999', 40000, '500', 120000, '999',
-                20000, '500', 10000, '200', 30000, '700');
+                '5000', '100', '2000', '050', '7000', '150',
+                '10', '50000',
+                '80000', '999', '40000', '500', '120000', '999',
+                '20000', '500', '10000', '200', '30000', '700');
         DBMS_OUTPUT.PUT_LINE('[OK] st_pre_limit_stand');
     EXCEPTION WHEN OTHERS THEN
         DBMS_OUTPUT.PUT_LINE('[FAIL] st_pre_limit_stand: ' || SQLERRM);
@@ -173,7 +182,6 @@ BEGIN
         IF v_ret = 0 THEN
             DBMS_OUTPUT.PUT_LINE('[OK] MAIN => 0 — SUCCESS!');
             COMMIT;
-            -- Verify
             DECLARE v_name VARCHAR2(100);
             BEGIN
                 SELECT bank_name INTO v_name FROM bank WHERE bank_code = v_bank;
@@ -210,13 +218,13 @@ BEGIN
     EXCEPTION WHEN OTHERS THEN ROLLBACK;
     END;
 
-    -- Re-clean staging
-    BEGIN DELETE FROM st_pre_bin_range_plastic_prod WHERE bank_code = v_bank; EXCEPTION WHEN OTHERS THEN NULL; END;
-    BEGIN DELETE FROM st_pre_branch       WHERE bank_code = v_bank; EXCEPTION WHEN OTHERS THEN NULL; END;
-    BEGIN DELETE FROM st_pre_resources    WHERE bank_code = v_bank; EXCEPTION WHEN OTHERS THEN NULL; END;
-    BEGIN DELETE FROM st_pre_mig_card_fees WHERE bank_code = v_bank; EXCEPTION WHEN OTHERS THEN NULL; END;
-    BEGIN DELETE FROM st_pre_service_prod WHERE bank_code = v_bank; EXCEPTION WHEN OTHERS THEN NULL; END;
-    BEGIN DELETE FROM st_pre_limit_stand  WHERE bank_code = v_bank; EXCEPTION WHEN OTHERS THEN NULL; END;
+    -- *** FULL clean of ALL st_pre_* tables ***
+    BEGIN DELETE FROM st_pre_bin_range_plastic_prod; EXCEPTION WHEN OTHERS THEN NULL; END;
+    BEGIN DELETE FROM st_pre_branch;                 EXCEPTION WHEN OTHERS THEN NULL; END;
+    BEGIN DELETE FROM st_pre_resources;              EXCEPTION WHEN OTHERS THEN NULL; END;
+    BEGIN DELETE FROM st_pre_mig_card_fees;          EXCEPTION WHEN OTHERS THEN NULL; END;
+    BEGIN DELETE FROM st_pre_service_prod;           EXCEPTION WHEN OTHERS THEN NULL; END;
+    BEGIN DELETE FROM st_pre_limit_stand;            EXCEPTION WHEN OTHERS THEN NULL; END;
     COMMIT;
 
     -- Re-insert staging
@@ -225,7 +233,7 @@ BEGIN
     BEGIN INSERT INTO st_pre_resources (bank_code, resource_wording) VALUES (v_bank, 'VISA_BASE1'); EXCEPTION WHEN OTHERS THEN NULL; END;
     BEGIN INSERT INTO st_pre_mig_card_fees (bank_code, card_fees_code, description, card_fees_billing_evt, card_fees_grace_period, card_fees_billing_period, subscription_amount, fees_amount_first, damaged_replacement_fees, pin_replacement_fees) VALUES (v_bank, 'TST', 'Frais Test', 'M', 30, 'Y', 50, 10, 25, 5); EXCEPTION WHEN OTHERS THEN NULL; END;
     BEGIN INSERT INTO st_pre_service_prod (bank_code, product_code, retrait, achat, advance, ecommerce, transfert, quasicash, solde, releve, pinchange, refund, moneysend, billpayment, original) VALUES (v_bank, 'TST', '1', '1', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL); EXCEPTION WHEN OTHERS THEN NULL; END;
-    BEGIN INSERT INTO st_pre_limit_stand (bank_code, product_code, limits_id, daily_dom_amnt, daily_dom_nbr, daily_int_amnt, daily_int_nbr, daily_total_amnt, daily_total_nbr, min_amount_per_transaction, max_amount_per_transaction, weekly_dom_amnt, weekly_dom_nbr, weekly_int_amnt, weekly_int_nbr, weekly_total_amnt, weekly_total_nbr, monthly_dom_amnt, monthly_dom_nbr, monthly_int_amnt, monthly_int_nbr, monthly_total_amnt, monthly_total_nbr) VALUES (v_bank, 'LTST', '10', 5000, '100', 2000, '050', 7000, '150', 10, 50000, 80000, '999', 40000, '500', 120000, '999', 20000, '500', 10000, '200', 30000, '700'); EXCEPTION WHEN OTHERS THEN NULL; END;
+    BEGIN INSERT INTO st_pre_limit_stand (bank_code, product_code, limits_id, daily_dom_amnt, daily_dom_nbr, daily_int_amnt, daily_int_nbr, daily_total_amnt, daily_total_nbr, min_amount_per_transaction, max_amount_per_transaction, weekly_dom_amnt, weekly_dom_nbr, weekly_int_amnt, weekly_int_nbr, weekly_total_amnt, weekly_total_nbr, monthly_dom_amnt, monthly_dom_nbr, monthly_int_amnt, monthly_int_nbr, monthly_total_amnt, monthly_total_nbr) VALUES (v_bank, 'LTST', '10', '5000', '100', '2000', '050', '7000', '150', '10', '50000', '80000', '999', '40000', '500', '120000', '999', '20000', '500', '10000', '200', '30000', '700'); EXCEPTION WHEN OTHERS THEN NULL; END;
     COMMIT;
 
     -- 4.1 Sequence_ajustment (no params)
@@ -297,7 +305,7 @@ BEGIN
     EXCEPTION WHEN OTHERS THEN DBMS_OUTPUT.PUT_LINE('[FAIL] 8b ' || SQLERRM); RETURN;
     END;
 
-    -- 8c to 8A: all use (date, bank, currency)
+    -- 8c-8h: all use (date, bank, currency)
     BEGIN v_ret := PCRD_ST_BOARD_CONV_ISS_PAR.LOAD_CARD_TYPE_PARAMETERS(SYSDATE, v_bank, v_curr_num);
         IF v_ret=0 THEN DBMS_OUTPUT.PUT_LINE('[OK] 8c LOAD_CARD_TYPE_PARAMETERS'); ELSE DBMS_OUTPUT.PUT_LINE('[FAIL] 8c LOAD_CARD_TYPE_PARAMETERS => '||v_ret); RETURN; END IF;
     EXCEPTION WHEN OTHERS THEN DBMS_OUTPUT.PUT_LINE('[FAIL] 8c '||SQLERRM); RETURN; END;
@@ -322,97 +330,295 @@ BEGIN
         IF v_ret=0 THEN DBMS_OUTPUT.PUT_LINE('[OK] 8h LOAD_P7_limits_PARAMETERS'); ELSE DBMS_OUTPUT.PUT_LINE('[FAIL] 8h LOAD_P7_limits_PARAMETERS => '||v_ret); RETURN; END IF;
     EXCEPTION WHEN OTHERS THEN DBMS_OUTPUT.PUT_LINE('[FAIL] 8h '||SQLERRM); RETURN; END;
 
-    BEGIN v_ret := PCRD_ST_BOARD_CONV_ISS_PAR.LOAD_LIMIT_STAND_PARAM(SYSDATE, v_bank, v_curr_num);
-        IF v_ret=0 THEN DBMS_OUTPUT.PUT_LINE('[OK] 8i LOAD_LIMIT_STAND_PARAM'); ELSE DBMS_OUTPUT.PUT_LINE('[FAIL] 8i LOAD_LIMIT_STAND_PARAM => '||v_ret); RETURN; END IF;
-    EXCEPTION WHEN OTHERS THEN DBMS_OUTPUT.PUT_LINE('[FAIL] 8i '||SQLERRM); RETURN; END;
-
-    BEGIN v_ret := PCRD_ST_BOARD_CONV_ISS_PAR.LOAD_SA_LIMITS_SETUP_PARAM(SYSDATE, v_bank, v_curr_num);
-        IF v_ret=0 THEN DBMS_OUTPUT.PUT_LINE('[OK] 8j LOAD_SA_LIMITS_SETUP_PARAM'); ELSE DBMS_OUTPUT.PUT_LINE('[FAIL] 8j LOAD_SA_LIMITS_SETUP_PARAM => '||v_ret); RETURN; END IF;
-    EXCEPTION WHEN OTHERS THEN DBMS_OUTPUT.PUT_LINE('[FAIL] 8j '||SQLERRM); RETURN; END;
-
-    BEGIN v_ret := PCRD_ST_BOARD_CONV_ISS_PAR.LOAD_EMV_LIMIT_SETUP(SYSDATE, v_bank, v_curr_num);
-        IF v_ret=0 THEN DBMS_OUTPUT.PUT_LINE('[OK] 8k LOAD_EMV_LIMIT_SETUP'); ELSE DBMS_OUTPUT.PUT_LINE('[FAIL] 8k LOAD_EMV_LIMIT_SETUP => '||v_ret); RETURN; END IF;
-    EXCEPTION WHEN OTHERS THEN DBMS_OUTPUT.PUT_LINE('[FAIL] 8k '||SQLERRM); RETURN; END;
-
-    BEGIN v_ret := PCRD_ST_BOARD_CONV_ISS_PAR.LOAD_EMV_KEYS_ASSIG_PARAM(SYSDATE, v_bank, v_curr_num);
-        IF v_ret=0 THEN DBMS_OUTPUT.PUT_LINE('[OK] 8l LOAD_EMV_KEYS_ASSIG_PARAM'); ELSE DBMS_OUTPUT.PUT_LINE('[FAIL] 8l LOAD_EMV_KEYS_ASSIG_PARAM => '||v_ret); RETURN; END IF;
-    EXCEPTION WHEN OTHERS THEN DBMS_OUTPUT.PUT_LINE('[FAIL] 8l '||SQLERRM); RETURN; END;
-
-    BEGIN v_ret := PCRD_ST_BOARD_CONV_ISS_PAR.LOAD_EMV_ICC_APPL_DEF(SYSDATE, v_bank, v_curr_num);
-        IF v_ret=0 THEN DBMS_OUTPUT.PUT_LINE('[OK] 8m LOAD_EMV_ICC_APPL_DEF'); ELSE DBMS_OUTPUT.PUT_LINE('[FAIL] 8m LOAD_EMV_ICC_APPL_DEF => '||v_ret); RETURN; END IF;
-    EXCEPTION WHEN OTHERS THEN DBMS_OUTPUT.PUT_LINE('[FAIL] 8m '||SQLERRM); RETURN; END;
-
-    BEGIN v_ret := PCRD_ST_BOARD_CONV_ISS_PAR.LOAD_CONTROL_VERIFICATION_PARAM(SYSDATE, v_bank, v_curr_num);
-        IF v_ret=0 THEN DBMS_OUTPUT.PUT_LINE('[OK] 8n LOAD_CONTROL_VERIFICATION_PARAM'); ELSE DBMS_OUTPUT.PUT_LINE('[FAIL] 8n LOAD_CONTROL_VERIFICATION_PARAM => '||v_ret); RETURN; END IF;
-    EXCEPTION WHEN OTHERS THEN DBMS_OUTPUT.PUT_LINE('[FAIL] 8n '||SQLERRM); RETURN; END;
-
-    BEGIN v_ret := PCRD_ST_BOARD_CONV_ISS_PAR.LOAD_CARD_PRODUCT_PARAM(SYSDATE, v_bank, v_curr_num);
-        IF v_ret=0 THEN DBMS_OUTPUT.PUT_LINE('[OK] 8o LOAD_CARD_PRODUCT_PARAM'); ELSE DBMS_OUTPUT.PUT_LINE('[FAIL] 8o LOAD_CARD_PRODUCT_PARAM => '||v_ret); RETURN; END IF;
-    EXCEPTION WHEN OTHERS THEN DBMS_OUTPUT.PUT_LINE('[FAIL] 8o '||SQLERRM); RETURN; END;
-
-    BEGIN v_ret := PCRD_ST_BOARD_CONV_ISS_PAR.LOAD_CARD_RANGE_PARAM(SYSDATE, v_bank, v_curr_num);
-        IF v_ret=0 THEN DBMS_OUTPUT.PUT_LINE('[OK] 8p LOAD_CARD_RANGE_PARAM'); ELSE DBMS_OUTPUT.PUT_LINE('[FAIL] 8p LOAD_CARD_RANGE_PARAM => '||v_ret); RETURN; END IF;
-    EXCEPTION WHEN OTHERS THEN DBMS_OUTPUT.PUT_LINE('[FAIL] 8p '||SQLERRM); RETURN; END;
-
-    BEGIN v_ret := PCRD_ST_BOARD_CONV_ISS_PAR.LOAD_CARD_GEN_COUNTERS_PARAM(SYSDATE, v_bank, v_curr_num);
-        IF v_ret=0 THEN DBMS_OUTPUT.PUT_LINE('[OK] 8q LOAD_CARD_GEN_COUNTERS_PARAM'); ELSE DBMS_OUTPUT.PUT_LINE('[FAIL] 8q LOAD_CARD_GEN_COUNTERS_PARAM => '||v_ret); RETURN; END IF;
-    EXCEPTION WHEN OTHERS THEN DBMS_OUTPUT.PUT_LINE('[FAIL] 8q '||SQLERRM); RETURN; END;
-
-    BEGIN v_ret := PCRD_ST_BOARD_CONV_ISS_PAR.LOAD_ROUTING_CRITERIA_PARAM(SYSDATE, v_bank, v_curr_num);
-        IF v_ret=0 THEN DBMS_OUTPUT.PUT_LINE('[OK] 8r LOAD_ROUTING_CRITERIA_PARAM'); ELSE DBMS_OUTPUT.PUT_LINE('[FAIL] 8r LOAD_ROUTING_CRITERIA_PARAM => '||v_ret); RETURN; END IF;
-    EXCEPTION WHEN OTHERS THEN DBMS_OUTPUT.PUT_LINE('[FAIL] 8r '||SQLERRM); RETURN; END;
-
-    BEGIN v_ret := PCRD_ST_BOARD_CONV_ISS_PAR.LOAD_RENEWAL_CRITERIA_PARAM(SYSDATE, v_bank, v_curr_num);
-        IF v_ret=0 THEN DBMS_OUTPUT.PUT_LINE('[OK] 8s LOAD_RENEWAL_CRITERIA_PARAM'); ELSE DBMS_OUTPUT.PUT_LINE('[FAIL] 8s LOAD_RENEWAL_CRITERIA_PARAM => '||v_ret); RETURN; END IF;
-    EXCEPTION WHEN OTHERS THEN DBMS_OUTPUT.PUT_LINE('[FAIL] 8s '||SQLERRM); RETURN; END;
-
-    BEGIN v_ret := PCRD_ST_BOARD_CONV_ISS_PAR.LOAD_PCRD_CARD_PROD_PARAM(SYSDATE, v_bank, v_curr_num);
-        IF v_ret=0 THEN DBMS_OUTPUT.PUT_LINE('[OK] 8t LOAD_PCRD_CARD_PROD_PARAM'); ELSE DBMS_OUTPUT.PUT_LINE('[FAIL] 8t LOAD_PCRD_CARD_PROD_PARAM => '||v_ret); RETURN; END IF;
-    EXCEPTION WHEN OTHERS THEN DBMS_OUTPUT.PUT_LINE('[FAIL] 8t '||SQLERRM); RETURN; END;
-
-    BEGIN v_ret := PCRD_ST_BOARD_CONV_ISS_PAR.LOAD_Product_domain_PARAM(SYSDATE, v_bank, v_curr_num);
-        IF v_ret=0 THEN DBMS_OUTPUT.PUT_LINE('[OK] 8u LOAD_Product_domain_PARAM'); ELSE DBMS_OUTPUT.PUT_LINE('[FAIL] 8u LOAD_Product_domain_PARAM => '||v_ret); RETURN; END IF;
-    EXCEPTION WHEN OTHERS THEN DBMS_OUTPUT.PUT_LINE('[FAIL] 8u '||SQLERRM); RETURN; END;
-
-    BEGIN v_ret := PCRD_ST_BOARD_CONV_ISS_PAR.LOAD_Entity_event_PARAM(SYSDATE, v_bank, v_curr_num);
-        IF v_ret=0 THEN DBMS_OUTPUT.PUT_LINE('[OK] 8v LOAD_Entity_event_PARAM'); ELSE DBMS_OUTPUT.PUT_LINE('[FAIL] 8v LOAD_Entity_event_PARAM => '||v_ret); RETURN; END IF;
-    EXCEPTION WHEN OTHERS THEN DBMS_OUTPUT.PUT_LINE('[FAIL] 8v '||SQLERRM); RETURN; END;
-
-    BEGIN v_ret := PCRD_ST_BOARD_CONV_ISS_PAR.LOAD_icc_application_PARAM(SYSDATE, v_bank, v_curr_num);
-        IF v_ret=0 THEN DBMS_OUTPUT.PUT_LINE('[OK] 8w LOAD_icc_application_PARAM'); ELSE DBMS_OUTPUT.PUT_LINE('[FAIL] 8w LOAD_icc_application_PARAM => '||v_ret); RETURN; END IF;
-    EXCEPTION WHEN OTHERS THEN DBMS_OUTPUT.PUT_LINE('[FAIL] 8w '||SQLERRM); RETURN; END;
-
-    BEGIN v_ret := PCRD_ST_BOARD_CONV_ISS_PAR.LOAD_markup_calcul(SYSDATE, v_bank, v_curr_num);
-        IF v_ret=0 THEN DBMS_OUTPUT.PUT_LINE('[OK] 8x LOAD_markup_calcul'); ELSE DBMS_OUTPUT.PUT_LINE('[FAIL] 8x LOAD_markup_calcul => '||v_ret); RETURN; END IF;
-    EXCEPTION WHEN OTHERS THEN DBMS_OUTPUT.PUT_LINE('[FAIL] 8x '||SQLERRM); RETURN; END;
-
-    BEGIN v_ret := PCRD_ST_BOARD_CONV_ISS_PAR.LOAD_markup_index(SYSDATE, v_bank, v_curr_num);
-        IF v_ret=0 THEN DBMS_OUTPUT.PUT_LINE('[OK] 8y LOAD_markup_index'); ELSE DBMS_OUTPUT.PUT_LINE('[FAIL] 8y LOAD_markup_index => '||v_ret); RETURN; END IF;
-    EXCEPTION WHEN OTHERS THEN DBMS_OUTPUT.PUT_LINE('[FAIL] 8y '||SQLERRM); RETURN; END;
-
-    BEGIN v_ret := PCRD_ST_BOARD_CONV_ISS_PAR.LOAD_markup_el_cur(SYSDATE, v_bank, v_curr_num);
-        IF v_ret=0 THEN DBMS_OUTPUT.PUT_LINE('[OK] 8z LOAD_markup_el_cur'); ELSE DBMS_OUTPUT.PUT_LINE('[FAIL] 8z LOAD_markup_el_cur => '||v_ret); RETURN; END IF;
-    EXCEPTION WHEN OTHERS THEN DBMS_OUTPUT.PUT_LINE('[FAIL] 8z '||SQLERRM); RETURN; END;
-
-    BEGIN v_ret := PCRD_ST_BOARD_CONV_ISS_PAR.LOAD_Fleet_ctrl_PARAM(SYSDATE, v_bank, v_curr_num);
-        IF v_ret=0 THEN DBMS_OUTPUT.PUT_LINE('[OK] 8A LOAD_Fleet_ctrl_PARAM'); ELSE DBMS_OUTPUT.PUT_LINE('[FAIL] 8A LOAD_Fleet_ctrl_PARAM => '||v_ret); RETURN; END IF;
-    EXCEPTION WHEN OTHERS THEN DBMS_OUTPUT.PUT_LINE('[FAIL] 8A '||SQLERRM); RETURN; END;
-
-    -- 8B MOVE_PARAMETERS_LOADED(date, bank) — only 2 params!
-    BEGIN v_ret := PCRD_ST_BOARD_CONV_ISS_PAR.MOVE_PARAMETERS_LOADED(SYSDATE, v_bank);
-        IF v_ret=0 THEN DBMS_OUTPUT.PUT_LINE('[OK] 8B MOVE_PARAMETERS_LOADED'); ELSE DBMS_OUTPUT.PUT_LINE('[FAIL] 8B MOVE_PARAMETERS_LOADED => '||v_ret); RETURN; END IF;
-    EXCEPTION WHEN OTHERS THEN DBMS_OUTPUT.PUT_LINE('[FAIL] 8B '||SQLERRM); RETURN; END;
-
-    -- 8C MAIN_AUT_POST(bank) — only 1 param!
-    BEGIN v_ret := PCRD_ST_CONV_CATALOGUE.MAIN_AUT_POST(v_bank);
-        IF v_ret=0 THEN DBMS_OUTPUT.PUT_LINE('[OK] 8C MAIN_AUT_POST'); ELSE DBMS_OUTPUT.PUT_LINE('[FAIL] 8C MAIN_AUT_POST => '||v_ret); RETURN; END IF;
-    EXCEPTION WHEN OTHERS THEN DBMS_OUTPUT.PUT_LINE('[FAIL] 8C '||SQLERRM); RETURN; END;
-
-    COMMIT;
+    -- ============================================================
+    -- 8i LOAD_LIMIT_STAND_PARAM — INLINE DEBUG VERSION
+    -- Instead of calling the function as black box, replicate its
+    -- logic to capture the EXACT error point
+    -- ============================================================
     DBMS_OUTPUT.PUT_LINE('');
-    DBMS_OUTPUT.PUT_LINE('============================================');
-    DBMS_OUTPUT.PUT_LINE('  ALL SUB-FUNCTIONS PASSED!');
-    DBMS_OUTPUT.PUT_LINE('============================================');
+    DBMS_OUTPUT.PUT_LINE('--- 8i LOAD_LIMIT_STAND_PARAM (inline debug) ---');
+
+    -- First try the normal call
+    BEGIN
+        v_ret := PCRD_ST_BOARD_CONV_ISS_PAR.LOAD_LIMIT_STAND_PARAM(SYSDATE, v_bank, v_curr_num);
+        IF v_ret = 0 THEN
+            DBMS_OUTPUT.PUT_LINE('[OK] 8i LOAD_LIMIT_STAND_PARAM');
+            GOTO after_8i_debug;
+        ELSE
+            DBMS_OUTPUT.PUT_LINE('[FAIL] 8i LOAD_LIMIT_STAND_PARAM => ' || v_ret);
+            DBMS_OUTPUT.PUT_LINE('[DEBUG] Starting inline analysis...');
+        END IF;
+    EXCEPTION WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('[FAIL] 8i exception: ' || SQLERRM);
+        DBMS_OUTPUT.PUT_LINE('[DEBUG] Starting inline analysis...');
+    END;
+
+    -- Debug: check what data is in the cursor
+    DECLARE
+        v_prod_code    VARCHAR2(100);
+        v_lim_id       VARCHAR2(10);
+        v_d_tot        VARCHAR2(50);
+        v_w_tot        VARCHAR2(50);
+        v_m_tot        VARCHAR2(50);
+        v_desc         VARCHAR2(200);
+        v_row_cnt      NUMBER := 0;
+    BEGIN
+        DBMS_OUTPUT.PUT_LINE('[DEBUG] Rows in st_pre_limit_stand (cursor data):');
+        FOR r IN (SELECT * FROM st_pre_limit_stand WHERE product_code IS NOT NULL ORDER BY product_code) LOOP
+            v_row_cnt := v_row_cnt + 1;
+            DBMS_OUTPUT.PUT_LINE('  row ' || v_row_cnt
+                || ': product_code=[' || r.product_code || ']'
+                || ' limits_id=[' || r.limits_id || ']'
+                || ' daily_tot=[' || r.daily_total_amnt || ']'
+                || ' weekly_tot=[' || r.weekly_total_amnt || ']'
+                || ' monthly_tot=[' || r.monthly_total_amnt || ']');
+
+            -- Test the SUBSTR lookup
+            BEGIN
+                SELECT description INTO v_desc
+                  FROM st_pre_bin_range_plastic_prod
+                 WHERE product_code = SUBSTR(r.product_code, 2, 4);
+                DBMS_OUTPUT.PUT_LINE('  => SUBSTR lookup OK: desc=[' || v_desc || ']');
+            EXCEPTION
+                WHEN NO_DATA_FOUND THEN
+                    DBMS_OUTPUT.PUT_LINE('  => [FAIL] SUBSTR(' || r.product_code || ',2,4) = ['
+                        || SUBSTR(r.product_code, 2, 4)
+                        || '] NOT FOUND in st_pre_bin_range_plastic_prod!');
+                WHEN TOO_MANY_ROWS THEN
+                    DBMS_OUTPUT.PUT_LINE('  => [FAIL] SUBSTR lookup returned MULTIPLE rows!');
+            END;
+        END LOOP;
+        DBMS_OUTPUT.PUT_LINE('[DEBUG] Total cursor rows: ' || v_row_cnt);
+
+        IF v_row_cnt = 0 THEN
+            DBMS_OUTPUT.PUT_LINE('[DEBUG] No rows in cursor — limit_stand may be empty!');
+        END IF;
+    END;
+
+    -- Debug: check what is in st_pre_bin_range_plastic_prod
+    DECLARE
+        v_row_cnt NUMBER := 0;
+    BEGIN
+        DBMS_OUTPUT.PUT_LINE('[DEBUG] Rows in st_pre_bin_range_plastic_prod:');
+        FOR r IN (SELECT product_code, description, bank_code FROM st_pre_bin_range_plastic_prod) LOOP
+            v_row_cnt := v_row_cnt + 1;
+            DBMS_OUTPUT.PUT_LINE('  row ' || v_row_cnt
+                || ': bank=[' || r.bank_code || ']'
+                || ' product_code=[' || r.product_code || ']'
+                || ' desc=[' || r.description || ']');
+        END LOOP;
+        DBMS_OUTPUT.PUT_LINE('[DEBUG] Total bin_range rows: ' || v_row_cnt);
+    END;
+
+    -- Debug: try the INSERT into st_mig_SA_LIMITS_SETUP directly
+    DECLARE
+        v_mig_rec   st_mig_SA_LIMITS_SETUP%ROWTYPE := NULL;
+        v_desc_prod VARCHAR2(200);
+    BEGIN
+        DBMS_OUTPUT.PUT_LINE('[DEBUG] Testing INSERT into st_mig_SA_LIMITS_SETUP...');
+
+        -- Populate record like the PL/SQL does
+        v_mig_rec.bank_code                := v_bank;
+        v_mig_rec.limit_index              := 'LTST';
+        v_mig_rec.limits_id                := '10';
+        v_mig_rec.currency_code            := v_curr_num;
+        v_mig_rec.host_scenario_processing := 'R';
+
+        -- Get description
+        BEGIN
+            SELECT description INTO v_desc_prod
+              FROM st_pre_bin_range_plastic_prod
+             WHERE product_code = 'TST';
+            DBMS_OUTPUT.PUT_LINE('[DEBUG] description=[' || v_desc_prod || ']');
+        EXCEPTION WHEN OTHERS THEN
+            DBMS_OUTPUT.PUT_LINE('[FAIL] description lookup: ' || SQLERRM);
+        END;
+
+        v_mig_rec.wording      := 'DEF_' || SUBSTR(TRIM(v_desc_prod), 1, 24);
+        v_mig_rec.abrv_wording := SUBSTR(TRIM(v_desc_prod), 1, 16);
+
+        -- Set all 3 periods (daily+weekly+monthly)
+        v_mig_rec.per1_opt    := 'C'; v_mig_rec.per1_type   := 'D';
+        v_mig_rec.per1_value  := '1'; v_mig_rec.per1_day_of := '1';
+        v_mig_rec.per2_opt    := 'C'; v_mig_rec.per2_type   := 'W';
+        v_mig_rec.per2_value  := '1'; v_mig_rec.per2_day_of := '1';
+        v_mig_rec.per3_opt    := 'C'; v_mig_rec.per3_type   := 'M';
+        v_mig_rec.per3_value  := '1'; v_mig_rec.per3_day_of := '1';
+        v_mig_rec.nb_periods  := '3';
+
+        -- online per1 (daily)
+        v_mig_rec.on_per1_onus_amnt     := '5000';  v_mig_rec.on_per1_onus_nbr     := '100';
+        v_mig_rec.on_per1_nat_amnt      := '5000';  v_mig_rec.on_per1_nat_nbr      := '100';
+        v_mig_rec.on_per1_internat_amnt := '2000';  v_mig_rec.on_per1_internat_nbr := '050';
+        v_mig_rec.on_per1_tot_amnt      := '7000';  v_mig_rec.on_per1_tot_nbr      := '150';
+        -- online per2 (weekly)
+        v_mig_rec.on_per2_onus_amnt     := '80000'; v_mig_rec.on_per2_onus_nbr     := '999';
+        v_mig_rec.on_per2_nat_amnt      := '80000'; v_mig_rec.on_per2_nat_nbr      := '999';
+        v_mig_rec.on_per2_internat_amnt := '40000'; v_mig_rec.on_per2_internat_nbr := '500';
+        v_mig_rec.on_per2_tot_amnt      := '120000';v_mig_rec.on_per2_tot_nbr      := '999';
+        -- online per3 (monthly)
+        v_mig_rec.on_per3_onus_amnt     := '20000'; v_mig_rec.on_per3_onus_nbr     := '500';
+        v_mig_rec.on_per3_nat_amnt      := '20000'; v_mig_rec.on_per3_nat_nbr      := '500';
+        v_mig_rec.on_per3_internat_amnt := '10000'; v_mig_rec.on_per3_internat_nbr := '200';
+        v_mig_rec.on_per3_tot_amnt      := '30000'; v_mig_rec.on_per3_tot_nbr      := '700';
+        -- delegation = same as online
+        v_mig_rec.off_per1_onus_amnt     := '5000';  v_mig_rec.off_per1_onus_nbr     := '100';
+        v_mig_rec.off_per1_nat_amnt      := '5000';  v_mig_rec.off_per1_nat_nbr      := '100';
+        v_mig_rec.off_per1_internat_amnt := '2000';  v_mig_rec.off_per1_internat_nbr := '050';
+        v_mig_rec.off_per1_tot_amnt      := '7000';  v_mig_rec.off_per1_tot_nbr      := '150';
+        v_mig_rec.off_per2_onus_amnt     := '80000'; v_mig_rec.off_per2_onus_nbr     := '999';
+        v_mig_rec.off_per2_nat_amnt      := '80000'; v_mig_rec.off_per2_nat_nbr      := '999';
+        v_mig_rec.off_per2_internat_amnt := '40000'; v_mig_rec.off_per2_internat_nbr := '500';
+        v_mig_rec.off_per2_tot_amnt      := '120000';v_mig_rec.off_per2_tot_nbr      := '999';
+        v_mig_rec.off_per3_onus_amnt     := '20000'; v_mig_rec.off_per3_onus_nbr     := '500';
+        v_mig_rec.off_per3_nat_amnt      := '20000'; v_mig_rec.off_per3_nat_nbr      := '500';
+        v_mig_rec.off_per3_internat_amnt := '10000'; v_mig_rec.off_per3_internat_nbr := '200';
+        v_mig_rec.off_per3_tot_amnt      := '30000'; v_mig_rec.off_per3_tot_nbr      := '700';
+
+        -- Try INSERT
+        INSERT INTO st_mig_SA_LIMITS_SETUP VALUES v_mig_rec;
+        DBMS_OUTPUT.PUT_LINE('[DEBUG] INSERT into st_mig_SA_LIMITS_SETUP => OK!');
+        -- Rollback the test insert so it doesn't conflict later
+        DELETE FROM st_mig_SA_LIMITS_SETUP WHERE bank_code = v_bank AND limit_index = 'LTST';
+
+    EXCEPTION WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('[FAIL] INSERT st_mig_SA_LIMITS_SETUP: ' || SQLERRM);
+        DBMS_OUTPUT.PUT_LINE('[FAIL] SQLCODE: ' || SQLCODE);
+    END;
+
+    -- Debug: show st_mig_SA_LIMITS_SETUP table columns
+    DECLARE
+        v_col_cnt NUMBER;
+    BEGIN
+        SELECT COUNT(*) INTO v_col_cnt
+          FROM user_tab_columns
+         WHERE table_name = 'ST_MIG_SA_LIMITS_SETUP';
+        DBMS_OUTPUT.PUT_LINE('[DEBUG] st_mig_SA_LIMITS_SETUP has ' || v_col_cnt || ' columns');
+
+        DBMS_OUTPUT.PUT_LINE('[DEBUG] NOT NULL columns:');
+        FOR c IN (SELECT column_name, data_type, data_length, nullable
+                    FROM user_tab_columns
+                   WHERE table_name = 'ST_MIG_SA_LIMITS_SETUP'
+                     AND nullable = 'N'
+                   ORDER BY column_id) LOOP
+            DBMS_OUTPUT.PUT_LINE('  ' || c.column_name || ' ' || c.data_type || '(' || c.data_length || ') NOT NULL');
+        END LOOP;
+    END;
+
+    -- Check trace table for recent errors
+    DBMS_OUTPUT.PUT_LINE('');
+    DBMS_OUTPUT.PUT_LINE('[DEBUG] Recent trace entries:');
+    BEGIN
+        FOR t IN (SELECT * FROM (
+                    SELECT function_name, user_message, ROWNUM rn
+                      FROM pcrd_traces
+                     WHERE package_name = 'PCRD_ST_BOARD_CONV_ISS_PAR'
+                     ORDER BY ROWID DESC)
+                  WHERE rn <= 5) LOOP
+            DBMS_OUTPUT.PUT_LINE('  trace: func=[' || t.function_name || '] msg=[' || SUBSTR(t.user_message, 1, 100) || ']');
+        END LOOP;
+    EXCEPTION WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('[INFO] Could not read pcrd_traces: ' || SQLERRM);
+    END;
+
+    DBMS_OUTPUT.PUT_LINE('');
+    DBMS_OUTPUT.PUT_LINE('[INFO] 8i debug complete. Fix the error above, then continue with remaining steps.');
+
+    <<after_8i_debug>>
+
+    -- If 8i passed, continue with remaining functions
+    IF v_ret = 0 THEN
+        DBMS_OUTPUT.PUT_LINE('');
+        DBMS_OUTPUT.PUT_LINE('--- Remaining ISS sub-functions ---');
+
+        BEGIN v_ret := PCRD_ST_BOARD_CONV_ISS_PAR.LOAD_SA_LIMITS_SETUP_PARAM(SYSDATE, v_bank, v_curr_num);
+            IF v_ret=0 THEN DBMS_OUTPUT.PUT_LINE('[OK] 8j LOAD_SA_LIMITS_SETUP_PARAM'); ELSE DBMS_OUTPUT.PUT_LINE('[FAIL] 8j LOAD_SA_LIMITS_SETUP_PARAM => '||v_ret); RETURN; END IF;
+        EXCEPTION WHEN OTHERS THEN DBMS_OUTPUT.PUT_LINE('[FAIL] 8j '||SQLERRM); RETURN; END;
+
+        BEGIN v_ret := PCRD_ST_BOARD_CONV_ISS_PAR.LOAD_EMV_LIMIT_SETUP(SYSDATE, v_bank, v_curr_num);
+            IF v_ret=0 THEN DBMS_OUTPUT.PUT_LINE('[OK] 8k LOAD_EMV_LIMIT_SETUP'); ELSE DBMS_OUTPUT.PUT_LINE('[FAIL] 8k LOAD_EMV_LIMIT_SETUP => '||v_ret); RETURN; END IF;
+        EXCEPTION WHEN OTHERS THEN DBMS_OUTPUT.PUT_LINE('[FAIL] 8k '||SQLERRM); RETURN; END;
+
+        BEGIN v_ret := PCRD_ST_BOARD_CONV_ISS_PAR.LOAD_EMV_KEYS_ASSIG_PARAM(SYSDATE, v_bank, v_curr_num);
+            IF v_ret=0 THEN DBMS_OUTPUT.PUT_LINE('[OK] 8l LOAD_EMV_KEYS_ASSIG_PARAM'); ELSE DBMS_OUTPUT.PUT_LINE('[FAIL] 8l LOAD_EMV_KEYS_ASSIG_PARAM => '||v_ret); RETURN; END IF;
+        EXCEPTION WHEN OTHERS THEN DBMS_OUTPUT.PUT_LINE('[FAIL] 8l '||SQLERRM); RETURN; END;
+
+        BEGIN v_ret := PCRD_ST_BOARD_CONV_ISS_PAR.LOAD_EMV_ICC_APPL_DEF(SYSDATE, v_bank, v_curr_num);
+            IF v_ret=0 THEN DBMS_OUTPUT.PUT_LINE('[OK] 8m LOAD_EMV_ICC_APPL_DEF'); ELSE DBMS_OUTPUT.PUT_LINE('[FAIL] 8m LOAD_EMV_ICC_APPL_DEF => '||v_ret); RETURN; END IF;
+        EXCEPTION WHEN OTHERS THEN DBMS_OUTPUT.PUT_LINE('[FAIL] 8m '||SQLERRM); RETURN; END;
+
+        BEGIN v_ret := PCRD_ST_BOARD_CONV_ISS_PAR.LOAD_CONTROL_VERIFICATION_PARAM(SYSDATE, v_bank, v_curr_num);
+            IF v_ret=0 THEN DBMS_OUTPUT.PUT_LINE('[OK] 8n LOAD_CONTROL_VERIFICATION_PARAM'); ELSE DBMS_OUTPUT.PUT_LINE('[FAIL] 8n LOAD_CONTROL_VERIFICATION_PARAM => '||v_ret); RETURN; END IF;
+        EXCEPTION WHEN OTHERS THEN DBMS_OUTPUT.PUT_LINE('[FAIL] 8n '||SQLERRM); RETURN; END;
+
+        BEGIN v_ret := PCRD_ST_BOARD_CONV_ISS_PAR.LOAD_CARD_PRODUCT_PARAM(SYSDATE, v_bank, v_curr_num);
+            IF v_ret=0 THEN DBMS_OUTPUT.PUT_LINE('[OK] 8o LOAD_CARD_PRODUCT_PARAM'); ELSE DBMS_OUTPUT.PUT_LINE('[FAIL] 8o LOAD_CARD_PRODUCT_PARAM => '||v_ret); RETURN; END IF;
+        EXCEPTION WHEN OTHERS THEN DBMS_OUTPUT.PUT_LINE('[FAIL] 8o '||SQLERRM); RETURN; END;
+
+        BEGIN v_ret := PCRD_ST_BOARD_CONV_ISS_PAR.LOAD_CARD_RANGE_PARAM(SYSDATE, v_bank, v_curr_num);
+            IF v_ret=0 THEN DBMS_OUTPUT.PUT_LINE('[OK] 8p LOAD_CARD_RANGE_PARAM'); ELSE DBMS_OUTPUT.PUT_LINE('[FAIL] 8p LOAD_CARD_RANGE_PARAM => '||v_ret); RETURN; END IF;
+        EXCEPTION WHEN OTHERS THEN DBMS_OUTPUT.PUT_LINE('[FAIL] 8p '||SQLERRM); RETURN; END;
+
+        BEGIN v_ret := PCRD_ST_BOARD_CONV_ISS_PAR.LOAD_CARD_GEN_COUNTERS_PARAM(SYSDATE, v_bank, v_curr_num);
+            IF v_ret=0 THEN DBMS_OUTPUT.PUT_LINE('[OK] 8q LOAD_CARD_GEN_COUNTERS_PARAM'); ELSE DBMS_OUTPUT.PUT_LINE('[FAIL] 8q LOAD_CARD_GEN_COUNTERS_PARAM => '||v_ret); RETURN; END IF;
+        EXCEPTION WHEN OTHERS THEN DBMS_OUTPUT.PUT_LINE('[FAIL] 8q '||SQLERRM); RETURN; END;
+
+        BEGIN v_ret := PCRD_ST_BOARD_CONV_ISS_PAR.LOAD_ROUTING_CRITERIA_PARAM(SYSDATE, v_bank, v_curr_num);
+            IF v_ret=0 THEN DBMS_OUTPUT.PUT_LINE('[OK] 8r LOAD_ROUTING_CRITERIA_PARAM'); ELSE DBMS_OUTPUT.PUT_LINE('[FAIL] 8r LOAD_ROUTING_CRITERIA_PARAM => '||v_ret); RETURN; END IF;
+        EXCEPTION WHEN OTHERS THEN DBMS_OUTPUT.PUT_LINE('[FAIL] 8r '||SQLERRM); RETURN; END;
+
+        BEGIN v_ret := PCRD_ST_BOARD_CONV_ISS_PAR.LOAD_RENEWAL_CRITERIA_PARAM(SYSDATE, v_bank, v_curr_num);
+            IF v_ret=0 THEN DBMS_OUTPUT.PUT_LINE('[OK] 8s LOAD_RENEWAL_CRITERIA_PARAM'); ELSE DBMS_OUTPUT.PUT_LINE('[FAIL] 8s LOAD_RENEWAL_CRITERIA_PARAM => '||v_ret); RETURN; END IF;
+        EXCEPTION WHEN OTHERS THEN DBMS_OUTPUT.PUT_LINE('[FAIL] 8s '||SQLERRM); RETURN; END;
+
+        BEGIN v_ret := PCRD_ST_BOARD_CONV_ISS_PAR.LOAD_PCRD_CARD_PROD_PARAM(SYSDATE, v_bank, v_curr_num);
+            IF v_ret=0 THEN DBMS_OUTPUT.PUT_LINE('[OK] 8t LOAD_PCRD_CARD_PROD_PARAM'); ELSE DBMS_OUTPUT.PUT_LINE('[FAIL] 8t LOAD_PCRD_CARD_PROD_PARAM => '||v_ret); RETURN; END IF;
+        EXCEPTION WHEN OTHERS THEN DBMS_OUTPUT.PUT_LINE('[FAIL] 8t '||SQLERRM); RETURN; END;
+
+        BEGIN v_ret := PCRD_ST_BOARD_CONV_ISS_PAR.LOAD_Product_domain_PARAM(SYSDATE, v_bank, v_curr_num);
+            IF v_ret=0 THEN DBMS_OUTPUT.PUT_LINE('[OK] 8u LOAD_Product_domain_PARAM'); ELSE DBMS_OUTPUT.PUT_LINE('[FAIL] 8u LOAD_Product_domain_PARAM => '||v_ret); RETURN; END IF;
+        EXCEPTION WHEN OTHERS THEN DBMS_OUTPUT.PUT_LINE('[FAIL] 8u '||SQLERRM); RETURN; END;
+
+        BEGIN v_ret := PCRD_ST_BOARD_CONV_ISS_PAR.LOAD_Entity_event_PARAM(SYSDATE, v_bank, v_curr_num);
+            IF v_ret=0 THEN DBMS_OUTPUT.PUT_LINE('[OK] 8v LOAD_Entity_event_PARAM'); ELSE DBMS_OUTPUT.PUT_LINE('[FAIL] 8v LOAD_Entity_event_PARAM => '||v_ret); RETURN; END IF;
+        EXCEPTION WHEN OTHERS THEN DBMS_OUTPUT.PUT_LINE('[FAIL] 8v '||SQLERRM); RETURN; END;
+
+        BEGIN v_ret := PCRD_ST_BOARD_CONV_ISS_PAR.LOAD_icc_application_PARAM(SYSDATE, v_bank, v_curr_num);
+            IF v_ret=0 THEN DBMS_OUTPUT.PUT_LINE('[OK] 8w LOAD_icc_application_PARAM'); ELSE DBMS_OUTPUT.PUT_LINE('[FAIL] 8w LOAD_icc_application_PARAM => '||v_ret); RETURN; END IF;
+        EXCEPTION WHEN OTHERS THEN DBMS_OUTPUT.PUT_LINE('[FAIL] 8w '||SQLERRM); RETURN; END;
+
+        BEGIN v_ret := PCRD_ST_BOARD_CONV_ISS_PAR.LOAD_markup_calcul(SYSDATE, v_bank, v_curr_num);
+            IF v_ret=0 THEN DBMS_OUTPUT.PUT_LINE('[OK] 8x LOAD_markup_calcul'); ELSE DBMS_OUTPUT.PUT_LINE('[FAIL] 8x LOAD_markup_calcul => '||v_ret); RETURN; END IF;
+        EXCEPTION WHEN OTHERS THEN DBMS_OUTPUT.PUT_LINE('[FAIL] 8x '||SQLERRM); RETURN; END;
+
+        BEGIN v_ret := PCRD_ST_BOARD_CONV_ISS_PAR.LOAD_markup_index(SYSDATE, v_bank, v_curr_num);
+            IF v_ret=0 THEN DBMS_OUTPUT.PUT_LINE('[OK] 8y LOAD_markup_index'); ELSE DBMS_OUTPUT.PUT_LINE('[FAIL] 8y LOAD_markup_index => '||v_ret); RETURN; END IF;
+        EXCEPTION WHEN OTHERS THEN DBMS_OUTPUT.PUT_LINE('[FAIL] 8y '||SQLERRM); RETURN; END;
+
+        BEGIN v_ret := PCRD_ST_BOARD_CONV_ISS_PAR.LOAD_markup_el_cur(SYSDATE, v_bank, v_curr_num);
+            IF v_ret=0 THEN DBMS_OUTPUT.PUT_LINE('[OK] 8z LOAD_markup_el_cur'); ELSE DBMS_OUTPUT.PUT_LINE('[FAIL] 8z LOAD_markup_el_cur => '||v_ret); RETURN; END IF;
+        EXCEPTION WHEN OTHERS THEN DBMS_OUTPUT.PUT_LINE('[FAIL] 8z '||SQLERRM); RETURN; END;
+
+        BEGIN v_ret := PCRD_ST_BOARD_CONV_ISS_PAR.LOAD_Fleet_ctrl_PARAM(SYSDATE, v_bank, v_curr_num);
+            IF v_ret=0 THEN DBMS_OUTPUT.PUT_LINE('[OK] 8A LOAD_Fleet_ctrl_PARAM'); ELSE DBMS_OUTPUT.PUT_LINE('[FAIL] 8A LOAD_Fleet_ctrl_PARAM => '||v_ret); RETURN; END IF;
+        EXCEPTION WHEN OTHERS THEN DBMS_OUTPUT.PUT_LINE('[FAIL] 8A '||SQLERRM); RETURN; END;
+
+        -- 8B MOVE_PARAMETERS_LOADED(date, bank) — only 2 params!
+        BEGIN v_ret := PCRD_ST_BOARD_CONV_ISS_PAR.MOVE_PARAMETERS_LOADED(SYSDATE, v_bank);
+            IF v_ret=0 THEN DBMS_OUTPUT.PUT_LINE('[OK] 8B MOVE_PARAMETERS_LOADED'); ELSE DBMS_OUTPUT.PUT_LINE('[FAIL] 8B MOVE_PARAMETERS_LOADED => '||v_ret); RETURN; END IF;
+        EXCEPTION WHEN OTHERS THEN DBMS_OUTPUT.PUT_LINE('[FAIL] 8B '||SQLERRM); RETURN; END;
+
+        -- 8C MAIN_AUT_POST(bank) — only 1 param!
+        BEGIN v_ret := PCRD_ST_CONV_CATALOGUE.MAIN_AUT_POST(v_bank);
+            IF v_ret=0 THEN DBMS_OUTPUT.PUT_LINE('[OK] 8C MAIN_AUT_POST'); ELSE DBMS_OUTPUT.PUT_LINE('[FAIL] 8C MAIN_AUT_POST => '||v_ret); RETURN; END IF;
+        EXCEPTION WHEN OTHERS THEN DBMS_OUTPUT.PUT_LINE('[FAIL] 8C '||SQLERRM); RETURN; END;
+
+        COMMIT;
+        DBMS_OUTPUT.PUT_LINE('');
+        DBMS_OUTPUT.PUT_LINE('============================================');
+        DBMS_OUTPUT.PUT_LINE('  ALL SUB-FUNCTIONS PASSED!');
+        DBMS_OUTPUT.PUT_LINE('============================================');
+    END IF;
 
 END;
 /
