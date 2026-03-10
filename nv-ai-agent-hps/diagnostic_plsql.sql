@@ -505,20 +505,27 @@ BEGIN
         END LOOP;
     END;
 
-    -- Check trace table for recent errors
+    -- Check trace table for recent errors (dynamic SQL to avoid compile error if table missing)
     DBMS_OUTPUT.PUT_LINE('');
     DBMS_OUTPUT.PUT_LINE('[DEBUG] Recent trace entries:');
+    DECLARE
+        v_trace_func VARCHAR2(200);
+        v_trace_msg  VARCHAR2(200);
+        v_trace_cur  SYS_REFCURSOR;
     BEGIN
-        FOR t IN (SELECT * FROM (
-                    SELECT function_name, user_message, ROWNUM rn
-                      FROM pcrd_traces
-                     WHERE package_name = 'PCRD_ST_BOARD_CONV_ISS_PAR'
-                     ORDER BY ROWID DESC)
-                  WHERE rn <= 5) LOOP
-            DBMS_OUTPUT.PUT_LINE('  trace: func=[' || t.function_name || '] msg=[' || SUBSTR(t.user_message, 1, 100) || ']');
+        OPEN v_trace_cur FOR
+            'SELECT function_name, SUBSTR(user_message,1,100) FROM ('
+            || 'SELECT function_name, user_message FROM env_info_trace'
+            || ' WHERE package_name = ''PCRD_ST_BOARD_CONV_ISS_PAR'''
+            || ' ORDER BY ROWID DESC) WHERE ROWNUM <= 5';
+        LOOP
+            FETCH v_trace_cur INTO v_trace_func, v_trace_msg;
+            EXIT WHEN v_trace_cur%NOTFOUND;
+            DBMS_OUTPUT.PUT_LINE('  trace: func=[' || v_trace_func || '] msg=[' || v_trace_msg || ']');
         END LOOP;
+        CLOSE v_trace_cur;
     EXCEPTION WHEN OTHERS THEN
-        DBMS_OUTPUT.PUT_LINE('[INFO] Could not read pcrd_traces: ' || SQLERRM);
+        DBMS_OUTPUT.PUT_LINE('[INFO] Could not read traces: ' || SQLERRM);
     END;
 
     DBMS_OUTPUT.PUT_LINE('');
