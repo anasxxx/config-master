@@ -275,24 +275,39 @@ def postprocess(path: str, value):
         if path == "cards.0.card_info.plastic_type":
             v = value.strip().lower()
             mapping = {
-                "pvc": "PVC",
-                "petg": "PETG",
-                "metal": "METAL",
-                "métal": "METAL",
-                "other": "OTHER",
-                "autre": "OTHER",
-                "plastic": "PVC",
+                "printed": "STD",
+                "standard": "STD",
+                "std": "STD",
+                "embossed": "EMB",
+                "emb": "EMB",
+                "virtual": "VIR",
+                "virtuel": "VIR",
+                "virtuelle": "VIR",
+                "vir": "VIR",
+                # Legacy values
+                "pvc": "STD",
+                "petg": "STD",
+                "metal": "EMB",
+                "métal": "EMB",
+                "other": "STD",
+                "autre": "STD",
+                "plastic": "STD",
+                "imprime": "STD",
             }
-            return mapping.get(v, value.strip().upper())
+            return mapping.get(v, value.strip().upper()[:3])
         if path == "bank.bank_code":
             return value.strip().upper()
-        # For code-only paths asked as single fields, extract just the numeric part.
-        # e.g. user answers "Rabat, 10" when asked only for city_code → extract "10"
-        if path.endswith("city_code") or path.endswith("region_code"):
-            m = re.search(r"\d+", value)
-            if m:
-                return m.group(0)
-            return value.strip()
+        # For code-only paths: extract alphanumeric code.
+        # ParamCorrectif: CITY_CODE CHAR(5), REGION_CODE CHAR(3) — alphanumeric
+        if path.endswith("city_code"):
+            v = value.strip().upper()
+            # If user gives "CASA" or "001", take it directly
+            m = re.search(r"[A-Z0-9]+", v, re.IGNORECASE)
+            return m.group(0)[:5] if m else v[:5]
+        if path.endswith("region_code"):
+            v = value.strip().upper()
+            m = re.search(r"[A-Z0-9]+", v, re.IGNORECASE)
+            return m.group(0)[:3] if m else v[:3]
         if path.endswith("agency_code"):
             # agency_code is alphanumeric — grab the last token that looks like a code
             tokens = re.findall(r"[A-Za-z0-9\-_]+", value)
@@ -311,10 +326,12 @@ def validate_field_value(path: str, value) -> bool:
     s = str(value).strip().upper()
 
     if path == "cards.0.card_info.bin":
-        return bool(re.fullmatch(r"\d{6,8}", s))
+        return bool(re.fullmatch(r"\d{6,11}", s))  # VARCHAR2(11) digits
 
     if path == "cards.0.card_info.network":
-        return s in {"VISA", "MASTERCARD"}
+        return s in {"VISA", "MCRD", "EUROPAY", "AMEX", "TAG-YUP",
+                      "DINERS", "UPI", "GIMN", "JCB", "PRIVATIVE",
+                      "MASTERCARD"}  # MASTERCARD maps to MCRD in pipeline
 
     if path == "cards.0.card_info.product_type":
         allowed = {"DEBIT", "CREDIT", "PREPAID"}
@@ -322,14 +339,14 @@ def validate_field_value(path: str, value) -> bool:
         return bool(parts) and all(p in allowed for p in parts)
 
     if path == "cards.0.card_info.plastic_type":
-        allowed = {"PVC", "PETG", "METAL", "OTHER"}
+        allowed = {"STD", "EMB", "VIR"}  # CHAR(3) codes
         return s in allowed
 
     if "currency" in path:
         return bool(re.fullmatch(r"[A-Z]{3}", s))
 
     if "bank_code" in path:
-        return bool(re.fullmatch(r"\d{3,10}", s))  # aligné prod
+        return bool(re.fullmatch(r"[A-Z0-9]{1,6}", s, re.IGNORECASE))  # CHAR(6)
 
     if path.endswith(".city"):
         return not _is_known_country_name(str(value).strip())
@@ -1603,7 +1620,7 @@ def apply_user_message_to_facts(state: dict, template_obj: dict, user_text: str)
                 if path == "bank.currency" and _extract_currency(txt) is None and not explicit_mention:
                     continue
                 if path == "cards.0.card_info.plastic_type":
-                    plastic_mentioned = bool(re.search(r"(?i)\b(plastic|plastique|pvc|petg|recycled)\b", txt))
+                    plastic_mentioned = bool(re.search(r"(?i)\b(plastic|plastique|pvc|petg|printed|embossed|virtual|virtuel|std|emb|vir|imprime)\b", txt))
                     if not plastic_mentioned and not explicit_mention:
                         continue
                 if path.startswith("cards.0.fees."):
@@ -1697,7 +1714,7 @@ def apply_user_message_to_facts(state: dict, template_obj: dict, user_text: str)
             if path == "bank.currency" and _extract_currency(txt) is None and not explicit_mention:
                 continue
             if path == "cards.0.card_info.plastic_type":
-                plastic_mentioned = bool(re.search(r"(?i)\b(plastic|plastique|pvc|petg|recycled)\b", txt))
+                plastic_mentioned = bool(re.search(r"(?i)\b(plastic|plastique|pvc|petg|printed|embossed|virtual|virtuel|std|emb|vir|imprime)\b", txt))
                 if not plastic_mentioned and not explicit_mention:
                     continue
             if path.startswith("cards.0.fees."):

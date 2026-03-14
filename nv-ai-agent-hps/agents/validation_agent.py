@@ -88,47 +88,52 @@ def missing_paths(facts: dict, template_obj: dict, required_paths: list) -> list
 
 
 CUSTOM_QUESTIONS = {
-    # Bank
-    "bank.name": "Quel est le nom de la banque ?",
-    "bank.country": "Quel est le pays de la banque ? ",
-    "bank.currency": "Quelle est la devise ? ",
-    "bank.bank_code": "Quel est le code de la banque (bank code) ?",
-    "bank.resources": "Quelles ressources veux-tu activer ? (ex: accounts, cards, transactions) Donne une liste séparée par virgules.",
-    # First agency (index 0)
-    "bank.agencies.0.agency_name": "Quel est le nom de l'agence ?",
-    "bank.agencies.0.agency_code": "Quel est le code de cette agence ?",
-    "bank.agencies.0.city": "Dans quelle ville se trouve cette agence ?",
-    "bank.agencies.0.city_code": "Quel est le code de la ville ?",
-    "bank.agencies.0.region": "Quelle est la région ?",
-    "bank.agencies.0.region_code": "Quel est le code de la région ?",
-    # Cards (index 0)
-    "cards.0.card_info.bin": "Quel est le BIN de la carte ? (6 à 8 chiffres)",
-    "cards.0.card_info.network": "Quel est le réseau de la carte ? (VISA, MCRD, AMEX, GIMN, EUROPAY, DINERS, TAG-YUP, PRIVATIVE)",
-    "cards.0.card_info.product": "Quel est le produit carte ? (ex: Classic, Gold...)",
-    # Card range
-    "cards.0.card_range.start_range": "Quelle est la plage BIN de début (tranche min) ? (ex: 445555000000000)",
-    "cards.0.card_range.end_range": "Quelle est la plage BIN de fin (tranche max) ? (ex: 445555999999999)",
-    "cards.0.services.enabled": "Quels services veux-tu activer pour la carte ? (liste séparée par virgules) (ex: 3DS, TOKENIZATION)",
-    # Card PAN range
-    "cards.0.card_range.tranche_min": "Début de la plage PAN (tranche_min) ? (Ex: 4455660000000000)",
-    "cards.0.card_range.tranche_max": "Fin de la plage PAN (tranche_max) ? (Ex: 4455669999999999)",
+    # ── Q1-4: Informations Bancaires ──
+    "bank.name": "Quel est le nom de la banque ?",                                         # Q1
+    "bank.country": "Quel est le pays de la banque ?",                                     # Q2
+    "bank.currency": "Quelle est la devise ? (MAD/EUR/USD)",                               # Q3 [auto fill]
+    "bank.bank_code": "Quel est le code de la banque (bank code) ?",                       # Q4
+    # ── Q5: Ressources ──
+    "bank.resources": "Quelles ressources veux-tu activer ? (MCD MDS, MCD CIS, UPI, HOST BANK, SID, VISA BASE1, VISA SMS)",  # Q5
+    # ── Q6-11: Agences ──
+    "bank.agencies.0.agency_name": "Quel est le nom de l'agence ?",                        # Q6
+    "bank.agencies.0.agency_code": "Quel est le code de cette agence ?",                   # Q7
+    "bank.agencies.0.city": "Dans quelle ville se trouve cette agence ?",                  # Q8
+    "bank.agencies.0.city_code": "Quel est le code de la ville ?",                         # Q9 [auto fill]
+    "bank.agencies.0.region": "Quelle est la région ?",                                    # Q10 [auto fill]
+    "bank.agencies.0.region_code": "Quel est le code de la région ?",                      # Q11 [auto fill]
+    # ── Q12-22: Informations Carte ──
+    "cards.0.card_info.bin": "Quel est le BIN de la carte ? (6 à 11 chiffres)",            # Q12
+    "cards.0.card_info.plastic_type": "Type de carte (plastique) ? (Printed, EmBossed, VIRTUAL)",  # Q13
+    "cards.0.card_info.card_description": "Nom/description du produit carte ?",             # Q14
+    "cards.0.card_info.product_type": "Type de carte ? (DEBIT, PREPAID, CREDIT)",           # Q15
+    "cards.0.card_info.product_code": "Code du produit carte ? (3 caractères, ex: VCL)",    # Q16
+    "cards.0.card_info.pvk_index": "Index PVK ? (1 chiffre, ex: 1)",                       # Q17
+    "cards.0.card_info.service_code": "Code service de la carte ? (3 caractères, ex: 101)", # Q18
+    "cards.0.card_info.network": "Quel est le réseau de la carte ? (VISA, MASTERCARD, AMEX, DINERS, EUROPAY, PRIVATIVE, GIMN, TAG-YUP)",  # Q19
+    "cards.0.card_info.expiration": "Durée de validité de la carte ? (en mois, ex: 36)",    # Q20
+    "cards.0.card_info.renewal_option": "Renouvellement automatique ? (Y=Oui, N=Non)",      # Q21
+    "cards.0.card_info.pre_expiration": "Délai avant expiration pour lancer le renouvellement ? (en mois, ex: 3)",  # Q22
+    # ── Q23: Tranche PAN ──
+    "cards.0.card_range.start_range": "Peux-tu préciser la tranche Min et Max du PAN ?",    # Q23 (grouped)
+    "cards.0.card_range.end_range": "Quelle est la tranche Max du PAN ?",
+    # ── Q31: Services ──
+    "cards.0.services.enabled": "Quels services veux-tu activer pour la carte ? (Achat, retrait, cashback, ...)",  # Q31
+    # ── Q32: Types de limites ──
+    "cards.0.limits.selected_limit_types": "Quels types de limites veux-tu activer ? (Retrait, Purchase, CASH advance, Quasi-cash, E-commerce)",  # Q32
 }
 
+# Q24-30: Fees questions (displayed as form)
+CARD_INFO_QUESTIONS = {}
 
-#  card_info 
-CARD_INFO_QUESTIONS = {
-    "cards.0.card_info.plastic_type": "Type de carte (plastique) (ex: PVC)",
-    "cards.0.card_info.card_description": "Nom/description de la carte (ex: Carte Classic)",
-    "cards.0.card_info.product_type": "Type de carte (ex: DEBIT ou CREDIT)",
-    "cards.0.card_info.product_code": "Code du produit carte — exactement 3 caractères (ex: PRD, GLD, CLS)",
-
-    # ✅ Simplification des termes techniques
-    "cards.0.card_info.pvk_index": "Paramètre sécurité PIN (PVK index). Si tu ne sais pas, mets 1",
-    "cards.0.card_info.service_code": "Code service de la carte. Si tu ne sais pas, mets 101",
-
-    "cards.0.card_info.expiration": "Durée de validité de la carte (ex: 36 mois)",
-    "cards.0.card_info.renewal_option": "Option de renouvellement ? 1 caractère : A=Automatique, M=Manuel (ex: A)",
-    "cards.0.card_info.pre_expiration": "Préavis avant expiration ? 1 chiffre = nombre de mois (ex: 3)",
+FEES_QUESTIONS = {
+    "cards.0.fees.fee_description": "Quelle est la description des frais ?",                  # Q24
+    "cards.0.fees.billing_event": "Quel est l'événement de facturation ? (1, 2 ou 3)",        # Q25
+    "cards.0.fees.billing_period": "Quelle est la période de facturation ? (M=Mensuel, A=Annuel, T=Trimestriel, S=Semestriel)",  # Q26
+    "cards.0.fees.registration_fee": "Quels sont les frais d'inscription ?",                  # Q27
+    "cards.0.fees.periodic_fee": "Quels sont les frais périodiques ?",                         # Q28
+    "cards.0.fees.replacement_fee": "Quels sont les frais de remplacement ?",                  # Q29
+    "cards.0.fees.pin_recalculation_fee": "Quels sont les frais de recalcul du PIN ?",        # Q30
 }
 
 HUMAN_LABELS = {
@@ -185,15 +190,25 @@ def _pretty_path(path: str) -> str:
 def _friendly_limits_question(path: str) -> str:
     """
     Convertit un path limits profond en question courte.
-    Ex:
-    cards.0.limits.by_type.DEFAULT.domestic.daily_amount
-    -> "Quel est le montant limite national par jour ? (ex: 20000)"
+    Matches supervisor’s Q33-52 exactly.
     """
     if path.endswith("limits.selected_limit_types"):
-        return "Quels types de limites veux-tu activer ? (ex: DEFAULT) Donne une liste séparée par virgules."
+        return "Quels types de limites veux-tu activer ? (Retrait, Purchase, CASH advance, Quasi-cash, E-commerce)"
+
+    # Handle per_transaction paths separately (no daily/weekly/monthly prefix)
+    m_per_tx = re.search(
+        r"cards\.0\.limits\.by_type\.([A-Za-z0-9_]+)\.per_transaction\.(min_amount|max_amount)$",
+        path,
+    )
+    if m_per_tx:
+        _limit_type, field = m_per_tx.groups()
+        if field == "min_amount":
+            return "Montant minimum par transaction ?"  # Q51
+        else:
+            return "Montant maximum par transaction ?"  # Q52
 
     m = re.search(
-        r"cards\.0\.limits\.by_type\.([A-Za-z0-9_]+)\.(domestic|international|total|per_transaction)\.(daily|weekly|monthly)_(amount|count|min|max)$",
+        r"cards\.0\.limits\.by_type\.([A-Za-z0-9_]+)\.(domestic|international|total)\.(daily|weekly|monthly)_(amount|count)$",
         path,
     )
     if not m:
@@ -202,10 +217,9 @@ def _friendly_limits_question(path: str) -> str:
     _limit_type, scope, period, metric = m.groups()
 
     scope_fr = {
-        "domestic": "national",
-        "international": "international",
-        "total": "global",
-        "per_transaction": "par transaction",
+        "domestic": "national",       # Q33-38
+        "international": "international",  # Q39-44
+        "total": "global",             # Q45-50
     }.get(scope, scope)
 
     period_fr = {"daily": "par jour", "weekly": "par semaine", "monthly": "par mois"}.get(
@@ -213,15 +227,11 @@ def _friendly_limits_question(path: str) -> str:
     )
 
     metric_fr = {
-        "amount": "montant",
-        "count": "nombre d’opérations",
-        "min": "montant minimum",
-        "max": "montant maximum",
+        "amount": "Montant",
+        "count": "Nombre d’opérations",
     }.get(metric, metric)
 
-    if scope == "per_transaction":
-        return f"Quel est le {metric_fr} {scope_fr} ? (ex: 100)"
-    return f"Quel est le {metric_fr} limite {scope_fr} {period_fr} ? (ex: 20000)"
+    return f"{metric_fr} limite {scope_fr} {period_fr} ?"
 
 
 def _friendly_fees_question(path: str) -> str:
@@ -234,13 +244,13 @@ def _friendly_fees_question(path: str) -> str:
     field = path.split(".")[-1]
     mapping = {
         "fee_description": "Quelle est la description des frais ?",
-        "billing_event": "Quel est l’événement de facturation ? 1 caractère : M=Membership, U=Usage, G=Group, R=Renewal, A=Activation (ex: M)",
-        "grace_period": "Quelle est la période de grâce ? (en jours, ex: 30)",
-        "billing_period": "Quelle est la période de facturation ? 1 caractère : M=Mensuel, Y=Annuel, Q=Trimestriel, W=Hebdo (ex: M)",
-        "registration_fee": "Quels sont les frais d’inscription ? (ex: 50)",
-        "periodic_fee": "Quels sont les frais périodiques ? (ex: 10)",
-        "replacement_fee": "Quels sont les frais de remplacement ? (ex: 25)",
-        "pin_recalculation_fee": "Quels sont les frais de recalcul du PIN ? (ex: 5)",
+        "billing_event": "Quel est l’événement de facturation ? (1, 2 ou 3)",
+        "grace_period": "Quelle est la période de grâce ? (en jours)",
+        "billing_period": "Quelle est la période de facturation ? (M=Mensuel, A=Annuel, T=Trimestriel, S=Semestriel)",
+        "registration_fee": "Quels sont les frais d’inscription ?",
+        "periodic_fee": "Quels sont les frais périodiques ?",
+        "replacement_fee": "Quels sont les frais de remplacement ?",
+        "pin_recalculation_fee": "Quels sont les frais de recalcul du PIN ?",
     }
     return mapping.get(field, "Peux-tu préciser les frais ?")
 
@@ -267,7 +277,7 @@ def _humanize_question(path: str, q: str) -> str:
     if path.endswith(".currency"):
         explain = "Format attendu: code ISO à 3 lettres (ex: MAD, EUR)."
     elif path.endswith(".bin"):
-        explain = "Format attendu: 6 à 8 chiffres."
+        explain = "Format attendu: 6 à 11 chiffres."
     elif path.endswith(".network"):
         explain = "Valeurs courantes: VISA ou MASTERCARD."
     elif path.endswith(".code") or path.endswith("_code"):
@@ -305,12 +315,17 @@ def next_question_for_missing(path: str) -> str:
         q = CARD_INFO_QUESTIONS[path]
         return _strip_examples(_humanize_question(path, q))
 
+    # 0b) fees questions (Q24-30)
+    if path in FEES_QUESTIONS:
+        q = FEES_QUESTIONS[path]
+        return _strip_examples(_humanize_question(path, q))
+
     # 1) limits
     ql = _friendly_limits_question(path)
     if ql:
         return _strip_examples(_humanize_question(path, ql))
 
-    # 2) fees
+    # 2) fees (fallback)
     qf = _friendly_fees_question(path)
     if qf:
         return _strip_examples(_humanize_question(path, qf))
@@ -365,41 +380,34 @@ QUESTION_GROUPS = [
     {
         "id": "bank_identity",
         "paths": ["bank.name", "bank.country", "bank.currency", "bank.bank_code"],
-        "normal": "Donne l'identite banque: nom, pays, devise, code banque.",
+        "normal": "Donne l'identité banque: nom, pays, devise, code banque.",
         "simple": "Donne 4 infos simples: nom banque, pays, devise, code.",
-        "example": "Ex: Atlas Bank, Maroc, MAD, 90001",
+        "example": "Ex: Sahara Bank, Maroc, MAD, SAH01",
     },
     {
         "id": "main_agency",
         "paths": ["bank.agencies.0.agency_name", "bank.agencies.0.city", "bank.agencies.0.agency_code"],
         "normal": "Donne l'agence principale: nom, ville, code agence.",
         "simple": "Donne juste: nom agence, ville, code agence.",
-        "example": "Ex: Agence Centre, Casablanca, 0025",
-    },
-    {
-        "id": "card_profile",
-        "paths": ["cards.0.card_info.network", "cards.0.card_info.product_type", "cards.0.card_info.plastic_type"],
-        "normal": "Precise le profil carte: reseau, type, support.",
-        "simple": "Choisis: reseau, type carte, support plastique.",
-        "example": "Ex: VISA, DEBIT, PVC",
-    },
-    {
-        "id": "limits_core",
-        "paths": ["cards.0.limits.selected_limit_types", "cards.0.limits.by_type.DEFAULT.domestic.daily_amount"],
-        "normal": "Pour les limites: type de limite puis montant journalier.",
-        "simple": "Donne type limite + montant par jour.",
-        "example": "Ex: Purchase, 30000",
+        "example": "Ex: Agence Maarif, Casablanca, AG001",
     },
 ]
 
 
 MENU_FIELDS = {
     "cards.0.card_info.network": {
-        "title": "Choisis le reseau",
+        "title": "Choisis le réseau",
         "options": [
             {"id": "1", "value": "VISA", "aliases": ["1", "visa"]},
-            {"id": "2", "value": "MASTERCARD", "aliases": ["2", "mastercard", "master"]},
-            {"id": "3", "value": "VISA", "aliases": ["3", "both", "les deux", "les 2"]},
+            {"id": "2", "value": "MCRD", "aliases": ["2", "mastercard", "master", "mcrd", "mcd"]},
+            {"id": "3", "value": "AMEX", "aliases": ["3", "amex", "american express"]},
+            {"id": "4", "value": "DINERS", "aliases": ["4", "diners"]},
+            {"id": "5", "value": "EUROPAY", "aliases": ["5", "europay"]},
+            {"id": "6", "value": "PRIVATIVE", "aliases": ["6", "privative"]},
+            {"id": "7", "value": "GIMN", "aliases": ["7", "gimn"]},
+            {"id": "8", "value": "TAG-YUP", "aliases": ["8", "tag-yup", "tag yup"]},
+            {"id": "9", "value": "UPI", "aliases": ["9", "upi", "unionpay"]},
+            {"id": "10", "value": "JCB", "aliases": ["10", "jcb"]},
         ],
     },
     "cards.0.card_info.product_type": {
@@ -411,11 +419,18 @@ MENU_FIELDS = {
         ],
     },
     "cards.0.card_info.plastic_type": {
-        "title": "Choisis le support",
+        "title": "Choisis le support (plastique)",
         "options": [
-            {"id": "1", "value": "PVC", "aliases": ["1", "pvc"]},
-            {"id": "2", "value": "METAL", "aliases": ["2", "metal"]},
-            {"id": "3", "value": "OTHER", "aliases": ["3", "other", "autre", "petg"]},
+            {"id": "1", "value": "STD", "aliases": ["1", "printed", "std", "standard", "imprime"]},
+            {"id": "2", "value": "EMB", "aliases": ["2", "embossed", "emb", "embossee"]},
+            {"id": "3", "value": "VIR", "aliases": ["3", "virtual", "vir", "virtuel", "virtuelle"]},
+        ],
+    },
+    "cards.0.card_info.renewal_option": {
+        "title": "Renouvellement automatique ?",
+        "options": [
+            {"id": "1", "value": "Y", "aliases": ["1", "y", "yes", "oui", "auto", "automatique"]},
+            {"id": "2", "value": "N", "aliases": ["2", "n", "no", "non", "manual", "manuel"]},
         ],
     },
     "bank.currency": {
@@ -438,17 +453,34 @@ MENU_FIELDS = {
             {"id": "7", "value": "VISA_SMS", "aliases": ["7", "visa_sms", "visa sms"]},
         ],
     },
+    "cards.0.fees.billing_event": {
+        "title": "Choisis l'événement de facturation",
+        "options": [
+            {"id": "1", "value": "1", "aliases": ["1"]},
+            {"id": "2", "value": "2", "aliases": ["2"]},
+            {"id": "3", "value": "3", "aliases": ["3"]},
+        ],
+    },
+    "cards.0.fees.billing_period": {
+        "title": "Choisis la période de facturation",
+        "options": [
+            {"id": "1", "value": "M", "aliases": ["1", "m", "mensuel", "monthly"]},
+            {"id": "2", "value": "A", "aliases": ["2", "a", "annuel", "annual", "yearly"]},
+            {"id": "3", "value": "T", "aliases": ["3", "t", "trimestriel", "quarterly"]},
+            {"id": "4", "value": "S", "aliases": ["4", "s", "semestriel", "semi"]},
+        ],
+    },
     "cards.0.services.enabled": {
         "title": "Choisis les services (tu peux donner plusieurs choix: 1,4,9)",
         "options": [
             {"id": "1", "value": "Retrait", "aliases": ["1", "retrait"]},
             {"id": "2", "value": "Cash Advance", "aliases": ["2", "cash advance"]},
-            {"id": "3", "value": "Transferts", "aliases": ["3", "transferts", "transferts"]},
+            {"id": "3", "value": "Transferts", "aliases": ["3", "transferts"]},
             {"id": "4", "value": "Consultation Solde", "aliases": ["4", "consultation solde"]},
             {"id": "5", "value": "Changement PIN", "aliases": ["5", "changement pin"]},
             {"id": "6", "value": "Envoi d'argent", "aliases": ["6", "envoi d'argent", "envoi dargent"]},
             {"id": "7", "value": "Original", "aliases": ["7", "original"]},
-            {"id": "8", "value": "Achats", "aliases": ["8", "achats"]},
+            {"id": "8", "value": "Achats", "aliases": ["8", "achats", "achat"]},
             {"id": "9", "value": "E-commerce", "aliases": ["9", "e-commerce", "ecommerce"]},
             {"id": "10", "value": "Quasi-Cash", "aliases": ["10", "quasi-cash", "quasi cash"]},
             {"id": "11", "value": "Mini-Relevé", "aliases": ["11", "mini-releve", "mini relevé"]},

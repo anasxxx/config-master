@@ -109,6 +109,8 @@ VALID_RESOURCE_WORDINGS = {
 # st_pre_bin_range_plastic_prod.product_type is assigned directly to
 # st_mig_CARD_TYPE.network_card_type which is CHAR(2).
 # Descriptive names must be converted to 2-char numeric codes.
+# ── product_type mapping: descriptive names → CHAR(2) codes ──────────────
+# ParamCorrectif: PRODUCT_TYPE CHAR(2 CHAR), example "CL"
 PRODUCT_TYPE_MAP = {
     "debit": "01",
     "db": "01",
@@ -118,6 +120,30 @@ PRODUCT_TYPE_MAP = {
     "pp": "03",
     "charge": "04",
     "virtual": "05",
+    # Supervisor examples — 2-char letter codes
+    "classic": "CL",
+    "cl": "CL",
+    "gold": "GO",
+    "go": "GO",
+    "platinum": "PL",
+    "pl": "PL",
+}
+
+# ── plastic_type mapping: display names → CHAR(3) codes ──────────────────
+# ParamCorrectif: PLASTIC_TYPE CHAR(3 CHAR), example "STD"
+PLASTIC_TYPE_MAP = {
+    "printed": "STD",
+    "standard": "STD",
+    "std": "STD",
+    "embossed": "EMB",
+    "emb": "EMB",
+    "virtual": "VIR",
+    "virtuel": "VIR",
+    "vir": "VIR",
+    # Legacy values — map to closest equivalent
+    "pvc": "STD",
+    "metal": "EMB",
+    "other": "STD",
 }
 
 RESOURCE_WORDING_MAP = {
@@ -263,7 +289,7 @@ def map_facts_to_bank_req(state: Dict[str, Any]) -> Dict[str, Any]:
     bank_req: Dict[str, Any] = {
         "pBusinessDate": business_date,
         "pBankCode": bank_code[:6],
-        "pBankWording": _clip(bank.get("name"), 15),  # PL/SQL uses this for ABREV_NAME (max 15)
+        "pBankWording": _clip(bank.get("name"), 40),  # ParamCorrectif: bank_name VARCHAR2(40 CHAR)
         "pCountryCode": country_code,
         "pCurrencyCode": currency_code,
         "p_action_flag": "1",
@@ -278,12 +304,12 @@ def map_facts_to_bank_req(state: Dict[str, Any]) -> Dict[str, Any]:
         bank_req["branches"].append(
             {
                 "bankCode": bank_code[:6],
-                "branchCode": _clip(agency.get("agency_code"), 6),
-                "branchWording": _clip(agency.get("agency_name"), 20),
-                "regionCode": _clip(agency.get("region_code"), 3),
-                "regionWording": _clip(agency.get("region"), 20),
-                "cityCode": _clip(agency.get("city_code"), 5),
-                "cityWording": _clip(agency.get("city"), 20),
+                "branchCode": _clip(agency.get("agency_code"), 6),   # CHAR(6)
+                "branchWording": _clip(agency.get("agency_name"), 40),  # VARCHAR2(40)
+                "regionCode": _clip(agency.get("region_code"), 3),   # CHAR(3)
+                "regionWording": _clip(agency.get("region"), 30),    # VARCHAR2(30)
+                "cityCode": _clip(agency.get("city_code"), 5),      # CHAR(5)
+                "cityWording": _clip(agency.get("city"), 32),        # VARCHAR2(32)
             }
         )
 
@@ -311,10 +337,15 @@ def map_facts_to_bank_req(state: Dict[str, Any]) -> Dict[str, Any]:
         product_code = _to_str(card_info.get("product_code"))
         product_code_3 = product_code[:3].ljust(3, "0") if product_code else "000"
 
-        # expiration max 2 chars, renew / priorExp max 1 char
-        expiration_raw = _to_str(card_info.get("expiration"))[:2]
-        renew_raw = _to_str(card_info.get("renewal_option"))[:1]
-        prior_exp_raw = _to_str(card_info.get("pre_expiration"))[:1]
+        # ParamCorrectif: expiration NUMBER(3,0), renewal_option CHAR(1) Y/N,
+        # pre_expiration NUMBER(2,0)
+        expiration_raw = _to_str(card_info.get("expiration"))[:3]
+        # Renewal: supervisor uses Y/N. Map legacy A/M to Y/N.
+        renew_val = _to_str(card_info.get("renewal_option")).strip().upper()[:1]
+        RENEWAL_MAP = {"A": "Y", "M": "N", "Y": "Y", "N": "N",
+                       "O": "Y", "1": "Y", "0": "N"}
+        renew_raw = RENEWAL_MAP.get(renew_val, renew_val or "Y")
+        prior_exp_raw = _to_str(card_info.get("pre_expiration"))[:2]
 
         # product_type → NETWORK_CARD_TYPE (CHAR(2)): map descriptive names to 2-char codes
         raw_product_type = _to_str(card_info.get("product_type")).strip()
@@ -323,11 +354,18 @@ def map_facts_to_bank_req(state: Dict[str, Any]) -> Dict[str, Any]:
         else:
             product_type_code = PRODUCT_TYPE_MAP.get(raw_product_type.lower(), "01")
 
+        # plastic_type → CHAR(3): map display names to 3-char codes
+        raw_plastic = _to_str(card_info.get("plastic_type")).strip()
+        if len(raw_plastic) <= 3 and raw_plastic.upper() in {"STD", "EMB", "VIR"}:
+            plastic_code = raw_plastic.upper()
+        else:
+            plastic_code = PLASTIC_TYPE_MAP.get(raw_plastic.lower(), raw_plastic[:3].upper() or "STD")
+
         info_module = {
             "bankCode": bank_code[:6],
-            "description": _clip(card_info.get("card_description"), 50),
-            "bin": _clip(card_info.get("bin"), 20),
-            "plasticType": _clip(card_info.get("plastic_type"), 20),
+            "description": _clip(card_info.get("card_description"), 40),  # VARCHAR2(40)
+            "bin": _clip(card_info.get("bin"), 11),  # VARCHAR2(11)
+            "plasticType": plastic_code,  # CHAR(3)
             "productType": product_type_code,
             "productCode": product_code_3,
             "trancheMin": _clip(card_range.get("start_range"), 20),
@@ -345,30 +383,30 @@ def map_facts_to_bank_req(state: Dict[str, Any]) -> Dict[str, Any]:
         # cardFeesCode: exactly 3 chars – take first 3 of product_code
         fees_code = product_code_3
 
-        # billing event: CHAR(1) — CK_CARD_FEES_06: M=Membership,U=Usage,G=Group,R=Renewal,A=Activation
-        VALID_BILLING_EVT = {"M", "U", "G", "R", "A"}
-        billing_evt_raw = _to_str(fees.get("billing_event")).strip().upper()[:1]
-        billing_evt = billing_evt_raw if billing_evt_raw in VALID_BILLING_EVT else "M"
+        # ParamCorrectif: card_fees_billing_evt CHAR(1) ENUM "1"|"2"|"3"
+        VALID_BILLING_EVT = {"1", "2", "3"}
+        billing_evt_raw = _to_str(fees.get("billing_event")).strip()[:1]
+        billing_evt = billing_evt_raw if billing_evt_raw in VALID_BILLING_EVT else "1"
 
-        # billing period: CHAR(1) — CK_CARD_FEES_08: R,M,Q,S,Y=Yearly,O=Once,2-9=N-years
-        VALID_BILLING_PERIOD = {"R", "M", "Q", "S", "Y", "O", "2", "3", "4", "5", "6", "7", "8", "9"}
+        # ParamCorrectif: card_fees_billing_period CHAR(1) ENUM "M"|"A"|"T"|"S"
+        VALID_BILLING_PERIOD = {"M", "A", "T", "S"}
         BILLING_PERIOD_MAP = {
-            "annual": "Y", "yearly": "Y", "year": "Y", "a": "Y", "y": "Y",
-            "monthly": "M", "month": "M", "m": "M",
-            "quarterly": "Q", "quarter": "Q", "q": "Q",
-            "semi-annual": "S", "semiannual": "S", "semi": "S", "s": "S",
-            "once": "O", "one-time": "O", "o": "O",
-            "renewal": "R", "renew": "R", "r": "R",
+            "annual": "A", "yearly": "A", "year": "A", "annuel": "A",
+            "monthly": "M", "month": "M", "mensuel": "M",
+            "quarterly": "T", "quarter": "T", "trimestriel": "T",
+            "semi-annual": "S", "semiannual": "S", "semi": "S", "semestriel": "S",
+            # Legacy mappings
+            "y": "A", "q": "T", "r": "M", "o": "A",
         }
         billing_period_raw = _to_str(fees.get("billing_period")).strip().lower()
         if billing_period_raw.upper() in VALID_BILLING_PERIOD:
             billing_period = billing_period_raw.upper()
         else:
-            billing_period = BILLING_PERIOD_MAP.get(billing_period_raw, "Y")
+            billing_period = BILLING_PERIOD_MAP.get(billing_period_raw, "A")
 
         fees_module = {
             "bankCode": bank_code[:6],
-            "description": _clip(fees.get("fee_description"), 30),
+            "description": _clip(fees.get("fee_description"), 32),  # VARCHAR2(32)
             "cardFeesCode": fees_code,
             "cardFeesBillingEvt": billing_evt,
             "cardFeesGracePeriod": int(_to_number(fees.get("grace_period")) or 0),
@@ -459,11 +497,11 @@ def _build_limit_module(
         return _to_number_str(val) if n and n > 0 else None
 
     def _nbr(val):
-        """Return 3-char padded count or None (→ DB NULL). Max 999 (CHAR(3))."""
+        """Return count string or None (→ DB NULL). ParamCorrectif: NUMBER(4,0)."""
         n = _to_number(val)
         if n and n > 0:
-            capped = min(int(n), 999)
-            return _pad(_to_str(capped), 3)
+            capped = min(int(n), 9999)
+            return _pad(_to_str(capped), 3)  # Keep 3-char pad for backward compat
         return None
 
     return {

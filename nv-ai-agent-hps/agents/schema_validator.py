@@ -11,12 +11,17 @@ def infer_expected_type(template_value):
     return (str, int, float, bool, type(None))
 
 
-BANK_CODE_RE = re.compile(r"^[A-Z0-9]{1,10}$", re.IGNORECASE)
-CURRENCY_RE = re.compile(r"^[A-Z]{3}$")
-BIN_RE = re.compile(r"^\d{6,8}$")
-CODE_NUM_RE = re.compile(r"^\d{1,10}$")
-AGENCY_CODE_RE = re.compile(r"^[A-Z0-9\-_]{2,20}$")
-
+BANK_CODE_RE = re.compile(r"^[A-Z0-9]{1,6}$", re.IGNORECASE)      # CHAR(6)
+CURRENCY_RE = re.compile(r"^[A-Z]{3}$")                           # CHAR(3)
+BIN_RE = re.compile(r"^\d{6,11}$")                                # VARCHAR2(11) digits
+CODE_ALPHANUM_RE = re.compile(r"^[A-Z0-9]{1,5}$", re.IGNORECASE)  # city CHAR(5), region CHAR(3)
+AGENCY_CODE_RE = re.compile(r"^[A-Z0-9\-_]{1,6}$", re.IGNORECASE) # CHAR(6)
+PLASTIC_TYPE_ENUM = {"STD", "EMB", "VIR"}                         # CHAR(3)
+PRODUCT_TYPE_RE = re.compile(r"^[A-Z0-9]{1,2}$", re.IGNORECASE)   # CHAR(2)
+SERVICE_CODE_RE = re.compile(r"^[A-Z0-9]{1,3}$", re.IGNORECASE)   # CHAR(3)
+PVK_INDEX_RE = re.compile(r"^\d{1}$")                             # NUMBER(1,0)
+EXPIRATION_RE = re.compile(r"^\d{1,3}$")                          # NUMBER(3,0)
+PRODUCT_CODE_RE = re.compile(r"^[A-Z0-9]{1,3}$", re.IGNORECASE)   # CHAR(3)
 
 NETWORK_ENUM = {"VISA", "MCRD", "EUROPAY", "AMEX", "TAG-YUP", "DINERS", "UPI", "GIMN", "JCB", "PRIVATIVE"}
 
@@ -28,30 +33,54 @@ def validate_format(path: str, value: Any) -> Tuple[bool, str]:
 
     if "bank_code" in path:
         if not BANK_CODE_RE.match(s):
-            return False, "bank_code must be 3–10 digits"
+            return False, "bank_code must be 1–6 alphanumeric chars (CHAR(6))"
 
     if "currency" in path:
         if not CURRENCY_RE.match(s.upper()):
             return False, "currency must be ISO-3"
 
-    if ".bin" in path:
+    if ".bin" in path and not path.endswith("billing"):
         if not BIN_RE.match(s):
-            return False, "BIN must be 6–8 digits"
+            return False, "BIN must be 6–11 digits (VARCHAR2(11))"
 
-    if path.endswith("city_code") or path.endswith("region_code"):
-        if not CODE_NUM_RE.match(s):
-            return False, "code must be numeric"
+    if path.endswith("city_code"):
+        if not re.match(r"^[A-Z0-9]{1,5}$", s, re.IGNORECASE):
+            return False, "city_code must be 1–5 alphanumeric chars (CHAR(5))"
+
+    if path.endswith("region_code"):
+        if not re.match(r"^[A-Z0-9]{1,3}$", s, re.IGNORECASE):
+            return False, "region_code must be 1–3 alphanumeric chars (CHAR(3))"
 
     if path.endswith("agency_code"):
         if not AGENCY_CODE_RE.match(s.upper()):
-            return False, "agency_code invalid"
+            return False, "agency_code must be 1–6 alphanumeric chars (CHAR(6))"
 
-    if path.endswith("tranche_min") or path.endswith("tranche_max"):
+    if path.endswith("plastic_type"):
+        if s.upper() not in PLASTIC_TYPE_ENUM:
+            return False, f"plastic_type must be one of: {', '.join(sorted(PLASTIC_TYPE_ENUM))}"
+
+    if path.endswith("product_code"):
+        if not PRODUCT_CODE_RE.match(s):
+            return False, "product_code must be 1–3 alphanumeric chars (CHAR(3))"
+
+    if path.endswith("service_code"):
+        if not SERVICE_CODE_RE.match(s):
+            return False, "service_code must be 1–3 chars (CHAR(3))"
+
+    if path.endswith("pvk_index"):
+        if not PVK_INDEX_RE.match(s):
+            return False, "pvk_index must be a single digit (NUMBER(1,0))"
+
+    if path.endswith("expiration"):
+        if not EXPIRATION_RE.match(s):
+            return False, "expiration must be 1–3 digits (NUMBER(3,0))"
+
+    if path.endswith("tranche_min") or path.endswith("tranche_max") or path.endswith("start_range") or path.endswith("end_range"):
         if not PAN_RANGE_RE.match(s):
-            return False, "tranche_min/tranche_max must be 12–19 digits (PAN range)"
+            return False, "PAN range must be 12–19 digits"
 
     if path.endswith("network"):
-        if s not in NETWORK_ENUM:
+        if s.upper() not in NETWORK_ENUM:
             return False, f"network must be one of: {', '.join(sorted(NETWORK_ENUM))}"
 
     return True, ""
