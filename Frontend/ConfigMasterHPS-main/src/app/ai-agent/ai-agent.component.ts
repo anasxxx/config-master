@@ -1,4 +1,5 @@
-import { Component, HostListener, OnInit, ViewChild, ElementRef, AfterViewChecked } from '@angular/core';
+import { Component, HostListener, OnInit, ViewChild, ElementRef, AfterViewChecked, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { NgClass, NgFor, NgIf } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -65,17 +66,24 @@ export class AiAgentComponent implements OnInit, AfterViewChecked {
   isSubmitting = false;
   submissionResult: any = null;
 
+  private isBrowser: boolean;
+
   constructor(
     private router: Router,
     private translate: TranslateService,
     private authService: AuthService,
-    private agentService: AgentService
-  ) {}
+    private agentService: AgentService,
+    @Inject(PLATFORM_ID) platformId: Object
+  ) {
+    this.isBrowser = isPlatformBrowser(platformId);
+  }
 
   ngOnInit() {
     this.checkScreenSize();
     this.getUserInfo();
-    this.loadGoals();
+    if (this.isBrowser) {
+      this.loadGoals();
+    }
   }
 
   ngAfterViewChecked() {
