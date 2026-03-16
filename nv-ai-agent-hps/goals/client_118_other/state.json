@@ -1,0 +1,163 @@
+{
+  "meta": {
+    "goal_id": 123,
+    "client": "client",
+    "client_n": 118,
+    "action": "other",
+    "created_at": "2026-03-10T10:30:45",
+    "last_extraction": {
+      "used_llm": true,
+      "used_fallback_rules": true,
+      "llm_attempts": 3,
+      "llm_final_status": "LLM_DOWN"
+    },
+    "last_question_paths": [
+      "bank.country"
+    ]
+  },
+  "goal": "hello",
+  "facts": {
+    "bank": {
+      "name": {
+        "value": ".",
+        "source": "user",
+        "confidence": 1.0,
+        "updated_at": "2026-03-10T11:18:19",
+        "evidence": "."
+      },
+      "country": null,
+      "currency": null,
+      "bank_code": null,
+      "resources": [],
+      "agencies": [
+        {
+          "agency_name": null,
+          "agency_code": null,
+          "city": null,
+          "city_code": null,
+          "region": null,
+          "region_code": null
+        }
+      ]
+    },
+    "cards": [
+      {
+        "card_info": {
+          "bin": null,
+          "plastic_type": null,
+          "card_description": null,
+          "product_type": null,
+          "product_code": null,
+          "pvk_index": null,
+          "service_code": null,
+          "network": null,
+          "expiration": null,
+          "renewal_option": null,
+          "pre_expiration": null
+        },
+        "card_range": {
+          "start_range": null,
+          "end_range": null
+        },
+        "fees": {
+          "fee_description": null,
+          "billing_event": null,
+          "grace_period": null,
+          "billing_period": null,
+          "registration_fee": null,
+          "periodic_fee": null,
+          "replacement_fee": null,
+          "pin_recalculation_fee": null
+        },
+        "services": {
+          "enabled": []
+        },
+        "limits": {
+          "selected_limit_types": [],
+          "by_type": {
+            "DEFAULT": {
+              "domestic": {
+                "daily_amount": null,
+                "daily_count": null,
+                "weekly_amount": null,
+                "weekly_count": null,
+                "monthly_amount": null,
+                "monthly_count": null
+              },
+              "international": {
+                "daily_amount": null,
+                "daily_count": null,
+                "weekly_amount": null,
+                "weekly_count": null,
+                "monthly_amount": null,
+                "monthly_count": null
+              },
+              "total": {
+                "daily_amount": null,
+                "daily_count": null,
+                "weekly_amount": null,
+                "weekly_count": null,
+                "monthly_amount": null,
+                "monthly_count": null
+              },
+              "per_transaction": {
+                "min_amount": null,
+                "max_amount": null
+              }
+            }
+          }
+        }
+      }
+    ],
+    "options": {
+      "resources_examples": [
+        "MCD_MDS",
+        "MCD_CIS",
+        "UPI",
+        "HOST_BANK",
+        "SID",
+        "VISA_BASE1",
+        "VISA_SMS"
+      ],
+      "services": [
+        "Retrait",
+        "Cash Advance",
+        "Transferts",
+        "Consultation Solde",
+        "Changement PIN",
+        "Envoi d'argent",
+        "Original",
+        "Achats",
+        "E-commerce",
+        "Quasi-Cash",
+        "Mini-Relevé",
+        "Remboursements",
+        "Paiement Factures",
+        "Authentification",
+        "Cashback"
+      ],
+      "limit_types": [
+        "Retrait",
+        "Purchase",
+        "CASH_advance",
+        "Quasi-cash",
+        "E-commerce"
+      ]
+    }
+  },
+  "history": [
+    {
+      "agent": "",
+      "user": "."
+    }
+  ],
+  "done": false,
+  "provenance": {
+    "bank.name": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-10T11:18:19",
+      "evidence": "."
+    }
+  }
+}

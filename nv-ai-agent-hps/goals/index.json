@@ -1,55 +1,6 @@
 {
-  "last_id": 121,
+  "last_id": 126,
   "goals": [
-    {
-      "goal_id": 1,
-      "client": "mery",
-      "client_n": 1,
-      "action": "add",
-      "folder": "mery_001_add"
-    },
-    {
-      "goal_id": 2,
-      "client": "meryem",
-      "client_n": 1,
-      "action": "ajouter_banque",
-      "folder": "meryem_001_ajouter_banque"
-    },
-    {
-      "goal_id": 3,
-      "client": "meryem",
-      "client_n": 2,
-      "action": "add",
-      "folder": "meryem_002_add"
-    },
-    {
-      "goal_id": 4,
-      "client": "client",
-      "client_n": 1,
-      "action": "add",
-      "folder": "client_001_add"
-    },
-    {
-      "goal_id": 5,
-      "client": "client",
-      "client_n": 2,
-      "action": "add",
-      "folder": "client_002_add"
-    },
-    {
-      "goal_id": 6,
-      "client": "client",
-      "client_n": 3,
-      "action": "other",
-      "folder": "client_003_other"
-    },
-    {
-      "goal_id": 7,
-      "client": "client",
-      "client_n": 4,
-      "action": "add",
-      "folder": "client_004_add"
-    },
     {
       "goal_id": 8,
       "client": "client",
@@ -147,55 +98,6 @@
       "client_n": 18,
       "action": "add",
       "folder": "client_018_add"
-    },
-    {
-      "goal_id": 22,
-      "client": "client",
-      "client_n": 19,
-      "action": "add",
-      "folder": "client_2026-02-19_add"
-    },
-    {
-      "goal_id": 23,
-      "client": "client",
-      "client_n": 20,
-      "action": "add",
-      "folder": "client_2026-02-19_add"
-    },
-    {
-      "goal_id": 24,
-      "client": "client",
-      "client_n": 21,
-      "action": "add",
-      "folder": "client_2026-02-19_add"
-    },
-    {
-      "goal_id": 25,
-      "client": "client",
-      "client_n": 22,
-      "action": "add",
-      "folder": "client_2026-02-19_add"
-    },
-    {
-      "goal_id": 26,
-      "client": "client",
-      "client_n": 23,
-      "action": "add",
-      "folder": "client_2026-02-19_add"
-    },
-    {
-      "goal_id": 27,
-      "client": "client",
-      "client_n": 24,
-      "action": "add",
-      "folder": "client_2026-02-19_add"
-    },
-    {
-      "goal_id": 28,
-      "client": "client",
-      "client_n": 25,
-      "action": "add",
-      "folder": "client_2026-02-19_add"
     },
     {
       "goal_id": 29,
@@ -541,20 +443,6 @@
       "folder": "client_075_add"
     },
     {
-      "goal_id": 79,
-      "client": "client",
-      "client_n": 76,
-      "action": "add",
-      "folder": "client_076_add"
-    },
-    {
-      "goal_id": 80,
-      "client": "client",
-      "client_n": 77,
-      "action": "modify",
-      "folder": "client_077_modify"
-    },
-    {
       "goal_id": 81,
       "client": "client",
       "client_n": 78,
@@ -812,6 +700,41 @@
       "client_n": 116,
       "action": "other",
       "folder": "client_116_other"
+    },
+    {
+      "goal_id": 122,
+      "client": "client",
+      "client_n": 117,
+      "action": "other",
+      "folder": "client_117_other"
+    },
+    {
+      "goal_id": 123,
+      "client": "client",
+      "client_n": 118,
+      "action": "other",
+      "folder": "client_118_other"
+    },
+    {
+      "goal_id": 124,
+      "client": "client",
+      "client_n": 119,
+      "action": "other",
+      "folder": "client_119_other"
+    },
+    {
+      "goal_id": 125,
+      "client": "client",
+      "client_n": 120,
+      "action": "other",
+      "folder": "client_120_other"
+    },
+    {
+      "goal_id": 126,
+      "client": "client",
+      "client_n": 121,
+      "action": "other",
+      "folder": "client_121_other"
     }
   ]
 }

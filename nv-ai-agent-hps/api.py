@@ -170,18 +170,24 @@ def list_goals():
     index = _load_json(INDEX_FILE, {"last_id": 0, "goals": []})
     results = []
     for g in index.get("goals", []):
-        sp = _goal_state_path(g["folder"])
-        st = _load_json(sp, {})
-        miss = missing_paths(st.get("facts", {}), template_obj, req_paths) if st else req_paths
-        results.append(GoalSummary(
-            goal_id=int(g["goal_id"]),
-            client=g.get("client", ""),
-            action=g.get("action", ""),
-            folder=g["folder"],
-            done=st.get("done", False) if st else False,
-            missing_count=len(miss),
-            created_at=st.get("meta", {}).get("created_at") if st else None,
-        ))
+        try:
+            folder = g.get("folder", "")
+            sp = _goal_state_path(folder)
+            if not sp.parent.exists():
+                continue  # skip goals whose folder was deleted
+            st = _load_json(sp, {})
+            miss = missing_paths(st.get("facts", {}), template_obj, req_paths) if st else req_paths
+            results.append(GoalSummary(
+                goal_id=int(g["goal_id"]),
+                client=g.get("client", ""),
+                action=g.get("action", ""),
+                folder=folder,
+                done=st.get("done", False) if st else False,
+                missing_count=len(miss),
+                created_at=st.get("meta", {}).get("created_at") if st else None,
+            ))
+        except Exception:
+            continue  # skip corrupted goal entries
     return results
 
 
