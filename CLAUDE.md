@@ -19,8 +19,8 @@ Past configurations not showing in sidebar ("No configurations yet") even though
 Possible causes: frontend API URL/port mismatch, CORS, or goals/index.json format mismatch.
 
 ## How to start services
-1. **Frontend**: `cd Frontend/ConfigMasterHPS-main && npm start` (port 3000)
-2. **Backend**: `cd SIT/ConfigMaster-Backend && mvn spring-boot:run` (port 8080)
+1. **Frontend**: `cd Frontend/ConfigMasterHPS-main && npm start` (port 4200)
+2. **Backend**: `cd SIT/ConfigMaster-Backend && mvn spring-boot:run` (port 8084)
 3. **FastAPI**: `cd nv-ai-agent-hps && python api.py` (port 8000)
 
 ## Repo
