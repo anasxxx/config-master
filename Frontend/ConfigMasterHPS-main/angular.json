@@ -16,7 +16,7 @@
             "outputPath": "dist/config-master",
             "index": "src/index.html",
             "browser": "src/main.ts",
-            "baseHref": "/config-master/",
+            "baseHref": "/",
             "polyfills": [
               "zone.js",
               "@angular/localize/init"
