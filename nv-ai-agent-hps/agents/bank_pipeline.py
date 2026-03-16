@@ -11,6 +11,43 @@ from dotenv import load_dotenv
 
 from agents.value_store import unwrap_facts
 
+
+def _inflate_flat_facts(facts: Dict[str, Any]) -> Dict[str, Any]:
+    """Convert flat dot-notation keys (e.g. 'bank.name') into nested dicts.
+
+    If facts already contain nested dicts (e.g. key 'bank' maps to a dict),
+    they are returned as-is.  Only top-level string-valued entries whose keys
+    contain dots are inflated.
+    """
+    # Quick check: if any top-level value is already a dict/list, assume nested
+    for v in facts.values():
+        if isinstance(v, (dict, list)):
+            return facts
+
+    nested: Dict[str, Any] = {}
+    for dotted_key, value in facts.items():
+        parts = dotted_key.split(".")
+        cur = nested
+        for i, part in enumerate(parts[:-1]):
+            if part.isdigit():
+                # array index – parent must be a list
+                idx = int(part)
+                if not isinstance(cur, list):
+                    break
+                while len(cur) <= idx:
+                    cur.append({})
+                cur = cur[idx]
+            else:
+                nxt_part = parts[i + 1] if i + 1 < len(parts) else ""
+                default = [] if nxt_part.isdigit() else {}
+                if part not in cur:
+                    cur[part] = default
+                cur = cur[part]
+        leaf = parts[-1]
+        if isinstance(cur, dict):
+            cur[leaf] = value
+    return nested
+
 load_dotenv(override=True)
 
 try:
@@ -276,7 +313,8 @@ def find_latest_state(goals_dir: Path) -> Optional[Path]:
 
 
 def map_facts_to_bank_req(state: Dict[str, Any]) -> Dict[str, Any]:
-    facts = unwrap_facts(state.get("facts", {}))
+    raw_facts = unwrap_facts(state.get("facts", {}))
+    facts = _inflate_flat_facts(raw_facts)
     bank = facts.get("bank", {})
 
     bank_code = _to_str(bank.get("bank_code"))
