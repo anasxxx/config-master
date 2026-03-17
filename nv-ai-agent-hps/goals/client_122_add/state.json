@@ -1,0 +1,1032 @@
+{
+  "meta": {
+    "goal_id": 127,
+    "client": "client",
+    "client_n": 122,
+    "action": "add",
+    "created_at": "2026-03-17T01:40:03",
+    "last_extraction": {
+      "used_llm": true,
+      "used_fallback_rules": false,
+      "used_deterministic_extractors": false,
+      "llm_attempts": 1,
+      "llm_final_status": "LLM_TIMEOUT"
+    },
+    "last_question_paths": [
+      "cards.0.limits.by_type.DEFAULT.international.daily_amount",
+      "cards.0.limits.by_type.DEFAULT.international.weekly_amount",
+      "cards.0.limits.by_type.DEFAULT.international.monthly_amount"
+    ],
+    "last_user_message": "daily=20000, weekly=80000, monthly=200000",
+    "last_question_text": "",
+    "asked_fields": [
+      "bank.agencies.0.region_code",
+      "cards.0.limits.by_type.DEFAULT.international.monthly_amount",
+      "bank.agencies.0.agency_name",
+      "cards.0.card_info.service_code",
+      "cards.0.card_info.bin",
+      "cards.0.card_info.plastic_type",
+      "cards.0.card_info.product_code",
+      "cards.0.fees.periodic_fee",
+      "bank.resources",
+      "cards.0.limits.by_type.DEFAULT.international.weekly_amount",
+      "cards.0.fees.pin_recalculation_fee",
+      "cards.0.limits.by_type.DEFAULT.international.daily_amount",
+      "bank.bank_code",
+      "cards.0.card_info.card_description",
+      "cards.0.limits.by_type.DEFAULT.domestic.weekly_amount",
+      "cards.0.card_info.network",
+      "cards.0.fees.grace_period",
+      "cards.0.card_info.pre_expiration",
+      "cards.0.card_range.tranche_min",
+      "bank.agencies.0.city_code",
+      "cards.0.card_info.expiration",
+      "bank.agencies.0.region",
+      "cards.0.fees.fee_description",
+      "cards.0.card_range.tranche_max",
+      "cards.0.limits.by_type.DEFAULT.domestic.monthly_amount",
+      "cards.0.card_info.product_type",
+      "cards.0.fees.replacement_fee",
+      "cards.0.limits.by_type.DEFAULT.domestic.daily_amount",
+      "cards.0.fees.registration_fee",
+      "cards.0.fees.billing_period",
+      "cards.0.card_info.renewal_option",
+      "cards.0.card_info.pvk_index",
+      "cards.0.fees.billing_event"
+    ],
+    "active_menu": null
+  },
+  "goal": "Add a new bank called Atlas Bank from Morocco",
+  "facts": {
+    "bank": {
+      "name": {
+        "value": "ATLAS BANK FROM MOROCCO",
+        "source": "user",
+        "confidence": 1.0,
+        "updated_at": "2026-03-17T01:40:21",
+        "evidence": "Add a new bank called Atlas Bank from Morocco"
+      },
+      "country": {
+        "value": "Maroc",
+        "source": "user",
+        "confidence": 1.0,
+        "updated_at": "2026-03-17T01:40:21",
+        "evidence": "Add a new bank called Atlas Bank from Morocco"
+      },
+      "currency": {
+        "value": "MAD",
+        "source": "autofill",
+        "confidence": 1.0,
+        "updated_at": "2026-03-17T01:40:21"
+      },
+      "bank_code": {
+        "value": "ATL001",
+        "source": "user",
+        "confidence": 1.0,
+        "updated_at": "2026-03-17T01:41:03",
+        "evidence": "ATL001"
+      },
+      "resources": {
+        "value": [
+          "MCD_MDS",
+          "UPI",
+          "HOST_BANK"
+        ],
+        "source": "user",
+        "confidence": 1.0,
+        "updated_at": "2026-03-17T01:41:28",
+        "evidence": "MCD_MDS, UPI, HOST_BANK"
+      },
+      "agencies": [
+        {
+          "agency_name": {
+            "value": "PRINCIPALE",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T01:41:52",
+            "evidence": "Agence Principale, Casablanca, AGC001"
+          },
+          "agency_code": {
+            "value": "AGC001",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T01:41:52",
+            "evidence": "Agence Principale, Casablanca, AGC001"
+          },
+          "city": {
+            "value": "Casablanca",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T01:41:52",
+            "evidence": "Agence Principale, Casablanca, AGC001"
+          },
+          "city_code": {
+            "value": "CASA",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T01:42:33",
+            "evidence": "CASA"
+          },
+          "region": {
+            "value": "Grand Casablanca",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T01:43:15",
+            "evidence": "Grand Casablanca"
+          },
+          "region_code": {
+            "value": "GCB",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T01:43:57",
+            "evidence": "GCB"
+          }
+        }
+      ],
+      "country_alpha2": {
+        "value": "MA",
+        "source": "autofill",
+        "confidence": 1.0,
+        "updated_at": "2026-03-17T01:40:21"
+      }
+    },
+    "cards": [
+      {
+        "card_info": {
+          "bin": {
+            "value": "451234",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T01:44:12",
+            "evidence": "451234"
+          },
+          "plastic_type": {
+            "value": "PVC",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T01:44:50",
+            "evidence": "PVC"
+          },
+          "card_description": {
+            "value": "Gold",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T01:45:04",
+            "evidence": "Atlas Gold Card"
+          },
+          "product_type": {
+            "value": "DEBIT",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T01:45:14",
+            "evidence": "DEBIT"
+          },
+          "product_code": {
+            "value": "ATL",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T01:46:17",
+            "evidence": "ATL"
+          },
+          "pvk_index": {
+            "value": 1,
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T01:46:33",
+            "evidence": "1"
+          },
+          "service_code": {
+            "value": "101",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T01:46:52",
+            "evidence": "101"
+          },
+          "network": {
+            "value": "VISA",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T01:47:17",
+            "evidence": "VISA"
+          },
+          "expiration": {
+            "value": 36,
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T01:47:36",
+            "evidence": "36"
+          },
+          "renewal_option": {
+            "value": "AUTO",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T01:47:54",
+            "evidence": "AUTO"
+          },
+          "pre_expiration": {
+            "value": 36,
+            "source": "llm",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T01:48:23",
+            "evidence": "2"
+          }
+        },
+        "card_range": {
+          "tranche_min": {
+            "value": "4512340000000000",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T01:49:41",
+            "evidence": "4512340000000000, 4512349999999999"
+          },
+          "tranche_max": {
+            "value": "4512349999999999",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T01:49:41",
+            "evidence": "4512340000000000, 4512349999999999"
+          }
+        },
+        "fees": {
+          "fee_description": {
+            "value": "Atlas",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T01:50:03",
+            "evidence": "Frais Atlas, issuance, 0, yearly, 100, 50, 200, 30"
+          },
+          "billing_event": {
+            "value": "1",
+            "source": "user",
+            "confidence": 0.95,
+            "updated_at": "2026-03-17T01:53:03",
+            "evidence": "billing_event=1, grace_period=0, billing_period=yearly, periodic_fee=50, replacement_fee=200, pin_recalculation_fee=30"
+          },
+          "grace_period": {
+            "value": 0,
+            "source": "user",
+            "confidence": 0.95,
+            "updated_at": "2026-03-17T01:53:03",
+            "evidence": "billing_event=1, grace_period=0, billing_period=yearly, periodic_fee=50, replacement_fee=200, pin_recalculation_fee=30"
+          },
+          "billing_period": {
+            "value": "A",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T01:53:38",
+            "evidence": "A"
+          },
+          "registration_fee": {
+            "value": 0.0,
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T01:50:03",
+            "evidence": "Frais Atlas, issuance, 0, yearly, 100, 50, 200, 30"
+          },
+          "periodic_fee": {
+            "value": 50.0,
+            "source": "user",
+            "confidence": 0.95,
+            "updated_at": "2026-03-17T01:53:03",
+            "evidence": "billing_event=1, grace_period=0, billing_period=yearly, periodic_fee=50, replacement_fee=200, pin_recalculation_fee=30"
+          },
+          "replacement_fee": {
+            "value": 200.0,
+            "source": "user",
+            "confidence": 0.95,
+            "updated_at": "2026-03-17T01:53:03",
+            "evidence": "billing_event=1, grace_period=0, billing_period=yearly, periodic_fee=50, replacement_fee=200, pin_recalculation_fee=30"
+          },
+          "pin_recalculation_fee": {
+            "value": 30.0,
+            "source": "user",
+            "confidence": 0.95,
+            "updated_at": "2026-03-17T01:53:03",
+            "evidence": "billing_event=1, grace_period=0, billing_period=yearly, periodic_fee=50, replacement_fee=200, pin_recalculation_fee=30"
+          }
+        },
+        "services": {
+          "enabled": {
+            "value": [
+              "retrait",
+              "achat",
+              "ecommerce"
+            ],
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T01:49:02",
+            "evidence": "retrait,achat,ecommerce"
+          },
+          "flags": {
+            "retrait": {
+              "value": "1",
+              "source": "derived",
+              "confidence": 1.0,
+              "updated_at": "2026-03-17T01:49:02",
+              "evidence": "retrait,achat,ecommerce"
+            },
+            "achat": {
+              "value": "1",
+              "source": "derived",
+              "confidence": 1.0,
+              "updated_at": "2026-03-17T01:49:02",
+              "evidence": "retrait,achat,ecommerce"
+            },
+            "advance": {
+              "value": null,
+              "source": "derived",
+              "confidence": 1.0,
+              "updated_at": "2026-03-17T01:49:02",
+              "evidence": "retrait,achat,ecommerce"
+            },
+            "ecommerce": {
+              "value": "1",
+              "source": "derived",
+              "confidence": 1.0,
+              "updated_at": "2026-03-17T01:49:02",
+              "evidence": "retrait,achat,ecommerce"
+            },
+            "transfert": {
+              "value": null,
+              "source": "derived",
+              "confidence": 1.0,
+              "updated_at": "2026-03-17T01:49:02",
+              "evidence": "retrait,achat,ecommerce"
+            },
+            "quasicash": {
+              "value": null,
+              "source": "derived",
+              "confidence": 1.0,
+              "updated_at": "2026-03-17T01:49:02",
+              "evidence": "retrait,achat,ecommerce"
+            },
+            "solde": {
+              "value": null,
+              "source": "derived",
+              "confidence": 1.0,
+              "updated_at": "2026-03-17T01:49:02",
+              "evidence": "retrait,achat,ecommerce"
+            },
+            "releve": {
+              "value": null,
+              "source": "derived",
+              "confidence": 1.0,
+              "updated_at": "2026-03-17T01:49:02",
+              "evidence": "retrait,achat,ecommerce"
+            },
+            "pinchange": {
+              "value": null,
+              "source": "derived",
+              "confidence": 1.0,
+              "updated_at": "2026-03-17T01:49:02",
+              "evidence": "retrait,achat,ecommerce"
+            },
+            "refund": {
+              "value": null,
+              "source": "derived",
+              "confidence": 1.0,
+              "updated_at": "2026-03-17T01:49:02",
+              "evidence": "retrait,achat,ecommerce"
+            },
+            "moneysend": {
+              "value": null,
+              "source": "derived",
+              "confidence": 1.0,
+              "updated_at": "2026-03-17T01:49:02",
+              "evidence": "retrait,achat,ecommerce"
+            },
+            "billpayment": {
+              "value": null,
+              "source": "derived",
+              "confidence": 1.0,
+              "updated_at": "2026-03-17T01:49:02",
+              "evidence": "retrait,achat,ecommerce"
+            },
+            "original": {
+              "value": null,
+              "source": "derived",
+              "confidence": 1.0,
+              "updated_at": "2026-03-17T01:49:02",
+              "evidence": "retrait,achat,ecommerce"
+            },
+            "authentication": {
+              "value": null,
+              "source": "derived",
+              "confidence": 1.0,
+              "updated_at": "2026-03-17T01:49:02",
+              "evidence": "retrait,achat,ecommerce"
+            },
+            "cashback": {
+              "value": null,
+              "source": "derived",
+              "confidence": 1.0,
+              "updated_at": "2026-03-17T01:49:02",
+              "evidence": "retrait,achat,ecommerce"
+            }
+          }
+        },
+        "limits": {
+          "selected_limit_types": [],
+          "by_type": {
+            "DEFAULT": {
+              "domestic": {
+                "daily_amount": {
+                  "value": 50000.0,
+                  "source": "user",
+                  "confidence": 1.0,
+                  "updated_at": "2026-03-17T01:54:22",
+                  "evidence": "daily=50000, weekly=200000, monthly=500000"
+                },
+                "daily_count": null,
+                "weekly_amount": {
+                  "value": 200000.0,
+                  "source": "user",
+                  "confidence": 1.0,
+                  "updated_at": "2026-03-17T01:54:22",
+                  "evidence": "daily=50000, weekly=200000, monthly=500000"
+                },
+                "weekly_count": null,
+                "monthly_amount": {
+                  "value": 500000.0,
+                  "source": "user",
+                  "confidence": 1.0,
+                  "updated_at": "2026-03-17T01:54:22",
+                  "evidence": "daily=50000, weekly=200000, monthly=500000"
+                },
+                "monthly_count": null
+              },
+              "international": {
+                "daily_amount": {
+                  "value": 20000.0,
+                  "source": "user",
+                  "confidence": 1.0,
+                  "updated_at": "2026-03-17T01:55:10",
+                  "evidence": "daily=20000, weekly=80000, monthly=200000"
+                },
+                "daily_count": null,
+                "weekly_amount": {
+                  "value": 80000.0,
+                  "source": "user",
+                  "confidence": 1.0,
+                  "updated_at": "2026-03-17T01:55:10",
+                  "evidence": "daily=20000, weekly=80000, monthly=200000"
+                },
+                "weekly_count": null,
+                "monthly_amount": {
+                  "value": 200000.0,
+                  "source": "user",
+                  "confidence": 1.0,
+                  "updated_at": "2026-03-17T01:55:10",
+                  "evidence": "daily=20000, weekly=80000, monthly=200000"
+                },
+                "monthly_count": null
+              },
+              "total": {
+                "daily_amount": null,
+                "daily_count": null,
+                "weekly_amount": null,
+                "weekly_count": null,
+                "monthly_amount": null,
+                "monthly_count": null
+              },
+              "per_transaction": {
+                "min_amount": null,
+                "max_amount": null
+              }
+            }
+          }
+        }
+      }
+    ],
+    "options": {
+      "resources_examples": [
+        "MCD_MDS",
+        "MCD_CIS",
+        "UPI",
+        "HOST_BANK",
+        "SID",
+        "VISA_BASE1",
+        "VISA_SMS"
+      ],
+      "services": [
+        "achat",
+        "retrait",
+        "cashback",
+        "quasicash",
+        "advance",
+        "refund",
+        "original",
+        "moneysend",
+        "authentication",
+        "solde",
+        "releve",
+        "transfert",
+        "billpayment",
+        "ecommerce",
+        "pinchange"
+      ],
+      "limit_types": [
+        "Retrait",
+        "Purchase",
+        "CASH_advance",
+        "Quasi-cash",
+        "E-commerce"
+      ]
+    }
+  },
+  "history": [
+    {
+      "agent": "Quel est le code de la banque (bank code) ?",
+      "user": "ATL001"
+    },
+    {
+      "agent": "Quelles ressources veux-tu activer ?\nChoisis les ressources (tu peux donner plusieurs choix: 1,3,5):\n1) MCD_MDS\n2) MCD_CIS\n3) UPI\n4) HOST_BANK\n5) SID\n6) VISA_BASE1\n7) VISA_SMS",
+      "user": "1,3,4"
+    },
+    {
+      "agent": "Quel est le nom de l'agence ?",
+      "user": "Agence Principale, Casablanca, AGC001"
+    },
+    {
+      "agent": "Quel est le code de la ville ?",
+      "user": "CASA"
+    },
+    {
+      "agent": "Quelle est la region ?",
+      "user": "Grand Casablanca"
+    },
+    {
+      "agent": "Quel est le code de la region ?",
+      "user": "GC01"
+    },
+    {
+      "agent": "Valeur invalide pour bank.agencies.0.region_code: longueur maximale 3 en majuscules. Exemple attendu: CS.\nJe reformule: Quel est le code de la region ?",
+      "user": "GCB"
+    },
+    {
+      "agent": "Quel est le BIN de la carte ? (6 a 11 chiffres)",
+      "user": "451234"
+    },
+    {
+      "agent": "Type de carte (plastique)\nChoisis le type de carte (plastique):\n1) Printed\n2) EmBossed\n3) VIRTUAL",
+      "user": "451234"
+    },
+    {
+      "agent": "Valeur invalide pour cards.0.card_info.plastic_type: valeurs autorisees ['MTL', 'OTH', 'PETG', 'PVC', 'VRT']. Exemple attendu: PVC.\nJe reformule: Type de carte (plastique)\nChoisis le type de carte (plastique):\n1) Printed\n2) EmBossed\n3) VIRTUAL",
+      "user": "PVC"
+    },
+    {
+      "agent": "Nom/description du produit carte",
+      "user": "Atlas Gold Card"
+    },
+    {
+      "agent": "Type de carte\nChoisis le type carte:\n1) DEBIT\n2) PREPAID\n3) CREDIT",
+      "user": "DEBIT"
+    },
+    {
+      "agent": "Code du produit carte",
+      "user": "ATLD"
+    },
+    {
+      "agent": "Valeur invalide pour cards.0.card_info.product_code: exactement 3 caracteres majuscules. Exemple attendu: VCL.\nJe reformule: Code du produit carte",
+      "user": "ATL"
+    },
+    {
+      "agent": "Index PVK",
+      "user": "1"
+    },
+    {
+      "agent": "Code service de la carte",
+      "user": "101"
+    },
+    {
+      "agent": "Quel est le reseau de la carte ?\nChoisis le reseau:\n1) VISA\n2) MASTERCARD\n3) AMEX\n4) DINERS\n5) EUROPAY\n6) TAG-YUP\n7) UPI\n8) GIMN\n9) JCB\n10) PRIVATIVE",
+      "user": "VISA"
+    },
+    {
+      "agent": "Duree de validite de la carte",
+      "user": "36"
+    },
+    {
+      "agent": "Renouvellement automatique ?\nChoisis l'option de renouvellement:\n1) AUTO\n2) MANUAL",
+      "user": "AUTO"
+    },
+    {
+      "agent": "Delai avant expiration pour lancer le renouvellement",
+      "user": "2"
+    },
+    {
+      "agent": "=== Configuration du PAN ===\nPeux-tu preciser la tranche Min et Max du PAN ?",
+      "user": "ATL001"
+    },
+    {
+      "agent": "Je reformule: === Configuration du PAN ===\nPeux-tu preciser la tranche Min et Max du PAN ?",
+      "user": "retrait,achat,ecommerce"
+    },
+    {
+      "agent": "Valeur invalide pour cards.0.card_range.tranche_min: chiffres uniquement, longueur max 22. Exemple attendu: 4455660000000000.\nJe reformule: === Configuration du PAN ===\nPeux-tu preciser la tranche Min et Max du PAN ?",
+      "user": "4512340000000000, 4512349999999999"
+    },
+    {
+      "agent": "=== Description des frais ===\nVeuillez remplir les champs suivants :",
+      "user": "Frais Atlas, issuance, 0, yearly, 100, 50, 200, 30"
+    },
+    {
+      "agent": "Je reformule: === Description des frais ===\nVeuillez remplir les champs suivants :",
+      "user": "."
+    },
+    {
+      "agent": "Je reformule: === Description des frais ===\nVeuillez remplir les champs suivants :",
+      "user": "issuance, 0, yearly, 50, 200, 30"
+    },
+    {
+      "agent": "Je reformule: === Description des frais ===\nVeuillez remplir les champs suivants :",
+      "user": "billing_event=1, grace_period=0, billing_period=yearly, periodic_fee=50, replacement_fee=200, pin_recalculation_fee=30"
+    },
+    {
+      "agent": "Valeur invalide pour cards.0.fees.billing_period: valeurs autorisees: M, A, T, S. Exemple attendu: M.\nJe reformule: === Description des frais ===\nVeuillez remplir les champs suivants :",
+      "user": "A"
+    },
+    {
+      "agent": "--- Limites nationales ---",
+      "user": "daily=50000, weekly=200000, monthly=500000"
+    },
+    {
+      "agent": "--- Limites internationales ---",
+      "user": "daily=20000, weekly=80000, monthly=200000"
+    }
+  ],
+  "done": true,
+  "provenance": {
+    "bank.name": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T01:40:21",
+      "evidence": "Add a new bank called Atlas Bank from Morocco"
+    },
+    "bank.country": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T01:40:21",
+      "evidence": "Add a new bank called Atlas Bank from Morocco"
+    },
+    "bank.bank_code": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T01:41:03",
+      "evidence": "ATL001"
+    },
+    "bank.resources": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T01:41:28",
+      "evidence": "MCD_MDS, UPI, HOST_BANK"
+    },
+    "bank.agencies.0.agency_name": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T01:41:52",
+      "evidence": "Agence Principale, Casablanca, AGC001"
+    },
+    "bank.agencies.0.agency_code": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T01:41:52",
+      "evidence": "Agence Principale, Casablanca, AGC001"
+    },
+    "bank.agencies.0.city": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T01:41:52",
+      "evidence": "Agence Principale, Casablanca, AGC001"
+    },
+    "bank.agencies.0.city_code": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T01:42:33",
+      "evidence": "CASA"
+    },
+    "bank.agencies.0.region": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T01:43:15",
+      "evidence": "Grand Casablanca"
+    },
+    "bank.agencies.0.region_code": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T01:43:57",
+      "evidence": "GCB"
+    },
+    "cards.0.card_info.bin": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T01:44:12",
+      "evidence": "451234"
+    },
+    "cards.0.card_info.plastic_type": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T01:44:50",
+      "evidence": "PVC"
+    },
+    "cards.0.card_info.card_description": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T01:45:04",
+      "evidence": "Atlas Gold Card"
+    },
+    "cards.0.card_info.product_type": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T01:45:14",
+      "evidence": "DEBIT"
+    },
+    "cards.0.card_info.product_code": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T01:46:17",
+      "evidence": "ATL"
+    },
+    "cards.0.card_info.pvk_index": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T01:46:33",
+      "evidence": "1"
+    },
+    "cards.0.card_info.service_code": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T01:46:52",
+      "evidence": "101"
+    },
+    "cards.0.card_info.network": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T01:47:17",
+      "evidence": "VISA"
+    },
+    "cards.0.card_info.expiration": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T01:47:36",
+      "evidence": "36"
+    },
+    "cards.0.card_info.renewal_option": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T01:47:54",
+      "evidence": "AUTO"
+    },
+    "cards.0.card_info.pre_expiration": {
+      "source": "llm",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T01:48:23",
+      "evidence": "2"
+    },
+    "cards.0.services.enabled": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T01:49:02",
+      "evidence": "retrait,achat,ecommerce"
+    },
+    "cards.0.services.flags.retrait": {
+      "source": "derived",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T01:49:02",
+      "evidence": "retrait,achat,ecommerce"
+    },
+    "cards.0.services.flags.achat": {
+      "source": "derived",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T01:49:02",
+      "evidence": "retrait,achat,ecommerce"
+    },
+    "cards.0.services.flags.advance": {
+      "source": "derived",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T01:49:02",
+      "evidence": "retrait,achat,ecommerce"
+    },
+    "cards.0.services.flags.ecommerce": {
+      "source": "derived",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T01:49:02",
+      "evidence": "retrait,achat,ecommerce"
+    },
+    "cards.0.services.flags.transfert": {
+      "source": "derived",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T01:49:02",
+      "evidence": "retrait,achat,ecommerce"
+    },
+    "cards.0.services.flags.quasicash": {
+      "source": "derived",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T01:49:02",
+      "evidence": "retrait,achat,ecommerce"
+    },
+    "cards.0.services.flags.solde": {
+      "source": "derived",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T01:49:02",
+      "evidence": "retrait,achat,ecommerce"
+    },
+    "cards.0.services.flags.releve": {
+      "source": "derived",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T01:49:02",
+      "evidence": "retrait,achat,ecommerce"
+    },
+    "cards.0.services.flags.pinchange": {
+      "source": "derived",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T01:49:02",
+      "evidence": "retrait,achat,ecommerce"
+    },
+    "cards.0.services.flags.refund": {
+      "source": "derived",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T01:49:02",
+      "evidence": "retrait,achat,ecommerce"
+    },
+    "cards.0.services.flags.moneysend": {
+      "source": "derived",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T01:49:02",
+      "evidence": "retrait,achat,ecommerce"
+    },
+    "cards.0.services.flags.billpayment": {
+      "source": "derived",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T01:49:02",
+      "evidence": "retrait,achat,ecommerce"
+    },
+    "cards.0.services.flags.original": {
+      "source": "derived",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T01:49:02",
+      "evidence": "retrait,achat,ecommerce"
+    },
+    "cards.0.services.flags.authentication": {
+      "source": "derived",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T01:49:02",
+      "evidence": "retrait,achat,ecommerce"
+    },
+    "cards.0.services.flags.cashback": {
+      "source": "derived",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T01:49:02",
+      "evidence": "retrait,achat,ecommerce"
+    },
+    "cards.0.card_range.tranche_min": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T01:49:41",
+      "evidence": "4512340000000000, 4512349999999999"
+    },
+    "cards.0.card_range.tranche_max": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T01:49:41",
+      "evidence": "4512340000000000, 4512349999999999"
+    },
+    "cards.0.fees.registration_fee": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T01:50:03",
+      "evidence": "Frais Atlas, issuance, 0, yearly, 100, 50, 200, 30"
+    },
+    "cards.0.fees.fee_description": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T01:50:03",
+      "evidence": "Frais Atlas, issuance, 0, yearly, 100, 50, 200, 30"
+    },
+    "cards.0.fees.billing_event": {
+      "source": "user",
+      "confidence": 0.95,
+      "timestamp": "2026-03-17T01:53:03",
+      "evidence": "billing_event=1, grace_period=0, billing_period=yearly, periodic_fee=50, replacement_fee=200, pin_recalculation_fee=30"
+    },
+    "cards.0.fees.grace_period": {
+      "source": "user",
+      "confidence": 0.95,
+      "timestamp": "2026-03-17T01:53:03",
+      "evidence": "billing_event=1, grace_period=0, billing_period=yearly, periodic_fee=50, replacement_fee=200, pin_recalculation_fee=30"
+    },
+    "cards.0.fees.periodic_fee": {
+      "source": "user",
+      "confidence": 0.95,
+      "timestamp": "2026-03-17T01:53:03",
+      "evidence": "billing_event=1, grace_period=0, billing_period=yearly, periodic_fee=50, replacement_fee=200, pin_recalculation_fee=30"
+    },
+    "cards.0.fees.replacement_fee": {
+      "source": "user",
+      "confidence": 0.95,
+      "timestamp": "2026-03-17T01:53:03",
+      "evidence": "billing_event=1, grace_period=0, billing_period=yearly, periodic_fee=50, replacement_fee=200, pin_recalculation_fee=30"
+    },
+    "cards.0.fees.pin_recalculation_fee": {
+      "source": "user",
+      "confidence": 0.95,
+      "timestamp": "2026-03-17T01:53:03",
+      "evidence": "billing_event=1, grace_period=0, billing_period=yearly, periodic_fee=50, replacement_fee=200, pin_recalculation_fee=30"
+    },
+    "cards.0.fees.billing_period": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T01:53:38",
+      "evidence": "A"
+    },
+    "cards.0.limits.by_type.DEFAULT.domestic.daily_amount": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T01:54:22",
+      "evidence": "daily=50000, weekly=200000, monthly=500000"
+    },
+    "cards.0.limits.by_type.DEFAULT.domestic.weekly_amount": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T01:54:22",
+      "evidence": "daily=50000, weekly=200000, monthly=500000"
+    },
+    "cards.0.limits.by_type.DEFAULT.domestic.monthly_amount": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T01:54:22",
+      "evidence": "daily=50000, weekly=200000, monthly=500000"
+    },
+    "cards.0.limits.by_type.DEFAULT.international.daily_amount": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T01:55:10",
+      "evidence": "daily=20000, weekly=80000, monthly=200000"
+    },
+    "cards.0.limits.by_type.DEFAULT.international.weekly_amount": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T01:55:10",
+      "evidence": "daily=20000, weekly=80000, monthly=200000"
+    },
+    "cards.0.limits.by_type.DEFAULT.international.monthly_amount": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T01:55:10",
+      "evidence": "daily=20000, weekly=80000, monthly=200000"
+    }
+  },
+  "conflicts": [
+    {
+      "path": "cards.0.fees.registration_fee",
+      "old_value": 0.0,
+      "new_value": "0.0",
+      "old_source": "user",
+      "new_source": "user",
+      "reason": "user_differs",
+      "evidence": "issuance, 0, yearly, 50, 200, 30",
+      "created_at": "2026-03-17T01:52:11"
+    },
+    {
+      "path": "cards.0.fees.periodic_fee",
+      "old_value": 50.0,
+      "new_value": "500000.0",
+      "old_source": "user",
+      "new_source": "user",
+      "reason": "user_differs",
+      "evidence": "daily=50000, weekly=200000, monthly=500000",
+      "created_at": "2026-03-17T01:54:05"
+    },
+    {
+      "path": "cards.0.fees.billing_period",
+      "old_value": "A",
+      "new_value": "M",
+      "old_source": "user",
+      "new_source": "user",
+      "reason": "user_differs",
+      "evidence": "daily=50000, weekly=200000, monthly=500000",
+      "created_at": "2026-03-17T01:54:05"
+    },
+    {
+      "path": "cards.0.fees.periodic_fee",
+      "old_value": 50.0,
+      "new_value": "200000.0",
+      "old_source": "user",
+      "new_source": "user",
+      "reason": "user_differs",
+      "evidence": "daily=20000, weekly=80000, monthly=200000",
+      "created_at": "2026-03-17T01:54:53"
+    },
+    {
+      "path": "cards.0.fees.billing_period",
+      "old_value": "A",
+      "new_value": "M",
+      "old_source": "user",
+      "new_source": "user",
+      "reason": "user_differs",
+      "evidence": "daily=20000, weekly=80000, monthly=200000",
+      "created_at": "2026-03-17T01:54:53"
+    }
+  ]
+}

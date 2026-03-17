@@ -1,0 +1,5 @@
+
+#fututre requierements
+mcp 
+rag 
+a2a 

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/shared/trace-batch-modal/trace-batch-modal.component.scss"],
+  "sourcesContent": [".table {\n    width: 100%;\n    margin-bottom: 1rem;\n    color: #212529;\n  \n    th, td {\n      padding: 0.75rem;\n      vertical-align: middle;\n      border: 1px solid #dee2e6;\n      text-align: center;\n    }\n  \n    th {\n      font-weight: bold;\n      background-color: #f8f9fa;\n      white-space: nowrap;\n    }\n  \n    td {\n      word-wrap: break-word;\n      max-width: 200px; /* Adjust based on your needs */\n    }\n  }\n  \n  .modal-body {\n    padding: 1rem;\n    overflow-x: auto; /* Allows horizontal scrolling if table is too wide */\n  }\n  \n  .modal-footer {\n    display: flex;\n    justify-content: flex-end;\n    padding: 1rem;\n    border-top: 1px solid #dee2e6;\n  }"],
+  "mappings": ";AAAA,CAAA;AACI,SAAA;AACA,iBAAA;AACA,SAAA;;AAEA,CALJ,MAKI;AAAA,CALJ,MAKI;AACE,WAAA;AACA,kBAAA;AACA,UAAA,IAAA,MAAA;AACA,cAAA;;AAGF,CAZJ,MAYI;AACE,eAAA;AACA,oBAAA;AACA,eAAA;;AAGF,CAlBJ,MAkBI;AACE,aAAA;AACA,aAAA;;AAIJ,CAAA;AACE,WAAA;AACA,cAAA;;AAGF,CAAA;AACE,WAAA;AACA,mBAAA;AACA,WAAA;AACA,cAAA,IAAA,MAAA;;",
+  "names": []
+}

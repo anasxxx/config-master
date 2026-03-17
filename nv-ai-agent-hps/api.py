@@ -3,17 +3,17 @@ FastAPI wrapper around the ConfigMaster AI agent.
 Run:  uvicorn api:app --reload --port 8000
 """
 
-import json, copy, os, re
+import json, copy, os, re, asyncio
 from pathlib import Path
 from datetime import datetime
-from typing import Optional
+from typing import Optional, AsyncGenerator
 
 from dotenv import load_dotenv
 
 load_dotenv()
 
 from fastapi import FastAPI, HTTPException
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, StreamingResponse
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
@@ -25,12 +25,15 @@ from agents.validation_agent import (
     missing_paths,
     next_question_for_missing,
     humain_missing_list,
+    next_question_advanced,
+    resolve_menu_answer,
 )
 from agents.conversation_agent import (
     apply_user_message_to_facts,
     apply_single_field_answer,
     apply_multi_field_answer,
 )
+from agents.value_store import unwrap_facts as vs_unwrap_facts
 from agents.bank_pipeline import run_pipeline
 from agents.pdf import JSONToPDFAgent
 
@@ -74,6 +77,18 @@ req_paths = [p for p in _all_req_paths if not _is_ignored(p)]
 
 # ─── FastAPI app ──────────────────────────────────────────────────────────────
 app = FastAPI(title="ConfigMaster AI Agent API", version="1.0.0")
+
+
+@app.get("/")
+def root():
+    """Root route so the API returns a valid response instead of 404."""
+    return {
+        "message": "ConfigMaster AI Agent API",
+        "docs": "/docs",
+        "health": "/api/health",
+        "goals": "/api/goals",
+    }
+
 
 app.add_middleware(
     CORSMiddleware,
@@ -142,6 +157,39 @@ def _goal_state_path(folder: str) -> Path:
 
 def _get_goal_entry(index: dict, goal_id: int):
     return next((g for g in index.get("goals", []) if int(g["goal_id"]) == goal_id), None)
+
+
+def _get_dialog_state(state: dict) -> dict:
+    """Build dialog_state from state for next_question_advanced."""
+    meta = state.get("meta", {}) or {}
+    return {
+        "last_question_paths": meta.get("last_question_paths") or [],
+        "asked_fields": meta.get("asked_fields") or [],
+        "last_user_message": meta.get("last_user_message") or "",
+        "mode": meta.get("mode", "normal"),
+        "active_menu": meta.get("active_menu"),
+    }
+
+
+def _update_dialog_state(state: dict, user_msg: str, decision: dict):
+    """Persist dialog_state info back into state.meta after a turn."""
+    meta = state.setdefault("meta", {})
+    meta["last_user_message"] = user_msg or ""
+    meta["last_question_text"] = decision.get("question", "")  # for history replay (show question, not path)
+    asked = set(meta.get("asked_fields") or [])
+    for p in (decision.get("paths") or []):
+        asked.add(p)
+    meta["asked_fields"] = list(asked)
+    meta["active_menu"] = decision.get("menu")
+
+
+def _resolve_menu_for_state(state: dict, user_msg: str) -> str:
+    """If there's an active menu, try to resolve user_msg through it."""
+    menu = (state.get("meta", {}) or {}).get("active_menu")
+    if not menu:
+        return user_msg
+    resolved, value = resolve_menu_answer(menu, user_msg)
+    return value if resolved else user_msg
 
 
 def _compute_progress(state: dict) -> dict:
@@ -216,8 +264,8 @@ def create_goal(req: CreateGoalReq):
     }
 
     # Extract initial info from the creation message
-    apply_user_message_to_facts(state["facts"], template_obj, req.message)
-    auto_fill(state["facts"])
+    apply_user_message_to_facts(state, template_obj, req.message)
+    auto_fill(state["facts"], state.get("meta"))
 
     _save_json(goal_dir / "state.json", state)
 
@@ -237,13 +285,16 @@ def create_goal(req: CreateGoalReq):
         template_obj=template_obj,
         req_paths=req_paths,
         user_msg=None,
+        dialog_state=_get_dialog_state(state),
         apply_user_message_to_facts=apply_user_message_to_facts,
         apply_single_field_answer=apply_single_field_answer,
         apply_multi_field_answer=apply_multi_field_answer,
         missing_paths=missing_paths,
         next_question_for_missing=next_question_for_missing,
-        auto_fill=auto_fill,
+        next_question_advanced=next_question_advanced,
+        auto_fill=lambda f: auto_fill(f, state.get("meta")),
     )
+    _update_dialog_state(state, req.message, decision)
     _save_json(goal_dir / "state.json", state)
 
     progress = _compute_progress(state)
@@ -276,24 +327,31 @@ def chat_with_goal(goal_id: int, req: ChatReq):
             "message": "This goal is already complete.",
         }
 
+    # Resolve menu answer if active
+    resolved_msg = _resolve_menu_for_state(state, req.message)
+
     # First brain_step: process user's answer
     brain_step(
         state=state,
         template_obj=template_obj,
         req_paths=req_paths,
-        user_msg=req.message,
+        user_msg=resolved_msg,
+        dialog_state=_get_dialog_state(state),
         apply_user_message_to_facts=apply_user_message_to_facts,
         apply_single_field_answer=apply_single_field_answer,
         apply_multi_field_answer=apply_multi_field_answer,
         missing_paths=missing_paths,
         next_question_for_missing=next_question_for_missing,
-        auto_fill=auto_fill,
+        next_question_advanced=next_question_advanced,
+        auto_fill=lambda f: auto_fill(f, state.get("meta")),
     )
+    auto_fill(state["facts"], state.get("meta"))
 
-    # Append to history
-    last_q = state.get("meta", {}).get("last_question_path", "")
+    # Append to history (use question text for display, fallback to path for backward compat)
+    meta = state.get("meta") or {}
+    last_q = meta.get("last_question_text") or (meta.get("last_question_paths") or [""])[0]
     state.setdefault("history", []).append({
-        "agent": last_q,
+        "agent": last_q or "",
         "user": req.message,
     })
 
@@ -303,17 +361,20 @@ def chat_with_goal(goal_id: int, req: ChatReq):
         template_obj=template_obj,
         req_paths=req_paths,
         user_msg=None,
+        dialog_state=_get_dialog_state(state),
         apply_user_message_to_facts=apply_user_message_to_facts,
         apply_single_field_answer=apply_single_field_answer,
         apply_multi_field_answer=apply_multi_field_answer,
         missing_paths=missing_paths,
         next_question_for_missing=next_question_for_missing,
-        auto_fill=auto_fill,
+        next_question_advanced=next_question_advanced,
+        auto_fill=lambda f: auto_fill(f, state.get("meta")),
     )
 
     if decision["type"] == "DONE":
         state["done"] = True
 
+    _update_dialog_state(state, req.message, decision)
     _save_json(state_path, state)
 
     progress = _compute_progress(state)
@@ -322,6 +383,112 @@ def chat_with_goal(goal_id: int, req: ChatReq):
         "decision": decision,
         "progress": progress,
     }
+
+
+# ── Streaming chat endpoint (SSE) ────────────────────────────────────────────
+@app.post("/api/goals/{goal_id}/chat/stream")
+async def chat_stream(goal_id: int, req: ChatReq):
+    """
+    Same as /chat but streams the agent response word-by-word via Server-Sent Events.
+    Frontend can consume with EventSource or fetch + ReadableStream.
+    """
+    index = _load_json(INDEX_FILE, {"last_id": 0, "goals": []})
+    entry = _get_goal_entry(index, goal_id)
+    if not entry:
+        raise HTTPException(404, "Goal not found")
+
+    state_path = _goal_state_path(entry["folder"])
+    state = _load_json(state_path, {})
+    if not state:
+        raise HTTPException(404, "State not found")
+
+    if state.get("done"):
+        async def _done_gen():
+            payload = json.dumps({"type": "DONE", "question": "Configuration complète."})
+            yield f"data: {payload}\n\n"
+        return StreamingResponse(_done_gen(), media_type="text/event-stream")
+
+    # Resolve menu answer if active
+    resolved_msg = _resolve_menu_for_state(state, req.message)
+
+    # Process the user's message (brain_step with user_msg)
+    brain_step(
+        state=state,
+        template_obj=template_obj,
+        req_paths=req_paths,
+        user_msg=resolved_msg,
+        dialog_state=_get_dialog_state(state),
+        apply_user_message_to_facts=apply_user_message_to_facts,
+        apply_single_field_answer=apply_single_field_answer,
+        apply_multi_field_answer=apply_multi_field_answer,
+        missing_paths=missing_paths,
+        next_question_for_missing=next_question_for_missing,
+        next_question_advanced=next_question_advanced,
+        auto_fill=lambda f: auto_fill(f, state.get("meta")),
+    )
+    auto_fill(state["facts"], state.get("meta"))
+
+    meta = state.get("meta") or {}
+    last_q = meta.get("last_question_text") or (meta.get("last_question_paths") or [""])[0]
+    state.setdefault("history", []).append({"agent": last_q or "", "user": req.message})
+
+    # Get next decision
+    decision = brain_step(
+        state=state,
+        template_obj=template_obj,
+        req_paths=req_paths,
+        user_msg=None,
+        dialog_state=_get_dialog_state(state),
+        apply_user_message_to_facts=apply_user_message_to_facts,
+        apply_single_field_answer=apply_single_field_answer,
+        apply_multi_field_answer=apply_multi_field_answer,
+        missing_paths=missing_paths,
+        next_question_for_missing=next_question_for_missing,
+        next_question_advanced=next_question_advanced,
+        auto_fill=lambda f: auto_fill(f, state.get("meta")),
+    )
+
+    if decision["type"] == "DONE":
+        state["done"] = True
+
+    _update_dialog_state(state, req.message, decision)
+    _save_json(state_path, state)
+    progress = _compute_progress(state)
+
+    question_text = decision.get("question", "")
+    if decision["type"] == "DONE":
+        question_text = "Configuration complète ! Toutes les informations ont été collectées."
+
+    async def _event_generator() -> AsyncGenerator[str, None]:
+        # Stream metadata first
+        meta = {"type": "meta", "decision_type": decision["type"], "progress": progress}
+        yield f"data: {json.dumps(meta)}\n\n"
+        await asyncio.sleep(0)
+
+        # Stream the question text word by word
+        words = question_text.split(" ")
+        for i, word in enumerate(words):
+            chunk = word + (" " if i < len(words) - 1 else "")
+            token_payload = {"type": "token", "text": chunk}
+            yield f"data: {json.dumps(token_payload)}\n\n"
+            await asyncio.sleep(0.04)  # ~25 words/sec → ChatGPT-like pacing
+
+        # Send completion signal
+        done_payload = {
+            "type": "done",
+            "decision": decision,
+            "progress": progress,
+        }
+        yield f"data: {json.dumps(done_payload)}\n\n"
+
+    return StreamingResponse(
+        _event_generator(),
+        media_type="text/event-stream",
+        headers={
+            "Cache-Control": "no-cache",
+            "X-Accel-Buffering": "no",
+        },
+    )
 
 
 # ── Get goal state & progress ────────────────────────────────────────────────
@@ -348,7 +515,7 @@ def get_goal(goal_id: int):
         "goal": state.get("goal", ""),
         "progress": progress,
         "history": state.get("history", []),
-        "facts": state.get("facts", {}),
+        "facts": vs_unwrap_facts(state.get("facts", {})),
     }
 
 

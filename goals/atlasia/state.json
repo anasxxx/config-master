@@ -12,7 +12,7 @@
       "llm_final_status": "LLM_OK"
     },
     "last_question_paths": [
-      "cards.0.fees.fee_description"
+      "cards.0.card_range.tranche_min"
     ],
     "menu_selected_paths": []
   },
@@ -424,14 +424,15 @@
     "step": "paused",
     "mode": "normal",
     "last_intent": "delete",
-    "last_question": "Parfait. Quelle est la description des frais ?",
+    "last_question": "Peux-tu préciser tranche min ?",
     "last_question_paths": [
-      "cards.0.fees.fee_description"
+      "cards.0.card_range.tranche_min"
     ],
     "missing_fields": [
+      "cards.0.card_range.tranche_min",
+      "cards.0.card_range.tranche_max",
       "cards.0.fees.fee_description",
       "cards.0.fees.billing_event",
-      "cards.0.fees.grace_period",
       "cards.0.fees.billing_period",
       "cards.0.fees.registration_fee",
       "cards.0.fees.periodic_fee",
@@ -458,7 +459,10 @@
       "cards.0.limits.by_type.DEFAULT.total.monthly_amount",
       "cards.0.limits.by_type.DEFAULT.total.monthly_count",
       "cards.0.limits.by_type.DEFAULT.per_transaction.min_amount",
-      "cards.0.limits.by_type.DEFAULT.per_transaction.max_amount"
+      "cards.0.limits.by_type.DEFAULT.per_transaction.max_amount",
+      "options.networks.0",
+      "options.billing_events.0",
+      "options.billing_periods.0"
     ],
     "asked_fields": [
       "bank.agencies.0.agency_name",
@@ -481,7 +485,8 @@
       "cards.0.card_info.renewal_option",
       "cards.0.card_info.pre_expiration",
       "cards.0.card_range.note",
-      "cards.0.fees.fee_description"
+      "cards.0.fees.fee_description",
+      "cards.0.card_range.tranche_min"
     ],
     "pending_confirmations": [],
     "nlu_fail_count": 0,

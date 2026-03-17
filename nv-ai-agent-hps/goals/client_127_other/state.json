@@ -1,0 +1,605 @@
+{
+  "meta": {
+    "goal_id": 132,
+    "client": "client",
+    "client_n": 127,
+    "action": "other",
+    "created_at": "2026-03-17T02:39:32",
+    "last_extraction": {
+      "used_llm": true,
+      "used_fallback_rules": false,
+      "used_deterministic_extractors": false,
+      "llm_attempts": 1,
+      "llm_final_status": "LLM_REJECTED_INVALID"
+    },
+    "last_question_paths": [
+      "cards.0.fees.fee_description",
+      "cards.0.fees.billing_event",
+      "cards.0.fees.grace_period",
+      "cards.0.fees.billing_period",
+      "cards.0.fees.registration_fee",
+      "cards.0.fees.periodic_fee",
+      "cards.0.fees.replacement_fee",
+      "cards.0.fees.pin_recalculation_fee"
+    ],
+    "last_user_message": ".",
+    "last_question_text": "Je reformule: === Description des frais ===\nVeuillez remplir les champs suivants :",
+    "asked_fields": [
+      "bank.country",
+      "bank.agencies.0.region_code",
+      "bank.name",
+      "bank.agencies.0.agency_name",
+      "cards.0.card_info.service_code",
+      "cards.0.card_info.bin",
+      "cards.0.card_info.plastic_type",
+      "cards.0.card_info.product_code",
+      "cards.0.fees.periodic_fee",
+      "bank.resources",
+      "bank.agencies.0.city",
+      "cards.0.fees.pin_recalculation_fee",
+      "bank.bank_code",
+      "cards.0.card_info.card_description",
+      "cards.0.card_info.network",
+      "cards.0.fees.grace_period",
+      "cards.0.card_info.pre_expiration",
+      "bank.agencies.0.agency_code",
+      "cards.0.card_range.tranche_min",
+      "bank.agencies.0.city_code",
+      "cards.0.card_info.expiration",
+      "bank.agencies.0.region",
+      "cards.0.fees.fee_description",
+      "cards.0.card_range.tranche_max",
+      "cards.0.card_info.product_type",
+      "cards.0.fees.replacement_fee",
+      "cards.0.fees.registration_fee",
+      "cards.0.fees.billing_period",
+      "cards.0.card_info.renewal_option",
+      "cards.0.card_info.pvk_index",
+      "cards.0.fees.billing_event"
+    ],
+    "active_menu": null
+  },
+  "goal": "hello",
+  "facts": {
+    "bank": {
+      "name": {
+        "value": "CIH",
+        "source": "llm",
+        "confidence": 1.0,
+        "updated_at": "2026-03-17T02:40:04",
+        "evidence": "CIH"
+      },
+      "country": {
+        "value": "Maroc",
+        "source": "llm",
+        "confidence": 1.0,
+        "updated_at": "2026-03-17T02:40:22",
+        "evidence": "Maroc"
+      },
+      "currency": {
+        "value": "MAD",
+        "source": "autofill",
+        "confidence": 1.0,
+        "updated_at": "2026-03-17T02:40:22"
+      },
+      "bank_code": {
+        "value": "ATL01X",
+        "source": "llm",
+        "confidence": 1.0,
+        "updated_at": "2026-03-17T02:40:45",
+        "evidence": "ATL01X"
+      },
+      "resources": {
+        "value": [
+          "VISA_BASE1"
+        ],
+        "source": "user",
+        "confidence": 1.0,
+        "updated_at": "2026-03-17T02:41:02",
+        "evidence": "VISA_BASE1"
+      },
+      "agencies": [
+        {
+          "agency_name": {
+            "value": "CASABLANCA CENTRE, MAARIF",
+            "source": "llm",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T02:41:29",
+            "evidence": "Agence Casablanca Centre, Maarif"
+          },
+          "agency_code": {
+            "value": "020001",
+            "source": "llm",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T02:41:53",
+            "evidence": "020001"
+          },
+          "city": {
+            "value": "Casablanca",
+            "source": "llm",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T02:42:24",
+            "evidence": "Casablanca"
+          },
+          "city_code": {
+            "value": "001",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T02:42:41",
+            "evidence": "001"
+          },
+          "region": {
+            "value": "Casablanca-Settat",
+            "source": "llm",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T02:43:25",
+            "evidence": "Casablanca-Settat"
+          },
+          "region_code": {
+            "value": "01",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T02:43:40",
+            "evidence": "01"
+          }
+        }
+      ],
+      "country_alpha2": {
+        "value": "MA",
+        "source": "autofill",
+        "confidence": 1.0,
+        "updated_at": "2026-03-17T02:40:22"
+      }
+    },
+    "cards": [
+      {
+        "card_info": {
+          "bin": {
+            "value": "12345678901",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T02:44:02",
+            "evidence": "12345678901"
+          },
+          "plastic_type": {
+            "value": "PVC",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T02:44:15",
+            "evidence": "PVC"
+          },
+          "card_description": {
+            "value": "Classic",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T02:44:39",
+            "evidence": "Visa Classic Internationale"
+          },
+          "product_type": {
+            "value": "DEBIT",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T02:44:46",
+            "evidence": "DEBIT"
+          },
+          "product_code": {
+            "value": "MCR",
+            "source": "llm",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T02:45:11",
+            "evidence": "MCR"
+          },
+          "pvk_index": {
+            "value": 1,
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T02:45:29",
+            "evidence": "1"
+          },
+          "service_code": {
+            "value": "101",
+            "source": "llm",
+            "confidence": 0.95,
+            "updated_at": "2026-03-17T02:45:50",
+            "evidence": "101"
+          },
+          "network": {
+            "value": "VISA",
+            "source": "llm",
+            "confidence": 0.95,
+            "updated_at": "2026-03-17T02:46:07",
+            "evidence": "MCRD"
+          },
+          "expiration": {
+            "value": 36,
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T02:46:22",
+            "evidence": "36"
+          },
+          "renewal_option": {
+            "value": "AUTO",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T02:46:36",
+            "evidence": "AUTO"
+          },
+          "pre_expiration": {
+            "value": 24,
+            "source": "llm",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T02:46:56",
+            "evidence": "24"
+          }
+        },
+        "card_range": {
+          "tranche_min": {
+            "value": "5000",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T02:47:31",
+            "evidence": "5000, 10000"
+          },
+          "tranche_max": {
+            "value": "10000",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T02:47:31",
+            "evidence": "5000, 10000"
+          }
+        },
+        "fees": {
+          "fee_description": null,
+          "billing_event": null,
+          "grace_period": null,
+          "billing_period": null,
+          "registration_fee": null,
+          "periodic_fee": null,
+          "replacement_fee": null,
+          "pin_recalculation_fee": null
+        },
+        "services": {
+          "enabled": [],
+          "flags": {
+            "retrait": null,
+            "achat": null,
+            "advance": null,
+            "ecommerce": null,
+            "transfert": null,
+            "quasicash": null,
+            "solde": null,
+            "releve": null,
+            "pinchange": null,
+            "refund": null,
+            "moneysend": null,
+            "billpayment": null,
+            "original": null,
+            "authentication": null,
+            "cashback": null
+          }
+        },
+        "limits": {
+          "selected_limit_types": [],
+          "by_type": {
+            "DEFAULT": {
+              "domestic": {
+                "daily_amount": null,
+                "daily_count": null,
+                "weekly_amount": null,
+                "weekly_count": null,
+                "monthly_amount": null,
+                "monthly_count": null
+              },
+              "international": {
+                "daily_amount": null,
+                "daily_count": null,
+                "weekly_amount": null,
+                "weekly_count": null,
+                "monthly_amount": null,
+                "monthly_count": null
+              },
+              "total": {
+                "daily_amount": null,
+                "daily_count": null,
+                "weekly_amount": null,
+                "weekly_count": null,
+                "monthly_amount": null,
+                "monthly_count": null
+              },
+              "per_transaction": {
+                "min_amount": null,
+                "max_amount": null
+              }
+            }
+          }
+        }
+      }
+    ],
+    "options": {
+      "resources_examples": [
+        "MCD_MDS",
+        "MCD_CIS",
+        "UPI",
+        "HOST_BANK",
+        "SID",
+        "VISA_BASE1",
+        "VISA_SMS"
+      ],
+      "services": [
+        "achat",
+        "retrait",
+        "cashback",
+        "quasicash",
+        "advance",
+        "refund",
+        "original",
+        "moneysend",
+        "authentication",
+        "solde",
+        "releve",
+        "transfert",
+        "billpayment",
+        "ecommerce",
+        "pinchange"
+      ],
+      "limit_types": [
+        "Retrait",
+        "Purchase",
+        "CASH_advance",
+        "Quasi-cash",
+        "E-commerce"
+      ]
+    }
+  },
+  "history": [
+    {
+      "agent": "Quel est le nom de la banque ?",
+      "user": "CIH"
+    },
+    {
+      "agent": "Quel est le pays de la banque ? ",
+      "user": "Maroc"
+    },
+    {
+      "agent": "Quel est le code de la banque (bank code) ?",
+      "user": "ATL01X"
+    },
+    {
+      "agent": "Quelles ressources veux-tu activer ?\nChoisis les ressources (tu peux donner plusieurs choix: 1,3,5):\n1) MCD_MDS\n2) MCD_CIS\n3) UPI\n4) HOST_BANK\n5) SID\n6) VISA_BASE1\n7) VISA_SMS",
+      "user": "VISA_BASE1"
+    },
+    {
+      "agent": "Quel est le nom de l'agence ?",
+      "user": "Agence Casablanca Centre, Maarif"
+    },
+    {
+      "agent": "Quel est le code de cette agence ?",
+      "user": "020001"
+    },
+    {
+      "agent": "Dans quelle ville se trouve cette agence ?",
+      "user": "Casablanca"
+    },
+    {
+      "agent": "Quel est le code de la ville ?",
+      "user": "001"
+    },
+    {
+      "agent": "Quelle est la region ?",
+      "user": "Casablanca-Settat"
+    },
+    {
+      "agent": "Quel est le code de la region ?",
+      "user": "01"
+    },
+    {
+      "agent": "Quel est le BIN de la carte ? (6 a 11 chiffres)",
+      "user": "12345678901"
+    },
+    {
+      "agent": "Type de carte (plastique)\nChoisis le type de carte (plastique):\n1) Printed\n2) EmBossed\n3) VIRTUAL",
+      "user": "PVC"
+    },
+    {
+      "agent": "Nom/description du produit carte",
+      "user": "Visa Classic Internationale"
+    },
+    {
+      "agent": "Type de carte\nChoisis le type carte:\n1) DEBIT\n2) PREPAID\n3) CREDIT",
+      "user": "DEBIT"
+    },
+    {
+      "agent": "Code du produit carte",
+      "user": "MCR"
+    },
+    {
+      "agent": "Index PVK",
+      "user": "1"
+    },
+    {
+      "agent": "Code service de la carte",
+      "user": "101"
+    },
+    {
+      "agent": "Quel est le reseau de la carte ?\nChoisis le reseau:\n1) VISA\n2) MASTERCARD\n3) AMEX\n4) DINERS\n5) EUROPAY\n6) TAG-YUP\n7) UPI\n8) GIMN\n9) JCB\n10) PRIVATIVE",
+      "user": "MCRD"
+    },
+    {
+      "agent": "Duree de validite de la carte",
+      "user": "36"
+    },
+    {
+      "agent": "Renouvellement automatique ?\nChoisis l'option de renouvellement:\n1) AUTO\n2) MANUAL",
+      "user": "AUTO"
+    },
+    {
+      "agent": "Delai avant expiration pour lancer le renouvellement",
+      "user": "24"
+    },
+    {
+      "agent": "=== Configuration du PAN ===\nPeux-tu preciser la tranche Min et Max du PAN ?",
+      "user": "5000, 10000"
+    },
+    {
+      "agent": "=== Description des frais ===\nVeuillez remplir les champs suivants :",
+      "user": "1, 20, M, 15, 0, 50, 20"
+    },
+    {
+      "agent": "Je reformule: === Description des frais ===\nVeuillez remplir les champs suivants :",
+      "user": "."
+    },
+    {
+      "agent": "Je reformule: === Description des frais ===\nVeuillez remplir les champs suivants :",
+      "user": "1, 20, M, 50, 0, 50, 15"
+    },
+    {
+      "agent": "Je reformule: === Description des frais ===\nVeuillez remplir les champs suivants :",
+      "user": "."
+    },
+    {
+      "agent": "Je reformule: === Description des frais ===\nVeuillez remplir les champs suivants :",
+      "user": "."
+    }
+  ],
+  "done": false,
+  "provenance": {
+    "bank.name": {
+      "source": "llm",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T02:40:04",
+      "evidence": "CIH"
+    },
+    "bank.country": {
+      "source": "llm",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T02:40:22",
+      "evidence": "Maroc"
+    },
+    "bank.bank_code": {
+      "source": "llm",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T02:40:45",
+      "evidence": "ATL01X"
+    },
+    "bank.resources": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T02:41:02",
+      "evidence": "VISA_BASE1"
+    },
+    "bank.agencies.0.agency_name": {
+      "source": "llm",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T02:41:29",
+      "evidence": "Agence Casablanca Centre, Maarif"
+    },
+    "bank.agencies.0.agency_code": {
+      "source": "llm",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T02:41:53",
+      "evidence": "020001"
+    },
+    "bank.agencies.0.city": {
+      "source": "llm",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T02:42:24",
+      "evidence": "Casablanca"
+    },
+    "bank.agencies.0.city_code": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T02:42:41",
+      "evidence": "001"
+    },
+    "bank.agencies.0.region": {
+      "source": "llm",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T02:43:25",
+      "evidence": "Casablanca-Settat"
+    },
+    "bank.agencies.0.region_code": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T02:43:40",
+      "evidence": "01"
+    },
+    "cards.0.card_info.bin": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T02:44:02",
+      "evidence": "12345678901"
+    },
+    "cards.0.card_info.plastic_type": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T02:44:15",
+      "evidence": "PVC"
+    },
+    "cards.0.card_info.card_description": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T02:44:39",
+      "evidence": "Visa Classic Internationale"
+    },
+    "cards.0.card_info.product_type": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T02:44:46",
+      "evidence": "DEBIT"
+    },
+    "cards.0.card_info.product_code": {
+      "source": "llm",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T02:45:11",
+      "evidence": "MCR"
+    },
+    "cards.0.card_info.pvk_index": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T02:45:29",
+      "evidence": "1"
+    },
+    "cards.0.card_info.service_code": {
+      "source": "llm",
+      "confidence": 0.95,
+      "timestamp": "2026-03-17T02:45:50",
+      "evidence": "101"
+    },
+    "cards.0.card_info.network": {
+      "source": "llm",
+      "confidence": 0.95,
+      "timestamp": "2026-03-17T02:46:07",
+      "evidence": "MCRD"
+    },
+    "cards.0.card_info.expiration": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T02:46:22",
+      "evidence": "36"
+    },
+    "cards.0.card_info.renewal_option": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T02:46:36",
+      "evidence": "AUTO"
+    },
+    "cards.0.card_info.pre_expiration": {
+      "source": "llm",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T02:46:56",
+      "evidence": "24"
+    },
+    "cards.0.card_range.tranche_min": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T02:47:31",
+      "evidence": "5000, 10000"
+    },
+    "cards.0.card_range.tranche_max": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T02:47:31",
+      "evidence": "5000, 10000"
+    }
+  }
+}

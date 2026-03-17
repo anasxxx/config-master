@@ -1,0 +1,61 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - generic [ref=e5]:
+      - link "Logo ConfigMaster" [ref=e6]:
+        - /url: /config-master/home
+        - img "Logo" [ref=e8]
+        - generic [ref=e9]: ConfigMaster
+      - button " English" [ref=e12] [cursor=pointer]:
+        - generic [ref=e13]: 
+        - text: English
+  - generic [ref=e18]:
+    - generic [ref=e20]:
+      - heading "ConfigMaster" [level=2] [ref=e22]
+      - generic [ref=e23]:
+        - paragraph [ref=e24]: Access to the member and activity management portal
+        - generic [ref=e25]:
+          - generic [ref=e26]:
+            - generic [ref=e28]: 
+            - generic [ref=e29]: Enhanced security features to protect your data
+          - generic [ref=e30]:
+            - generic [ref=e32]: 
+            - generic [ref=e33]: Real-time monitoring of all your accounts
+          - generic [ref=e34]:
+            - generic [ref=e36]: 
+            - generic [ref=e37]: Fast and secure transaction processing
+      - generic [ref=e38]: © 2025 ConfigMaster. All rights reserved.
+    - generic [ref=e41]:
+      - heading "Sign in to your account" [level=4] [ref=e42]
+      - generic [ref=e43]:
+        - generic [ref=e44]:
+          - generic [ref=e45]: Select account type
+          - group [ref=e47]:
+            - button " DEMO" [ref=e48] [cursor=pointer]:
+              - generic [ref=e49]: 
+              - text: DEMO
+            - button " FULL" [ref=e50] [cursor=pointer]:
+              - generic [ref=e51]: 
+              - text: FULL
+        - generic [ref=e52]:
+          - generic [ref=e53]:
+            - generic [ref=e54]: Password
+            - link "Forgot Password?" [ref=e55]:
+              - /url: "#"
+          - generic [ref=e56]:
+            - generic [ref=e58]: 
+            - textbox "Password" [ref=e59]:
+              - /placeholder: Enter your password
+            - button "" [ref=e60] [cursor=pointer]:
+              - generic [ref=e61]: 
+        - generic [ref=e63]:
+          - checkbox "Remember me" [ref=e64]
+          - generic [ref=e65]: Remember me
+        - button "Sign In" [ref=e67] [cursor=pointer]
+        - paragraph [ref=e69]:
+          - text: Do you have an account?
+          - link "Register now" [ref=e70]:
+            - /url: "#"
+```

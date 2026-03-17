@@ -1,0 +1,1 @@
+{"version":3,"sources":["node_modules/xhr2/lib/browser.js"],"sourcesContent":["module.exports = XMLHttpRequest;"],"mappings":";;;;;AAAA;AAAA;AAAA,WAAO,UAAU;AAAA;AAAA;","names":[],"x_google_ignoreList":[0]}

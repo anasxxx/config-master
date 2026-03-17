@@ -178,7 +178,26 @@
                   <i class="bi bi-robot"></i>
                 </div>
                 <div class="message-content">
-                  <div class="message-text">{{ msg.text }}</div>
+                  <div class="message-text-row">
+                    <span class="message-text">
+                      {{ msg.text }}<span class="stream-cursor" *ngIf="msg.streaming">▌</span>
+                    </span>
+                    <button *ngIf="!msg.streaming"
+                            type="button"
+                            class="btn param-help-btn"
+                            (click)="openParamHelp(msg.paths?.[0] ?? '')"
+                            [title]="'agent.paramHelpTitle' | translate">
+                      <i class="bi bi-plus-circle"></i>
+                    </button>
+                  </div>
+                  <!-- Menu options -->
+                  <div *ngIf="msg.menu && !msg.streaming" class="menu-options mt-2">
+                    <button *ngFor="let opt of msg.menu.options"
+                            class="btn btn-outline-primary btn-sm me-1 mb-1"
+                            (click)="selectMenuOption(opt.value)">
+                      {{ opt.label || opt.value }}
+                    </button>
+                  </div>
                   <div class="message-meta" *ngIf="msg.paths && msg.paths.length">
                     <span class="field-tag" *ngFor="let p of msg.paths">{{ p }}</span>
                   </div>
@@ -241,6 +260,20 @@
             </div>
           </div>
 
+          <!-- Form input (multi-field) -->
+          <div *ngIf="activeForm && !isTyping && currentDecision?.type !== 'DONE'" class="form-input-area">
+            <div class="form-input-title">{{ activeForm.title }}</div>
+            <div *ngFor="let field of activeForm.fields" class="form-input-row">
+              <label class="form-input-label">{{ field.label }}</label>
+              <input type="text" class="form-control form-control-sm"
+                     [(ngModel)]="formValues[field.path]"
+                     [placeholder]="field.label" />
+            </div>
+            <button class="btn btn-primary btn-sm mt-2" (click)="submitForm()">
+              <i class="bi bi-check-lg me-1"></i>Confirmer
+            </button>
+          </div>
+
           <!-- Input area -->
           <div class="chat-input-area">
             <div class="input-wrapper" *ngIf="showNewGoalInput">
@@ -278,6 +311,30 @@
             </div>
           </div>
 
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Param help modal (+ button) -->
+  <div class="modal param-help-modal" [class.show]="helpPath !== null" [style.display]="helpPath !== null ? 'block' : 'none'" tabindex="-1">
+    <div class="modal-backdrop" (click)="closeParamHelp()"></div>
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+      <div class="modal-content" (click)="$event.stopPropagation()">
+        <div class="modal-header py-2">
+          <h6 class="modal-title">
+            <i class="bi bi-info-circle me-1"></i>
+            {{ (getParamHelpTitle(helpPath ?? '') | titlecase) || ('agent.paramHelpTitle' | translate) }}
+          </h6>
+          <button type="button" class="btn-close btn-sm" (click)="closeParamHelp()" aria-label="Close"></button>
+        </div>
+        <div class="modal-body py-2" *ngIf="helpPath !== null">
+          <p class="small mb-2"><strong>Description:</strong><br>{{ getHelpForPath(helpPath!).description }}</p>
+          <p class="small mb-2"><strong>Type de saisie:</strong><br>{{ getHelpForPath(helpPath!).inputType }}</p>
+          <p class="small mb-0"><strong>Exemple:</strong><br><code>{{ getHelpForPath(helpPath!).example }}</code></p>
+        </div>
+        <div class="modal-footer py-2">
+          <button type="button" class="btn btn-primary btn-sm" (click)="closeParamHelp()">Fermer</button>
         </div>
       </div>
     </div>

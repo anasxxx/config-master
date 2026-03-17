@@ -51,7 +51,6 @@
         { "type": "null" }
       ]
     },
-
     "bank": {
       "type": "object",
       "additionalProperties": false,
@@ -59,13 +58,12 @@
       "properties": {
         "name": { "$ref": "#/$defs/nullable_string" },
         "country": { "$ref": "#/$defs/nullable_string" },
-        "country_alpha2":{"anyOf":[{"type":"string","pattern":"^[A-Z]{2}$"},{"type":"null"}]},
+        "country_alpha2": { "anyOf": [{ "type": "string", "pattern": "^[A-Z]{2}$" }, { "type": "null" }] },
         "currency": { "$ref": "#/$defs/nullable_currency" },
         "bank_code": { "$ref": "#/$defs/nullable_code" },
         "resources": {
           "type": "array",
           "items": { "type": "string", "minLength": 1 }
-           
         },
         "agencies": {
           "type": "array",
@@ -74,7 +72,6 @@
         }
       }
     },
-
     "agency": {
       "type": "object",
       "additionalProperties": false,
@@ -95,7 +92,6 @@
         "region_code": { "$ref": "#/$defs/nullable_code" }
       }
     },
-
     "card": {
       "type": "object",
       "additionalProperties": false,
@@ -108,7 +104,6 @@
         "limits": { "$ref": "#/$defs/limits" }
       }
     },
-
     "card_info": {
       "type": "object",
       "additionalProperties": false,
@@ -139,23 +134,21 @@
         "pre_expiration": { "$ref": "#/$defs/nullable_string" }
       }
     },
-
     "card_range": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["note"],
+      "required": ["tranche_min", "tranche_max"],
       "properties": {
-        "note": { "type": "string" }
+        "tranche_min": { "type": "integer", "minimum": 0, "maximum": 99999999 },
+        "tranche_max": { "type": "integer", "minimum": 0, "maximum": 99999999 }
       }
     },
-
     "fees": {
       "type": "object",
       "additionalProperties": false,
       "required": [
         "fee_description",
         "billing_event",
-        "grace_period",
         "billing_period",
         "registration_fee",
         "periodic_fee",
@@ -164,16 +157,20 @@
       ],
       "properties": {
         "fee_description": { "$ref": "#/$defs/nullable_string" },
-        "billing_event": { "$ref": "#/$defs/nullable_string" },
-        "grace_period": { "$ref": "#/$defs/nullable_string" },
-        "billing_period": { "$ref": "#/$defs/nullable_string" },
+        "billing_event": {
+          "type": "string",
+          "enum": ["ISSUANCE", "RENEWAL", "REPLACEMENT", "PERIODIC"]
+        },
+        "billing_period": {
+          "type": "string",
+          "enum": ["MONTHLY", "YEARLY", "NONE"]
+        },
         "registration_fee": { "$ref": "#/$defs/nullable_number_nonneg" },
         "periodic_fee": { "$ref": "#/$defs/nullable_number_nonneg" },
         "replacement_fee": { "$ref": "#/$defs/nullable_number_nonneg" },
         "pin_recalculation_fee": { "$ref": "#/$defs/nullable_number_nonneg" }
       }
     },
-
     "services": {
       "type": "object",
       "additionalProperties": false,
@@ -181,33 +178,40 @@
       "properties": {
         "enabled": {
           "type": "array",
-          "items": { "type": "string", "minLength": 1 }
+          "items": {
+            "enum": [
+              "Retrait",
+              "Cash Advance",
+              "Transferts",
+              "Consultation Solde",
+              "Changement PIN",
+              "Envoi d'argent",
+              "Original",
+              "Achats",
+              "E-commerce",
+              "Quasi-Cash",
+              "Mini-Relevé",
+              "Remboursements",
+              "Paiement Factures",
+              "Authentification",
+              "Cashback"
+            ]
+          }
         }
       }
     },
-
     "limits": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["selected_limit_types", "by_type"],
+      "required": ["retrait", "purchase", "cash_advance", "quasi_cash", "e_commerce"],
       "properties": {
-        "selected_limit_types": {
-          "type": "array",
-          "items": {
-            "enum": ["Retrait", "Purchase", "CASH_advance", "Quasi-cash", "E-commerce"]
-          }
-        },
-        "by_type": {
-          "type": "object",
-          "additionalProperties": false,
-          "required": ["DEFAULT"],
-          "properties": {
-            "DEFAULT": { "$ref": "#/$defs/limit_group" }
-          }
-        }
+        "retrait": { "$ref": "#/$defs/limit_group" },
+        "purchase": { "$ref": "#/$defs/limit_group" },
+        "cash_advance": { "$ref": "#/$defs/limit_group" },
+        "quasi_cash": { "$ref": "#/$defs/limit_group" },
+        "e_commerce": { "$ref": "#/$defs/limit_group" }
       }
     },
-
     "limit_group": {
       "type": "object",
       "additionalProperties": false,
@@ -227,7 +231,6 @@
         }
       }
     },
-
     "limit_window": {
       "type": "object",
       "additionalProperties": false,
@@ -248,7 +251,6 @@
         "monthly_count": { "$ref": "#/$defs/nullable_int_nonneg" }
       }
     },
-
     "options": {
       "type": "object",
       "additionalProperties": false,

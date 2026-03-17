@@ -11,6 +11,8 @@ from dotenv import load_dotenv
 
 load_dotenv(override=True)
 
+from agents.value_store import unwrap_facts
+
 try:
     import pycountry as _pycountry
 except ImportError:
@@ -238,10 +240,12 @@ def map_facts_to_bank_req(state: Dict[str, Any]) -> Dict[str, Any]:
 
         product_code = _to_str(card_info.get("product_code"))
 
-        # expiration max 2 chars, renew / priorExp max 1 char
-        expiration_raw = _to_str(card_info.get("expiration"))[:2]
-        renew_raw = _to_str(card_info.get("renewal_option"))[:1]
-        prior_exp_raw = _to_str(card_info.get("pre_expiration"))[:1]
+        # expiration max 3 chars (NUMBER(3,0)), renew CHAR(1) "Y"|"N", priorExp NUMBER(2,0)
+        expiration_raw = _to_str(card_info.get("expiration"))[:3]
+        _renew_val = _to_str(card_info.get("renewal_option")).upper()
+        _RENEW_MAP = {"AUTO": "Y", "MANUAL": "N", "A": "Y", "M": "N"}
+        renew_raw = _RENEW_MAP.get(_renew_val, _renew_val[:1] if _renew_val else "N")
+        prior_exp_raw = _to_str(card_info.get("pre_expiration"))[:2]
 
         info_module = {
             "bankCode": bank_code,
@@ -249,9 +253,9 @@ def map_facts_to_bank_req(state: Dict[str, Any]) -> Dict[str, Any]:
             "bin": _to_str(card_info.get("bin")),
             "plasticType": _to_str(card_info.get("plastic_type")),
             "productType": _to_str(card_info.get("product_type")),
-            "productCode": product_code[:20] if product_code else "",
-            "trancheMin": _to_str(card_range.get("start_range")),
-            "trancheMax": _to_str(card_range.get("end_range")),
+            "productCode": product_code[:32] if product_code else "",
+            "trancheMin": _to_str(card_range.get("tranche_min")),
+            "trancheMax": _to_str(card_range.get("tranche_max")),
             "indexPvk": _to_str(card_info.get("pvk_index")),
             "serviceCode": _to_str(card_info.get("service_code")),
             "network": _to_str(card_info.get("network")),
@@ -262,21 +266,42 @@ def map_facts_to_bank_req(state: Dict[str, Any]) -> Dict[str, Any]:
 
         # cardFeesCode: exactly 3 chars – take first 3 of product_code
         fees_code = (product_code or "")[:3].ljust(3, "0")
-        # billing event / period: exactly 1 char each
-        billing_evt = _to_str(fees.get("billing_event"))[:1] or "1"
-        billing_period = _to_str(fees.get("billing_period"))[:1] or "M"
+        # billing event CHAR(1) ENUM: "1" | "2" | "3"  (per ParamCorrectif PDF)
+        # "1"=Issuance, "2"=Renewal, "3"=Replacement
+        _billing_evt_raw = _to_str(fees.get("billing_event"))
+        _BILLING_EVT_NORM = {
+            "issuance": "1", "emission": "1", "ISSUANCE": "1",
+            "renewal": "2", "renouvellement": "2", "RENEWAL": "2",
+            "replacement": "3", "remplacement": "3", "REPLACEMENT": "3",
+            "periodic": "3", "PERIODIC": "3",
+        }
+        billing_evt = _BILLING_EVT_NORM.get(
+            _billing_evt_raw, _billing_evt_raw if _billing_evt_raw in {"1", "2", "3"} else "1"
+        )
+        # billing period CHAR(1) ENUM: "M"=Monthly | "A"=Yearly | "T"=Quarterly | "S"=Semester
+        _billing_period_raw = _to_str(fees.get("billing_period"))
+        _BILLING_PERIOD_NORM = {
+            "monthly": "M", "MONTHLY": "M", "mensuel": "M",
+            "yearly": "A", "YEARLY": "A", "annual": "A", "ANNUAL": "A", "annuel": "A",
+            "quarterly": "T", "QUARTERLY": "T", "trimestriel": "T",
+            "semester": "S", "SEMESTER": "S", "semestriel": "S",
+            "none": "M", "NONE": "M",
+        }
+        billing_period = _BILLING_PERIOD_NORM.get(
+            _billing_period_raw,
+            _billing_period_raw if _billing_period_raw in {"M", "A", "T", "S"} else "M",
+        )
 
         fees_module = {
             "bankCode": bank_code,
             "description": _to_str(fees.get("fee_description")),
             "cardFeesCode": fees_code,
             "cardFeesBillingEvt": billing_evt,
-            "cardFeesGracePeriod": _to_number(fees.get("grace_period")) or 0,
             "cardFeesBillingPeriod": billing_period,
-            "subscriptionAmount": float(_to_number_str(fees.get("registration_fee"), "0")),
-            "feesAmountFirst": float(_to_number_str(fees.get("periodic_fee"), "0")),
-            "damagedReplacementFees": float(_to_number_str(fees.get("replacement_fee"), "0")),
-            "pinReplacementFees": float(_to_number_str(fees.get("pin_recalculation_fee"), "0")),
+            "subscriptionAmount": _to_number_str(fees.get("registration_fee"), "0"),
+            "feesAmountFirst": _to_number_str(fees.get("periodic_fee"), "0"),
+            "damagedReplacementFees": _to_number_str(fees.get("replacement_fee"), "0"),
+            "pinReplacementFees": _to_number_str(fees.get("pin_recalculation_fee"), "0"),
         }
 
         # Services – ALL 15 flags must be present; default "0", enabled → "1"
@@ -420,6 +445,8 @@ def run_pipeline(
             raise FileNotFoundError("No state.json found in goals directory.")
 
     state = _load_json(state_path)
+    # Unwrap value_store objects (value/source/confidence) so map_facts_to_bank_req gets plain values
+    state["facts"] = unwrap_facts(state.get("facts", {}))
     bank_req = map_facts_to_bank_req(state)
 
     api_url = api_base_url or DEFAULT_API_URL

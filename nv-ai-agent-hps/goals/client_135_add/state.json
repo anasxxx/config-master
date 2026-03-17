@@ -1,0 +1,967 @@
+{
+  "meta": {
+    "goal_id": 140,
+    "client": "client",
+    "client_n": 135,
+    "action": "add",
+    "created_at": "2026-03-17T05:25:53",
+    "last_extraction": {
+      "used_llm": true,
+      "used_fallback_rules": false,
+      "used_deterministic_extractors": false,
+      "llm_attempts": 1,
+      "llm_final_status": "LLM_REJECTED_INVALID"
+    },
+    "last_question_paths": [
+      "cards.0.limits.by_type.DEFAULT.international.daily_amount",
+      "cards.0.limits.by_type.DEFAULT.international.weekly_amount",
+      "cards.0.limits.by_type.DEFAULT.international.monthly_amount"
+    ],
+    "last_user_message": "5000, 50000, 500000",
+    "last_question_text": "",
+    "asked_fields": [
+      "cards.0.card_info.pre_expiration",
+      "cards.0.limits.by_type.DEFAULT.international.monthly_amount",
+      "cards.0.fees.periodic_fee",
+      "bank.agencies.0.agency_name",
+      "cards.0.services.enabled",
+      "cards.0.card_info.network",
+      "bank.resources",
+      "cards.0.limits.by_type.DEFAULT.domestic.daily_amount",
+      "cards.0.fees.replacement_fee",
+      "cards.0.card_range.tranche_max",
+      "bank.agencies.0.city_code",
+      "cards.0.fees.billing_event",
+      "cards.0.card_info.renewal_option",
+      "cards.0.fees.pin_recalculation_fee",
+      "cards.0.limits.by_type.DEFAULT.domestic.monthly_amount",
+      "bank.agencies.0.agency_code",
+      "bank.agencies.0.region_code",
+      "bank.bank_code",
+      "cards.0.card_range.tranche_min",
+      "cards.0.card_info.product_code",
+      "cards.0.fees.billing_period",
+      "cards.0.card_info.plastic_type",
+      "cards.0.limits.by_type.DEFAULT.domestic.weekly_amount",
+      "cards.0.fees.grace_period",
+      "cards.0.card_info.expiration",
+      "cards.0.fees.fee_description",
+      "cards.0.card_info.card_description",
+      "cards.0.card_info.product_type",
+      "bank.agencies.0.city",
+      "bank.agencies.0.region",
+      "cards.0.card_info.service_code",
+      "cards.0.limits.by_type.DEFAULT.international.weekly_amount",
+      "cards.0.card_info.pvk_index",
+      "cards.0.fees.registration_fee",
+      "cards.0.limits.by_type.DEFAULT.international.daily_amount",
+      "cards.0.card_info.bin"
+    ],
+    "active_menu": null
+  },
+  "goal": "add bank anas in morocco",
+  "facts": {
+    "bank": {
+      "name": {
+        "value": "ANAS",
+        "source": "user",
+        "confidence": 1.0,
+        "updated_at": "2026-03-17T05:26:10",
+        "evidence": "add bank anas in morocco"
+      },
+      "country": {
+        "value": "Maroc",
+        "source": "user",
+        "confidence": 1.0,
+        "updated_at": "2026-03-17T05:26:10",
+        "evidence": "add bank anas in morocco"
+      },
+      "currency": {
+        "value": "MAD",
+        "source": "autofill",
+        "confidence": 1.0,
+        "updated_at": "2026-03-17T05:26:10"
+      },
+      "bank_code": {
+        "value": "ATL01X",
+        "source": "llm",
+        "confidence": 1.0,
+        "updated_at": "2026-03-17T05:26:49",
+        "evidence": "ATL01X"
+      },
+      "resources": {
+        "value": [
+          "VISA_BASE1"
+        ],
+        "source": "user",
+        "confidence": 1.0,
+        "updated_at": "2026-03-17T05:27:03",
+        "evidence": "VISA_BASE1"
+      },
+      "agencies": [
+        {
+          "agency_name": {
+            "value": "CASABLANCA CENTRE, MAARIF",
+            "source": "llm",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T05:27:30",
+            "evidence": "Agence Casablanca Centre, Maarif"
+          },
+          "agency_code": {
+            "value": "AG001X",
+            "source": "llm",
+            "confidence": 0.95,
+            "updated_at": "2026-03-17T05:27:55",
+            "evidence": "AG001X"
+          },
+          "city": {
+            "value": "Casablanca",
+            "source": "llm",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T05:28:25",
+            "evidence": "Casablanca"
+          },
+          "city_code": {
+            "value": "CASA",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T05:29:02",
+            "evidence": "CASA"
+          },
+          "region": {
+            "value": "Casablanca-Settat",
+            "source": "llm",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T05:29:43",
+            "evidence": "Casablanca-Settat"
+          },
+          "region_code": {
+            "value": "01",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T05:30:03",
+            "evidence": "01"
+          }
+        }
+      ],
+      "country_alpha2": {
+        "value": "MA",
+        "source": "autofill",
+        "confidence": 1.0,
+        "updated_at": "2026-03-17T05:26:10"
+      }
+    },
+    "cards": [
+      {
+        "card_info": {
+          "bin": {
+            "value": "445566",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T05:30:21",
+            "evidence": "445566"
+          },
+          "plastic_type": {
+            "value": "PVC",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T05:30:34",
+            "evidence": "PVC"
+          },
+          "card_description": {
+            "value": "Classic",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T05:30:59",
+            "evidence": "Visa Classic Internationale"
+          },
+          "product_type": {
+            "value": "DEBIT",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T05:31:06",
+            "evidence": "DEBIT"
+          },
+          "product_code": {
+            "value": "VCL",
+            "source": "llm",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T05:31:31",
+            "evidence": "VCL"
+          },
+          "pvk_index": {
+            "value": 1,
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T05:31:43",
+            "evidence": "1"
+          },
+          "service_code": {
+            "value": "254",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T05:31:55",
+            "evidence": "254"
+          },
+          "network": {
+            "value": "VISA",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T05:32:13",
+            "evidence": "VISA"
+          },
+          "expiration": {
+            "value": 36,
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T05:32:37",
+            "evidence": "36"
+          },
+          "renewal_option": {
+            "value": "AUTO",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T05:32:49",
+            "evidence": "AUTO"
+          },
+          "pre_expiration": {
+            "value": 60,
+            "source": "llm",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T05:33:16",
+            "evidence": "60"
+          }
+        },
+        "card_range": {
+          "tranche_min": {
+            "value": "50000",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T05:33:58",
+            "evidence": "50000, 100000"
+          },
+          "tranche_max": {
+            "value": "100000",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T05:33:58",
+            "evidence": "50000, 100000"
+          }
+        },
+        "fees": {
+          "fee_description": {
+            "value": "Visa Classic",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T05:37:33",
+            "evidence": "Frais Visa Classic, 1, 0, M, 15, 0, 50, 20"
+          },
+          "billing_event": {
+            "value": "1",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T05:38:36",
+            "evidence": "1, 0, M, 15, 0, 50, 20"
+          },
+          "grace_period": {
+            "value": 0,
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T05:38:36",
+            "evidence": "1, 0, M, 15, 0, 50, 20"
+          },
+          "billing_period": {
+            "value": "M",
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T05:38:36",
+            "evidence": "1, 0, M, 15, 0, 50, 20"
+          },
+          "registration_fee": {
+            "value": 15.0,
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T05:38:36",
+            "evidence": "1, 0, M, 15, 0, 50, 20"
+          },
+          "periodic_fee": {
+            "value": 0.0,
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T05:38:36",
+            "evidence": "1, 0, M, 15, 0, 50, 20"
+          },
+          "replacement_fee": {
+            "value": 50.0,
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T05:38:36",
+            "evidence": "1, 0, M, 15, 0, 50, 20"
+          },
+          "pin_recalculation_fee": {
+            "value": 20.0,
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T05:38:36",
+            "evidence": "1, 0, M, 15, 0, 50, 20"
+          }
+        },
+        "services": {
+          "enabled": {
+            "value": [
+              "achat"
+            ],
+            "source": "user",
+            "confidence": 1.0,
+            "updated_at": "2026-03-17T05:38:54",
+            "evidence": "achat"
+          },
+          "flags": {
+            "retrait": {
+              "value": null,
+              "source": "derived",
+              "confidence": 1.0,
+              "updated_at": "2026-03-17T05:38:54",
+              "evidence": "achat"
+            },
+            "achat": {
+              "value": "1",
+              "source": "derived",
+              "confidence": 1.0,
+              "updated_at": "2026-03-17T05:38:54",
+              "evidence": "achat"
+            },
+            "advance": {
+              "value": null,
+              "source": "derived",
+              "confidence": 1.0,
+              "updated_at": "2026-03-17T05:38:54",
+              "evidence": "achat"
+            },
+            "ecommerce": {
+              "value": null,
+              "source": "derived",
+              "confidence": 1.0,
+              "updated_at": "2026-03-17T05:38:54",
+              "evidence": "achat"
+            },
+            "transfert": {
+              "value": null,
+              "source": "derived",
+              "confidence": 1.0,
+              "updated_at": "2026-03-17T05:38:54",
+              "evidence": "achat"
+            },
+            "quasicash": {
+              "value": null,
+              "source": "derived",
+              "confidence": 1.0,
+              "updated_at": "2026-03-17T05:38:54",
+              "evidence": "achat"
+            },
+            "solde": {
+              "value": null,
+              "source": "derived",
+              "confidence": 1.0,
+              "updated_at": "2026-03-17T05:38:54",
+              "evidence": "achat"
+            },
+            "releve": {
+              "value": null,
+              "source": "derived",
+              "confidence": 1.0,
+              "updated_at": "2026-03-17T05:38:54",
+              "evidence": "achat"
+            },
+            "pinchange": {
+              "value": null,
+              "source": "derived",
+              "confidence": 1.0,
+              "updated_at": "2026-03-17T05:38:54",
+              "evidence": "achat"
+            },
+            "refund": {
+              "value": null,
+              "source": "derived",
+              "confidence": 1.0,
+              "updated_at": "2026-03-17T05:38:54",
+              "evidence": "achat"
+            },
+            "moneysend": {
+              "value": null,
+              "source": "derived",
+              "confidence": 1.0,
+              "updated_at": "2026-03-17T05:38:54",
+              "evidence": "achat"
+            },
+            "billpayment": {
+              "value": null,
+              "source": "derived",
+              "confidence": 1.0,
+              "updated_at": "2026-03-17T05:38:54",
+              "evidence": "achat"
+            },
+            "original": {
+              "value": null,
+              "source": "derived",
+              "confidence": 1.0,
+              "updated_at": "2026-03-17T05:38:54",
+              "evidence": "achat"
+            },
+            "authentication": {
+              "value": null,
+              "source": "derived",
+              "confidence": 1.0,
+              "updated_at": "2026-03-17T05:38:54",
+              "evidence": "achat"
+            },
+            "cashback": {
+              "value": null,
+              "source": "derived",
+              "confidence": 1.0,
+              "updated_at": "2026-03-17T05:38:54",
+              "evidence": "achat"
+            }
+          }
+        },
+        "limits": {
+          "selected_limit_types": [],
+          "by_type": {
+            "DEFAULT": {
+              "domestic": {
+                "daily_amount": {
+                  "value": 2000.0,
+                  "source": "user",
+                  "confidence": 1.0,
+                  "updated_at": "2026-03-17T05:39:41",
+                  "evidence": "2000, 20000, 200000"
+                },
+                "daily_count": null,
+                "weekly_amount": {
+                  "value": 20000.0,
+                  "source": "user",
+                  "confidence": 1.0,
+                  "updated_at": "2026-03-17T05:39:41",
+                  "evidence": "2000, 20000, 200000"
+                },
+                "weekly_count": null,
+                "monthly_amount": {
+                  "value": 200000.0,
+                  "source": "user",
+                  "confidence": 1.0,
+                  "updated_at": "2026-03-17T05:39:41",
+                  "evidence": "2000, 20000, 200000"
+                },
+                "monthly_count": null
+              },
+              "international": {
+                "daily_amount": {
+                  "value": 5000.0,
+                  "source": "user",
+                  "confidence": 1.0,
+                  "updated_at": "2026-03-17T05:40:26",
+                  "evidence": "5000, 50000, 500000"
+                },
+                "daily_count": null,
+                "weekly_amount": {
+                  "value": 50000.0,
+                  "source": "user",
+                  "confidence": 1.0,
+                  "updated_at": "2026-03-17T05:40:26",
+                  "evidence": "5000, 50000, 500000"
+                },
+                "weekly_count": null,
+                "monthly_amount": {
+                  "value": 500000.0,
+                  "source": "user",
+                  "confidence": 1.0,
+                  "updated_at": "2026-03-17T05:40:26",
+                  "evidence": "5000, 50000, 500000"
+                },
+                "monthly_count": null
+              },
+              "total": {
+                "daily_amount": null,
+                "daily_count": null,
+                "weekly_amount": null,
+                "weekly_count": null,
+                "monthly_amount": null,
+                "monthly_count": null
+              },
+              "per_transaction": {
+                "min_amount": null,
+                "max_amount": null
+              }
+            }
+          }
+        }
+      }
+    ],
+    "options": {
+      "resources_examples": [
+        "MCD_MDS",
+        "MCD_CIS",
+        "UPI",
+        "HOST_BANK",
+        "SID",
+        "VISA_BASE1",
+        "VISA_SMS"
+      ],
+      "services": [
+        "achat",
+        "retrait",
+        "cashback",
+        "quasicash",
+        "advance",
+        "refund",
+        "original",
+        "moneysend",
+        "authentication",
+        "solde",
+        "releve",
+        "transfert",
+        "billpayment",
+        "ecommerce",
+        "pinchange"
+      ],
+      "limit_types": [
+        "Retrait",
+        "Purchase",
+        "CASH_advance",
+        "Quasi-cash",
+        "E-commerce"
+      ]
+    }
+  },
+  "history": [
+    {
+      "agent": "Quel est le code de la banque (bank code) ?",
+      "user": "ATL01X"
+    },
+    {
+      "agent": "Quelles ressources veux-tu activer ?\nChoisis les ressources (tu peux donner plusieurs choix: 1,3,5):\n1) MCD_MDS\n2) MCD_CIS\n3) UPI\n4) HOST_BANK\n5) SID\n6) VISA_BASE1\n7) VISA_SMS",
+      "user": "VISA_BASE1"
+    },
+    {
+      "agent": "Quel est le nom de l'agence ?",
+      "user": "Agence Casablanca Centre, Maarif"
+    },
+    {
+      "agent": "Quel est le code de cette agence ?",
+      "user": "AG001X"
+    },
+    {
+      "agent": "Dans quelle ville se trouve cette agence ?",
+      "user": "Casablanca"
+    },
+    {
+      "agent": "Quel est le code de la ville ?",
+      "user": "CASA"
+    },
+    {
+      "agent": "Quelle est la region ?",
+      "user": "Casablanca-Settat"
+    },
+    {
+      "agent": "Quel est le code de la region ?",
+      "user": "01"
+    },
+    {
+      "agent": "Quel est le BIN de la carte ? (6 a 11 chiffres)",
+      "user": "445566"
+    },
+    {
+      "agent": "Type de carte (plastique)\nChoisis le type de carte (plastique):\n1) Printed\n2) EmBossed\n3) VIRTUAL",
+      "user": "PVC"
+    },
+    {
+      "agent": "Nom/description du produit carte",
+      "user": "Visa Classic Internationale"
+    },
+    {
+      "agent": "Type de carte\nChoisis le type carte:\n1) DEBIT\n2) PREPAID\n3) CREDIT",
+      "user": "DEBIT"
+    },
+    {
+      "agent": "Code du produit carte",
+      "user": "VCL"
+    },
+    {
+      "agent": "Index PVK",
+      "user": "1"
+    },
+    {
+      "agent": "Code service de la carte",
+      "user": "254"
+    },
+    {
+      "agent": "Quel est le reseau de la carte ?\nChoisis le reseau:\n1) VISA\n2) MASTERCARD\n3) AMEX\n4) DINERS\n5) EUROPAY\n6) TAG-YUP\n7) UPI\n8) GIMN\n9) JCB\n10) PRIVATIVE",
+      "user": "VISA"
+    },
+    {
+      "agent": "Duree de validite de la carte",
+      "user": "36"
+    },
+    {
+      "agent": "Renouvellement automatique ?\nChoisis l'option de renouvellement:\n1) AUTO\n2) MANUAL",
+      "user": "AUTO"
+    },
+    {
+      "agent": "Delai avant expiration pour lancer le renouvellement",
+      "user": "60"
+    },
+    {
+      "agent": "=== Configuration du PAN ===\nPeux-tu preciser la tranche Min et Max du PAN ?",
+      "user": "50000, 100000"
+    },
+    {
+      "agent": "=== Description des frais ===\nVeuillez remplir les champs suivants :",
+      "user": "1, 0, A, 40, 20, 10, 25"
+    },
+    {
+      "agent": "Je reformule: === Description des frais ===\nVeuillez remplir les champs suivants :",
+      "user": "1, 0, M, 50, 0, 15, 20"
+    },
+    {
+      "agent": "Je reformule: === Description des frais ===\nVeuillez remplir les champs suivants :",
+      "user": "Frais Visa Classic, 1, 0, M, 15, 0, 50, 20"
+    },
+    {
+      "agent": "Valeur invalide pour cards.0.fees.billing_event: valeurs autorisees: 1, 2, 3. Exemple attendu: 1.\nJe reformule: === Description des frais ===\nVeuillez remplir les champs suivants :",
+      "user": "1, 0, M, 15, 0, 50, 20"
+    },
+    {
+      "agent": "Quels services veux-tu activer pour la carte ?\nChoisis les services (tu peux donner plusieurs choix: 1,4,9):\n1) achat\n2) retrait\n3) cashback\n4) quasicash\n5) advance\n6) refund\n7) original\n8) moneysend\n9) authentication\n10) solde\n11) releve\n12) transfert\n13) billpayment\n14) ecommerce\n15) pinchange",
+      "user": "achat"
+    },
+    {
+      "agent": "--- Limites nationales ---",
+      "user": "2000, 20000, 200000"
+    },
+    {
+      "agent": "--- Limites internationales ---",
+      "user": "5000, 50000, 500000"
+    }
+  ],
+  "done": true,
+  "provenance": {
+    "bank.name": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T05:26:10",
+      "evidence": "add bank anas in morocco"
+    },
+    "bank.country": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T05:26:10",
+      "evidence": "add bank anas in morocco"
+    },
+    "bank.bank_code": {
+      "source": "llm",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T05:26:49",
+      "evidence": "ATL01X"
+    },
+    "bank.resources": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T05:27:03",
+      "evidence": "VISA_BASE1"
+    },
+    "bank.agencies.0.agency_name": {
+      "source": "llm",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T05:27:30",
+      "evidence": "Agence Casablanca Centre, Maarif"
+    },
+    "bank.agencies.0.agency_code": {
+      "source": "llm",
+      "confidence": 0.95,
+      "timestamp": "2026-03-17T05:27:55",
+      "evidence": "AG001X"
+    },
+    "bank.agencies.0.city": {
+      "source": "llm",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T05:28:25",
+      "evidence": "Casablanca"
+    },
+    "bank.agencies.0.city_code": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T05:29:02",
+      "evidence": "CASA"
+    },
+    "bank.agencies.0.region": {
+      "source": "llm",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T05:29:43",
+      "evidence": "Casablanca-Settat"
+    },
+    "bank.agencies.0.region_code": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T05:30:03",
+      "evidence": "01"
+    },
+    "cards.0.card_info.bin": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T05:30:21",
+      "evidence": "445566"
+    },
+    "cards.0.card_info.plastic_type": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T05:30:34",
+      "evidence": "PVC"
+    },
+    "cards.0.card_info.card_description": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T05:30:59",
+      "evidence": "Visa Classic Internationale"
+    },
+    "cards.0.card_info.product_type": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T05:31:06",
+      "evidence": "DEBIT"
+    },
+    "cards.0.card_info.product_code": {
+      "source": "llm",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T05:31:31",
+      "evidence": "VCL"
+    },
+    "cards.0.card_info.pvk_index": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T05:31:43",
+      "evidence": "1"
+    },
+    "cards.0.card_info.service_code": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T05:31:55",
+      "evidence": "254"
+    },
+    "cards.0.card_info.network": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T05:32:13",
+      "evidence": "VISA"
+    },
+    "cards.0.card_info.expiration": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T05:32:37",
+      "evidence": "36"
+    },
+    "cards.0.card_info.renewal_option": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T05:32:49",
+      "evidence": "AUTO"
+    },
+    "cards.0.card_info.pre_expiration": {
+      "source": "llm",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T05:33:16",
+      "evidence": "60"
+    },
+    "cards.0.card_range.tranche_min": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T05:33:58",
+      "evidence": "50000, 100000"
+    },
+    "cards.0.card_range.tranche_max": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T05:33:58",
+      "evidence": "50000, 100000"
+    },
+    "cards.0.fees.fee_description": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T05:37:33",
+      "evidence": "Frais Visa Classic, 1, 0, M, 15, 0, 50, 20"
+    },
+    "cards.0.fees.billing_event": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T05:38:36",
+      "evidence": "1, 0, M, 15, 0, 50, 20"
+    },
+    "cards.0.fees.grace_period": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T05:38:36",
+      "evidence": "1, 0, M, 15, 0, 50, 20"
+    },
+    "cards.0.fees.billing_period": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T05:38:36",
+      "evidence": "1, 0, M, 15, 0, 50, 20"
+    },
+    "cards.0.fees.registration_fee": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T05:38:36",
+      "evidence": "1, 0, M, 15, 0, 50, 20"
+    },
+    "cards.0.fees.periodic_fee": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T05:38:36",
+      "evidence": "1, 0, M, 15, 0, 50, 20"
+    },
+    "cards.0.fees.replacement_fee": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T05:38:36",
+      "evidence": "1, 0, M, 15, 0, 50, 20"
+    },
+    "cards.0.fees.pin_recalculation_fee": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T05:38:36",
+      "evidence": "1, 0, M, 15, 0, 50, 20"
+    },
+    "cards.0.services.enabled": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T05:38:54",
+      "evidence": "achat"
+    },
+    "cards.0.services.flags.retrait": {
+      "source": "derived",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T05:38:54",
+      "evidence": "achat"
+    },
+    "cards.0.services.flags.achat": {
+      "source": "derived",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T05:38:54",
+      "evidence": "achat"
+    },
+    "cards.0.services.flags.advance": {
+      "source": "derived",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T05:38:54",
+      "evidence": "achat"
+    },
+    "cards.0.services.flags.ecommerce": {
+      "source": "derived",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T05:38:54",
+      "evidence": "achat"
+    },
+    "cards.0.services.flags.transfert": {
+      "source": "derived",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T05:38:54",
+      "evidence": "achat"
+    },
+    "cards.0.services.flags.quasicash": {
+      "source": "derived",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T05:38:54",
+      "evidence": "achat"
+    },
+    "cards.0.services.flags.solde": {
+      "source": "derived",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T05:38:54",
+      "evidence": "achat"
+    },
+    "cards.0.services.flags.releve": {
+      "source": "derived",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T05:38:54",
+      "evidence": "achat"
+    },
+    "cards.0.services.flags.pinchange": {
+      "source": "derived",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T05:38:54",
+      "evidence": "achat"
+    },
+    "cards.0.services.flags.refund": {
+      "source": "derived",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T05:38:54",
+      "evidence": "achat"
+    },
+    "cards.0.services.flags.moneysend": {
+      "source": "derived",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T05:38:54",
+      "evidence": "achat"
+    },
+    "cards.0.services.flags.billpayment": {
+      "source": "derived",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T05:38:54",
+      "evidence": "achat"
+    },
+    "cards.0.services.flags.original": {
+      "source": "derived",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T05:38:54",
+      "evidence": "achat"
+    },
+    "cards.0.services.flags.authentication": {
+      "source": "derived",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T05:38:54",
+      "evidence": "achat"
+    },
+    "cards.0.services.flags.cashback": {
+      "source": "derived",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T05:38:54",
+      "evidence": "achat"
+    },
+    "cards.0.limits.by_type.DEFAULT.domestic.daily_amount": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T05:39:41",
+      "evidence": "2000, 20000, 200000"
+    },
+    "cards.0.limits.by_type.DEFAULT.domestic.weekly_amount": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T05:39:41",
+      "evidence": "2000, 20000, 200000"
+    },
+    "cards.0.limits.by_type.DEFAULT.domestic.monthly_amount": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T05:39:41",
+      "evidence": "2000, 20000, 200000"
+    },
+    "cards.0.limits.by_type.DEFAULT.international.daily_amount": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T05:40:26",
+      "evidence": "5000, 50000, 500000"
+    },
+    "cards.0.limits.by_type.DEFAULT.international.weekly_amount": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T05:40:26",
+      "evidence": "5000, 50000, 500000"
+    },
+    "cards.0.limits.by_type.DEFAULT.international.monthly_amount": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T05:40:26",
+      "evidence": "5000, 50000, 500000"
+    }
+  }
+}

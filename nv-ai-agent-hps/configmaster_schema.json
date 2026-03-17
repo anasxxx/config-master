@@ -1,0 +1,870 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "configmaster_schema.json",
+  "title": "ConfigMaster Required Fields Schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "bank",
+    "cards",
+    "options"
+  ],
+  "properties": {
+    "bank": {
+      "$ref": "#/$defs/bank"
+    },
+    "cards": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/card"
+      }
+    },
+    "options": {
+      "$ref": "#/$defs/options"
+    }
+  },
+  "$defs": {
+    "nullable_string": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "nullable_code": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_\\-]{1,32}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "nullable_currency": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "nullable_bin": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^\\d{6,11}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "nullable_number_nonneg": {
+      "anyOf": [
+        {
+          "type": "number",
+          "minimum": 0
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "nullable_number_18_3": {
+      "anyOf": [
+        {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 999999999999999.999,
+          "multipleOf": 0.001
+        },
+        {
+          "type": "string",
+          "pattern": "^\\d{1,15}(?:\\.\\d{1,3})?$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "nullable_int_nonneg": {
+      "anyOf": [
+        {
+          "type": "integer",
+          "minimum": 0
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "nullable_int_0_9999": {
+      "anyOf": [
+        {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9999
+        },
+        {
+          "type": "string",
+          "pattern": "^\\d{1,4}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "nullable_int_0_9": {
+      "anyOf": [
+        {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9
+        },
+        {
+          "type": "string",
+          "pattern": "^[0-9]$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "nullable_int_0_99": {
+      "anyOf": [
+        {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 99
+        },
+        {
+          "type": "string",
+          "pattern": "^[0-9]{1,2}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "nullable_int_0_999": {
+      "anyOf": [
+        {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 999
+        },
+        {
+          "type": "string",
+          "pattern": "^[0-9]{1,3}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "service_flag": {
+      "anyOf": [
+        {
+          "type": "string",
+          "enum": [
+            "1"
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "services_flags": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "retrait": {
+          "$ref": "#/$defs/service_flag"
+        },
+        "achat": {
+          "$ref": "#/$defs/service_flag"
+        },
+        "advance": {
+          "$ref": "#/$defs/service_flag"
+        },
+        "ecommerce": {
+          "$ref": "#/$defs/service_flag"
+        },
+        "transfert": {
+          "$ref": "#/$defs/service_flag"
+        },
+        "quasicash": {
+          "$ref": "#/$defs/service_flag"
+        },
+        "solde": {
+          "$ref": "#/$defs/service_flag"
+        },
+        "releve": {
+          "$ref": "#/$defs/service_flag"
+        },
+        "pinchange": {
+          "$ref": "#/$defs/service_flag"
+        },
+        "refund": {
+          "$ref": "#/$defs/service_flag"
+        },
+        "moneysend": {
+          "$ref": "#/$defs/service_flag"
+        },
+        "billpayment": {
+          "$ref": "#/$defs/service_flag"
+        },
+        "original": {
+          "$ref": "#/$defs/service_flag"
+        },
+        "authentication": {
+          "$ref": "#/$defs/service_flag"
+        },
+        "cashback": {
+          "$ref": "#/$defs/service_flag"
+        }
+      }
+    },
+    "bank": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "country",
+        "currency",
+        "bank_code",
+        "resources",
+        "agencies"
+      ],
+      "properties": {
+        "name": {
+          "anyOf": [
+            {
+              "type": "string",
+              "maxLength": 40,
+              "pattern": "^[A-Za-zÀ-ÿ][A-Za-zÀ-ÿ ]{0,39}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "country": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 50
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "country_alpha2": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Z]{2}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "currency": {
+          "$ref": "#/$defs/nullable_currency"
+        },
+        "bank_code": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Z0-9]{6}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "resources": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "VISA_BASE1",
+              "VISA_SMS",
+              "MCD_MDS",
+              "MCD_CIS",
+              "UPI",
+              "HOST_BANK",
+              "SID"
+            ]
+          }
+        },
+        "agencies": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/agency"
+          }
+        }
+      }
+    },
+    "agency": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "agency_name",
+        "agency_code",
+        "city",
+        "city_code",
+        "region",
+        "region_code"
+      ],
+      "properties": {
+        "agency_name": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 40
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "agency_code": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Z0-9]{6}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "city": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 32
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "city_code": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Z0-9]{1,5}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "region": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 30
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "region_code": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Z0-9]{1,3}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "card": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "card_info",
+        "card_range",
+        "fees",
+        "services",
+        "limits"
+      ],
+      "properties": {
+        "card_info": {
+          "$ref": "#/$defs/card_info"
+        },
+        "card_range": {
+          "$ref": "#/$defs/card_range"
+        },
+        "fees": {
+          "$ref": "#/$defs/fees"
+        },
+        "services": {
+          "$ref": "#/$defs/services"
+        },
+        "limits": {
+          "$ref": "#/$defs/limits"
+        }
+      }
+    },
+    "card_info": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "bin",
+        "plastic_type",
+        "card_description",
+        "product_type",
+        "product_code",
+        "pvk_index",
+        "service_code",
+        "network",
+        "expiration",
+        "renewal_option",
+        "pre_expiration"
+      ],
+      "properties": {
+        "bin": {
+          "$ref": "#/$defs/nullable_bin"
+        },
+        "plastic_type": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "PVC",
+                "PETG",
+                "MTL",
+                "VRT",
+                "OTH"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "card_description": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 40
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "product_type": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "DEBIT",
+                "CREDIT",
+                "PREPAID"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "product_code": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Z0-9]{3}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "pvk_index": {
+          "$ref": "#/$defs/nullable_int_0_9"
+        },
+        "service_code": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Z0-9]{3}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "network": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "VISA",
+                "MCRD",
+                "EUROPAY",
+                "AMEX",
+                "TAG-YUP",
+                "DINERS",
+                "UPI",
+                "GIMN",
+                "JCB",
+                "PRIVATIVE"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "expiration": {
+          "$ref": "#/$defs/nullable_int_0_999"
+        },
+        "renewal_option": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "AUTO",
+                "MANUAL",
+                "Y",
+                "N"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "pre_expiration": {
+          "$ref": "#/$defs/nullable_int_0_99"
+        }
+      }
+    },
+    "card_range": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [],
+      "properties": {
+        "note": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "tranche_min": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^\\d{1,22}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "tranche_max": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^\\d{1,22}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "fees": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "fee_description",
+        "billing_event",
+        "grace_period",
+        "billing_period",
+        "registration_fee",
+        "periodic_fee",
+        "replacement_fee",
+        "pin_recalculation_fee"
+      ],
+      "properties": {
+        "fee_description": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 32
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "billing_event": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "1",
+                "2",
+                "3"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "grace_period": {
+          "$ref": "#/$defs/nullable_int_0_999"
+        },
+        "billing_period": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "M",
+                "A",
+                "T",
+                "S"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "registration_fee": {
+          "$ref": "#/$defs/nullable_number_18_3"
+        },
+        "periodic_fee": {
+          "$ref": "#/$defs/nullable_number_18_3"
+        },
+        "replacement_fee": {
+          "$ref": "#/$defs/nullable_number_18_3"
+        },
+        "pin_recalculation_fee": {
+          "$ref": "#/$defs/nullable_number_18_3"
+        }
+      }
+    },
+    "services": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "enabled"
+      ],
+      "properties": {
+        "enabled": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "retrait",
+              "achat",
+              "advance",
+              "ecommerce",
+              "transfert",
+              "quasicash",
+              "solde",
+              "releve",
+              "pinchange",
+              "refund",
+              "moneysend",
+              "billpayment",
+              "original",
+              "authentication",
+              "cashback"
+            ]
+          }
+        },
+        "flags": {
+          "$ref": "#/$defs/services_flags"
+        }
+      }
+    },
+    "limits": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "selected_limit_types",
+        "by_type"
+      ],
+      "properties": {
+        "selected_limit_types": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "Retrait",
+              "Purchase",
+              "CASH_advance",
+              "Quasi-cash",
+              "E-commerce"
+            ]
+          }
+        },
+        "by_type": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "DEFAULT"
+          ],
+          "properties": {
+            "DEFAULT": {
+              "$ref": "#/$defs/limit_group"
+            }
+          }
+        }
+      }
+    },
+    "limit_group": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "domestic",
+        "international",
+        "total",
+        "per_transaction"
+      ],
+      "properties": {
+        "domestic": {
+          "$ref": "#/$defs/limit_window"
+        },
+        "international": {
+          "$ref": "#/$defs/limit_window"
+        },
+        "total": {
+          "$ref": "#/$defs/limit_window"
+        },
+        "per_transaction": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "min_amount",
+            "max_amount"
+          ],
+          "properties": {
+            "min_amount": {
+              "$ref": "#/$defs/nullable_number_18_3"
+            },
+            "max_amount": {
+              "$ref": "#/$defs/nullable_number_18_3"
+            }
+          }
+        }
+      }
+    },
+    "limit_window": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "daily_amount",
+        "daily_count",
+        "weekly_amount",
+        "weekly_count",
+        "monthly_amount",
+        "monthly_count"
+      ],
+      "properties": {
+        "daily_amount": {
+          "$ref": "#/$defs/nullable_number_18_3"
+        },
+        "daily_count": {
+          "$ref": "#/$defs/nullable_int_0_9999"
+        },
+        "weekly_amount": {
+          "$ref": "#/$defs/nullable_number_18_3"
+        },
+        "weekly_count": {
+          "$ref": "#/$defs/nullable_int_0_9999"
+        },
+        "monthly_amount": {
+          "$ref": "#/$defs/nullable_number_18_3"
+        },
+        "monthly_count": {
+          "$ref": "#/$defs/nullable_int_0_9999"
+        }
+      }
+    },
+    "options": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "resources_examples",
+        "services",
+        "limit_types"
+      ],
+      "properties": {
+        "resources_examples": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "services": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "Achat",
+              "achat",
+              "retrait",
+              "cashback",
+              "quasicash",
+              "advance",
+              "refund",
+              "ORIGINAL",
+              "original",
+              "moneysend",
+              "Authentication",
+              "authentication",
+              "solde",
+              "releve",
+              "transfert",
+              "billpayment",
+              "ecommerce",
+              "pinchange"
+            ]
+          }
+        },
+        "limit_types": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "Retrait",
+              "Purchase",
+              "CASH_advance",
+              "Quasi-cash",
+              "E-commerce"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,5 +1,4 @@
 {
-  
   "bank": {
     "name": null,
     "country": null,
@@ -33,7 +32,8 @@
         "pre_expiration": null
       },
       "card_range": {
-        "note": ""
+        "tranche_min": null,
+        "tranche_max": null
       },
       "fees": {
         "fee_description": null,
@@ -46,7 +46,24 @@
         "pin_recalculation_fee": null
       },
       "services": {
-        "enabled": []
+        "enabled": [],
+        "flags": {
+          "retrait": null,
+          "achat": null,
+          "advance": null,
+          "ecommerce": null,
+          "transfert": null,
+          "quasicash": null,
+          "solde": null,
+          "releve": null,
+          "pinchange": null,
+          "refund": null,
+          "moneysend": null,
+          "billpayment": null,
+          "original": null,
+          "authentication": null,
+          "cashback": null
+        }
       },
       "limits": {
         "selected_limit_types": [],
@@ -96,21 +113,21 @@
       "VISA_SMS"
     ],
     "services": [
-      "Retrait",
-      "Cash Advance",
-      "Transferts",
-      "Consultation Solde",
-      "Changement PIN",
-      "Envoi d'argent",
-      "Original",
-      "Achats",
-      "E-commerce",
-      "Quasi-Cash",
-      "Mini-Relevé",
-      "Remboursements",
-      "Paiement Factures",
-      "Authentification",
-      "Cashback"
+      "achat",
+      "retrait",
+      "cashback",
+      "quasicash",
+      "advance",
+      "refund",
+      "original",
+      "moneysend",
+      "authentication",
+      "solde",
+      "releve",
+      "transfert",
+      "billpayment",
+      "ecommerce",
+      "pinchange"
     ],
     "limit_types": [
       "Retrait",
@@ -120,5 +137,4 @@
       "E-commerce"
     ]
   }
-  
 }

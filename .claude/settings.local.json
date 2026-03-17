@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls c:/Users/mahmo/PFE/config_master/SIT/ConfigMaster-Backend/target/*.jar)",
+      "Bash(pip list:*)",
+      "Bash(conda run:*)",
+      "Bash(python -m pip install pycountry)"
+    ],
+    "defaultMode": "bypassPermissions"
+  }
+}

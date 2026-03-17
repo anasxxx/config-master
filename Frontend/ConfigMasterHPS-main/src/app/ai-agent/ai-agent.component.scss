@@ -360,10 +360,41 @@
     border-radius: 0 12px 12px 12px;
     padding: 0.75rem 1rem;
 
-    .message-text {
-      color: #1a237e;
-      font-size: 0.9375rem;
-      line-height: 1.5;
+    .message-text-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+
+      .message-text {
+        flex: 1;
+        min-width: 0;
+        color: #1a237e;
+        font-size: 0.9375rem;
+        line-height: 1.5;
+        white-space: pre-wrap;
+      }
+
+      .param-help-btn {
+        flex-shrink: 0;
+        padding: 0.2rem 0.35rem;
+        color: #3949ab;
+        background: rgba(57, 73, 171, 0.12);
+        border: 1px solid rgba(57, 73, 171, 0.3);
+        border-radius: 50%;
+        line-height: 1;
+        font-size: 1rem;
+        transition: background 0.2s, color 0.2s;
+
+        &:hover {
+          background: #3949ab;
+          color: white;
+          border-color: #3949ab;
+        }
+
+        i {
+          display: block;
+        }
+      }
     }
   }
 }
@@ -427,6 +458,21 @@
   i {
     font-size: 0.75rem;
   }
+}
+
+// ─── Streaming cursor (blinking block like ChatGPT) ─────────────────────────
+.stream-cursor {
+  display: inline-block;
+  color: #3949ab;
+  font-weight: bold;
+  animation: blink-cursor 0.8s step-end infinite;
+  margin-left: 1px;
+  vertical-align: baseline;
+}
+
+@keyframes blink-cursor {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
 }
 
 // ─── Typing Indicator ────────────────────────────────────────────────────────
@@ -519,6 +565,65 @@
   }
 }
 
+// ─── Menu options (inline clickable buttons) ─────────────────────────────────
+.menu-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+
+  .btn-outline-primary {
+    border-color: #3949ab;
+    color: #3949ab;
+    font-size: 0.8125rem;
+    border-radius: 8px;
+    transition: all 0.15s;
+
+    &:hover {
+      background: #3949ab;
+      color: white;
+    }
+  }
+}
+
+// ─── Form input area ─────────────────────────────────────────────────────────
+.form-input-area {
+  padding: 0.75rem 1.25rem;
+  border-top: 1px solid #e8eaf6;
+  background: #f8f9ff;
+
+  .form-input-title {
+    font-weight: 600;
+    color: #1a237e;
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .form-input-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.4rem;
+
+    .form-input-label {
+      flex: 0 0 200px;
+      font-size: 0.8125rem;
+      color: #444;
+      margin: 0;
+    }
+
+    .form-control {
+      flex: 1;
+      border: 1px solid #c5cae9;
+      border-radius: 6px;
+
+      &:focus {
+        border-color: #3949ab;
+        box-shadow: 0 0 0 2px rgba(57, 73, 171, 0.1);
+      }
+    }
+  }
+}
+
 // ─── Responsive ──────────────────────────────────────────────────────────────
 @media (max-width: 768px) {
   .main-content {
@@ -539,5 +644,45 @@
 
   .message-bubble {
     max-width: 95%;
+  }
+}
+
+// ─── Param help modal (+ button) ──────────────────────────────────────────────
+.param-help-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1050;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  .modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+  }
+
+  .modal-dialog {
+    position: relative;
+    margin: 1.5rem auto;
+    max-width: 400px;
+  }
+
+  .modal-content {
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(57, 73, 171, 0.2);
+  }
+
+  .modal-header {
+    border-bottom: 1px solid #e8eaf6;
+    background: #f0f4ff;
+  }
+
+  .modal-body code {
+    background: #e8eaf6;
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
   }
 }

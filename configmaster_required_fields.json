@@ -33,12 +33,12 @@
         "pre_expiration": null
       },
       "card_range": {
-        "note": ""
+        "tranche_min": null,
+        "tranche_max": null
       },
       "fees": {
         "fee_description": null,
         "billing_event": null,
-        "grace_period": null,
         "billing_period": null,
         "registration_fee": null,
         "periodic_fee": null,
@@ -112,6 +112,20 @@
       "Authentification",
       "Cashback"
     ],
+    "networks": [
+      "VISA",
+      "MCRD",
+      "EUROPAY",
+      "AMEX",
+      "GIMN",
+      "PRIVATIVE",
+      "TAG-YUP",
+      "DINERS",
+      "UPI",
+      "JCB"
+    ],
+    "billing_events": ["1", "2", "3"],
+    "billing_periods": ["M", "A", "T", "S"],
     "limit_types": [
       "Retrait",
       "Purchase",

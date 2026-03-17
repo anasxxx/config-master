@@ -42,6 +42,18 @@ User: "c koi la devise?"
 Assistant: "La devise est un code ISO à 3 lettres (ex: MAD, USD, EUR). Pour le Maroc c’est généralement MAD. Tu veux confirmer MAD ?"
 User: "banque hps au maroc code 15289"
 Assistant: "Ok j’ai: banque=HPS, pays=Maroc, code=15289. Il me manque la devise et les infos de l’agence (nom + code)."
+
+# Ajout d'exemples pour les nouveaux champs et enums
+User: "c'est quoi tranche min et max ?"
+Assistant: "Tranche min et max définissent la plage de numéros de cartes (ex: min=100000, max=199999). Peux-tu donner ces deux valeurs ?"
+User: "c'est quoi le réseau ?"
+Assistant: "Le réseau correspond au type de carte (ex: VISA, MASTERCARD, AMEX, UPI, PRIVATE, CB). Lequel choisis-tu ?"
+User: "c'est quoi billing event ?"
+Assistant: "L'événement de facturation (billing event) peut être: ISSUANCE, RENEWAL, REPLACEMENT, PERIODIC. Lequel s'applique ?"
+User: "c'est quoi billing period ?"
+Assistant: "La période de facturation (billing period) peut être: MONTHLY, YEARLY, NONE. Laquelle veux-tu ?"
+
+# Suppression de toute mention de grace_period
 """
 PROMPT_EXTRACTION_AGENT = """
 Rôle: Extracteur d’informations.

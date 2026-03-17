@@ -1,0 +1,182 @@
+{
+  "meta": {
+    "goal_id": 138,
+    "client": "client",
+    "client_n": 133,
+    "action": "add",
+    "created_at": "2026-03-17T05:01:40",
+    "last_extraction": {
+      "used_llm": true,
+      "used_fallback_rules": true,
+      "used_deterministic_extractors": true,
+      "llm_attempts": 1,
+      "llm_final_status": "LLM_TIMEOUT"
+    },
+    "last_question_paths": [
+      "bank.country"
+    ],
+    "last_user_message": "hello i want to add a new bank ",
+    "last_question_text": "Quel est le pays de la banque ? ",
+    "asked_fields": [
+      "bank.country"
+    ],
+    "active_menu": null
+  },
+  "goal": "hello i want to add a new bank ",
+  "facts": {
+    "bank": {
+      "name": {
+        "value": "NEW BANK",
+        "source": "user",
+        "confidence": 1.0,
+        "updated_at": "2026-03-17T05:01:57",
+        "evidence": "hello i want to add a new bank"
+      },
+      "country": null,
+      "currency": null,
+      "bank_code": null,
+      "resources": [],
+      "agencies": [
+        {
+          "agency_name": null,
+          "agency_code": null,
+          "city": null,
+          "city_code": null,
+          "region": null,
+          "region_code": null
+        }
+      ]
+    },
+    "cards": [
+      {
+        "card_info": {
+          "bin": null,
+          "plastic_type": null,
+          "card_description": null,
+          "product_type": null,
+          "product_code": null,
+          "pvk_index": null,
+          "service_code": null,
+          "network": null,
+          "expiration": null,
+          "renewal_option": null,
+          "pre_expiration": null
+        },
+        "card_range": {
+          "tranche_min": null,
+          "tranche_max": null
+        },
+        "fees": {
+          "fee_description": null,
+          "billing_event": null,
+          "grace_period": null,
+          "billing_period": null,
+          "registration_fee": null,
+          "periodic_fee": null,
+          "replacement_fee": null,
+          "pin_recalculation_fee": null
+        },
+        "services": {
+          "enabled": [],
+          "flags": {
+            "retrait": null,
+            "achat": null,
+            "advance": null,
+            "ecommerce": null,
+            "transfert": null,
+            "quasicash": null,
+            "solde": null,
+            "releve": null,
+            "pinchange": null,
+            "refund": null,
+            "moneysend": null,
+            "billpayment": null,
+            "original": null,
+            "authentication": null,
+            "cashback": null
+          }
+        },
+        "limits": {
+          "selected_limit_types": [],
+          "by_type": {
+            "DEFAULT": {
+              "domestic": {
+                "daily_amount": null,
+                "daily_count": null,
+                "weekly_amount": null,
+                "weekly_count": null,
+                "monthly_amount": null,
+                "monthly_count": null
+              },
+              "international": {
+                "daily_amount": null,
+                "daily_count": null,
+                "weekly_amount": null,
+                "weekly_count": null,
+                "monthly_amount": null,
+                "monthly_count": null
+              },
+              "total": {
+                "daily_amount": null,
+                "daily_count": null,
+                "weekly_amount": null,
+                "weekly_count": null,
+                "monthly_amount": null,
+                "monthly_count": null
+              },
+              "per_transaction": {
+                "min_amount": null,
+                "max_amount": null
+              }
+            }
+          }
+        }
+      }
+    ],
+    "options": {
+      "resources_examples": [
+        "MCD_MDS",
+        "MCD_CIS",
+        "UPI",
+        "HOST_BANK",
+        "SID",
+        "VISA_BASE1",
+        "VISA_SMS"
+      ],
+      "services": [
+        "achat",
+        "retrait",
+        "cashback",
+        "quasicash",
+        "advance",
+        "refund",
+        "original",
+        "moneysend",
+        "authentication",
+        "solde",
+        "releve",
+        "transfert",
+        "billpayment",
+        "ecommerce",
+        "pinchange"
+      ],
+      "limit_types": [
+        "Retrait",
+        "Purchase",
+        "CASH_advance",
+        "Quasi-cash",
+        "E-commerce"
+      ]
+    }
+  },
+  "history": [],
+  "done": false,
+  "provenance": {
+    "bank.name": {
+      "source": "user",
+      "confidence": 1.0,
+      "timestamp": "2026-03-17T05:01:57",
+      "evidence": "hello i want to add a new bank"
+    }
+  }
+}
